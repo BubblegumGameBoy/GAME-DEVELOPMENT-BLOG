@@ -31,6 +31,11 @@
   .btn-card:hover { transform: translateY(-1px); box-shadow: 0 5px 0 #14283f; }
   .btn-card:active { transform: translateY(3px); box-shadow: 0 1px 0 #14283f; }
   .card:hover { transform: translateY(-5px); box-shadow: 0 11px 0 rgba(20,40,63,.2); }
+
+  /* platform badges (PC / smartphone support) */
+  .plat { font-family:'DotGothic16',monospace; background:#eaf1f7; color:#3d5b7c; border:2px solid #14283f; }
+  .plat-sm { font-size:11px; border-radius:6px; padding:3px 9px; }
+  .plat-lg { font-size:12px; border-radius:7px; padding:5px 11px; }
 </style>
 </head>
 <body>
@@ -49,7 +54,7 @@
     <div style="display:flex;align-items:center;gap:clamp(10px,3vw,22px);flex-wrap:wrap;font-weight:700;font-size:14px;">
       <a href="#games" style="color:#cfe6ee;text-decoration:none;">ゲーム一覧</a>
       <a href="#featured" style="color:#cfe6ee;text-decoration:none;">注目</a>
-      <a href="https://babblegum.hatenablog.com/" class="btn-nav" style="display:inline-flex;align-items:center;gap:6px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:800;padding:8px 14px;border-radius:10px;border:2.5px solid #14283f;box-shadow:0 3px 0 #14283f;">ブログに戻る ↗</a>
+      <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" class="btn-nav" style="display:inline-flex;align-items:center;gap:6px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:800;padding:8px 14px;border-radius:10px;border:2.5px solid #14283f;box-shadow:0 3px 0 #14283f;">ブログに戻る ↗</a>
     </div>
   </div>
 </nav>
@@ -90,7 +95,7 @@
 
   <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
     <a href="#featured" class="btn-hero" style="display:inline-flex;align-items:center;gap:8px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,18px);padding:14px 26px;border-radius:14px;border:3px solid #14283f;box-shadow:0 5px 0 #14283f;">▶ ゲームで遊ぶ</a>
-    <a href="https://babblegum.hatenablog.com/" class="btn-hero" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#2c4a6e;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,18px);padding:14px 26px;border-radius:14px;border:3px solid #14283f;box-shadow:0 5px 0 #14283f;">ブログに戻る ↗</a>
+    <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" class="btn-hero" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#2c4a6e;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,18px);padding:14px 26px;border-radius:14px;border:3px solid #14283f;box-shadow:0 5px 0 #14283f;">ブログに戻る ↗</a>
   </div>
 </header>
 
@@ -112,10 +117,11 @@
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
           <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border:2px solid #14283f;border-radius:7px;padding:5px 11px;">タイピング</span>
           <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#fff0cc;color:#9a6b00;border:2px solid #14283f;border-radius:7px;padding:5px 11px;">看板ゲーム</span>
+          <span class="plat plat-lg">🖥 PCのみ</span>
         </div>
         <h2 style="margin:0 0 10px;font-weight:900;font-size:clamp(26px,6vw,42px);line-height:1.1;color:#2c4a6e;">popcorn typing</h2>
-        <p style="margin:0 0 22px;font-size:clamp(15px,3.8vw,18px);font-weight:500;line-height:1.75;color:#3d5b7c;">弾けるポップコーンをリズムよく打ち抜く、爽快タイピングゲーム。ローマ字入力の練習にもぴったり。スマホでもサクサク遊べます。</p>
-        <a href="https://bubblegumgameboy.github.io/popcorn-typing/" class="btn-lg" style="display:inline-flex;align-items:center;gap:9px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(16px,4vw,20px);padding:15px 32px;border-radius:14px;border:3px solid #14283f;box-shadow:0 6px 0 #14283f;">▶ 遊ぶ</a>
+        <p style="margin:0 0 22px;font-size:clamp(15px,3.8vw,18px);font-weight:500;line-height:1.75;color:#3d5b7c;">弾けるポップコーンをリズムよく打ち抜く、爽快タイピングゲーム。ローマ字入力の練習にもぴったり。キーボードで遊ぶPC向けゲームです。</p>
+        <a href="https://bubblegumgameboy.github.io/popcorn-typing/" target="_blank" rel="noopener" class="btn-lg" style="display:inline-flex;align-items:center;gap:9px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(16px,4vw,20px);padding:15px 32px;border-radius:14px;border:3px solid #14283f;box-shadow:0 6px 0 #14283f;">▶ 遊ぶ</a>
       </div>
     </div>
   </div>
@@ -138,9 +144,12 @@
           <span style="font-family:'DotGothic16',monospace;font-size:20px;color:#2a9aa3;text-shadow:2px 2px 0 #fff;">popcorn typing</span>
         </div>
         <div style="padding:16px 16px 18px;">
-          <span style="display:inline-block;font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border:2px solid #14283f;border-radius:6px;padding:3px 9px;margin-bottom:9px;">タイピング</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border:2px solid #14283f;border-radius:6px;padding:3px 9px;">タイピング</span>
+            <span class="plat plat-sm">🖥 PCのみ</span>
+          </div>
           <h3 style="margin:0 0 14px;font-weight:800;font-size:19px;color:#2c4a6e;">popcorn typing</h3>
-          <a href="https://bubblegumgameboy.github.io/popcorn-typing/" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
+          <a href="https://bubblegumgameboy.github.io/popcorn-typing/" target="_blank" rel="noopener" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
         </div>
       </article>
 
@@ -150,9 +159,12 @@
           <span style="font-family:'DotGothic16',monospace;font-size:18px;color:#c97a00;text-shadow:2px 2px 0 #fff;">spacebar clicker</span>
         </div>
         <div style="padding:16px 16px 18px;">
-          <span style="display:inline-block;font-family:'DotGothic16',monospace;font-size:11px;background:#fff0cc;color:#9a6b00;border:2px solid #14283f;border-radius:6px;padding:3px 9px;margin-bottom:9px;">クリッカー</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#fff0cc;color:#9a6b00;border:2px solid #14283f;border-radius:6px;padding:3px 9px;">クリッカー</span>
+            <span class="plat plat-sm">🖥📱 PC・スマホ対応</span>
+          </div>
           <h3 style="margin:0 0 14px;font-weight:800;font-size:19px;color:#2c4a6e;">spacebar clicker</h3>
-          <a href="https://bubblegumgameboy.github.io/spacebar-clicker/" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
+          <a href="https://bubblegumgameboy.github.io/spacebar-clicker/" target="_blank" rel="noopener" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
         </div>
       </article>
 
@@ -162,9 +174,12 @@
           <span style="font-family:'DotGothic16',monospace;font-size:20px;color:#d23a3f;text-shadow:2px 2px 0 #fff;">Bubble Wars</span>
         </div>
         <div style="padding:16px 16px 18px;">
-          <span style="display:inline-block;font-family:'DotGothic16',monospace;font-size:11px;background:#ffd9da;color:#c0282d;border:2px solid #14283f;border-radius:6px;padding:3px 9px;margin-bottom:9px;">アクション</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#ffd9da;color:#c0282d;border:2px solid #14283f;border-radius:6px;padding:3px 9px;">アクション</span>
+            <span class="plat plat-sm">🖥 PCのみ</span>
+          </div>
           <h3 style="margin:0 0 14px;font-weight:800;font-size:19px;color:#2c4a6e;">Bubble Wars</h3>
-          <a href="https://bubblegumgameboy.github.io/Bubble-Wars/" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
+          <a href="https://bubblegumgameboy.github.io/Bubble-Wars/" target="_blank" rel="noopener" class="btn-card" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:11px;border-radius:11px;border:3px solid #14283f;box-shadow:0 4px 0 #14283f;">▶ 遊ぶ</a>
         </div>
       </article>
 
@@ -180,7 +195,7 @@
     <p style="margin:0 0 6px;font-family:'DotGothic16',monospace;font-size:13px;color:#8fb4cf;letter-spacing:1px;">FROM THE BLOG</p>
     <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(22px,5vw,34px);color:#fff;line-height:1.3;">最新記事・レビューは<br>ブログでチェック</h2>
     <p style="margin:0 auto 26px;max-width:460px;font-weight:500;font-size:clamp(14px,3.8vw,17px);line-height:1.75;color:#cfe1ec;">ゲームの攻略や開発の裏話、ガジェットレビューは「バブルガムのゲームブログ」で毎週更新中。こちらもぜひ。</p>
-    <a href="https://babblegum.hatenablog.com/" class="btn-hero" style="display:inline-flex;align-items:center;gap:9px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,18px);padding:15px 30px;border-radius:14px;border:3px solid #14283f;box-shadow:0 5px 0 #14283f;">ブログを見る ↗</a>
+    <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" class="btn-hero" style="display:inline-flex;align-items:center;gap:9px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,18px);padding:15px 30px;border-radius:14px;border:3px solid #14283f;box-shadow:0 5px 0 #14283f;">ブログを見る ↗</a>
   </div>
 </section>
 
@@ -199,9 +214,9 @@
     <div>
       <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;letter-spacing:1px;">MENU</p>
       <div style="display:flex;flex-direction:column;gap:10px;font-weight:700;font-size:14px;">
-        <a href="https://babblegum.hatenablog.com/about" style="color:#cfe1ec;text-decoration:none;">プロフィール ↗</a>
-        <a href="https://babblegum.hatenablog.com/about/contact" style="color:#cfe1ec;text-decoration:none;">お問い合わせ ↗</a>
-        <a href="https://babblegum.hatenablog.com/" style="color:#cfe1ec;text-decoration:none;">ブログ ↗</a>
+        <a href="https://babblegum.hatenablog.com/about" target="_blank" rel="noopener" style="color:#cfe1ec;text-decoration:none;">プロフィール ↗</a>
+        <a href="https://babblegum.hatenablog.com/about/contact" target="_blank" rel="noopener" style="color:#cfe1ec;text-decoration:none;">お問い合わせ ↗</a>
+        <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="color:#cfe1ec;text-decoration:none;">ブログ ↗</a>
       </div>
     </div>
   </div>
