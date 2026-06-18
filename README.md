@@ -9,11 +9,13 @@
 
 ## 収録ゲーム
 
-| ゲーム | ジャンル | リンク |
-|---|---|---|
-| popcorn typing | タイピング（看板） | https://bubblegumgameboy.github.io/popcorn-typing/ |
-| spacebar clicker | クリッカー | https://bubblegumgameboy.github.io/spacebar-clicker/ |
-| Bubble Wars | アクション | https://bubblegumgameboy.github.io/Bubble-Wars/ |
+| ゲーム | ジャンル | 対応 | リンク |
+|---|---|---|---|
+| ポップコーンタイピング | タイピング（看板） | PCのみ | https://bubblegumgameboy.github.io/popcorn-typing/ |
+| ボスラッシュ スペースキー連打ゲーム | 連打 | PC・スマホ | https://bubblegumgameboy.github.io/spacebar-clicker/ |
+| ソルジャータイピング | タイピング | PCのみ | https://bubblegumgameboy.github.io/Bubble-Wars/ |
+
+サムネイル画像は `images/` に配置（`images/<game>.png`）。
 
 ## デザイン
 
