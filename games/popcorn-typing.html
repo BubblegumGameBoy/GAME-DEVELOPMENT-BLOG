@@ -43,8 +43,6 @@
   /* CSSフルスクリーン（URLを変えずに画面いっぱい表示） */
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
-  #fs-close{display:none;position:fixed;top:calc(8px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:100000;align-items:center;gap:6px;background:rgba(20,40,63,.92);color:#fff;border:0;border-radius:9px;padding:9px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;font-size:14px;cursor:pointer;}
-  #fs-close.show{display:inline-flex;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"ポップコーンタイピング","url":"https://bubblegumgameboy.com/games/popcorn-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"ja","description":"打つほどポップコーンが弾けて増える放置型タイピングゲーム。容器がカップからバケツ・トラック・ビル・街へとどんどん巨大化。放置中も施設が自動生産。無料・PC向け。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"スマホでも遊べますか？","acceptedAnswer":{"@type":"Answer","text":"キーボードを使うゲームなのでPCでのプレイを推奨しています。"}},{"@type":"Question","name":"放置していても進みますか？","acceptedAnswer":{"@type":"Answer","text":"はい。施設を購入しておけば、手を止めている間も自動でポップコーンを生産します。"}},{"@type":"Question","name":"タイピング練習になりますか？","acceptedAnswer":{"@type":"Answer","text":"ローマ字入力でポップコーンが弾けるので、練習がてら楽しめます。"}}]}</script>
@@ -83,17 +81,15 @@
       </div>
       <iframe id="game-frame" src="https://play.bubblegumgameboy.com/popcorn-typing/" title="ポップコーンタイピング" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
     </div>
-    <button type="button" id="fs-close">✕ 閉じる</button>
     <script>
     (function(){
       var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn'),
-          closeBtn=document.getElementById('fs-close');
-      function enter(){ f.classList.add('fs-on'); document.body.classList.add('fs-lock'); closeBtn.classList.add('show'); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); closeBtn.classList.remove('show'); }
+          openBtn=document.getElementById('fs-btn');
+      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
       openBtn.addEventListener('click',enter);
-      closeBtn.addEventListener('click',exit);
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape') exit(); });
+      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // スマホの戻る操作で閉じる
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
     })();
     </script>
 
