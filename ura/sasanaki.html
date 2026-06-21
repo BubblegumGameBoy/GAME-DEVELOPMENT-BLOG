@@ -45,14 +45,8 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;}
   #clock{color:#444;font-weight:bold;}
 
-  /* 広告：PCは右端の縦160x600、スマホ/タブレットはタイトル下に320x100 */
-  #ad-side{position:fixed;top:8px;right:10px;width:160px;height:600px;z-index:5;overflow:hidden;display:none;}
-  #ad-mobile{text-align:center;margin:8px 0;}
-  @media (min-width:1100px){
-    #ad-side{display:block;}
-    #ad-mobile{display:none;}
-    body{padding-right:184px;}
-  }
+  /* 広告（サイト共通のインライン枠・中央寄せ） */
+  #ad-mobile{margin:10px 0;overflow:hidden;display:flex;justify-content:center;}
   .scene-fallback svg{display:block;}
 
   #thread{margin-top:6px;}
@@ -126,12 +120,10 @@
     <span id="clock">現在 22:38</span>
   </div>
 
-  <div id="ad-mobile"><!-- admax --><script src="https://adm.shinobi.jp/s/c976240bb1401bcd000bebe7d37b75ba"></script><!-- admax --></div>
+  <div id="ad-mobile"><!-- admax --><script src="https://adm.shinobi.jp/s/8ca662971219d681af64b7d5bb96a3fd"></script><!-- admax --></div>
 
   <div id="thread"></div>
   <div id="interaction"></div>
-
-  <div id="ad-side"><!-- admax --><script src="https://adm.shinobi.jp/s/e0681dcc6118c3e584a69763d22a1368"></script><!-- admax --></div>
 
   <form id="post-form" autocomplete="off">
     <div class="row">
