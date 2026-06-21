@@ -24,8 +24,25 @@
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .detail{margin-top:42px;max-width:760px;}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#2c4a6e;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#3d5b7c;margin:0 0 18px;}
+  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid #d4e6ef;vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#2c4a6e;font-weight:800;background:#eef6fa;}
+  .detail td{color:#3d5b7c;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;}
+  .detail li{margin:6px 0;}
+  .detail li strong{color:#2c4a6e;font-weight:800;}
+  .detail a{color:#2a9aa3;font-weight:700;}
+  .faq{border:2px solid #d4e6ef;border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:#fff;}
+  .faq dt{font-weight:800;color:#2c4a6e;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#2a9aa3;}
+  .faq dd{margin:0 0 12px;color:#3d5b7c;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"ソルジャータイピング","url":"https://bubblegumgameboy.com/games/soldier-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"ja","description":"タイプして敵を倒す、ミリタリー風タイピングゲーム。打鍵のテンポが気持ちいい。無料・登録不要、PC向け。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"ソルジャータイピング","url":"https://bubblegumgameboy.com/games/soldier-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"ja","description":"ローマ字をタイプして兵士を召喚し、押し寄せる魔物の軍団と戦うタイピングゲーム。兵士は自動で進軍・戦闘、全5Waveのボスを倒せばクリア。無料・PC向け。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"スマホでも遊べますか？","acceptedAnswer":{"@type":"Answer","text":"キーボードで遊ぶゲームなので、PCでのプレイを推奨しています。"}},{"@type":"Question","name":"うまく文字が打てません。","acceptedAnswer":{"@type":"Answer","text":"ローマ字で兵士を召喚するため、日本語入力（IME）はオフにしてから始めてください。"}},{"@type":"Question","name":"クリア条件は？","acceptedAnswer":{"@type":"Answer","text":"全5Waveのボスを倒せばクリアです。敵を味方の城に通すとゲームオーバーになります。"}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 </head>
@@ -79,22 +96,8 @@
       });
     })();
     </script>
-    <script>
-    /* ゲーム側が postMessage({type:'game:height',height:N},'*') を送ってくれば、その高さに自動フィット（内部スクロールなし・ページが下に伸びる）。
-       未対応でも上の固定高さで表示されます。 */
-    (function(){
-      var f=document.getElementById('game-frame');
-      window.addEventListener('message',function(e){
-        if(e.origin!=='https://play.bubblegumgameboy.com')return;
-        var d=e.data;
-        if(d&&d.type==='game:height'&&typeof d.height==='number'&&d.height>200){
-          f.style.height=Math.ceil(d.height)+'px';
-        }
-      });
-    })();
-    </script>
 
-    <p style="margin:14px 0 0;font-size:13px;color:#7e95ad;">キーボードのあるPCでお楽しみください。</p>
+    <p style="margin:14px 0 0;font-size:13px;color:#7e95ad;">キーボードのあるPCでお楽しみください。日本語入力（IME）はオフにしてから始めてください。</p>
 
     <!-- 広告（ゲーム下） -->
     <div style="max-width:728px;margin:30px auto 0;overflow:hidden;display:flex;justify-content:center;">
@@ -103,7 +106,49 @@
       <!-- admax -->
     </div>
 
-    <p style="margin:26px 0 0;"><a href="../#games" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← ほかのゲームを見る</a></p>
+    <!-- 詳細コンテンツ（このサイト用にまとめた遊び方・キャラ・FAQ） -->
+    <section class="detail">
+      <p>ローマ字をタイプして兵士を召喚し、押し寄せる魔物の軍団と戦うタイピングゲーム。打てば打つほど兵士が出撃し、自動で進軍・戦闘してくれます。敵を味方の城に通さず、各Waveのボスを倒していきましょう。キーボードで遊ぶPC向けゲームです。</p>
+
+      <p style="font-weight:700;color:#2c4a6e;">遊ぶ前に：キーボードで遊ぶゲームなので、PCでのプレイ推奨です。日本語入力（IME）はオフにしてから始めてください。</p>
+
+      <h2>基本情報</h2>
+      <table>
+        <tr><th>ジャンル</th><td>タイピング／タワーディフェンス風</td></tr>
+        <tr><th>料金</th><td>無料</td></tr>
+        <tr><th>対応環境</th><td>PC推奨（キーボード操作）</td></tr>
+        <tr><th>入力</th><td>ローマ字（日本語入力／IMEはオフ）</td></tr>
+        <tr><th>ボリューム</th><td>全5Wave・ボス5体</td></tr>
+      </table>
+
+      <h2>遊び方</h2>
+      <ul>
+        <li>画面下のローマ字を正確にタイピングすると、兵士が召喚されます</li>
+        <li>兵士は自動で敵に向かって進軍・戦闘します</li>
+        <li>敵が味方の城に到達するとゲームオーバー</li>
+        <li>全Waveのボスを倒せばクリアです（Wave 1〜5）</li>
+      </ul>
+      <p>操作はローマ字を打つだけ。手を止めず打ち続けて、兵士を送り出すのが基本です。</p>
+
+      <h2>登場キャラクター</h2>
+      <ul>
+        <li><strong>兵士</strong>：タイピングで召喚するメインユニット</li>
+        <li><strong>勇者</strong>：サポートユニット</li>
+        <li><strong>魔王</strong>：Waveを進めていくと、面白い展開が待っています</li>
+      </ul>
+
+      <h2>よくある質問</h2>
+      <dl class="faq">
+        <dt>スマホでも遊べますか？</dt>
+        <dd>キーボードで遊ぶゲームなので、PCでのプレイを推奨しています。</dd>
+        <dt>うまく文字が打てません。</dt>
+        <dd>ローマ字で兵士を召喚するため、日本語入力（IME）はオフにしてから始めてください。</dd>
+        <dt>クリア条件は？</dt>
+        <dd>全5Waveのボスを倒せばクリアです。敵を味方の城に通すとゲームオーバーになります。</dd>
+      </dl>
+    </section>
+
+    <p style="margin:34px 0 0;"><a href="../#games" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← ほかのゲームを見る</a></p>
   </main>
 
   <!-- footer -->
