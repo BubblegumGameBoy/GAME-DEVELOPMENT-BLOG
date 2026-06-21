@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>記事 管理ページ｜Bubblegum Game</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<!-- Markdown 変換ライブラリ（管理ページ専用・あなたのブラウザで読み込み） -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/turndown@7/dist/turndown.js"></script>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#e4f2f8;color:#2c4a6e;font-family:'M PLUS Rounded 1c',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:18px clamp(12px,3vw,28px) 80px;}
+  h1{font-weight:900;font-size:clamp(22px,5vw,30px);margin:6px 0 2px;}
+  .sub{font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:2px;margin:0 0 18px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+  .card{background:#fff;border:2px solid #d4e6ef;border-radius:14px;padding:16px 16px 18px;margin-bottom:16px;}
+  .card h2{font-size:15px;font-weight:800;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+  .card h2 .dot{width:9px;height:9px;border-radius:2px;background:#2a9aa3;}
+  label{display:block;font-size:13px;font-weight:700;color:#3d5b7c;margin:10px 0 4px;}
+  input[type=text],input[type=password],input[type=date],textarea,select{
+    width:100%;border:1.5px solid #b9d2e0;border-radius:8px;padding:9px 10px;font-size:14px;font-family:inherit;color:#2c4a6e;background:#fbfdfe;}
+  textarea{resize:vertical;line-height:1.6;}
+  .row{display:flex;gap:10px;flex-wrap:wrap;}
+  .row > div{flex:1 1 140px;min-width:0;}
+  .hint{font-size:11px;color:#8aa3b8;margin:4px 0 0;line-height:1.5;}
+  .btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:9px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;}
+  .btn.primary{background:#2a9aa3;color:#fff;}
+  .btn.primary:hover{background:#23848c;}
+  .btn.ghost{background:#eef6fa;color:#2c4a6e;border:1.5px solid #b9d2e0;}
+  .btn.ghost:hover{background:#e2eff6;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .seg{display:inline-flex;border:1.5px solid #b9d2e0;border-radius:9px;overflow:hidden;}
+  .seg button{border:0;background:#fff;color:#5b7796;font-family:inherit;font-weight:800;font-size:13px;padding:7px 14px;cursor:pointer;}
+  .seg button.on{background:#2a9aa3;color:#fff;}
+  #editor{height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;}
+  .prevbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .prevframe{border:2px solid #14283f;border-radius:12px;overflow:hidden;background:#e4f2f8;margin:0 auto;transition:max-width .15s;}
+  #preview{width:100%;height:560px;border:0;display:block;background:#e4f2f8;}
+  .status{margin-top:12px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word;}
+  .status a{color:#2a9aa3;font-weight:800;}
+  .ok{color:#1e7a52;} .err{color:#c0392b;} .muted{color:#8aa3b8;}
+  details summary{cursor:pointer;font-weight:800;font-size:13px;color:#3d5b7c;}
+  .tag{display:inline-block;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;border-radius:5px;padding:3px 9px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>記事 管理ページ</h1>
+  <p class="sub">BLOG ADMIN ／ Bubblegum Game　— このページは検索に出ません（noindex）—</p>
+
+  <!-- 接続設定 -->
+  <div class="card">
+    <h2><span class="dot"></span>接続設定（GitHub）</h2>
+    <details>
+      <summary>トークンとリポジトリの設定を開く</summary>
+      <div class="row" style="margin-top:10px;">
+        <div><label>オーナー</label><input type="text" id="cfg-owner" placeholder="bubblegumgameboy"></div>
+        <div><label>リポジトリ</label><input type="text" id="cfg-repo" placeholder="game-development-blog"></div>
+        <div><label>ブランチ</label><input type="text" id="cfg-branch" placeholder="main"></div>
+      </div>
+      <label>GitHub トークン（fine-grained PAT / Contents: Read and write）</label>
+      <input type="password" id="cfg-token" placeholder="github_pat_...">
+      <p class="hint">このリポジトリ専用の fine-grained トークンを推奨。トークンは<strong>あなたのブラウザ内（localStorage）にのみ保存</strong>され、外部には送られません（送り先は GitHub API のみ）。</p>
+      <label>著者名（記事の author）</label>
+      <input type="text" id="cfg-author" placeholder="バブルガム">
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn ghost" id="btn-save-cfg">設定を保存</button>
+        <button class="btn ghost" id="btn-test">接続テスト</button>
+      </div>
+      <div class="status" id="cfg-status"></div>
+    </details>
+  </div>
+
+  <div class="grid">
+    <!-- 左：入力 -->
+    <div>
+      <div class="card">
+        <h2><span class="dot"></span>記事の情報</h2>
+        <label>タイトル</label>
+        <input type="text" id="m-title" placeholder="例：新ゲーム『ボスラッシュ』を公開しました">
+        <div class="row">
+          <div>
+            <label>公開日</label>
+            <input type="date" id="m-date">
+          </div>
+          <div>
+            <label>スラッグ（ファイル名・英数字）</label>
+            <input type="text" id="m-slug" placeholder="boss-rush-release">
+          </div>
+        </div>
+        <p class="hint" id="path-hint">ファイル：blog/posts/…</p>
+        <div class="row">
+          <div>
+            <label>カテゴリ名</label>
+            <input type="text" id="m-cat" placeholder="お知らせ">
+          </div>
+          <div>
+            <label>カテゴリ色</label>
+            <input type="text" id="m-catcolor" placeholder="#7a93ad">
+          </div>
+        </div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;" id="cat-presets"></div>
+        <label>説明文（一覧の抜粋＆検索結果の説明・80〜120字目安）</label>
+        <textarea id="m-desc" style="height:64px" placeholder="記事の内容を1〜2文で。一覧カードとSEOの説明に使われます。"></textarea>
+        <label>OGP画像URL（SNSシェア時のサムネ）</label>
+        <input type="text" id="m-ogp" placeholder="https://bubblegumgameboy.com/images/spacebar-clicker.png">
+      </div>
+
+      <div class="card">
+        <div class="prevbar">
+          <h2 style="margin:0;"><span class="dot"></span>本文</h2>
+          <div class="seg" id="mode-seg">
+            <button data-mode="html" class="on">HTML</button>
+            <button data-mode="md">Markdown</button>
+          </div>
+        </div>
+        <textarea id="editor" placeholder="ここに本文を書きます（HTML）。&#10;見出しは &lt;h2&gt;…&lt;/h2&gt;、段落は &lt;p&gt;…&lt;/p&gt;、リンクは &lt;a href=&quot;…&quot;&gt;…&lt;/a&gt; など。&#10;上のタブで Markdown 表示に切り替えても編集できます。"></textarea>
+        <p class="hint">HTMLで書いて、タブで Markdown 表示に切り替え可能（相互変換）。プレビューは右で確認できます。</p>
+      </div>
+    </div>
+
+    <!-- 右：プレビュー＆公開 -->
+    <div>
+      <div class="card">
+        <div class="prevbar">
+          <h2 style="margin:0;"><span class="dot"></span>プレビュー</h2>
+          <div class="seg" id="device-seg">
+            <button data-w="pc" class="on">PC</button>
+            <button data-w="mobile">スマホ</button>
+          </div>
+        </div>
+        <div class="prevframe" id="prevframe" style="max-width:100%;">
+          <iframe id="preview" title="プレビュー"></iframe>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn ghost" id="btn-refresh">プレビュー更新</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="dot"></span>公開</h2>
+        <p class="hint" style="margin-top:0">「投稿する」を押すと、記事ファイルの作成・記事一覧への追加・sitemap への登録をまとめて GitHub にコミットします（GitHub Pages が約1分で再公開）。</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+          <button class="btn primary" id="btn-publish">▶ 投稿する（公開）</button>
+          <button class="btn ghost" id="btn-download">HTMLをダウンロード</button>
+        </div>
+        <div class="status" id="pub-status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   記事 管理ページ（静的サイト用・トークン式ワンクリック公開）
+   ・GitHub Contents API で 3ファイルを更新：
+       1) blog/posts/YYYY-MM-DD-slug.html（新規）
+       2) blog/index.html（一覧カードを先頭に追加）
+       3) sitemap.xml（URLを追加）
+   ・トークンは localStorage のみ。送信先は api.github.com だけ。
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const GA = 'G-17WNKDX3ZB';
+const SITE = 'https://bubblegumgameboy.com';
+const LS = 'bgg_admin_cfg_v1';
+
+const CATS = [
+  {label:'お知らせ',   color:'#7a93ad'},
+  {label:'新ゲーム',   color:'#2a9aa3'},
+  {label:'開発こぼれ話',color:'#ef8c33'},
+  {label:'攻略',       color:'#6b8e3a'},
+];
+
+/* ---------- 設定の保存・読込 ---------- */
+function loadCfg(){
+  let c={};
+  try{ c=JSON.parse(localStorage.getItem(LS))||{}; }catch(e){}
+  $('#cfg-owner').value  = c.owner  || 'bubblegumgameboy';
+  $('#cfg-repo').value   = c.repo   || 'game-development-blog';
+  $('#cfg-branch').value = c.branch || 'main';
+  $('#cfg-token').value  = c.token  || '';
+  $('#cfg-author').value = c.author || 'バブルガム';
+}
+function saveCfg(){
+  const c={
+    owner:$('#cfg-owner').value.trim(), repo:$('#cfg-repo').value.trim(),
+    branch:$('#cfg-branch').value.trim()||'main', token:$('#cfg-token').value.trim(),
+    author:$('#cfg-author').value.trim()||'バブルガム'
+  };
+  localStorage.setItem(LS, JSON.stringify(c));
+  return c;
+}
+function cfg(){ return {
+  owner:$('#cfg-owner').value.trim(), repo:$('#cfg-repo').value.trim(),
+  branch:$('#cfg-branch').value.trim()||'main', token:$('#cfg-token').value.trim(),
+  author:$('#cfg-author').value.trim()||'バブルガム'
+};}
+
+/* ---------- ユーティリティ ---------- */
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function b64encode(str){
+  const bytes=new TextEncoder().encode(str);
+  let bin=''; bytes.forEach(b=>bin+=String.fromCharCode(b));
+  return btoa(bin);
+}
+function b64decode(b64){
+  const bin=atob((b64||'').replace(/\s/g,''));
+  const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+function today(){ return new Date().toISOString().slice(0,10); }
+function filenameOf(){
+  const date=$('#m-date').value || today();
+  let slug=($('#m-slug').value.trim() || 'post').toLowerCase()
+            .replace(/[^a-z0-9\-]+/g,'-').replace(/^-+|-+$/g,'') || 'post';
+  return date+'-'+slug+'.html';
+}
+function refreshPathHint(){ $('#path-hint').textContent='ファイル：blog/posts/'+filenameOf(); }
+
+/* ---------- 本文モード（HTML ⇄ Markdown） ---------- */
+let mode='html';
+let turndown = (window.TurndownService) ? new TurndownService({headingStyle:'atx',codeBlockStyle:'fenced',bulletListMarker:'-'}) : null;
+function mdToHtml(md){ return (window.marked? marked.parse(md):md); }
+function htmlToMd(html){ return (turndown? turndown.turndown(html):html); }
+
+function getBodyHtml(){
+  const v=$('#editor').value;
+  return mode==='md' ? mdToHtml(v) : v;
+}
+function switchMode(to){
+  if(to===mode) return;
+  const cur=$('#editor').value;
+  if(to==='md'){ $('#editor').value = htmlToMd(cur); }
+  else         { $('#editor').value = mdToHtml(cur); }
+  mode=to;
+  document.querySelectorAll('#mode-seg button').forEach(b=>b.classList.toggle('on', b.dataset.mode===to));
+  renderPreview();
+}
+
+/* ---------- 記事HTMLの生成 ---------- */
+function buildMeta(){
+  const date=$('#m-date').value || today();
+  return {
+    title:$('#m-title').value.trim() || '無題の記事',
+    date, dateDot:date.replace(/-/g,'.'),
+    slug:$('#m-slug').value.trim(),
+    filename:filenameOf(),
+    cat:$('#m-cat').value.trim() || 'お知らせ',
+    catColor:$('#m-catcolor').value.trim() || '#7a93ad',
+    desc:$('#m-desc').value.trim() || $('#m-title').value.trim(),
+    ogp:$('#m-ogp').value.trim() || (SITE+'/images/spacebar-clicker.png'),
+    author:cfg().author
+  };
+}
+function buildPostHtml(m, bodyHtml){
+  const url=SITE+'/blog/posts/'+m.filename;
+  const jsonld=JSON.stringify({
+    "@context":"https://schema.org","@type":"BlogPosting",
+    "headline":m.title,"datePublished":m.date,
+    "author":{"@type":"Person","name":m.author},
+    "publisher":{"@type":"Organization","name":"Bubblegum Game"},
+    "inLanguage":"ja","mainEntityOfPage":url,"image":m.ogp,"description":m.desc
+  });
+  return [
+'<!DOCTYPE html>',
+'<html lang="ja">',
+'<head>',
+'<meta charset="utf-8">',
+'<meta name="viewport" content="width=device-width, initial-scale=1">',
+'<link rel="canonical" href="'+url+'">',
+'<title>'+esc(m.title)+'｜Bubblegum Game</title>',
+'<meta name="description" content="'+esc(m.desc)+'">',
+'<meta property="og:type" content="article">',
+'<meta property="og:url" content="'+url+'">',
+'<meta property="og:title" content="'+esc(m.title)+'｜Bubblegum Game">',
+'<meta property="og:description" content="'+esc(m.desc)+'">',
+'<meta property="og:image" content="'+esc(m.ogp)+'">',
+'<meta property="og:site_name" content="Bubblegum Game">',
+'<meta property="og:locale" content="ja_JP">',
+'<meta name="twitter:card" content="summary_large_image">',
+'<link rel="preconnect" href="https://fonts.googleapis.com">',
+'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+'<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">',
+'<style>',
+'  * { box-sizing:border-box; }',
+'  html { scroll-behavior:smooth; }',
+'  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:\'M PLUS Rounded 1c\',sans-serif; -webkit-font-smoothing:antialiased; }',
+'  .prose { font-size:clamp(15px,3.8vw,17px); line-height:1.95; font-weight:500; color:#3d5b7c; }',
+'  .prose h2 { margin:34px 0 12px; font-weight:900; font-size:clamp(20px,4.6vw,26px); color:#2c4a6e; border-left:6px solid #2a9aa3; padding-left:12px; line-height:1.35; }',
+'  .prose h3 { margin:26px 0 8px; font-weight:800; font-size:clamp(17px,4vw,20px); color:#2c4a6e; }',
+'  .prose p { margin:0 0 16px; }',
+'  .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }',
+'  .prose li { margin:4px 0; }',
+'  .prose a { color:#2a9aa3; font-weight:700; }',
+'  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }',
+'</style>',
+'<script type="application/ld+json">'+jsonld+'<\/script>',
+'<script async src="https://www.googletagmanager.com/gtag/js?id='+GA+'"><\/script>',
+'<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(\'js\',new Date());gtag(\'config\',\''+GA+'\');<\/script>',
+'</head>',
+'<body>',
+'',
+'<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">',
+'',
+'  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">',
+'    <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">',
+'      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ 記事一覧</a>',
+'      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">',
+'        <a href="../../" style="color:#cfe6ee;text-decoration:none;">ホーム</a>',
+'        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>',
+'      </div>',
+'    </div>',
+'  </nav>',
+'',
+'  <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">',
+'    <p style="margin:0 0 14px;font-family:\'DotGothic16\',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">'+esc(m.title)+'</span></p>',
+'',
+'    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">',
+'      <span style="font-family:\'DotGothic16\',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">'+esc(m.dateDot)+'</span>',
+'      <span style="font-family:\'DotGothic16\',monospace;font-size:11px;color:#fff;background:'+esc(m.catColor)+';border-radius:5px;padding:3px 9px;">'+esc(m.cat)+'</span>',
+'    </div>',
+'    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">'+esc(m.title)+'</h1>',
+'',
+'    <article class="prose">',
+bodyHtml,
+'    </article>',
+'',
+'    <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">',
+'      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← 記事一覧にもどる</a>',
+'    </div>',
+'  </main>',
+'',
+'  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">',
+'    <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">',
+'      <span>© 2026 Bubblegum Game</span>',
+'      <span style="display:flex;gap:16px;flex-wrap:wrap;">',
+'        <a href="../../#privacy" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>',
+'        <a href="../../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>',
+'      </span>',
+'    </div>',
+'  </footer>',
+'',
+'</div>',
+'</body>',
+'</html>',
+''
+  ].join('\n');
+}
+
+/* ---------- プレビュー ---------- */
+let prevTimer=null;
+function renderPreview(){
+  const m=buildMeta();
+  const html=buildPostHtml(m, getBodyHtml());
+  $('#preview').srcdoc=html;
+}
+function schedulePreview(){ clearTimeout(prevTimer); prevTimer=setTimeout(renderPreview,400); }
+
+/* ---------- カード/sitemap 文字列 ---------- */
+function indexCard(m){
+  return ''+
+'\n      <a href="posts/'+m.filename+'" class="post-card" style="display:block;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;">'+
+'\n        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">'+
+'\n          <span style="font-family:\'DotGothic16\',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">'+esc(m.dateDot)+'</span>'+
+'\n          <span style="font-family:\'DotGothic16\',monospace;font-size:11px;color:#fff;background:'+esc(m.catColor)+';border-radius:5px;padding:3px 9px;">'+esc(m.cat)+'</span>'+
+'\n        </div>'+
+'\n        <h2 style="margin:0 0 4px;font-weight:800;font-size:clamp(18px,4.4vw,22px);color:#2c4a6e;line-height:1.4;">'+esc(m.title)+'</h2>'+
+'\n        <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">'+esc(m.desc)+'</p>'+
+'\n      </a>';
+}
+function sitemapEntry(m){
+  return '  <url>\n    <loc>'+SITE+'/blog/posts/'+m.filename+'</loc>\n    <lastmod>'+m.date+'</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n';
+}
+
+/* ---------- GitHub API ---------- */
+function api(path){const c=cfg();return 'https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path;}
+async function ghGet(path){
+  const c=cfg();
+  const r=await fetch(api(path)+'?ref='+encodeURIComponent(c.branch),
+    {headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json'}});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error('読み込み失敗 '+path+'（'+r.status+'）: '+await r.text());
+  return r.json();
+}
+async function ghPut(path, contentStr, message, sha){
+  const c=cfg();
+  const body={message, content:b64encode(contentStr), branch:c.branch};
+  if(sha) body.sha=sha;
+  const r=await fetch(api(path),{method:'PUT',
+    headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json','Content-Type':'application/json'},
+    body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('書き込み失敗 '+path+'（'+r.status+'）: '+await r.text());
+  return r.json();
+}
+
+/* ---------- 公開処理 ---------- */
+async function publish(){
+  const s=$('#pub-status'); s.className='status'; s.textContent='';
+  const c=cfg();
+  if(!c.token){ s.innerHTML='<span class="err">先に「接続設定」で GitHub トークンを入力してください。</span>'; return; }
+  if(!$('#m-title').value.trim()){ s.innerHTML='<span class="err">タイトルを入力してください。</span>'; return; }
+  if(!$('#editor').value.trim()){ s.innerHTML='<span class="err">本文を入力してください。</span>'; return; }
+
+  const m=buildMeta();
+  const postPath='blog/posts/'+m.filename;
+  const log=[]; const write=t=>{log.push(t); s.innerHTML=log.join('<br>');};
+  $('#btn-publish').disabled=true;
+  try{
+    // 1) 重複チェック
+    write('① 既存ファイルの確認中…');
+    const exists=await ghGet(postPath);
+    if(exists && !confirm('同名の記事ファイルが既にあります。\n'+postPath+'\n上書きしますか？')){
+      write('<span class="muted">中止しました。</span>'); $('#btn-publish').disabled=false; return;
+    }
+    // 2) 記事ファイル
+    write('② 記事ファイルを作成中… '+postPath);
+    await ghPut(postPath, buildPostHtml(m,getBodyHtml()),
+      (exists?'記事を更新: ':'記事を追加: ')+m.title, exists?exists.sha:null);
+
+    // 3) 記事一覧に追加
+    write('③ 記事一覧（blog/index.html）を更新中…');
+    const idx=await ghGet('blog/index.html');
+    let idxHtml=b64decode(idx.content);
+    const anchor='<div style="border-top:2px solid #d4e6ef;">';
+    const pos=idxHtml.indexOf(anchor);
+    if(pos<0) throw new Error('記事一覧の挿入位置が見つかりませんでした。');
+    if(idxHtml.indexOf('posts/'+m.filename)<0){           // 二重追加を防止
+      const at=pos+anchor.length;
+      idxHtml=idxHtml.slice(0,at)+indexCard(m)+idxHtml.slice(at);
+      await ghPut('blog/index.html', idxHtml, '記事一覧に追加: '+m.title, idx.sha);
+    } else { write('　（一覧には既に存在 → スキップ）'); }
+
+    // 4) sitemap に追加
+    write('④ sitemap.xml を更新中…');
+    const sm=await ghGet('sitemap.xml');
+    let smXml=b64decode(sm.content);
+    const loc=SITE+'/blog/posts/'+m.filename;
+    if(smXml.indexOf(loc)<0){
+      smXml=smXml.replace('</urlset>', sitemapEntry(m)+'</urlset>');
+      await ghPut('sitemap.xml', smXml, 'sitemapに追加: '+m.title, sm.sha);
+    } else { write('　（sitemap には既に存在 → スキップ）'); }
+
+    const inspect='https://search.google.com/search-console/inspect?resource_id='+encodeURIComponent(SITE+'/')+'&id='+encodeURIComponent(loc);
+    write('<span class="ok">✅ 公開しました！</span> GitHub Pages の反映に約1分かかります。');
+    write('　・記事ページ: <a href="'+loc+'" target="_blank" rel="noopener">'+loc+'</a>');
+    write('　・<a href="'+inspect+'" target="_blank" rel="noopener">Search Console でこのURLをインデックス登録リクエスト</a>（任意・即時化したい場合）');
+  }catch(err){
+    write('<span class="err">エラー: '+esc(err.message)+'</span>');
+  }finally{
+    $('#btn-publish').disabled=false;
+  }
+}
+
+/* ---------- ダウンロード ---------- */
+function downloadHtml(){
+  const m=buildMeta();
+  const blob=new Blob([buildPostHtml(m,getBodyHtml())],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=m.filename; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ---------- 初期化 ---------- */
+function init(){
+  loadCfg();
+  $('#m-date').value=today();
+  // カテゴリ プリセット
+  CATS.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='tag'; b.style.background=c.color; b.style.border='0'; b.style.cursor='pointer'; b.textContent=c.label;
+    b.onclick=()=>{ $('#m-cat').value=c.label; $('#m-catcolor').value=c.color; schedulePreview(); };
+    $('#cat-presets').appendChild(b);
+  });
+  // 既定値
+  $('#m-cat').value='お知らせ'; $('#m-catcolor').value='#7a93ad';
+  $('#m-ogp').value=SITE+'/images/spacebar-clicker.png';
+
+  // イベント
+  $('#btn-save-cfg').onclick=()=>{ saveCfg(); $('#cfg-status').innerHTML='<span class="ok">保存しました。</span>'; };
+  $('#btn-test').onclick=testConn;
+  document.querySelectorAll('#mode-seg button').forEach(b=>b.onclick=()=>switchMode(b.dataset.mode));
+  document.querySelectorAll('#device-seg button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#device-seg button').forEach(x=>x.classList.toggle('on',x===b));
+    $('#prevframe').style.maxWidth = b.dataset.w==='mobile' ? '390px' : '100%';
+  });
+  $('#btn-refresh').onclick=renderPreview;
+  $('#btn-publish').onclick=publish;
+  $('#btn-download').onclick=downloadHtml;
+  ['#m-title','#m-cat','#m-catcolor','#m-desc','#m-ogp','#editor'].forEach(s=>$(s).addEventListener('input',schedulePreview));
+  ['#m-date','#m-slug'].forEach(s=>$(s).addEventListener('input',()=>{refreshPathHint();schedulePreview();}));
+  refreshPathHint();
+  renderPreview();
+}
+async function testConn(){
+  const s=$('#cfg-status'); s.textContent='接続確認中…';
+  try{ saveCfg();
+    const c=cfg();
+    const r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo,
+      {headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json'}});
+    if(!r.ok) throw new Error(r.status+' '+await r.text());
+    const j=await r.json();
+    s.innerHTML='<span class="ok">OK：'+esc(j.full_name)+'（'+(j.permissions&&j.permissions.push?'書き込み可':'読み取りのみ')+'）</span>';
+  }catch(e){ s.innerHTML='<span class="err">失敗: '+esc(e.message)+'</span>'; }
+}
+window.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
