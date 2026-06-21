@@ -40,6 +40,11 @@
   .faq dt::before{content:"Q. ";color:#2a9aa3;}
   .faq dd{margin:0 0 12px;color:#3d5b7c;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
   .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
+  /* CSSフルスクリーン（URLを変えずに画面いっぱい表示） */
+  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
+  body.fs-lock{overflow:hidden;}
+  #fs-close{display:none;position:fixed;top:calc(8px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:100000;align-items:center;gap:6px;background:rgba(20,40,63,.92);color:#fff;border:0;border-radius:9px;padding:9px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:800;font-size:14px;cursor:pointer;}
+  #fs-close.show{display:inline-flex;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"ボスラッシュ クリックゲーム","url":"https://bubblegumgameboy.com/games/clicker.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":"ja","description":"30体以上の強敵が次々と立ちはだかる放置系クリッカー／ボスラッシュ。武器を強化し兵士を増やして攻撃を自動化し、放置中も軍団がボスを狩り続けます。無料・PC/スマホ対応。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"スマホでも遊べますか？","acceptedAnswer":{"@type":"Answer","text":"遊べます。スペースキーの代わりに画面タップで攻撃します。"}},{"@type":"Question","name":"セーブデータが消えることはありますか？","acceptedAnswer":{"@type":"Answer","text":"自動でブラウザに保存されますが、ブラウザのキャッシュやサイトデータを削除すると消えます。別の端末への引き継ぎはできません。"}},{"@type":"Question","name":"このページの埋め込み版で遊んだデータは、フルスクリーン版に引き継がれますか？","acceptedAnswer":{"@type":"Answer","text":"ブラウザの仕様により引き継がれない場合があります。やり込むなら最初からフルスクリーン版がおすすめです。"}}]}</script>
@@ -79,15 +84,17 @@
         <iframe id="game-frame" src="https://play.bubblegumgameboy.com/spacebar-clicker/" title="ボスラッシュ クリックゲーム" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
       </div>
     </div>
+    <button type="button" id="fs-close">✕ 閉じる</button>
     <script>
     (function(){
-      var f=document.getElementById('game-frame'), btn=document.getElementById('fs-btn');
-      btn.addEventListener('click',function(){
-        if(f.requestFullscreen) f.requestFullscreen();
-        else if(f.webkitRequestFullscreen) f.webkitRequestFullscreen();
-        else if(f.webkitEnterFullscreen) f.webkitEnterFullscreen(); // iOS Safari
-        else window.open(f.src,'_blank','noopener');                // 最終フォールバック
-      });
+      var f=document.getElementById('game-frame'),
+          openBtn=document.getElementById('fs-btn'),
+          closeBtn=document.getElementById('fs-close');
+      function enter(){ f.classList.add('fs-on'); document.body.classList.add('fs-lock'); closeBtn.classList.add('show'); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); closeBtn.classList.remove('show'); }
+      openBtn.addEventListener('click',enter);
+      closeBtn.addEventListener('click',exit);
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') exit(); });
     })();
     </script>
 
