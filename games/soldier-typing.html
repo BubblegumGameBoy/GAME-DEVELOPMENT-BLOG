@@ -54,14 +54,26 @@
     </div>
     <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#3d5b7c;">タイプして敵を倒す、ミリタリー風タイピングゲーム。打鍵のテンポが気持ちいい。キーボードで遊ぶPC向けゲームです。</p>
 
-    <!-- ゲーム本体（play.bubblegumgameboy.com を iframe で埋め込み） -->
-    <div style="position:relative;background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);">
-      <div style="position:relative;width:100%;aspect-ratio:16/10;background:#0b1320;border-radius:11px;overflow:hidden;">
-        <iframe src="https://play.bubblegumgameboy.com/Bubble-Wars/" title="ソルジャータイピング" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
-      </div>
+    <!-- ゲーム本体（play.bubblegumgameboy.com を埋め込み。内部スクロールなしで縦に伸びる） -->
+    <div style="background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);">
+      <iframe id="game-frame" src="https://play.bubblegumgameboy.com/Bubble-Wars/" title="ソルジャータイピング" loading="lazy" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
     </div>
+    <script>
+    /* ゲーム側が postMessage({type:'game:height',height:N},'*') を送ってくれば、その高さに自動フィット（内部スクロールなし・ページが下に伸びる）。
+       未対応でも上の固定高さで表示されます。 */
+    (function(){
+      var f=document.getElementById('game-frame');
+      window.addEventListener('message',function(e){
+        if(e.origin!=='https://play.bubblegumgameboy.com')return;
+        var d=e.data;
+        if(d&&d.type==='game:height'&&typeof d.height==='number'&&d.height>200){
+          f.style.height=Math.ceil(d.height)+'px';
+        }
+      });
+    })();
+    </script>
 
-    <p style="margin:14px 0 0;font-size:13px;color:#7e95ad;">キーボードのあるPCでお楽しみください。うまく表示されない場合は <a href="https://play.bubblegumgameboy.com/Bubble-Wars/" target="_blank" rel="noopener" style="color:#2a9aa3;font-weight:700;text-decoration:none;">別タブで開く ↗</a></p>
+    <p style="margin:14px 0 0;font-size:13px;color:#7e95ad;">キーボードのあるPCでお楽しみください。</p>
 
     <p style="margin:26px 0 0;"><a href="../#games" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← ほかのゲームを見る</a></p>
   </main>
