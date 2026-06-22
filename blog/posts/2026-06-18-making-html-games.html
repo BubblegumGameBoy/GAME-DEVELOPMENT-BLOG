@@ -9,7 +9,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html">
 <meta property="og:title" content="開発こぼれ話｜ブラウザで遊べるHTMLゲームを作って公開するまで｜Bubblegum Game">
-<meta property="og:description" content="個人開発でブラウザゲームを作って公開するまでの流れと、つまずいたポイントの記録。">
+<meta property="og:description" content="個人開発でブラウザゲームを作って公開するまでの流れと、つまずいたポイントの記録。普段はC#でゲームを作っている私が、なぜHTMLでも作り始めたのか、どんな道具で、どう配信しているのかを書きました。">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="ja_JP">
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"開発こぼれ話｜ブラウザで遊べるHTMLゲームを作って公開するまで","datePublished":"2026-06-18","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"個人開発でブラウザゲームを作って公開するまでの流れと、つまずいたポイントの記録。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"開発こぼれ話｜ブラウザで遊べるHTMLゲームを作って公開するまで","datePublished":"2026-06-18","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"個人開発でブラウザゲームを作って公開するまでの流れと、つまずいたポイントの記録。普段はC#でゲームを作っている私が、なぜHTMLでも作り始めたのか、どんな道具で、どう配信しているのかを書きました。"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 </head>
@@ -58,40 +58,35 @@
     <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">開発こぼれ話｜ブラウザで遊べるHTMLゲームを作って公開するまで</h1>
 
     <article class="prose">
-      <p>こんにちは、バブルガムです。普段はC#でゲームを作っているのですが、最近はブラウザでサクッと遊べるHTMLゲームも作って、この「Bubblegum Game」で公開しています。この記事では、なぜHTMLでも作り始めたのか、どんな道具で、どうやって公開しているのかを、個人開発の記録として書いてみます。</p>
+<p>こんにちは、バブルガムです。普段はC#でゲームを作っているのですが、最近はブラウザでサクッと遊べるHTMLゲームも作って、この「Bubblegum Game」で公開しています。</p>
+<h2>なぜHTMLゲームなのか</h2>
+<p>いちばんの理由は、<strong>遊んでもらうまでのハードルが低い</strong>ことです。ダウンロードもインストールも要らず、URLを開くだけ。PCでもスマホでも同じように動きます。腰を据えて遊ぶ作品はC#で作りつつ、「3分でクスッと笑える・スカッとする」軽いゲームはブラウザで――という住み分けが、自分にはしっくりきました。</p>
+<h2>使っているもの</h2>
+<p>使っている道具は、驚くほどシンプルです。</p>
+<ul>
+<li><strong>HTML / CSS / JavaScript</strong> … フレームワークなしの素のコード。1ファイルで完結することも多いです。</li>
+<li><strong>GitHub</strong> … ソースの管理と、後述する配信の両方に使っています。</li>
+<li><strong>GitHub Pages</strong> … 作ったHTMLをそのままWebサイトとして公開できる無料の仕組み。サーバー管理が不要なのが個人開発にぴったりです。</li>
+</ul>
+<p>「ビルド環境を整える」みたいな前準備がほとんど要らないので、思いついたその日に形にできるのが気に入っています。</p>
+<h2>公開までの流れ</h2>
+<p>ざっくり、こんな順番で公開しています。</p>
+<ol>
+<li>ゲーム本体をHTML/JSで作る</li>
+<li>GitHubのリポジトリに置く</li>
+<li>GitHub Pagesを有効にすると、URLで遊べる状態になる</li>
+<li>このポータルサイトの各ゲームページから、そのゲームを埋め込み（iframe）で表示する</li>
+</ol>
+<h2>つまずいたところ</h2>
+<p>順調そうに見えて、地味に詰まったポイントもありました。</p>
+<ul>
+<li><strong>スマホ対応</strong> … PCで快適でも、スマホだと文字が小さい・ボタンが押しにくい、はよくあります。最初から画面幅に応じて大きさを変える前提で作るのが正解でした。</li>
+<li><strong>反映までのタイムラグ</strong> … GitHub Pagesは更新が反映されるまで少し時間がかかります。直したのに変わらない、と慌てず1〜2分待つのがコツです。</li>
+<li><strong>「軽さ」を保つこと</strong> … 凝りだすと重くなりがち。ブラウザゲームの良さは手軽さなので、あえて足し算しすぎないようシンプルな設計を意識しています。</li>
+</ul>
+<h2>これから</h2>
+<p>アンダーテールが大好きで、プレイ中にちょっとした驚きを提供できるものを開発したいと考えています。私はネット黎明期の時代が好きで、それこそYoutubeに広告がなかった時代、２ｃｈのような掲示板がまだ主流だった昔のインターネットがすきです。</p>
 
-      <h2>なぜHTMLゲームなのか</h2>
-      <p>いちばんの理由は、<strong>遊んでもらうまでのハードルが低い</strong>ことです。ダウンロードもインストールも要らず、URLを開くだけ。PCでもスマホでも同じように動きます。腰を据えて遊ぶ作品はC#で作りつつ、「3分でクスッと笑える・スカッとする」軽いゲームはブラウザで――という住み分けが、自分にはしっくりきました。</p>
-
-      <h2>使っているもの</h2>
-      <p>使っている道具は、驚くほどシンプルです。</p>
-      <ul>
-        <li><strong>HTML / CSS / JavaScript</strong> … フレームワークなしの素のコード。1ファイルで完結することも多いです。</li>
-        <li><strong>GitHub</strong> … ソースの管理と、後述する配信の両方に使っています。</li>
-        <li><strong>GitHub Pages</strong> … 作ったHTMLをそのままWebサイトとして公開できる無料の仕組み。サーバー管理が不要なのが個人開発にぴったりです。</li>
-      </ul>
-      <p>「ビルド環境を整える」みたいな前準備がほとんど要らないので、思いついたその日に形にできるのが気に入っています。</p>
-
-      <h2>公開までの流れ</h2>
-      <p>ざっくり、こんな順番で公開しています。</p>
-      <ol>
-        <li>ゲーム本体をHTML/JSで作る</li>
-        <li>GitHubのリポジトリに置く</li>
-        <li>GitHub Pagesを有効にすると、URLで遊べる状態になる</li>
-        <li>このポータルサイトの各ゲームページから、そのゲームを埋め込み（iframe）で表示する</li>
-      </ol>
-      <p>独自ドメインを設定しているので、ゲームは <code>play.bubblegumgameboy.com</code> 以下で配信され、トップの「あそびば」からまとめて辿れるようにしています。</p>
-
-      <h2>つまずいたところ</h2>
-      <p>順調そうに見えて、地味に詰まったポイントもありました。</p>
-      <ul>
-        <li><strong>スマホ対応</strong> … PCで快適でも、スマホだと文字が小さい・ボタンが押しにくい、はよくあります。最初から画面幅に応じて大きさを変える前提で作るのが正解でした。</li>
-        <li><strong>反映までのタイムラグ</strong> … GitHub Pagesは更新が反映されるまで少し時間がかかります。直したのに変わらない、と慌てず1〜2分待つのがコツです。</li>
-        <li><strong>「軽さ」を保つこと</strong> … 凝りだすと重くなりがち。ブラウザゲームの良さは手軽さなので、あえて足し算しすぎないよう意識しています。</li>
-      </ul>
-
-      <h2>これから</h2>
-      <p>これからも、思いついた小ネタを少しずつ形にして公開していきます。攻略記事や、こういった開発の裏話も続けていく予定です。完成したゲームは<a href="../../#games">ゲーム一覧</a>から遊べるので、よかったら覗いてみてください。感想をもらえると、次を作る燃料になります。</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
