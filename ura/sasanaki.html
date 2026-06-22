@@ -45,8 +45,6 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;}
   #clock{color:#444;font-weight:bold;}
 
-  /* 広告（サイト共通のインライン枠・中央寄せ） */
-  #ad-mobile{margin:10px 0;overflow:hidden;display:flex;justify-content:center;}
   .scene-fallback svg{display:block;}
 
   #thread{margin-top:6px;}
@@ -119,8 +117,6 @@
     <span>オカルト超常現象板　2004/01/08(木)〜　<span class="res-count" id="res-count">全1件</span></span>
     <span id="clock">現在 22:38</span>
   </div>
-
-  <div id="ad-mobile"><!-- admax --><script src="https://adm.shinobi.jp/s/8ca662971219d681af64b7d5bb96a3fd"></script><!-- admax --></div>
 
   <div id="thread"></div>
   <div id="interaction"></div>
@@ -485,9 +481,6 @@ function delayFor(){
   return Math.max(PACE.minDelay, d) + Math.random()*250;
 }
 function clearPending(){ if(pending){clearTimeout(pending.timer); pending=null;} }
-
-/* 広告は静的スロット（#ad-side / #ad-mobile）にHTMLで直接埋め込み。
-   実ページのリファラで配信させるため iframe 隔離はしない。 */
 
 function playPhase(){
   const phase=SCRIPT[phaseIdx]; if(!phase) return;

@@ -93,7 +93,7 @@ sitemap.xml / CNAME
 ## TODO / メモ
 
 - OGP 画像 `images/ogp.png`（横長の専用バナー）は未作成。暫定で各スクショを `og:image` に使用中。
-- 広告（忍者AD）枠はプレースホルダ設置済み。トラフィックが貯まったら実コードを差し込む。
+- 広告：忍者AD（admax / `adm.shinobi.jp`）の枠は **全ページから撤去済み**（AdSense 審査のため他社広告ネットワークを排除）。AdSense 承認後に、発行された `<script ... adsbygoogle.js?client=ca-pub-XXXX>` を各ページに設置する。
 - 裏サイト「ささなき駅」は実画像（`station.png` / `tunnel.png`）未設置でも SVG にフォールバックして動作。
 - 将来: タイピング系ゲームの多言語対応 / ポータルへの AdSense 申請。
 
