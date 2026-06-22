@@ -75,6 +75,24 @@
     </details>
   </div>
 
+  <!-- 既存記事の編集 -->
+  <div class="card">
+    <h2><span class="dot"></span>既存記事を編集</h2>
+    <div class="row" style="align-items:flex-end;">
+      <div style="flex:1 1 260px;">
+        <label>記事を選ぶ</label>
+        <select id="edit-select"><option value="">― まず「一覧を取得」を押す ―</option></select>
+      </div>
+      <div style="flex:0 0 auto;display:flex;gap:8px;align-items:flex-end;">
+        <button class="btn ghost" id="btn-load-list">一覧を取得</button>
+        <button class="btn primary" id="btn-load-post">この記事を読み込む</button>
+      </div>
+    </div>
+    <p class="hint">読み込むと下のフォームに記事の内容が復元されます。直して「投稿する」を押すと<strong>同じファイルを上書き更新</strong>します（日付・スラッグはそのままにしておくこと）。</p>
+    <button class="btn ghost" id="btn-new-post" style="margin-top:4px;">＋ 新規作成にもどす</button>
+    <div class="status" id="edit-status"></div>
+  </div>
+
   <div class="grid">
     <!-- 左：入力 -->
     <div>
@@ -396,6 +414,95 @@ async function ghPut(path, contentStr, message, sha){
   if(!r.ok) throw new Error('書き込み失敗 '+path+'（'+r.status+'）: '+await r.text());
   return r.json();
 }
+async function ghList(path){
+  const c=cfg();
+  const r=await fetch(api(path)+'?ref='+encodeURIComponent(c.branch),
+    {headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json'}});
+  if(r.status===404) return [];
+  if(!r.ok) throw new Error('一覧取得失敗（'+r.status+'）: '+await r.text());
+  return r.json();
+}
+
+/* ---------- 既存記事の読み込み・編集 ---------- */
+async function loadPostList(){
+  const s=$('#edit-status'); s.className='status';
+  if(!cfg().token){ s.innerHTML='<span class="err">先に「接続設定」で GitHub トークンを入力してください。</span>'; return; }
+  s.textContent='記事一覧を取得中…';
+  try{
+    const items=await ghList('blog/posts');
+    const posts=items.filter(f=>f.type==='file' && /\.html$/i.test(f.name) && f.name!=='_template.html')
+                     .sort((a,b)=> a.name<b.name ? 1 : -1);   // 新しい日付（ファイル名）が上
+    const sel=$('#edit-select');
+    if(!posts.length){ sel.innerHTML='<option value="">（記事がありません）</option>'; s.innerHTML='<span class="muted">記事がまだありません。</span>'; return; }
+    sel.innerHTML='<option value="">― 記事を選択 ―</option>'+
+      posts.map(p=>'<option value="'+esc(p.path)+'">'+esc(p.name)+'</option>').join('');
+    s.innerHTML='<span class="ok">'+posts.length+'件の記事を取得しました。</span> 編集したいものを選んで「この記事を読み込む」。';
+  }catch(e){ s.innerHTML='<span class="err">'+esc(e.message)+'</span>'; }
+}
+
+function parsePost(html){
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const attr=(sel,a)=>{ const el=doc.querySelector(sel); return el? (el.getAttribute(a)||'') : ''; };
+  const h1=doc.querySelector('main h1');
+  const title=h1 ? h1.textContent.trim() : '';
+  const desc=attr('meta[name="description"]','content');
+  const ogp=attr('meta[property="og:image"]','content');
+  // canonical のファイル名から 日付・スラッグ を復元
+  const fname=(attr('link[rel="canonical"]','href').split('/').pop())||'';
+  const md=fname.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.html$/);
+  const date=md? md[1] : today();
+  const slug=md? md[2] : '';
+  // カテゴリのバッジ（h1直前の行の2番目のspan）
+  let cat='', catColor='';
+  if(h1 && h1.previousElementSibling){
+    const spans=h1.previousElementSibling.querySelectorAll('span');
+    if(spans.length>=2){
+      cat=spans[1].textContent.trim();
+      const mc=(spans[1].getAttribute('style')||'').match(/background\s*:\s*([^;]+)/i);
+      catColor=mc? mc[1].trim() : '';
+    }
+  }
+  const art=doc.querySelector('article.prose');
+  const body=art ? art.innerHTML.replace(/^\s*\n/,'').replace(/\s+$/,'') : '';
+  return {title,desc,ogp,date,slug,cat,catColor,body};
+}
+
+async function loadPost(){
+  const s=$('#edit-status'); s.className='status';
+  const path=$('#edit-select').value;
+  if(!path){ s.innerHTML='<span class="err">読み込む記事を選んでください（先に「一覧を取得」）。</span>'; return; }
+  s.textContent='記事を読み込み中…';
+  try{
+    const file=await ghGet(path);
+    if(!file){ s.innerHTML='<span class="err">ファイルが見つかりません。</span>'; return; }
+    const p=parsePost(b64decode(file.content));
+    $('#m-title').value=p.title;
+    $('#m-date').value=p.date;
+    $('#m-slug').value=p.slug;
+    $('#m-cat').value=p.cat||'お知らせ';
+    $('#m-catcolor').value=p.catColor||'#7a93ad';
+    $('#m-desc').value=p.desc;
+    $('#m-ogp').value=p.ogp;
+    // 本文は HTML モードで復元
+    mode='html';
+    document.querySelectorAll('#mode-seg button').forEach(b=>b.classList.toggle('on', b.dataset.mode==='html'));
+    $('#editor').value=p.body;
+    refreshPathHint(); renderPreview();
+    s.innerHTML='<span class="ok">読み込みました：'+esc(path)+'</span><br>直したら「投稿する」で同じファイルを上書き更新します。';
+  }catch(e){ s.innerHTML='<span class="err">'+esc(e.message)+'</span>'; }
+}
+
+function resetToNew(){
+  $('#m-title').value=''; $('#m-slug').value=''; $('#m-date').value=today();
+  $('#m-cat').value='お知らせ'; $('#m-catcolor').value='#7a93ad';
+  $('#m-desc').value=''; $('#m-ogp').value=SITE+'/images/spacebar-clicker.png';
+  mode='html';
+  document.querySelectorAll('#mode-seg button').forEach(b=>b.classList.toggle('on', b.dataset.mode==='html'));
+  $('#editor').value='';
+  $('#edit-select').value='';
+  refreshPathHint(); renderPreview();
+  $('#edit-status').innerHTML='<span class="muted">新規作成モードにしました。</span>';
+}
 
 /* ---------- 公開処理 ---------- */
 async function publish(){
@@ -428,11 +535,21 @@ async function publish(){
     const anchor='<div style="border-top:2px solid #d4e6ef;">';
     const pos=idxHtml.indexOf(anchor);
     if(pos<0) throw new Error('記事一覧の挿入位置が見つかりませんでした。');
-    if(idxHtml.indexOf('posts/'+m.filename)<0){           // 二重追加を防止
+    const cardMarker='href="posts/'+m.filename+'"';
+    const cardPos=idxHtml.indexOf(cardMarker);
+    if(cardPos<0){                                         // 新規 → 先頭に追加
       const at=pos+anchor.length;
       idxHtml=idxHtml.slice(0,at)+indexCard(m)+idxHtml.slice(at);
       await ghPut('blog/index.html', idxHtml, '記事一覧に追加: '+m.title, idx.sha);
-    } else { write('　（一覧には既に存在 → スキップ）'); }
+    } else {                                               // 既存 → カードを最新内容に置き換え
+      const aStart=idxHtml.lastIndexOf('<a ', cardPos);
+      const aEnd=idxHtml.indexOf('</a>', cardPos);
+      if(aStart>=0 && aEnd>=0){
+        idxHtml=idxHtml.slice(0,aStart)+indexCard(m).trim()+idxHtml.slice(aEnd+4);
+        await ghPut('blog/index.html', idxHtml, '記事一覧を更新: '+m.title, idx.sha);
+        write('　（一覧の既存カードを更新）');
+      } else { write('　（一覧の既存カードが特定できず → スキップ）'); }
+    }
 
     // 4) sitemap に追加
     write('④ sitemap.xml を更新中…');
@@ -442,7 +559,15 @@ async function publish(){
     if(smXml.indexOf(loc)<0){
       smXml=smXml.replace('</urlset>', sitemapEntry(m)+'</urlset>');
       await ghPut('sitemap.xml', smXml, 'sitemapに追加: '+m.title, sm.sha);
-    } else { write('　（sitemap には既に存在 → スキップ）'); }
+    } else {                                               // 既存 → lastmod を本日に更新（再クロール促進）
+      const li=smXml.indexOf(loc);
+      const lmS=smXml.indexOf('<lastmod>', li), lmE=smXml.indexOf('</lastmod>', lmS);
+      if(lmS>=0 && lmE>=0){
+        smXml=smXml.slice(0,lmS)+'<lastmod>'+today()+'</lastmod>'+smXml.slice(lmE+'</lastmod>'.length);
+        await ghPut('sitemap.xml', smXml, 'sitemap更新（lastmod）: '+m.title, sm.sha);
+        write('　（sitemap の更新日を更新）');
+      } else { write('　（sitemap には既に存在 → スキップ）'); }
+    }
 
     const inspect='https://search.google.com/search-console/inspect?resource_id='+encodeURIComponent(SITE+'/')+'&id='+encodeURIComponent(loc);
     write('<span class="ok">✅ 公開しました！</span> GitHub Pages の反映に約1分かかります。');
@@ -482,6 +607,9 @@ function init(){
   // イベント
   $('#btn-save-cfg').onclick=()=>{ saveCfg(); $('#cfg-status').innerHTML='<span class="ok">保存しました。</span>'; };
   $('#btn-test').onclick=testConn;
+  $('#btn-load-list').onclick=loadPostList;
+  $('#btn-load-post').onclick=loadPost;
+  $('#btn-new-post').onclick=resetToNew;
   document.querySelectorAll('#mode-seg button').forEach(b=>b.onclick=()=>switchMode(b.dataset.mode));
   document.querySelectorAll('#device-seg button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('#device-seg button').forEach(x=>x.classList.toggle('on',x===b));
