@@ -15,7 +15,8 @@
 ## ディレクトリ構成
 
 ```
-index.html                     トップページ（ヒーロー / いちおし / 新着 / ゲーム一覧 / about / プライバシー）
+index.html                     トップページ（ヒーロー / いちおし / 新着 / ゲーム一覧 / about / プライバシー / お問い合わせフォーム）
+about.html                     運営者プロフィール（E-E-A-T / AdSense 向けの運営者情報ページ）
 games/
   clicker.html                 ボスラッシュ クリッカー（iframe 埋め込み）
   popcorn-typing.html          ポップコーンタイピング（iframe 埋め込み）
