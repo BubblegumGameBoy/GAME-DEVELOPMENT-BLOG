@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<title>開発こぼれ話｜ボスラッシュ クリッカーで考えた「続けたくなる」設計｜Bubblegum Game</title>
-<meta name="description" content="ボスラッシュ クリッカーを作ったときの設計メモ。連打と放置のバランス、ボスを30体以上用意した理由、強化の手応えをどう演出したか。個人開発で「つい続けたくなる」感覚をどう作ったのかを書きました。">
+<title>開発こぼれ話｜ボスラッシュ クリッカーに込めた「クトゥルフ×連打×転生」の設計｜Bubblegum Game</title>
+<meta name="description" content="ボスラッシュ クリッカーの設計メモ。なぜボスをクトゥルフ神話のモンスターにしたのか、連打で仲間を召喚する手触り、放置と転生で無限に強くなるループに込めた狙いを、設計思想を中心に書きました。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<meta property="og:title" content="開発こぼれ話｜ボスラッシュ クリッカーで考えた「続けたくなる」設計｜Bubblegum Game">
-<meta property="og:description" content="連打と放置のバランス、ボスを30体以上にした理由、強化の手応えの演出。クリッカーの設計メモ。">
+<meta property="og:title" content="開発こぼれ話｜ボスラッシュ クリッカーに込めた「クトゥルフ×連打×転生」の設計｜Bubblegum Game">
+<meta property="og:description" content="クトゥルフのボス、連打での召喚、放置と転生で無限に強くなるループ。クリッカーの設計思想メモ。">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="ja_JP">
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"開発こぼれ話｜ボスラッシュ クリッカーで考えた「続けたくなる」設計","datePublished":"2026-06-14","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"連打と放置のバランス、ボスを30体以上にした理由、強化の手応えの演出。クリッカーの設計メモ。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"開発こぼれ話｜ボスラッシュ クリッカーに込めた「クトゥルフ×連打×転生」の設計","datePublished":"2026-06-14","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"クトゥルフのボス、連打での召喚、放置と転生で無限に強くなるループ。クリッカーの設計思想メモ。"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 </head>
@@ -49,37 +49,31 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">開発こぼれ話｜ボスラッシュ クリッカーで考えた「続けたくなる」設計</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">開発こぼれ話｜ボスラッシュ クリッカーに込めた「クトゥルフ×連打×転生」の設計</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
       <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.14</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">開発こぼれ話</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">開発こぼれ話｜ボスラッシュ クリッカーで考えた「続けたくなる」設計</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">開発こぼれ話｜ボスラッシュ クリッカーに込めた「クトゥルフ×連打×転生」の設計</h1>
 
     <article class="prose">
-      <p>前回の<a href="2026-06-18-making-html-games.html">HTMLゲームを公開するまで</a>に続いて、今回はもう少し具体的な話を。当サイトいちおしの<a href="../../games/clicker.html">ボスラッシュ クリッカー</a>を作ったときに、「つい続けたくなる」感覚をどう設計したのかを書いてみます。クリッカーは仕組みがシンプルなぶん、ちょっとした調整で面白さが大きく変わるジャンルでした。</p>
+      <p>バブルガムです。今回は当サイトいちおしの<a href="../../games/clicker.html">ボスラッシュ クリッカー</a>について、どんな狙いで作ったのかを書いてみます。遊び方そのものは<a href="2026-06-22-clicker-strategy.html">攻略記事</a>に譲って、ここでは設計の「思想」の話を中心に。</p>
 
-      <h2>連打と放置、どちらも気持ちよく</h2>
-      <p>クリッカーには大きく「自分で連打して進める楽しさ」と「放っておいても進む楽しさ」があります。どちらかに寄せると、連打だけだと疲れるし、放置だけだと手応えが薄い。そこでこのゲームでは、<strong>序盤は連打で手応えを、進めると兵士の自動化で放置の快感を</strong>――と、プレイの段階で主役が移るように組みました。連打で稼いだコインが自動化に化けて、戻ってきたら強くなっている、というループです。</p>
+      <h2>ボスをクトゥルフ神話にした理由</h2>
+      <p>このゲームのボスは、<strong>クトゥルフ神話に出てくる伝説のモンスターがモデル</strong>です。クリッカーは仕組みがシンプルなぶん、「次にどんなやつが出てくるんだろう」という<strong>好奇心</strong>が続ける動機になります。ありきたりな敵ではなく、名前を聞くだけでワクワクするクトゥルフの怪物を30体以上ならべることで、「あと1体だけ」と先へ進みたくなる引力を作りたかったんです。クトゥルフ好きの人にニヤッとしてもらえたら最高です。</p>
 
-      <h2>ボスを30体以上にした理由</h2>
-      <p>「次のボスはどんなやつだろう」という好奇心は、続ける動機になります。少数の敵を使い回すより、<strong>こまめに次の目標が現れるほうが、区切りよく遊べる</strong>。そこで強敵を30体以上用意して、「あと1体だけ」と思っているうちに時間が溶ける、あの感覚を狙いました。1体ごとの達成感を細かく刻むイメージです。</p>
+      <h2>「連打して召喚する」手触り</h2>
+      <p>操作はスペースバー連打（クリック）。ただ殴るだけでなく、<strong>兵士・弓兵・ドワーフといった仲間を召喚して、画面をにぎやかにしていく</strong>ところに気持ちよさを置きました。自分の手で叩く爽快感と、増えた仲間が一緒に戦ってくれる頼もしさ。この2つが同時に味わえるのが、このゲームの手触りです。</p>
 
-      <h2>強化の「手応え」を演出する</h2>
-      <p>クリッカーの肝は、強化したときに<strong>「効いている」と体感できる</strong>こと。数字が増えるだけでは弱いので、</p>
-      <ul>
-        <li>強化直後にダメージがはっきり伸びる刻み方にする</li>
-        <li>少し待てば次の強化に手が届く、ギリギリの価格設定にする</li>
-        <li>連打の瞬間火力と、兵士の持続火力で、伸びる実感の種類を分ける</li>
-      </ul>
-      <p>このあたりを少しずつ調整して、「もう1段だけ強化したい」が続くようにしています。</p>
+      <h2>放置でも進む安心感</h2>
+      <p>手を動かし続けないと進まないゲームは、しんどくなりがちです。そこで、<strong>放置しても平民がコインを集め、兵士がボスを攻撃し続ける</strong>ように設計しました。ボスは倒れても再登場するので、離席している間も戦力とコインが育ちます。「ガッツリ連打する時間」と「置いておくだけの時間」、どちらでも前に進める安心感を大事にしています。</p>
 
-      <h2>軽さは正義</h2>
-      <p>ブラウザゲームなので、読み込みが重い・動作がもたつくのは致命的です。凝った演出を足したくなる気持ちを抑えて、<strong>すぐ始められて、サクサク動く</strong>ことを最優先にしました。手軽さこそがこのジャンルの入り口だと思っています。</p>
+      <h2>転生で「無限に強くなる」快感</h2>
+      <p>そして、このゲームの背骨が<strong>転生</strong>です。転生するとコインの倍率が上がり、繰り返すほど兵士が無限に強くなって、やがて<strong>天文学的な数値</strong>で戦えるようになります。クリッカーの醍醐味は「数字が桁違いに跳ね上がる瞬間」。詰まったら転生してリセット、そのぶん次は段違いに強い――この上昇の快感こそ、いちばん体験してほしかった部分です。</p>
 
       <h2>まとめ</h2>
-      <p>連打と放置のバランス、こまめな目標、効いていると分かる強化、そして軽さ。シンプルなクリッカーでも、この積み重ねで「続けたくなる」感じはかなり変わります。実際の手応えは、ぜひ<a href="../../games/clicker.html">ボスラッシュ クリッカー</a>で確かめてみてください。具体的な進め方は<a href="2026-06-22-clicker-strategy.html">攻略記事</a>にまとめています。</p>
+      <p>ワクワクするクトゥルフのボス、連打と召喚の手触り、放置の安心感、そして転生で青天井に強くなる快感。この4つを軸に、「つい続けたくなる」感覚を組みました。気になったら、ぜひ<a href="../../games/clicker.html">ボスラッシュ クリッカー</a>で体験してみてください。具体的な進め方は<a href="2026-06-22-clicker-strategy.html">攻略記事</a>にまとめています。</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
