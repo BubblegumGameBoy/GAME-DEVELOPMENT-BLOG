@@ -46,8 +46,6 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;}
   #clock{color:#444;font-weight:bold;}
 
-  .scene-fallback svg{display:block;}
-
   #thread{margin-top:6px;}
   .res{margin:0 0 2px;padding:1px 0;}
   .res-meta{font-size:13px;}
@@ -62,8 +60,6 @@
   .res-body .anchor{color:var(--link);text-decoration:underline;}
   .res.op .name,.res.op .trip{color:#b3007a !important;}   /* 実況主＝ましろ */
 
-  .res-img{display:inline-block;border:1px solid #999;background:#111;color:#9ad;width:260px;height:150px;
-    margin:6px 0 0;font-size:12px;text-align:center;line-height:150px;opacity:.9;}
   .scene-wrap{margin:6px 0 0;}
   .scene{display:block;width:320px;max-width:100%;height:auto;border:1px solid #333;border-radius:2px;}
   .scene-cap{font-size:11px;color:#888;margin-top:2px;}
@@ -159,69 +155,6 @@ function randId(){return randStr(7)+"0";}
 function randTrip(){return randStr(10);}
 const OP = {name:"ましろ", op:true, trip:"◆"+randTrip(), id:randId()};
 
-/* ===== 場面画像 ==========================================================
-   いまはコード生成の雰囲気SVG。AIで作ったフォト画像に差し替えるときは
-   images/ に置いて、レス側で img:{src:"images/station.png",cap:"…"} を指定。
-   ========================================================================= */
-const IMAGES = {
-  station:{ cap:"ささなき駅のホーム", svg:`
-<svg class="scene" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ささなき駅のホーム">
-  <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0a0e1d"/><stop offset="0.6" stop-color="#161d33"/><stop offset="1" stop-color="#05060b"/>
-    </linearGradient>
-    <radialGradient id="lamp" cx="0.5" cy="0" r="1">
-      <stop offset="0" stop-color="#ffe9b0" stop-opacity="0.55"/><stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="vig" cx="0.5" cy="0.5" r="0.75">
-      <stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.6"/>
-    </radialGradient>
-  </defs>
-  <rect width="320" height="180" fill="url(#sky)"/>
-  <circle cx="248" cy="34" r="14" fill="#cdd6ea" opacity="0.5"/>
-  <circle cx="243" cy="31" r="14" fill="#161d33" opacity="0.7"/>
-  <polygon points="0,96 60,72 110,90 170,66 230,88 320,70 320,120 0,120" fill="#0b1020"/>
-  <rect x="0" y="118" width="320" height="62" fill="#0e1016"/>
-  <rect x="0" y="118" width="320" height="3" fill="#23262e"/>
-  <line x1="151" y1="121" x2="104" y2="180" stroke="#2c313c" stroke-width="1.5"/>
-  <line x1="155" y1="121" x2="116" y2="180" stroke="#2c313c" stroke-width="1.5"/>
-  <g stroke="#171a22" stroke-width="2">
-    <line x1="131" y1="140" x2="151" y2="140"/><line x1="124" y1="156" x2="149" y2="156"/><line x1="116" y1="174" x2="147" y2="174"/>
-  </g>
-  <polygon points="60,40 78,40 92,118 46,118" fill="url(#lamp)"/>
-  <rect x="67" y="40" width="3" height="80" fill="#11131a"/>
-  <rect x="62" y="34" width="13" height="8" rx="2" fill="#2a2d36"/>
-  <circle cx="68.5" cy="38" r="2.4" fill="#ffe9b0"/>
-  <rect x="186" y="92" width="64" height="20" rx="2" fill="#0f1622" stroke="#39414f"/>
-  <text x="218" y="106" font-size="12" fill="#c9d2e4" text-anchor="middle" font-family="'MS PGothic',sans-serif" letter-spacing="1">ささなき</text>
-  <rect x="216" y="112" width="4" height="10" fill="#11131a"/>
-  <ellipse cx="120" cy="176" rx="120" ry="14" fill="#aeb6c8" opacity="0.06"/>
-  <ellipse cx="250" cy="170" rx="90" ry="10" fill="#aeb6c8" opacity="0.05"/>
-  <rect width="320" height="180" fill="url(#vig)"/>
-</svg>` },
-  tunnel:{ cap:"藤倉トンネルの入口", svg:`
-<svg class="scene" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="藤倉トンネルの入口">
-  <defs>
-    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0e1d"/><stop offset="1" stop-color="#0a0c12"/></linearGradient>
-    <linearGradient id="concrete" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3d44"/><stop offset="1" stop-color="#191b20"/></linearGradient>
-    <radialGradient id="void" cx="0.5" cy="0.42" r="0.62"><stop offset="0" stop-color="#05060a"/><stop offset="0.8" stop-color="#000"/><stop offset="1" stop-color="#000"/></radialGradient>
-    <radialGradient id="vig2" cx="0.5" cy="0.5" r="0.75"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.65"/></radialGradient>
-  </defs>
-  <rect width="320" height="180" fill="url(#sky2)"/>
-  <path d="M0,150 C40,96 90,70 160,66 C230,70 280,96 320,150 L320,180 L0,180 Z" fill="#0c0f17"/>
-  <path d="M104,150 L104,84 C104,58 138,44 160,44 C182,44 216,58 216,84 L216,150 Z" fill="url(#concrete)" stroke="#42454d" stroke-width="1"/>
-  <path d="M116,150 L116,86 C116,66 142,56 160,56 C178,56 204,66 204,86 L204,150 Z" fill="url(#void)"/>
-  <path d="M116,86 C116,66 142,56 160,56 C178,56 204,66 204,86" fill="none" stroke="#5b6172" stroke-width="1.2" opacity="0.5"/>
-  <line x1="150" y1="180" x2="156" y2="118" stroke="#2a2e38" stroke-width="1.5"/>
-  <line x1="172" y1="180" x2="164" y2="118" stroke="#2a2e38" stroke-width="1.5"/>
-  <g stroke="#15171d" stroke-width="2"><line x1="146" y1="172" x2="176" y2="172"/><line x1="150" y1="156" x2="172" y2="156"/><line x1="153" y1="142" x2="169" y2="142"/></g>
-  <rect x="138" y="28" width="44" height="16" rx="1.5" fill="#11151d" stroke="#3c4350"/>
-  <text x="160" y="40" font-size="11" fill="#b9c1d2" text-anchor="middle" font-family="'MS PGothic',sans-serif" letter-spacing="2">藤倉</text>
-  <ellipse cx="160" cy="150" rx="120" ry="14" fill="#aeb6c8" opacity="0.07"/>
-  <rect width="320" height="180" fill="url(#vig2)"/>
-</svg>` },
-};
-
 /* ===== 進行台本（オマージュ・自作文・一本道） ============================
    N(): 名無し  /  O(): 実況主ましろ  /  個別コテはオブジェクトで直書き
    think: 自分の番に薄く出る「心の声」
@@ -281,7 +214,7 @@ const SCRIPT = [
       N(162,"2004/01/09 00:26","降りてみ降りてみ"),
       N(165,"2004/01/09 00:28","いや終点まで乗っとけって"),
       N(166,"2004/01/09 00:29","つーかもう発車してるんじゃね"),
-      O(167,"2004/01/09 00:29","降りちゃいました。無人駅です。乗ったのは23時40分くらいの電車だったと思います。",{img:{src:"station.png",cap:"ささなき駅のホーム",fallback:"station"}}),
+      O(167,"2004/01/09 00:29","降りちゃいました。無人駅です。乗ったのは23時40分くらいの電車だったと思います。",{img:{src:"station.jpg",cap:"ささなき駅のホーム"}}),
       {no:168,name:"夜勤明け",trip:"◆yaKin.M2o",mail:"",date:"2004/01/09 00:30",
         body:"ささなき駅、ぐぐっても出てこないな…。てか1時間も走ってたのかよその電車。\nじゃ俺ほんとに風呂入るわ。後よろしく"},
       N(170,"2004/01/09 00:32","ささなき駅で検索かけても何も出てこねえ",{mail:"sage"}),
@@ -381,7 +314,7 @@ const SCRIPT = [
       N(488,"2004/01/09 02:32",">>ましろ とりあえずトンネル抜けたら安全だと思う。抜けたらすぐ通報して、保護してもらえ"),
       O(492,"2004/01/09 02:35","家に電話しました。父が警察に掛けてくれるそうです。でも、音がどんどん近づいてきます。"),
       N(500,"2004/01/09 02:38","その音が電車の音じゃないことを祈るぜ。…って言っても、もう遅いかもしれんが",{mail:"sage"}),
-      O(516,"2004/01/09 02:45","なんとか頑張ってトンネルの前まで来ました。入口に「藤倉」って書いてあります。音も近いので、勇気を出して抜けてみます。ましろが無事に抜けられたら、また書き込みます。",{slow:true,img:{src:"tunnel.png",cap:"藤倉トンネルの入口",fallback:"tunnel"}}),
+      O(516,"2004/01/09 02:45","なんとか頑張ってトンネルの前まで来ました。入口に「藤倉」って書いてあります。音も近いので、勇気を出して抜けてみます。ましろが無事に抜けられたら、また書き込みます。",{slow:true,img:{src:"tunnel.jpg",cap:"藤倉トンネルの入口"}}),
     ],
     think:"（藤倉トンネル…抜けろと言うべきか、戻れと言うべきか）" },
 
@@ -442,15 +375,11 @@ function anchors(t,remap){
 }
 function renderImg(img){
   if(!img) return '';
-  if(typeof img==='object' && img.src){           // 実画像（文字は入れない）。失敗時はSVGへ
-    const fb=(img.fallback&&IMAGES[img.fallback])?IMAGES[img.fallback].svg:'';
-    const onerr=fb?` onerror="this.style.display='none';this.nextElementSibling.style.display='block'"`:'';
-    return `<div class="scene-wrap"><img class="scene" src="${esc(encodeURI(img.src))}" alt=""${onerr}>`+
-           (fb?`<div class="scene-fallback" style="display:none">${fb}</div>`:'')+`</div>`;
+  if(typeof img==='object' && img.src){           // 実画像のみ。読み込めなければ何も出さない
+    return `<div class="scene-wrap"><img class="scene" src="${esc(encodeURI(img.src))}" alt="" loading="lazy"`+
+           ` onerror="this.closest('.scene-wrap').remove()"></div>`;
   }
-  if(IMAGES[img])                                  // コード生成の雰囲気SVG
-    return `<div class="scene-wrap">${IMAGES[img].svg}<div class="scene-cap">［${esc(IMAGES[img].cap)}］</div></div>`;
-  return `<div class="res-img">［画像：${esc(img)}］</div>`; // 後方互換：プレースホルダ枠
+  return '';
 }
 function hhmm(d){const m=d.match(/(\d{1,2}):(\d{2})/);return m?m[1].padStart(2,'0')+':'+m[2]:'';}
 
