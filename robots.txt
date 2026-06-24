@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /ura/
+
+Sitemap: https://bubblegumgameboy.com/sitemap.xml

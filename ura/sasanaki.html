@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://bubblegumgameboy.com/ura/sasanaki.html">
+<title>ささなき駅 ― 深夜実況スレ体験｜丑三つ掲示板 - Bubblegum Game</title>
+<meta name="description" content="2chの都市伝説「きさらぎ駅」にインスパイアされた、深夜の実況スレ体験。あなたも掲示板の住人の一人として、帰れなくなった彼女＝ささなき駅に書き込む。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/ura/sasanaki.html">
+<meta property="og:title" content="ささなき駅 ― 深夜実況スレ体験｜丑三つ掲示板">
+<meta property="og:description" content="きさらぎ駅オマージュの深夜実況スレ体験。住人の一人として書き込んでいく一本道の物語。">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!--
+  ============================================================
+  ささなき駅 / 神スレ体験プロトタイプ  (v4 オマージュ版)
+  ・「きさらぎ駅」へのオマージュ。本文は全て自作（原文転載なし）。
+   固有名も架空（ささなき駅／藤倉トンネル／日向野）。
+  ・住人は1人ずつ別人の声で書き分け（口調をそろえてAI感を出さない）。
+  ・コテハンを設定して住人の1人を演じる。入力はコメント欄一択。
+  ・テンポ：読む時間ベースの待ち＋タップ送り＋時計。心の声は入力欄に薄く表示。
+  ・一本道。SCRIPT配列をデータ駆動で差替え可能。
+  ============================================================
+-->
+<style>
+  :root{
+    --bg:#efefef; --name-age:#178f00; --name-sage:#0000ee;
+    --link:#0000ee; --link-visited:#660099; --title:#c00000;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{color:#000;font-family:"MS PGothic","MS Pゴシック","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    font-size:14px;line-height:1.45;padding:6px 10px 188px;word-break:break-word;}
+  a{color:var(--link);text-decoration:underline;cursor:pointer;}
+  a:visited{color:var(--link-visited);}
+
+  .board-nav{font-size:12px;color:#444;margin-bottom:4px;}
+  .board-nav a{margin-right:6px;}
+  .thread-title{color:var(--title);font-size:21px;font-weight:bold;margin:6px 0 2px;line-height:1.3;}
+  .thread-sub{font-size:12px;color:#555;border-bottom:1px solid #b7b7b7;padding-bottom:6px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;}
+  #clock{color:#444;font-weight:bold;}
+
+  .scene-fallback svg{display:block;}
+
+  #thread{margin-top:6px;}
+  .res{margin:0 0 2px;padding:1px 0;}
+  .res-meta{font-size:13px;}
+  .res-meta .num{font-weight:bold;color:#000;margin-right:2px;}
+  .res-meta .name{font-weight:bold;}
+  .res-meta .name.age{color:var(--name-age);}
+  .res-meta .name.sage{color:var(--name-sage);text-decoration:underline;}
+  .res-meta .trip{color:#888;font-weight:bold;}
+  .res-meta .date{color:#000;}
+  .res-meta .id{color:#666;}
+  .res-body{margin:3px 0 14px 22px;line-height:1.6;white-space:pre-wrap;}
+  .res-body .anchor{color:var(--link);text-decoration:underline;}
+  .res.op .name,.res.op .trip{color:#b3007a !important;}   /* 実況主＝ましろ */
+
+  .res-img{display:inline-block;border:1px solid #999;background:#111;color:#9ad;width:260px;height:150px;
+    margin:6px 0 0;font-size:12px;text-align:center;line-height:150px;opacity:.9;}
+  .scene-wrap{margin:6px 0 0;}
+  .scene{display:block;width:320px;max-width:100%;height:auto;border:1px solid #333;border-radius:2px;}
+  .scene-cap{font-size:11px;color:#888;margin-top:2px;}
+
+  #interaction{margin:14px 0 0 22px;}
+  .typing{color:#999;font-size:12px;font-style:italic;margin:6px 0 0 22px;}
+  .endnote{color:#555;font-size:13px;margin:18px 0;border-top:1px solid #c0c0c0;border-bottom:1px solid #c0c0c0;
+    padding:14px 6px;background:#eaeaea;}
+
+  #post-form{position:fixed;left:0;right:0;bottom:0;background:#dcdcdc;border-top:2px solid #999;padding:10px 12px 12px;font-size:13px;z-index:20;}
+  #post-form .row{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap;}
+  #post-form label{color:#333;}
+  #post-form input[type=text]{padding:5px;border:1px solid #999;font-size:16px;}
+  #post-form #name-in{width:200px;}
+  #post-form #mail-in{width:110px;}
+  #post-form textarea{width:100%;height:52px;border:1px solid #999;padding:6px;font-family:inherit;font-size:16px;resize:vertical;}
+  #post-form textarea::placeholder{color:#b3a98f;font-style:italic;opacity:1;}
+  /* 自分の番＝コメント欄を薄い黄色でハイライト（ユーザー投稿と同色） */
+  #post-form.awaiting textarea{background:#fffbe2;border-color:#e0c97a;}
+  #post-form .submit{margin-top:14px;padding:9px 26px;font-size:15px;font-weight:bold;font-family:inherit;background:#e7e7e7;border:1px solid #555;border-radius:4px;color:#111;cursor:pointer;}
+  #post-form .submit:hover{background:#fff;}
+  #post-form .hint{font-size:11px;color:#777;}
+
+  #gate{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:50;display:flex;align-items:center;justify-content:center;}
+  #gate .panel{background:#efefef;border:1px solid #000;max-width:480px;width:90%;padding:22px 24px;text-align:center;}
+  #gate h1{font-size:18px;color:var(--title);margin:0 0 6px;}
+  #gate p{font-size:13px;color:#333;line-height:1.6;margin:6px 0;}
+  #gate input{padding:6px 8px;border:1px solid #888;font-size:14px;width:60%;margin-top:8px;}
+  #gate button{display:block;margin:14px auto 0;padding:8px 26px;font-size:14px;background:#222;color:#fff;border:none;border-radius:3px;cursor:pointer;}
+  #gate .small{font-size:11px;color:#777;margin-top:10px;}
+
+  /* スマホ最適化（狭い画面） */
+  @media (max-width:520px){
+    body{font-size:15px;padding-bottom:264px;}
+    #post-form .hint{display:none;}
+    #post-form #name-in{width:44%;}
+    #post-form #mail-in{width:30%;}
+    #post-form .submit{width:100%;padding:13px;font-size:16px;margin-top:16px;}
+    .scene{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="board-nav">
+    <a href="index.html">■掲示板に戻る■</a><a>全部</a><a>1-100</a><a>最新50</a>
+    <span style="color:#888;">｜ オカルト超常現象板 ＠ 丑三つ掲示板</span>
+  </div>
+
+  <div class="thread-title">身のまわりで変なこと起きたら実況してくスレ</div>
+  <div class="thread-sub">
+    <span>オカルト超常現象板　2004/01/08(木)〜　<span class="res-count" id="res-count">全1件</span></span>
+    <span id="clock">現在 22:38</span>
+  </div>
+
+  <div id="thread"></div>
+  <div id="interaction"></div>
+
+  <form id="post-form" autocomplete="off">
+    <div class="row">
+      <label>名前：<input type="text" id="name-in"></label>
+      <label>E-mail（省略可）：<input type="text" id="mail-in" placeholder="sage"></label>
+      <span class="hint">※E-mail欄に sage と入れると名前が青く（下げ進行）なります</span>
+    </div>
+    <textarea id="body-in" placeholder="本文を書いて「書き込む」"></textarea>
+    <button type="submit" class="submit">書き込む</button>
+  </form>
+
+  <div id="gate">
+    <div class="panel">
+      <h1>― オカルト超常現象板 ―</h1>
+      <p>2004年1月8日 22時すぎ。<br>あなたは深夜の「実況してくスレ」を開いた。</p>
+      <p>このスレで使う<strong>コテハン（名前）</strong>を入れて、<br>住人の一人として参加しよう。</p>
+      <input type="text" id="gate-name" maxlength="24" value="うしろの名無しさん">
+      <button id="gate-go">スレに参加する</button>
+      <div class="small">そのままなら名無しとして参加。コテハンを使いたい人は書き換えてください。</div>
+    </div>
+  </div>
+
+<script>
+/* ===== テンポ調整つまみ ===================================================
+   待ち＝「直前のレスを読む時間」。長文ほど長く待つ。
+   速い人はタップ/クリック/スペース・Enterで即送り。                     */
+const PACE = {
+  readBase:  1600, msPerChar: 85, minDelay: 2600, maxDelay: 9000,
+  slowMul: 1.6, afterPost: 800,
+};
+const NONAME = "うしろの名無しさん";
+/* ランダム英数字（ID＝末尾0の8桁／トリップ＝10桁。実際のトリップ風に） */
+const B62="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+function randStr(n){let s="";for(let i=0;i<n;i++)s+=B62[Math.floor(Math.random()*62)];return s;}
+function randId(){return randStr(7)+"0";}
+function randTrip(){return randStr(10);}
+const OP = {name:"ましろ", op:true, trip:"◆"+randTrip(), id:randId()};
+
+/* ===== 場面画像 ==========================================================
+   いまはコード生成の雰囲気SVG。AIで作ったフォト画像に差し替えるときは
+   images/ に置いて、レス側で img:{src:"images/station.png",cap:"…"} を指定。
+   ========================================================================= */
+const IMAGES = {
+  station:{ cap:"ささなき駅のホーム", svg:`
+<svg class="scene" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ささなき駅のホーム">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0e1d"/><stop offset="0.6" stop-color="#161d33"/><stop offset="1" stop-color="#05060b"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0" r="1">
+      <stop offset="0" stop-color="#ffe9b0" stop-opacity="0.55"/><stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.6"/>
+    </radialGradient>
+  </defs>
+  <rect width="320" height="180" fill="url(#sky)"/>
+  <circle cx="248" cy="34" r="14" fill="#cdd6ea" opacity="0.5"/>
+  <circle cx="243" cy="31" r="14" fill="#161d33" opacity="0.7"/>
+  <polygon points="0,96 60,72 110,90 170,66 230,88 320,70 320,120 0,120" fill="#0b1020"/>
+  <rect x="0" y="118" width="320" height="62" fill="#0e1016"/>
+  <rect x="0" y="118" width="320" height="3" fill="#23262e"/>
+  <line x1="151" y1="121" x2="104" y2="180" stroke="#2c313c" stroke-width="1.5"/>
+  <line x1="155" y1="121" x2="116" y2="180" stroke="#2c313c" stroke-width="1.5"/>
+  <g stroke="#171a22" stroke-width="2">
+    <line x1="131" y1="140" x2="151" y2="140"/><line x1="124" y1="156" x2="149" y2="156"/><line x1="116" y1="174" x2="147" y2="174"/>
+  </g>
+  <polygon points="60,40 78,40 92,118 46,118" fill="url(#lamp)"/>
+  <rect x="67" y="40" width="3" height="80" fill="#11131a"/>
+  <rect x="62" y="34" width="13" height="8" rx="2" fill="#2a2d36"/>
+  <circle cx="68.5" cy="38" r="2.4" fill="#ffe9b0"/>
+  <rect x="186" y="92" width="64" height="20" rx="2" fill="#0f1622" stroke="#39414f"/>
+  <text x="218" y="106" font-size="12" fill="#c9d2e4" text-anchor="middle" font-family="'MS PGothic',sans-serif" letter-spacing="1">ささなき</text>
+  <rect x="216" y="112" width="4" height="10" fill="#11131a"/>
+  <ellipse cx="120" cy="176" rx="120" ry="14" fill="#aeb6c8" opacity="0.06"/>
+  <ellipse cx="250" cy="170" rx="90" ry="10" fill="#aeb6c8" opacity="0.05"/>
+  <rect width="320" height="180" fill="url(#vig)"/>
+</svg>` },
+  tunnel:{ cap:"藤倉トンネルの入口", svg:`
+<svg class="scene" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="藤倉トンネルの入口">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0e1d"/><stop offset="1" stop-color="#0a0c12"/></linearGradient>
+    <linearGradient id="concrete" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3d44"/><stop offset="1" stop-color="#191b20"/></linearGradient>
+    <radialGradient id="void" cx="0.5" cy="0.42" r="0.62"><stop offset="0" stop-color="#05060a"/><stop offset="0.8" stop-color="#000"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <radialGradient id="vig2" cx="0.5" cy="0.5" r="0.75"><stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.65"/></radialGradient>
+  </defs>
+  <rect width="320" height="180" fill="url(#sky2)"/>
+  <path d="M0,150 C40,96 90,70 160,66 C230,70 280,96 320,150 L320,180 L0,180 Z" fill="#0c0f17"/>
+  <path d="M104,150 L104,84 C104,58 138,44 160,44 C182,44 216,58 216,84 L216,150 Z" fill="url(#concrete)" stroke="#42454d" stroke-width="1"/>
+  <path d="M116,150 L116,86 C116,66 142,56 160,56 C178,56 204,66 204,86 L204,150 Z" fill="url(#void)"/>
+  <path d="M116,86 C116,66 142,56 160,56 C178,56 204,66 204,86" fill="none" stroke="#5b6172" stroke-width="1.2" opacity="0.5"/>
+  <line x1="150" y1="180" x2="156" y2="118" stroke="#2a2e38" stroke-width="1.5"/>
+  <line x1="172" y1="180" x2="164" y2="118" stroke="#2a2e38" stroke-width="1.5"/>
+  <g stroke="#15171d" stroke-width="2"><line x1="146" y1="172" x2="176" y2="172"/><line x1="150" y1="156" x2="172" y2="156"/><line x1="153" y1="142" x2="169" y2="142"/></g>
+  <rect x="138" y="28" width="44" height="16" rx="1.5" fill="#11151d" stroke="#3c4350"/>
+  <text x="160" y="40" font-size="11" fill="#b9c1d2" text-anchor="middle" font-family="'MS PGothic',sans-serif" letter-spacing="2">藤倉</text>
+  <ellipse cx="160" cy="150" rx="120" ry="14" fill="#aeb6c8" opacity="0.07"/>
+  <rect width="320" height="180" fill="url(#vig2)"/>
+</svg>` },
+};
+
+/* ===== 進行台本（オマージュ・自作文・一本道） ============================
+   N(): 名無し  /  O(): 実況主ましろ  /  個別コテはオブジェクトで直書き
+   think: 自分の番に薄く出る「心の声」
+   ========================================================================= */
+const N = (no,date,body,extra={})=>({no,name:NONAME,mail:"",date,body,...extra});
+const O = (no,date,body,extra={})=>({no,...OP,mail:"",date,body,...extra});
+
+const SCRIPT = [
+  /* ---- Ph0 前座（怖いけど怖くない雑談） ---- */
+  { posts:[
+      N(1,"2004/01/08 22:38","身のまわりでちょっと変なことが起きたら、ここで実況していくスレです。\n怖い話というほどでもない、なんか変だな、くらいのやつ歓迎！"),
+      N(3,"2004/01/08 22:41","じゃ俺から。さっきから家の時計、全部11時11分で止まってる。電池替えたばっかなのに"),
+      N(5,"2004/01/08 22:43","電池の入れ方ミスってるだけでは？ｗ",{mail:"sage"}),
+      N(7,"2004/01/08 22:45",">>3 全部って何個あんのｗ"),
+      N(9,"2004/01/08 22:49","うちのアパート、夜中になると天井からﾄﾝﾄﾝって足音みたいな音する。最上階なんだけどな"),
+      N(12,"2004/01/08 22:53","過疎すぎｗ　誰か怖いけど怖くない話して〜"),
+      N(15,"2004/01/08 22:56","帰り道、まったく同じ服のおじさんと3回すれ違った。たぶん別人。たぶんね"),
+    ],
+    think:"（過疎ってるな…暇だし、自分も何か書いてみるか）" },
+
+  /* ---- Ph1 実況主あらわる ---- */
+  { posts:[
+      N(38,"2004/01/08 23:05","ねむ…ガチで変なやつ来ないかな",{mail:"sage"}),
+      N(55,"2004/01/08 23:11","深夜のオカ板のこのゆるい感じ、けっこう好き"),
+      O(98,"2004/01/08 23:14","気のせいだったらすみません。ちょっといいですか？"),
+      N(99,"2004/01/08 23:16","どうぞどうぞ"),
+      N(100,"2004/01/08 23:18",">>98 なんかあった？"),
+      O(101,"2004/01/08 23:18","さっきから地元の私鉄に乗ってるんですけど、ちょっと様子が変で。"),
+      N(104,"2004/01/08 23:19","ふむ"),
+      O(107,"2004/01/08 23:23","いつも通勤で使ってる電車なんですけど、もう20分くらい次の駅に停まらないんです。普段は5分、長くても7、8分で着くのに。乗客は私のほかに5人いるんですけど、全員寝てて。"),
+      N(108,"2004/01/08 23:23","それただ乗り過ごしてるだけじゃ…？"),
+    ],
+    think:"（寝過ごしか乗り間違いでは？一応、車掌を見てこいって言っとくか）" },
+
+  /* ---- Ph2 ささなき駅へ ---- */
+  { posts:[
+      N(111,"2004/01/08 23:25","急行と各停まちがえたとかかな"),
+      N(112,"2004/01/08 23:25",">>107 快速乗っちゃった系？",{mail:"sage"}),
+      O(114,"2004/01/08 23:29","たしかに乗り間違えたのかもしれません。もう少し様子を見てみます。またおかしかったら相談させてください。"),
+      N(115,"2004/01/08 23:35","とりあえず一番前か後ろの車両まで歩いて、車掌いるか見てきたら？"),
+      N(116,"2004/01/08 23:40","運転士が倒れてたりしたらヤバいぞ。運転室まで確認してこい"),
+      O(118,"2004/01/08 23:44","まだ全然停まらないので、ちょっと見に行ってみます。"),
+      O(126,"2004/01/09 00:00","窓に内側から目隠しみたいなのが貼ってあって、運転士も車掌も見えませんでした…。路線は静岡の私鉄です。"),
+      N(131,"2004/01/09 00:02",">>126 窓ｺﾝｺﾝしてみた？"),
+      O(137,"2004/01/09 00:08","叩いてみたんですけど、返事はなかったです。"),
+      N(146,"2004/01/09 00:13","外の景色は見えないの？通り過ぎた駅の名前とか"),
+      O(153,"2004/01/09 00:19","さっきトンネルを抜けてから、少しスピードが落ちました。この路線、トンネルなんて無いはずなんですけど。"),
+      O(156,"2004/01/09 00:23","あ、停まりそうです。駅みたいです。"),
+      N(157,"2004/01/09 00:24","まさか降りたりしないよね？"),
+      O(160,"2004/01/09 00:25","今「ささなき駅」ってところに停まってます。降りたほうがいいでしょうか…？聞いたことも見たこともない駅名なんですが。"),
+    ],
+    think:"（ささなき駅なんて聞いたことない…降りない方がよくないか？）" },
+
+  /* ---- Ph3a 無人駅 ---- */
+  { posts:[
+      N(161,"2004/01/09 00:26",">>ましろ 何時の電車乗った？"),
+      N(162,"2004/01/09 00:26","降りてみ降りてみ"),
+      N(165,"2004/01/09 00:28","いや終点まで乗っとけって"),
+      N(166,"2004/01/09 00:29","つーかもう発車してるんじゃね"),
+      O(167,"2004/01/09 00:29","降りちゃいました。無人駅です。乗ったのは23時40分くらいの電車だったと思います。",{img:{src:"station.png",cap:"ささなき駅のホーム",fallback:"station"}}),
+      {no:168,name:"夜勤明け",trip:"◆yaKin.M2o",mail:"",date:"2004/01/09 00:30",
+        body:"ささなき駅、ぐぐっても出てこないな…。てか1時間も走ってたのかよその電車。\nじゃ俺ほんとに風呂入るわ。後よろしく"},
+      N(170,"2004/01/09 00:32","ささなき駅で検索かけても何も出てこねえ",{mail:"sage"}),
+      O(176,"2004/01/09 00:34","戻ろうと思って時刻表を探してるんですけど、見当たらなくて。電車はまだ停まってるので、もう一回乗ったほうがいいですかね…って書いてる間に行っちゃいました。"),
+      N(181,"2004/01/09 00:36","近くに人いそうな建物ない？夜は冷えるから体だけは気をつけてね"),
+      O(182,"2004/01/09 00:36","駅を出てタクシー探してみます。ありがとうございます。"),
+      N(183,"2004/01/09 00:36","おう、気をつけてな"),
+      N(185,"2004/01/09 00:39","終電とっくに過ぎた無人駅にタクシーなんて、そうそう居ないと思うが"),
+      N(186,"2004/01/09 00:41","そしてましろは画面の中の人になったのであった",{mail:"sage"}),
+      O(187,"2004/01/09 00:41","タクシーどころか、ほんとに何も無いところでした。どうしよう。"),
+    ],
+    think:"（タクシーもいないのか…交番か110番を勧めるか）" },
+
+  /* ---- Ph3b 細々（ささなき）の意味 ---- */
+  { posts:[
+      N(190,"2004/01/09 00:43",">>187 駅員か交番探して、そこ行け。とりあえずｺﾞｰ"),
+      N(191,"2004/01/09 00:43","110でよくない？"),
+      N(193,"2004/01/09 00:43","タクシー会社に直で電話は？"),
+      N(194,"2004/01/09 00:43","もう警察案件だろこれ"),
+      N(195,"2004/01/09 00:44","公衆電話あったら、電話帳でタクシー会社調べて掛けてみ"),
+      O(204,"2004/01/09 00:48","家に電話して迎えに来てもらうよう頼んだんですけど、ささなき駅の場所が親にも分からないみたいで。地図で調べてから来てくれることになりました。なんか、怖いです。"),
+      N(209,"2004/01/09 00:50","他の乗客はどうしたの？降りたの君だけ？"),
+      N(213,"2004/01/09 00:52",">>ましろさん 俺もネットで調べたけど、ささなき駅なんて駅名ほんとに出てこない。静岡の私鉄沿線にいるのは間違いないんだよね？地図サービスでも調べてみる"),
+      O(214,"2004/01/09 00:53","公衆電話も探したんですけど無くて。他の人は降りなかったので、今ひとりです。駅名はささなきで間違いないです。"),
+      N(217,"2004/01/09 00:56","公衆電話、駅の敷地の外にぽつんと有る場合もあるよ"),
+      N(218,"2004/01/09 00:56","ゲーオタなん？ささなきでぐぐったらゲームが出てきたんだが"),
+      N(220,"2004/01/09 00:56","とりあえず駅の外まで出てみたら？"),
+      N(221,"2004/01/09 00:57","今ちょっと調べたんだけど…「細々」って書いて「ささなき」、消え入りそう、って意味なんだな…"),
+      {no:223,name:"ケータイの人",mail:"",date:"2004/01/09 00:59",
+        body:"ケータイから失礼。ささなき駅の前後の駅名、書いて。書いてないとは言わせない"},
+      N(225,"2004/01/09 01:00",">>221 消え入りそうな駅とか…こぇぇよ",{mail:"sage"}),
+      O(229,"2004/01/09 01:01","ゲームって何のことですか？前の駅も次の駅も、看板に書いてないんです。"),
+    ],
+    think:"（消え入りそうな駅…線路を歩かせて大丈夫か？駅で待った方が）" },
+
+  /* ---- Ph4 線路を歩く ---- */
+  { posts:[
+      N(249,"2004/01/09 01:08","もう線路沿いに歩いて帰っちゃいなよ"),
+      N(256,"2004/01/09 01:11","今から走れば電車に追いつけるかもｗ"),
+      N(258,"2004/01/09 01:11","駅なんだから、周りに民家くらいあるだろ普通"),
+      O(259,"2004/01/09 01:12","そうですよね、パニックで気づいてませんでした。線路沿いに歩きながら、親からの電話を待つことにします。さっきケータイのタウン情報で調べたら、なんか「ページが見つかりません」みたいなエラーになっちゃって。早く帰りたい。"),
+      N(261,"2004/01/09 01:12","ネタだろうがガチだろうが、解決に向けてマジレスはしとくぞ",{mail:"sage"}),
+      O(280,"2004/01/09 01:18","近くは本当に何も無いです。草っぱらと山がぼんやり見えるだけ。でも線路を辿れば帰れると思うので、頑張ります。ありがとうございます。ネタだと思われてもいいので、また困ったら相談してもいいですか？"),
+      N(283,"2004/01/09 01:18",">>280 いいよ。とにかく気をつけてな"),
+      {no:285,name:"夜勤明け",trip:"◆yaKin.M2o",mail:"",date:"2004/01/09 01:19",
+        body:"あ、まだ起きてた。いいよ〜。\nケータイの電池切れにだけは気をつけて。今それが命綱だからね"},
+      N(286,"2004/01/09 01:19",">>280 方向だけ間違えんなよ。あとトンネルの中は特に気をつけろ"),
+      N(296,"2004/01/09 01:22","てか何もない所でケータイの電波届くの？俺は駅から動かないほうがいい気がするんだが…"),
+      N(303,"2004/01/09 01:24","寒い夜、駅員もいない一人きりの駅。そのうち電球も落ちて、真っ暗になるかもな"),
+      N(304,"2004/01/09 01:25","線路はもっと暗いぞ。しかもこの先トンネルあるんだろ",{mail:"sage"}),
+      N(305,"2004/01/09 01:25","やっぱ駅で夜明け待ったほうが良かったかもしれんね…"),
+      N(308,"2004/01/09 01:26","なんかこれ、やばくないか"),
+    ],
+    think:"（一人で夜の線路は危ない…せめて励まして、トンネルに気をつけろと）" },
+
+  /* ---- Ph5 太鼓と鈴 ---- */
+  { posts:[
+      O(317,"2004/01/09 01:30","父から電話があって、いろいろ話したんですけど、どうしても場所が分からないから110番しなさいって言われました。ちょっと抵抗あるけど、今から電話して助けてもらおうと思います。"),
+      N(358,"2004/01/09 01:43","明るくなってからのほうが動きやすいと思うんだけどな…"),
+      N(361,"2004/01/09 01:45","夜中に一人でじっと待てる？こんな見たことない変な土地で"),
+      N(362,"2004/01/09 01:46",">>361 夜中に一人でトンネル抜けられる？こんな変な土地の線路で…"),
+      N(363,"2004/01/09 01:46","じゃあこの寒い中、知らない夜道をずっと歩き続けられんのかよ"),
+      O(380,"2004/01/09 01:55","110番して必死に状況を説明したんですけど、結局いたずらだと思われて怒られちゃって…怖くなって、つい謝っちゃいました。"),
+      N(382,"2004/01/09 01:56",">>380 なんで謝るのｗ もう今日は諦めて、始発まで待とう？"),
+      O(386,"2004/01/09 01:57","さっきから遠くのほうで、太鼓みたいな音と、それに混じって鈴みたいな音が聞こえてて。正直、もうどうしたらいいか分からないです。",{slow:true}),
+      N(388,"2004/01/09 01:58","駅の周りってどんな感じ？何がある？"),
+      N(391,"2004/01/09 01:58","とりあえず駅に戻れましろ。迷ったら最初の場所に戻るのが鉄則だ"),
+      N(395,"2004/01/09 02:00","……始まったね"),
+      N(396,"2004/01/09 02:00","太鼓と鈴…？\n(´・ω・`)　ｼｬﾝｼｬﾝ　ぽくぽく",{mail:"sage"}),
+      N(400,"2004/01/09 02:01","どっかで祭りでもやってんだろ"),
+    ],
+    think:"（太鼓と鈴…？絶対に音の方へ行くな、振り向くなと）" },
+
+  /* ---- Ph6 線路のおじいさん ---- */
+  { posts:[
+      O(401,"2004/01/09 02:01","嘘だと思われるかもしれないけど、怖くて後ろが見られません。駅に戻りたいのに、振り向けないんです。"),
+      N(406,"2004/01/09 02:03",">>401 走れ。絶対に振り向くな"),
+      N(420,"2004/01/09 02:08","もう駅には戻るな。連れていかれるぞ。\nとにかくトンネルまで走れ。たぶん思ったより近い"),
+      O(422,"2004/01/09 02:09","「おーい、線路の上歩いたら危ないよ」って後ろで誰かが叫んだので、駅員さんかと思って振り返ったら、10メートルくらい先におじいさんが立ってて。次の瞬間、消えました。もう怖くて足が動きません。",{slow:true}),
+      N(423,"2004/01/09 02:09",">>ましろたん おにいさんの言うこと聞いてね？\nその太鼓の音のするほうに行ってごらん。叩いてる人がいるはずだから"),
+      N(424,"2004/01/09 02:10",">>420 おまえましろをどこに連れてく気だｗ"),
+      N(426,"2004/01/09 02:11",">>422 だから振り向くなって。走れ"),
+      N(428,"2004/01/09 02:11","ていうか、10メートル先のおじいさんが次の瞬間に消えた…？　それ、おかしくないか"),
+      N(429,"2004/01/09 02:12",">>428 …見間違いだったってことにしておこう"),
+      N(433,"2004/01/09 02:12",">>424 違うって。ましろは今から連れていかれる側なんだよ。だから戻れるうちに戻ったほうがいい",{mail:"sage"}),
+      O(435,"2004/01/09 02:13","もう歩けないし、走れないです。太鼓の音が、さっきより少しだけ近づいてます。"),
+      N(436,"2004/01/09 02:13",">>422 そのおじいさん、昔この線路で何かあった人なんじゃ…"),
+    ],
+    think:"（あのおじいさん…とにかく走れ、振り向くなと）" },
+
+  /* ---- Ph7 藤倉トンネル ---- */
+  { posts:[
+      N(445,"2004/01/09 02:17",">>ましろ とりあえず夜明けまで待て。明るくなれば怖くない"),
+      N(446,"2004/01/09 02:17","電車に乗ったままにしときゃよかったんだよ"),
+      O(452,"2004/01/09 02:20","私はまだ生きてます。転んだ傷から血も出てるし、折れたヒールもちゃんと持ってます。まだ死にたくない。"),
+      N(487,"2004/01/09 02:32","まあ、じっとしてても好転しそうな雰囲気じゃないのは確かだな"),
+      N(488,"2004/01/09 02:32",">>ましろ とりあえずトンネル抜けたら安全だと思う。抜けたらすぐ通報して、保護してもらえ"),
+      O(492,"2004/01/09 02:35","家に電話しました。父が警察に掛けてくれるそうです。でも、音がどんどん近づいてきます。"),
+      N(500,"2004/01/09 02:38","その音が電車の音じゃないことを祈るぜ。…って言っても、もう遅いかもしれんが",{mail:"sage"}),
+      O(516,"2004/01/09 02:45","なんとか頑張ってトンネルの前まで来ました。入口に「藤倉」って書いてあります。音も近いので、勇気を出して抜けてみます。ましろが無事に抜けられたら、また書き込みます。",{slow:true,img:{src:"tunnel.png",cap:"藤倉トンネルの入口",fallback:"tunnel"}}),
+    ],
+    think:"（藤倉トンネル…抜けろと言うべきか、戻れと言うべきか）" },
+
+  /* ---- Ph8 トンネルの先 ---- */
+  { posts:[
+      N(520,"2004/01/09 02:46",">>516 がんばれ"),
+      N(522,"2004/01/09 02:47","これで最後のアドバイスだ。\n電車も駅も、もうない。\n戻る場所はない。追ってくる者もいない。\n聞こえてる音は、君自身が作り出している過去の幻だ。\nトンネルの向こうへ走れ。\n立ち止まったら、どっちの世界でもない場所で、ずっと囚われたままになるぞ。"),
+      O(562,"2004/01/09 03:10","トンネル抜けました。少し先に、誰かが立ってます。アドバイス通りにして正解だったみたいです。ありがとうございました。涙で顔ぐしゃぐしゃなので、ましろのほうがお化けに間違われちゃうかもですね。",{slow:true}),
+      N(566,"2004/01/09 03:11","待てましろ！行くな！"),
+      N(569,"2004/01/09 03:12","止まれって！それヤバいやつだよ！"),
+      N(570,"2004/01/09 03:12","こんな時間に人が立ってる？それ絶対おかしいって…"),
+    ],
+    think:"（先に誰か立ってる…こんな時間に、知らない人に近づくなと）" },
+
+  /* ---- Ph9 結末 ---- */
+  { posts:[
+      O(586,"2004/01/09 03:20","ご心配かけました。親切な方で、近くの駅まで車で送ってくれることになりました。そこにビジネスホテルみたいなのもあるそうです。皆さん、本当にありがとうございました。"),
+      N(588,"2004/01/09 03:21","ましろ、ひとつだけ聞かせてくれ。そこどこなんだ。その人に地名、聞いてくれないか"),
+      N(590,"2004/01/09 03:21","ほんとに親切なやつか？さっきの何かより、怖いかもしれんぞ"),
+      N(593,"2004/01/09 03:23","まあ落ち着け。で、そこ結局どこなんだYO"),
+      N(596,"2004/01/09 03:25","ヤバいってその人!!\nなんでこんな時間に線路の近くにいるんだよ\nなんか後ろ暗いことでもしてて、ましろに出くわしたとかだろ\n逃げて！！"),
+      O(606,"2004/01/09 03:29","場所を聞いたら「日向野」だって言うんですけど。絶対にありえないんですけど。"),
+      N(607,"2004/01/09 03:29","ましろ車から降りろ！"),
+      N(610,"2004/01/09 03:29","ごめんましろ、日向野ってどこ？"),
+      N(621,"2004/01/09 03:36","おかしな話だ。こんな時間に線路から出てきた女の子を、わざわざ車に乗せるやつがいたのか…。その人、何してたんだ"),
+      O(623,"2004/01/09 03:37","さっきからどんどん山のほうに向かってます。車を置く場所なんて、とてもあるとは思えないのに。あの人、急に何も話してくれなくなりました。",{slow:true}),
+      N(627,"2004/01/09 03:40","こんな時間に起きてるやつに、ろくなのはいない"),
+      N(628,"2004/01/09 03:41","話さなくなったの、ずっとケータイいじってるからじゃ…？"),
+      N(629,"2004/01/09 03:41","ましろやばいよやばいよ。親にはトンネル出て保護されたって連絡したのか？"),
+      N(631,"2004/01/09 03:41","ましろさん\n今すぐ110番してください\nこれが最後の書き込みになるかもしれない"),
+      O(635,"2004/01/09 03:44","もうケータイのバッテリーがやばいです。様子が変なので、隙を見て逃げようと思います。いざという時のために、一応これを最後の書き込みにしておきます。",{slow:true}),
+    ],
+    think:null, end:true,
+    endNote:"※この後、「ましろ {TRIP}」さんが書き込むことは、二度とありませんでした。" },
+];
+
+/* ========================================================================= */
+let phaseIdx=0, lastNo=0, lastLen=0, lastSlow=false;
+let awaitingPost=false, lastDate="2004/01/08 22:38", pending=null;
+const seqMap={};  // 台本の原典番号 → 実際の通し番号
+let player={id:randId()};
+const DEFAULT_PH="本文を書いて「書き込む」";
+
+const $thread=document.getElementById('thread');
+const $inter =document.getElementById('interaction');
+const $count =document.getElementById('res-count');
+const $clock =document.getElementById('clock');
+const $body  =document.getElementById('body-in');
+const $form  =document.getElementById('post-form');
+function scrollBottom(){window.scrollTo(0,document.body.scrollHeight);}
+
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function anchors(t,remap){
+  return t.replace(/&gt;&gt;(\d+)/g,(m,num)=>{
+    let n=+num; if(remap && seqMap[n]!=null) n=seqMap[n];
+    return '<span class="anchor">&gt;&gt;'+n+'</span>';
+  });
+}
+function renderImg(img){
+  if(!img) return '';
+  if(typeof img==='object' && img.src){           // 実画像（文字は入れない）。失敗時はSVGへ
+    const fb=(img.fallback&&IMAGES[img.fallback])?IMAGES[img.fallback].svg:'';
+    const onerr=fb?` onerror="this.style.display='none';this.nextElementSibling.style.display='block'"`:'';
+    return `<div class="scene-wrap"><img class="scene" src="${esc(encodeURI(img.src))}" alt=""${onerr}>`+
+           (fb?`<div class="scene-fallback" style="display:none">${fb}</div>`:'')+`</div>`;
+  }
+  if(IMAGES[img])                                  // コード生成の雰囲気SVG
+    return `<div class="scene-wrap">${IMAGES[img].svg}<div class="scene-cap">［${esc(IMAGES[img].cap)}］</div></div>`;
+  return `<div class="res-img">［画像：${esc(img)}］</div>`; // 後方互換：プレースホルダ枠
+}
+function hhmm(d){const m=d.match(/(\d{1,2}):(\d{2})/);return m?m[1].padStart(2,'0')+':'+m[2]:'';}
+
+function renderRes(p,isMe){
+  const n=++lastNo;                       // 通し番号（連番）
+  if(p.no!=null) seqMap[p.no]=n;          // 原典番号→通し番号の対応を記録
+  const date=p.date||lastDate; lastDate=date;
+  const sage=(p.mail||'').toLowerCase()==='sage';
+  const cls=['res']; if(isMe)cls.push('me'); if(p.op)cls.push('op');
+  const trip=p.trip?`<span class="trip"> ${esc(p.trip)}</span>`:'';
+  const body=anchors(esc(p.body), p.no!=null);
+  const img=renderImg(p.img);
+  const el=document.createElement('div'); el.className=cls.join(' ');
+  el.innerHTML=
+    `<div class="res-meta"><span class="num">${n}</span>`+
+    `<span class="label"> 名前：</span><span class="name ${sage?'sage':'age'}">${esc(p.name)}</span>${trip}`+
+    `<span class="label"> 投稿日：</span><span class="date">${esc(date)}</span> `+
+    `<span class="id">ID:${p.id||randId()}</span></div>`+
+    `<div class="res-body">${body}${img}</div>`;
+  $thread.appendChild(el);
+  $count.textContent=`全${n}件`;
+  $clock.textContent='現在 '+hhmm(date);
+  scrollBottom();
+}
+
+function delayFor(){
+  let d=Math.min(PACE.maxDelay, PACE.readBase + lastLen*PACE.msPerChar);
+  if(lastSlow) d*=PACE.slowMul;
+  return Math.max(PACE.minDelay, d) + Math.random()*250;
+}
+function clearPending(){ if(pending){clearTimeout(pending.timer); pending=null;} }
+
+function playPhase(){
+  const phase=SCRIPT[phaseIdx]; if(!phase) return;
+  awaitingPost=false; $form.classList.remove('awaiting'); $body.placeholder=DEFAULT_PH; $inter.innerHTML='';
+  let i=0;
+  const typing=document.createElement('div'); typing.className='typing';
+  typing.innerHTML='……誰かが書き込んでいる……';
+  const reveal=()=>{
+    clearPending(); typing.remove();
+    const p=phase.posts[i];
+    renderRes(p,false);
+    lastLen=[...(p.body||'')].length; lastSlow=!!p.slow;
+    i++; schedule();
+  };
+  const schedule=()=>{
+    if(i<phase.posts.length){
+      $inter.appendChild(typing); scrollBottom();
+      pending={reveal, timer:setTimeout(reveal, delayFor())};
+    } else {
+      typing.remove();
+      openGate(phase);
+    }
+  };
+  schedule();
+}
+
+function openGate(phase){
+  $inter.innerHTML='';
+  if(phase.end){
+    if(phase.endNote){
+      const e=document.createElement('div'); e.className='endnote';
+      e.textContent=phase.endNote.replace('{TRIP}', OP.trip); $inter.appendChild(e);
+    }
+    $form.classList.remove('awaiting'); $body.placeholder=DEFAULT_PH; scrollBottom();
+    return;
+  }
+  // 自分の番：コメント欄を薄い黄色でハイライトし、心の声をプレースホルダに出す
+  awaitingPost=true; $form.classList.add('awaiting');
+  $body.placeholder = phase.think ? phase.think.replace(/[（）]/g,'') : DEFAULT_PH;
+  $body.focus(); scrollBottom();
+}
+
+function submitPost(text){
+  text=(text||'').trim(); if(!text) return;
+  const mail=document.getElementById('mail-in').value.trim();
+  const name=document.getElementById('name-in').value.trim()||NONAME;
+  renderRes({name,id:player.id,mail,date:lastDate,body:text},true);
+  lastLen=[...text].length; lastSlow=false;
+  $body.value='';
+  if(awaitingPost){
+    awaitingPost=false; $form.classList.remove('awaiting'); $body.placeholder=DEFAULT_PH; $inter.innerHTML='';
+    phaseIdx++; setTimeout(playPhase,PACE.afterPost);
+  }
+}
+
+$form.addEventListener('submit',e=>{e.preventDefault();submitPost($body.value);});
+
+/* タップ／クリック／スペース・Enterで待ち時間を飛ばして次のレスへ */
+document.addEventListener('click',e=>{
+  if(e.target.closest('#post-form')||e.target.closest('#gate')) return;
+  if(pending) pending.reveal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT') return;
+  if((e.key===' '||e.key==='Enter')&&pending){e.preventDefault();pending.reveal();}
+});
+
+document.getElementById('gate-go').addEventListener('click',()=>{
+  const v=document.getElementById('gate-name').value.trim();
+  document.getElementById('name-in').value=v||NONAME;
+  document.getElementById('gate').style.display='none';
+  playPhase();
+});
+document.getElementById('gate-name').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('gate-go').click();});
+</script>
+</body>
+</html>

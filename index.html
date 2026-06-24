@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://bubblegumgameboy.com/">
+<title>Bubblegum Game｜ブラウザで遊べる自作ゲームのあそびば</title>
+<meta name="description" content="バブルガムがつくった、ブラウザでサクッと遊べる自作ゲームの置き場。いちおしの放置ゲームほか、無料・登録不要ですぐ遊べます。スマホ対応。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/">
+<meta property="og:title" content="Bubblegum Game｜ブラウザで遊べる自作ゲームのあそびば">
+<meta property="og:description" content="ブラウザでサクッと遊べる、自作ゲームのあそびば。無料・登録不要ですぐ遊べます。">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bubblegum Game｜ブラウザで遊べる自作ゲームのあそびば">
+<meta name="twitter:description" content="ブラウザでサクッと遊べる、自作ゲームのあそびば。無料・登録不要。">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  @keyframes bgbob  { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-12px) rotate(var(--r,0deg));} }
+  @keyframes bgbob2 { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(10px) rotate(var(--r,0deg));} }
+  @keyframes hpulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.16);} }
+  @keyframes blink  { 0%,49%{opacity:1;} 50%,100%{opacity:.2;} }
+  @keyframes wobble { 0%,100%{transform:rotate(-6deg);} 50%{transform:rotate(-1deg);} }
+
+  /* hover states (converted from the design prototype's style-hover attributes) */
+  .j-teal:hover   { background:#23838b !important; }
+  .j-white:hover  { background:#f1f8fc !important; }
+  .j-yellow:hover { background:#f0b520 !important; }
+  .j-news:hover   { background:#f4f9fc !important; }
+  .j-row:hover    { background:#f1f8fc !important; }
+  .j-card:hover   { transform:translateY(-3px) !important; box-shadow:0 11px 0 rgba(20,40,63,.18) !important; }
+  .ura-link:hover { color:#ffff00 !important; text-shadow:0 0 5px #ffcc00 !important; }
+  nav a { white-space:nowrap; }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/","description":"ブラウザですぐ遊べる、バブルガムのゲーム置き場。放置ゲーム・タイピングなど無料・登録不要。","inLanguage":"ja"},{"@type":"ItemList","name":"あそべるゲーム","itemListElement":[{"@type":"ListItem","position":1,"name":"クリック連打ゲーム「レイドボスラッシュ」","description":"兵士を増やして自動化する放置系ボスラッシュ。PC・スマホ対応。"},{"@type":"ListItem","position":2,"name":"パチパチタイピング","description":"パチパチ弾けるリズムで打鍵する爽快タイピング。"},{"@type":"ListItem","position":3,"name":"ソルジャータイピング","description":"タイプして戦うミリタリー風タイピング。"}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;">
+
+<!-- ================= NAV ================= -->
+<nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
+  <div style="max-width:1040px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;gap:12px;">
+    <div style="display:flex;align-items:center;gap:clamp(10px,3vw,20px);font-weight:700;font-size:14px;">
+      <a href="#play" style="color:#cfe6ee;text-decoration:none;">あそぶ</a>
+      <a href="updates.html" style="color:#cfe6ee;text-decoration:none;">アップデート</a>
+      <a href="#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+      <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;color:#ffd766;text-decoration:none;font-weight:800;">ブログ ↗</a>
+      <a href="ura/" title="裏サイト ‐ 丑三つ掲示板へ" class="ura-link" style="display:inline-flex;align-items:center;font-size:15px;font-family:'MS PGothic','MS Pゴシック','Courier New',monospace;color:#33ff66;text-decoration:underline;letter-spacing:1px;text-shadow:0 0 4px #00ff44;animation:blink 1.2s steps(1) infinite;">裏サイト</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="top" style="position:relative;overflow:hidden;padding:clamp(38px,7vw,68px) 20px clamp(30px,5vw,46px);text-align:center;">
+  <div aria-hidden="true" style="position: absolute; inset: 0px; pointer-events: none;">
+    <span style="position:absolute;top:9%;left:7%;width:24px;height:24px;background:#ef4d52;border-radius:50%;--r:0deg;animation:bgbob 4.5s ease-in-out infinite;"></span>
+    <span style="position:absolute;top:20%;right:9%;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:24px solid #ffc233;--r:12deg;animation:bgbob2 5.5s ease-in-out infinite;"></span>
+    <span style="position:absolute;bottom:14%;left:13%;width:22px;height:22px;border:5px solid #7ec8e3;border-radius:50%;--r:0deg;animation:bgbob2 6s ease-in-out infinite;"></span>
+    <span style="position:absolute;top:13%;right:23%;width:18px;height:18px;background:#3bb4bd;border-radius:4px;--r:18deg;animation:bgbob 5s ease-in-out infinite;"></span>
+    <span style="position:absolute;bottom:9%;left:43%;width:13px;height:13px;background:#ef4d52;border-radius:3px;--r:24deg;animation:bgbob 4s ease-in-out infinite;"></span>
+  </div>
+
+  <!-- soul mark (pixel heart) -->
+  <div style="width:42px;height:36px;margin:0 auto 18px;position:relative;animation:hpulse 2.4s ease-in-out infinite;"><i style="position:absolute;top:0;left:0;width:6px;height:6px;background:transparent;box-shadow:6px 0 0 0 #ef4d52,12px 0 0 0 #ef4d52,24px 0 0 0 #ef4d52,30px 0 0 0 #ef4d52,0 6px 0 0 #ef4d52,6px 6px 0 0 #ef4d52,12px 6px 0 0 #ef4d52,18px 6px 0 0 #ef4d52,24px 6px 0 0 #ef4d52,30px 6px 0 0 #ef4d52,36px 6px 0 0 #ef4d52,0 12px 0 0 #ef4d52,6px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,18px 12px 0 0 #ef4d52,24px 12px 0 0 #ef4d52,30px 12px 0 0 #ef4d52,36px 12px 0 0 #ef4d52,6px 18px 0 0 #ef4d52,12px 18px 0 0 #ef4d52,18px 18px 0 0 #ef4d52,24px 18px 0 0 #ef4d52,30px 18px 0 0 #ef4d52,12px 24px 0 0 #ef4d52,18px 24px 0 0 #ef4d52,24px 24px 0 0 #ef4d52,18px 30px 0 0 #ef4d52;"></i></div>
+
+  <h1 style="margin:0;font-weight:900;font-size:clamp(34px,9vw,66px);line-height:1.04;letter-spacing:-.5px;color:#2c4a6e;">Bubblegum <span style="color:#2a9aa3;">Game</span></h1>
+  <p style="margin:9px 0 0;font-family:'DotGothic16',monospace;font-size:clamp(12px,3.4vw,17px);color:#5b7796;letter-spacing:2px;">- バブルガムのゲーム置き場 -</p>
+
+  <!-- RPG dialogue box -->
+  <div style="position:relative;max-width:560px;margin:24px auto 0;background:#fff;border:3px solid #14283f;border-radius:14px;padding:18px 22px 20px;text-align:left;box-shadow:0 4px 0 rgba(20,40,63,.12);">
+    <span style="position:absolute;top:6px;left:6px;width:7px;height:7px;background:#14283f;"></span>
+    <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;background:#14283f;"></span>
+    <span style="position:absolute;bottom:6px;left:6px;width:7px;height:7px;background:#14283f;"></span>
+    <span style="position:absolute;bottom:6px;right:6px;width:7px;height:7px;background:#14283f;"></span>
+    <p style="margin:0;display:flex;align-items:flex-start;gap:12px;font-size:clamp(15px,3.8vw,18px);font-weight:500;line-height:1.7;color:#2c4a6e;">
+      <span style="flex:none;margin-top:4px;display:inline-block;width:28px;height:24px;position:relative;"><i style="position:absolute;top:0;left:0;width:4px;height:4px;background:transparent;box-shadow:4px 0 0 0 #ef4d52,8px 0 0 0 #ef4d52,16px 0 0 0 #ef4d52,20px 0 0 0 #ef4d52,0 4px 0 0 #ef4d52,4px 4px 0 0 #ef4d52,8px 4px 0 0 #ef4d52,12px 4px 0 0 #ef4d52,16px 4px 0 0 #ef4d52,20px 4px 0 0 #ef4d52,24px 4px 0 0 #ef4d52,0 8px 0 0 #ef4d52,4px 8px 0 0 #ef4d52,8px 8px 0 0 #ef4d52,12px 8px 0 0 #ef4d52,16px 8px 0 0 #ef4d52,20px 8px 0 0 #ef4d52,24px 8px 0 0 #ef4d52,4px 12px 0 0 #ef4d52,8px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,16px 12px 0 0 #ef4d52,20px 12px 0 0 #ef4d52,8px 16px 0 0 #ef4d52,12px 16px 0 0 #ef4d52,16px 16px 0 0 #ef4d52,12px 20px 0 0 #ef4d52;"></i></span>
+      <span>ブラウザですぐ遊べる、手づくりゲームのあそびば。<br></span>
+    </p>
+  </div>
+
+  <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
+    <a href="#play" class="j-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;transition:background .12s;">▶ いますぐあそぶ</a>
+    <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" class="j-white" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#2c4a6e;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid #cde0ea;transition:background .12s;">ブログを見る ↗</a>
+  </div>
+</header>
+
+<main>
+<!-- ================= FEATURED CLICKER ================= -->
+<section id="play" style="padding:clamp(30px,5vw,52px) 20px clamp(36px,6vw,60px);background:#fff;border-top:3px solid #14283f;">
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;">
+      <span style="width:9px;height:9px;background:#ef4d52;border-radius:2px;"></span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;letter-spacing:2px;color:#9a6b00;">いちおしゲーム</span>
+    </div>
+    <h2 style="margin:0 0 4px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#2c4a6e;"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#2a9aa3;margin-bottom:5px;">兵士を増やして自動化しよう</span>クリック連打ゲーム「レイドボスラッシュ」</h2>
+    <p style="margin:0 auto 14px;max-width:560px;text-align:center;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#3d5b7c;">40体の強敵が立ちはだかる放置系ボスラッシュ。武器を強化し、兵士を増やして自動化で戦おう。</p>
+    <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#fff0cc;color:#9a6b00;border-radius:7px;padding:5px 12px;">放置ゲーム</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border-radius:7px;padding:5px 12px;">連打</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#eaf1f7;color:#3d5b7c;border-radius:7px;padding:5px 12px;">PC・スマホ対応</span>
+    </div>
+
+    <a href="games/clicker.html" class="j-card" style="display:block;text-decoration:none;position:relative;background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);transition:transform .12s,box-shadow .12s;">
+      <div style="position:relative;width:100%;aspect-ratio:16/10;background:#0b1320;border-radius:11px;overflow:hidden;">
+        <img src="images/spacebar-clicker.png" alt="クリック連打ゲーム「レイドボスラッシュ」のゲーム画面" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+    </a>
+    <div style="text-align:center;margin-top:18px;">
+      <a href="games/clicker.html" class="j-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:12px 30px;border-radius:10px;transition:background .12s;">▶ あそぶ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS ================= -->
+<!-- ▼▼▼ 新着情報：1件足すときは下の <a>…</a> ブロックを丸ごとコピーして先頭に貼るだけ ▼▼▼
+     tag は「新ゲーム」(#2a9aa3) / 「更新」(#e08a1e) / 「お知らせ」(#7a93ad) を推奨。
+     href は飛び先（記事なら blog/posts/… 、外部なら https://… で target も _blank に）。 -->
+<section id="news" style="padding:clamp(30px,5vw,52px) 20px;background:#fff;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:18px;border-bottom:3px solid #2c4a6e;padding-bottom:8px;">
+      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#2c4a6e;">新着情報</h2>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:2px;">NEWS</span>
+    </div>
+
+    <a href="blog/posts/2026-06-22-clicker-strategy.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.22</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">攻略</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">クリック連打ゲーム「レイドボスラッシュ」の攻略記事を公開しました。</span>
+    </a>
+    <a href="blog/posts/2026-06-20-popcorn-typing-tips.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.20</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">攻略</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">パチパチタイピングの攻略・上達のコツを公開しました。</span>
+    </a>
+    <a href="games/clicker.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.21</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">新ゲーム</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">「クリック連打ゲーム「レイドボスラッシュ」」を公開しました！</span>
+    </a>
+    <a href="ura/" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.15</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">お知らせ</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">裏サイト「丑三つ掲示板」をオープンしました。</span>
+    </a>
+    <a href="blog/posts/2026-06-01-site-renewal.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.01</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">お知らせ</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">サイトをリニューアルしました。</span>
+    </a>
+    <!-- ▲▲▲ ここまで（新しいものを上に） ▲▲▲ -->
+
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;">
+      <a href="updates.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">アップデート情報を見る →</a>
+      <a href="blog/" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">記事一覧を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MORE GAMES ================= -->
+<section id="games" style="padding:clamp(34px,6vw,64px) 20px;">
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;">
+      <h2 style="margin:0;font-weight:900;font-size:clamp(24px,5.5vw,36px);color:#2c4a6e;text-align:center;">ほかのゲーム</h2>
+      <span style="display:inline-block;width:28px;height:24px;position:relative;"><i style="position:absolute;top:0;left:0;width:4px;height:4px;background:transparent;box-shadow:4px 0 0 0 #ef4d52,8px 0 0 0 #ef4d52,16px 0 0 0 #ef4d52,20px 0 0 0 #ef4d52,0 4px 0 0 #ef4d52,4px 4px 0 0 #ef4d52,8px 4px 0 0 #ef4d52,12px 4px 0 0 #ef4d52,16px 4px 0 0 #ef4d52,20px 4px 0 0 #ef4d52,24px 4px 0 0 #ef4d52,0 8px 0 0 #ef4d52,4px 8px 0 0 #ef4d52,8px 8px 0 0 #ef4d52,12px 8px 0 0 #ef4d52,16px 8px 0 0 #ef4d52,20px 8px 0 0 #ef4d52,24px 8px 0 0 #ef4d52,4px 12px 0 0 #ef4d52,8px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,16px 12px 0 0 #ef4d52,20px 12px 0 0 #ef4d52,8px 16px 0 0 #ef4d52,12px 16px 0 0 #ef4d52,16px 16px 0 0 #ef4d52,12px 20px 0 0 #ef4d52;"></i></span>
+    </div>
+
+    <div style="border-top:2px solid #d4e6ef;margin-top:18px;">
+      <a href="games/popcorn-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
+        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+          <img src="images/popcorn-typing.png" alt="パチパチタイピング" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </span>
+        <div style="flex:1 1 240px;min-width:0;">
+          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
+            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">パチパチタイピング</h3>
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">タイピング</span>
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">PC対応</span>
+          </div>
+          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">パチパチ弾けるリズムで打鍵する爽快タイピング。ローマ字入力の練習にも。</p>
+        </div>
+        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">あそぶ ▶</span>
+      </a>
+      <a href="games/soldier-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
+        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+          <img src="images/soldier-typing.png" alt="ソルジャータイピング" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </span>
+        <div style="flex:1 1 240px;min-width:0;">
+          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
+            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">ソルジャータイピング</h3>
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">タイピング</span>
+            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">PC対応</span>
+          </div>
+          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">タイプして敵を倒す、ミリタリー風タイピング。打鍵のテンポが気持ちいい。</p>
+        </div>
+        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">あそぶ ▶</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOG CONNECT ================= -->
+<section style="padding:clamp(30px,5vw,56px) 20px;background:#2c4a6e;">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p style="margin:0 0 6px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb4cf;letter-spacing:2px;">FROM THE BLOG</p>
+    <h2 style="margin:0 0 12px;font-weight:900;font-size:clamp(22px,5vw,32px);color:#fff;line-height:1.3;">ゲームレビュー、裏話はブログで</h2>
+    <p style="margin:0 auto 22px;max-width:460px;font-weight:500;font-size:clamp(14px,3.7vw,16px);line-height:1.75;color:#cfe1ec;">現在プレイしているゲームや開発話を更新中。基本毎日更新。</p>
+    <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" class="j-yellow" style="display:inline-flex;align-items:center;gap:7px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,16px);padding:12px 28px;border-radius:10px;transition:background .12s;">ブログを見る ↗</a>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" style="padding:clamp(34px,5vw,56px) 20px;">
+  <div style="max-width:680px;margin:0 auto;">
+    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#2c4a6e;">このサイトについて</h2>
+    <p style="margin:0 0 14px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;">個人開発者「バブルガム」がつくった、ブラウザで遊べる自作ゲームのあそびばです。</p>
+    <p style="margin:0 0 16px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;">かなりのゲーマーで、ゲームを作るのも好き。ここではHTMLで軽く楽しめるゲームを提供していきますので、お気に入り登録してくれると嬉しいです。月2回くらいの頻度で更新していく見込みです。</p>
+    <a href="about.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;text-decoration:none;font-weight:800;font-size:15px;">運営者プロフィールを見る →</a>
+  </div>
+</section>
+
+<!-- ================= PRIVACY POLICY ================= -->
+<section id="privacy" style="padding:clamp(30px,5vw,52px) 20px clamp(40px,6vw,64px);background:#eef6fa;border-top:3px solid #cfe1ec;">
+  <div style="max-width:680px;margin:0 auto;">
+    <h2 style="margin:0 0 6px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#2c4a6e;">プライバシーポリシー</h2>
+    <p style="margin:0 0 22px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;">最終更新日：2026年6月</p>
+
+    <h3 style="margin:0 0 7px;font-weight:800;font-size:clamp(15px,3.8vw,18px);color:#2c4a6e;">アクセス解析ツールについて</h3>
+    <p style="margin:0 0 20px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">当サイトでは、サイトの利用状況を把握するために Google アナリティクス（Google LLC 提供）を利用しています。Google アナリティクスは Cookie を使用して匿名のトラフィックデータを収集します。これらのデータは匿名で収集されており、個人を特定するものではありません。ブラウザの設定で Cookie を無効にすることで、収集を拒否することができます。</p>
+
+    <h3 style="margin:0 0 7px;font-weight:800;font-size:clamp(15px,3.8vw,18px);color:#2c4a6e;">広告の配信について</h3>
+    <p style="margin:0 0 20px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">当サイトでは、第三者配信の広告サービスを利用する予定です。これらの広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。Cookie を無効にする設定、および Google アドセンスに関する詳細は「<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener" style="color: rgb(42, 154, 163); font-weight: 700;">広告 ‒ ポリシーと規約 ‒ Google</a>」をご確認ください。</p>
+
+    <h3 style="margin:0 0 7px;font-weight:800;font-size:clamp(15px,3.8vw,18px);color:#2c4a6e;">免責事項</h3>
+    <p style="margin:0 0 20px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">当サイトのコンテンツやゲームについて、可能な限り正確な情報を掲載するよう努めていますが、誤情報が含まれたり、情報が古くなっている場合があります。当サイトの利用によって生じた損害について、一切の責任を負いかねますので、あらかじめご了承ください。</p>
+
+    <h3 style="margin:0 0 7px;font-weight:800;font-size:clamp(15px,3.8vw,18px);color:#2c4a6e;">著作権について</h3>
+    <p style="margin:0 0 20px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">当サイトに掲載しているゲームおよびコンテンツの著作権は、制作者であるバブルガムに帰属します。無断での転載・複製・二次配布はお断りします。</p>
+
+    <h3 id="contact" style="margin:0 0 7px;font-weight:800;font-size:clamp(15px,3.8vw,18px);color:#2c4a6e;scroll-margin-top:70px;">お問い合わせ</h3>
+    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">当サイトおよびプライバシーポリシーに関するお問い合わせは、下記のフォームよりお願いいたします。</p>
+    <div style="max-width:640px;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgnbA0ZIXE_COvyT5ioiSRNLSIVN63kPrGoVhU1gjnoItfOw/viewform?embedded=true" width="100%" height="646" style="border:0;max-width:100%;" loading="lazy" title="お問い合わせフォーム">読み込んでいます…</iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background:#14283f;color:#cfe1ec;padding:clamp(32px,5vw,48px) 20px 26px;">
+  <div style="max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;justify-content:flex-start;align-items:flex-start;">
+    <div>
+      <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;letter-spacing:1px;">MENU</p>
+      <div style="display:flex;flex-direction:column;gap:10px;font-weight:700;font-size:14px;">
+        <a href="#news" style="color:#cfe1ec;text-decoration:none;">新着情報</a>
+        <a href="updates.html" style="color:#cfe1ec;text-decoration:none;">アップデート情報</a>
+        <a href="#games" style="color:#cfe1ec;text-decoration:none;">ゲーム</a>
+        <a href="blog/" style="color:#cfe1ec;text-decoration:none;">記事一覧</a>
+        <a href="about.html" style="color:#cfe1ec;text-decoration:none;">運営者プロフィール</a>
+        <a href="#privacy" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
+        <a href="#contact" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
+        <a href="ura/" style="color:#8fa6bd;text-decoration:none;">裏サイト</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1040px;margin:28px auto 0;padding-top:17px;border-top:2px solid #2a425c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <span style="font-size:13px;color:#7fa3bd;">© 2026 Bubblegum Game</span>
+    <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;">bubblegumgameboy.com</span>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
