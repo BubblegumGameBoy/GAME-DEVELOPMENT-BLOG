@@ -18,8 +18,8 @@
 index.html                     トップページ（ヒーロー / いちおし / 新着 / ゲーム一覧 / about / プライバシー / お問い合わせフォーム）
 about.html                     運営者プロフィール（E-E-A-T / AdSense 向けの運営者情報ページ）
 games/
-  clicker.html                 ボスラッシュ クリッカー（iframe 埋め込み）
-  popcorn-typing.html          ポップコーンタイピング（iframe 埋め込み）
+  clicker.html                 ボス狩り放置軍団（iframe 埋め込み）
+  popcorn-typing.html          パチパチタイピング（iframe 埋め込み）
   soldier-typing.html          ソルジャータイピング（iframe 埋め込み）
 blog/
   index.html                   記事一覧
@@ -39,12 +39,12 @@ sitemap.xml / CNAME
 
 | ゲーム | ジャンル | 対応 | サイト内ページ | 配信元(iframe) |
 |---|---|---|---|---|
-| ボスラッシュ クリッカー | 連打（いちおし） | PC・スマホ | `games/clicker.html` | https://play.bubblegumgameboy.com/spacebar-clicker/ |
-| ポップコーンタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
+| ボス狩り放置軍団 | 放置（いちおし） | PC・スマホ | `games/clicker.html` | https://play.bubblegumgameboy.com/spacebar-clicker/ |
+| パチパチタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
 | ソルジャータイピング | タイピング | PCのみ | `games/soldier-typing.html` | https://play.bubblegumgameboy.com/Bubble-Wars/ |
 
 サムネイル画像は `images/` に配置：
-`spacebar-clicker.png`（クリッカー） / `popcorn-typing.png` / `soldier-typing.png`。
+`spacebar-clicker.png`（ボス狩り放置軍団） / `popcorn-typing.png` / `soldier-typing.png`。
 
 ゲーム本体は別リポジトリ（`bubblegumgameboy/popcorn-typing` / `spacebar-clicker` / `Bubble-Wars`）。
 `bubblegumgameboy.github.io` にカスタムドメインを設定しているため、配下の全プロジェクトが
