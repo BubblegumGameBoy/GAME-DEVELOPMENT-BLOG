@@ -21,6 +21,7 @@ games/
   clicker.html                 クリック連打ゲーム「レイドボスラッシュ」（iframe 埋め込み）
   popcorn-typing.html          パチパチタイピング（iframe 埋め込み）
   soldier-typing.html          ソルジャータイピング（iframe 埋め込み）
+  piano-typing.html            ピアノタイピング（iframe 埋め込み）
 blog/
   index.html                   記事一覧
   _template.html               記事テンプレート（コピー元・公開しない）
@@ -42,11 +43,12 @@ sitemap.xml / CNAME
 | クリック連打ゲーム「レイドボスラッシュ」 | 放置（いちおし） | PC・スマホ | `games/clicker.html` | https://play.bubblegumgameboy.com/spacebar-clicker/ |
 | パチパチタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
 | ソルジャータイピング | タイピング | PCのみ | `games/soldier-typing.html` | https://play.bubblegumgameboy.com/Bubble-Wars/ |
+| ピアノタイピング | 音ゲー／タイピング | PC推奨（スマホはタップ可） | `games/piano-typing.html` | https://play.bubblegumgameboy.com/BeatTyping/ |
 
 サムネイル画像は `images/` に配置：
-`spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png`。
+`spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png` / `piano-typing.png`。
 
-ゲーム本体は別リポジトリ（`bubblegumgameboy/popcorn-typing` / `spacebar-clicker` / `Bubble-Wars`）。
+ゲーム本体は別リポジトリ（`bubblegumgameboy/popcorn-typing` / `spacebar-clicker` / `Bubble-Wars` / `BeatTyping`）。
 `bubblegumgameboy.github.io` にカスタムドメインを設定しているため、配下の全プロジェクトが
 `play.bubblegumgameboy.com/<repo>/` で配信され、それを各ゲームページが `<iframe>` で埋め込む。
 （目的：滞在時間・GA・将来の AdSense をポータルに集約）
