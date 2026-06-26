@@ -1,0 +1,236 @@
+<style>
+  /* ▼ サイドバー消す */
+  #box2, .sidebar {
+    display: none !important;
+  }
+  /* ▼ メインを全幅に */
+  #main, #container, .wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .entry-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* ▼ iframeを画面いっぱいに */
+  .full-iframe {
+    width: 100vw;
+    height: 105vh;
+    margin-left: calc(50% - 50vw + 25px);
+    border: none;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+  h2.section-head {
+    font-size: 118% !important;
+    font-weight: bold !important;
+    background-color: #555555 !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    border-top: 4px solid #aaaaaa !important;
+    border-bottom: 4px solid #aaaaaa !important;
+    box-shadow: inset 0px 1px 0px #ffffff, inset 0px -1px 0px #ffffff;
+    margin-top: 48px !important;
+    margin-bottom: 20px !important;
+    border-left: none !important;
+  }
+  .note-box {
+    background: #fffde6;
+    border: 1px solid #e8d44d;
+    border-radius: 5px;
+    padding: 13px 16px;
+    margin: 16px 0;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.8;
+  }
+  .note-box .note-label { font-weight: bold; color: #555; margin-right: 4px; }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+  .data-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    line-height: 1.7;
+    background: #fff;
+    vertical-align: top;
+  }
+  .data-table tr:nth-child(even) td { background: #f9f9f9; }
+  .data-table th[scope="row"] {
+    background: #f5f5f5;
+    color: #333333;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: top;
+    padding: 9px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+  }
+  .sp-banner {
+    display: block;
+    text-align: center;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none !important;
+  }
+  .sp-banner strong { color: #7a4ab0; }
+  .play-btn-wrap { text-align: center; margin: 26px 0; }
+  .play-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #7a4ab0;
+    color: #ffffff !important;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none !important;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.18);
+    transition: all 0.18s;
+  }
+  .play-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .play-btn-sub { display: block; font-size: 12px; color: #888; margin-top: 8px; }
+  .faq-list dt {
+    font-weight: bold; background: #f5f5f5; padding: 10px 14px; margin-top: 12px;
+    border-left: 4px solid #555555; font-size: 14.5px;
+  }
+  .faq-list dd {
+    padding: 10px 14px 14px 18px; margin: 0; font-size: 14px;
+    line-height: 1.85; border-bottom: 1px solid #eee;
+  }
+  ul, ol { padding-left: 1.5em; }
+  li { margin-bottom: 6px; line-height: 1.8; }
+  p { margin-bottom: 1.4em; }
+  @media (max-width: 520px) {
+    .data-table, .data-table tbody, .data-table tr, .data-table td {
+      display: block; width: 100%; box-sizing: border-box;
+    }
+    .data-table th[scope="row"] {
+      display: block; width: 100%; box-sizing: border-box;
+      padding: 6px 10px; font-size: 11px; color: #666;
+      background: #f5f5f5; border-bottom: 1px solid #f0f0f0;
+    }
+    .data-table tr {
+      border: 1px solid #e0e0e0; border-radius: 6px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    .data-table td {
+      padding: 7px 10px; border-bottom: 1px solid #f0f0f0; font-size: 13px;
+    }
+    .data-table td:last-child { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #ffffff; }
+    .play-btn { font-size: 16px; padding: 13px 24px; }
+  }
+  /* ▼ スマホでは白くなるiframeを隠し、プレイボタンを出す */
+  .mobile-play-cta { display: none; }
+  @media (max-width: 768px) {
+    .full-iframe { display: none !important; }
+    .post-iframe-ad { margin-top: 0 !important; }
+    .mobile-play-cta {
+      display: block; text-align: center;
+      margin: 8px auto 24px; padding: 18px 20px;
+      background: #7a4ab0; color: #ffffff !important;
+      border-radius: 12px; font-weight: bold; font-size: 18px;
+      text-decoration: none !important;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .mobile-play-cta span { display: block; font-size: 12px; opacity: .85; margin-top: 5px; }
+  }
+</style>
+<p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "beat.typing",
+  "alternateName": "ビート・タイピング",
+  "url": "https://play.bubblegumgameboy.com/BeatTyping/",
+  "genre": ["音楽ゲーム", "リズムゲーム", "タイピングゲーム", "ピアノ"],
+  "gamePlatform": ["Web Browser", "PC", "Smartphone"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "playMode": "SinglePlayer",
+  "inLanguage": "ja",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+</p>
+<p>キーボードを叩くと名曲を“演奏”できる、無料のブラウザ音楽ゲーム「beat.typing」の試作版を公開しました。</p>
+<p>狙ったのは「実際に楽器を弾いている感覚」。正解を続けてコンボがつながると、ピアノにベース＆ドラム、ストリングス、オーケストラと音が重なっていき、自分の手で曲が分厚くなっていきます。</p>
+<p style="margin-bottom: 0;"><iframe class="full-iframe" src="https://play.bubblegumgameboy.com/BeatTyping/" title="beat.typing（キーボードで演奏する音楽タイピングゲーム）" loading="lazy" allow="fullscreen"></iframe><a href="https://play.bubblegumgameboy.com/BeatTyping/" target="_blank" rel="noopener" class="mobile-play-cta">▶ いますぐ全画面でプレイ無料・インストール不要・PCキーボード推奨</a></p>
+<div class="post-iframe-ad" style="text-align: center; margin: -16vh 0 24px 0; overflow: hidden;"><ins class="adsbygoogle" style="display: block;" data-ad-client="ca-pub-2203567155161909" data-ad-slot="1400091008" data-ad-format="horizontal" data-full-width-responsive="true"> </ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2 class="section-head">基本情報</h2>
+<table class="data-table">
+<tbody>
+<tr>
+<th style="width: 30%;" scope="row">タイトル</th>
+<td>beat.typing（ビート・タイピング）</td>
+</tr>
+<tr>
+<th scope="row">ジャンル</th>
+<td>音楽ゲーム / リズム×タイピング / ピアノ演奏</td>
+</tr>
+<tr>
+<th scope="row">料金</th>
+<td>無料</td>
+</tr>
+<tr>
+<th scope="row">対応環境</th>
+<td>PC（Chrome / Edge / Firefox / Safari）＋キーボード推奨・スマホはタップで演奏可</td>
+</tr>
+<tr>
+<th scope="row">セーブ</th>
+<td>なし（その場で1曲遊びきり）</td>
+</tr>
+<tr>
+<th scope="row">収録曲</th>
+<td>試作版・全3曲（大きな古時計／エリーゼのために／トルコ行進曲）</td>
+</tr>
+</tbody>
+</table>
+<p>降ってくるタイルが下のラインに届くと、対応するキーがピカッと光ります。そのキーを押すとピアノの音が鳴り、メロディーが1音ずつ進みます。時間切れで失敗することはなく、押すまでタイルは待っていてくれるので、テンポの速い曲でも自分のペースで演奏できます。</p>
+<h2 class="section-head">遊び方</h2>
+<ol>
+<li><span style="font-weight: bold;">曲を選ぶ</span>：まずは練習用の「大きな古時計」がおすすめ</li>
+<li><span style="font-weight: bold;">画面を1回クリック</span>：キーボード入力を有効にする（スマホはそのままタップでOK）</li>
+<li><span style="font-weight: bold;">光ったキーを押す</span>：タイルがラインに届いて光ったキーを押すと、その音が鳴る</li>
+<li><span style="font-weight: bold;">コンボをつなぐ</span>：連続で正解するとベース＆ドラム→ストリングス→オーケストラと音が重なる</li>
+<li><span style="font-weight: bold;">焦らなくてOK</span>：押すまで待ってくれるので、時間切れミスはなし。最後まで弾ききろう</li>
+</ol>
+<h2 class="section-head">楽しむコツ</h2>
+<ul>
+<li>まずは「大きな古時計」でホームポジション（F J D K S L…）に慣れる。画面下のキーボードと指の色分けガイドが、どの指で押すかを教えてくれる</li>
+<li>1音ずつ確実に。押したら指はホームポジションに戻すとミスが減る</li>
+<li>慣れてきたら「エリーゼのために」→「トルコ行進曲」へ。コンボを切らさず繋ぐほど演奏が豪華になる</li>
+<li>速さより正確さ。待ってくれる仕様なので、難しい所はゆっくり確実に</li>
+</ul>
+<h2 class="section-head">よくある質問</h2>
+<dl class="faq-list">
+<dt>音が鳴りません</dt>
+<dd>最初にゲーム画面の中を一度クリック（スマホはタップ）してください。ブラウザの仕様で、操作するまで音が出ない場合があります。端末の音量・ミュートもご確認ください。</dd>
+<dt>スマホでも遊べますか？</dt>
+<dd>一応遊べます。光ったタイル／キーをタップすると演奏できます。</dd>
+<dt>音ゲーが苦手でも大丈夫？</dt>
+<dd>大丈夫です。このゲームは時間切れで失敗しません。正しいキーを押すまで待ってくれるので、自分のペースで1曲を弾ききれます。</dd>
+<dt>曲は増えますか？</dt>
+<dd>今回は試作版として3曲を公開しています。反応があれば曲数を増やしていく予定です。「この曲が弾きたい」などの要望はコメント欄でぜひ。</dd>
+</dl>
+<h2 class="section-head">他自作ゲームの紹介</h2>
+<p><iframe src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Fbabblegum.hatenablog.com%2Fentry%2F2026%2F06%2F06%2F124954" title="【自作ゲーム】ソルジャータイピング。タイピングで戦う無料ゲーム - バブルガムのゲームブログ" class="embed-card embed-blogcard" scrolling="no" frameborder="0" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" loading="lazy"></iframe><cite class="hatena-citation"><a href="https://babblegum.hatenablog.com/entry/2026/06/06/124954">babblegum.hatenablog.com</a></cite></p>
+<p><iframe src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Fbabblegum.hatenablog.com%2Fentry%2F2026%2F06%2F16%2F191027" title="【放置型タイピングゲーム】ポップコーンタイピング - バブルガムのゲームブログ" class="embed-card embed-blogcard" scrolling="no" frameborder="0" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" loading="lazy"></iframe><cite class="hatena-citation"><a href="https://babblegum.hatenablog.com/entry/2026/06/16/191027">babblegum.hatenablog.com</a></cite></p>
+<p><iframe src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Fbabblegum.hatenablog.com%2Fentry%2F2026%2F06%2F12%2F144156" title="スペースキー連打ゲーム：ボスを倒して自動化していこう【ブラウザ・スマホ対応】 - バブルガムのゲームブログ" class="embed-card embed-blogcard" scrolling="no" frameborder="0" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" loading="lazy"></iframe><cite class="hatena-citation"><a href="https://babblegum.hatenablog.com/entry/2026/06/12/144156">babblegum.hatenablog.com</a></cite></p>
+<p> </p>
