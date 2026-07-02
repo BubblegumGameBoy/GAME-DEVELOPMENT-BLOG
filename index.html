@@ -39,6 +39,47 @@
   .j-card:hover   { transform:translateY(-3px) !important; box-shadow:0 11px 0 rgba(20,40,63,.18) !important; }
   .ura-link:hover { color:#ffff00 !important; text-shadow:0 0 5px #ffcc00 !important; }
   nav a { white-space:nowrap; }
+
+  /* ---- RPG ワールドマップ ---- */
+  .rpgmap{position:relative;max-width:960px;margin:26px auto 0;aspect-ratio:16/10;border:3px solid #14283f;border-radius:16px;overflow:hidden;
+    background-color:#a9d4ea;
+    background-image:
+      radial-gradient(closest-side,#c2cfd8 99%,transparent 100%),
+      radial-gradient(closest-side,#f2e3b8 99%,transparent 100%),
+      radial-gradient(closest-side,#bfe3ab 99%,transparent 100%),
+      radial-gradient(closest-side,#d4ecc6 99%,transparent 100%);
+    background-repeat:no-repeat;
+    background-size:20% 18%, 26% 20%, 34% 26%, 96% 88%;
+    background-position:96% 82%, 4% 92%, 28% 24%, 50% 54%;
+    box-shadow:0 8px 0 rgba(20,40,63,.15);}
+  .map-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .map-node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;z-index:2;}
+  .map-node svg{width:clamp(30px,5.4vw,46px);height:clamp(30px,5.4vw,46px);transition:transform .15s;filter:drop-shadow(0 3px 0 rgba(20,40,63,.22));}
+  .mn-castle svg{width:clamp(38px,6.6vw,58px);height:clamp(38px,6.6vw,58px);}
+  .map-node:hover svg{transform:translateY(-4px) scale(1.1);}
+  .map-plate{font-family:'DotGothic16',monospace;font-size:clamp(10px,1.9vw,13px);background:#fff;color:#2c4a6e;border:2px solid #14283f;border-radius:6px;padding:3px 8px;line-height:1.35;text-align:center;box-shadow:0 2px 0 rgba(20,40,63,.25);white-space:nowrap;}
+  .map-plate small{display:block;font-size:.8em;font-weight:400;color:#5b7796;}
+  .mn-cave .map-plate{background:#141d29;color:#9db4cc;border-color:#000;}
+  .mn-cave svg{opacity:.9;}
+  .mn-here{z-index:3;pointer-events:none;}
+  .mn-here svg{animation:bgbob 2.2s ease-in-out infinite;}
+  .mn-here .map-plate{background:#ffc233;border-color:#14283f;color:#14283f;font-weight:700;}
+  /* 拠点の座標（PC・横長マップ） */
+  .mn-here{left:9%;top:80%;}   .mn-popcorn{left:26%;top:66%;} .mn-soldier{left:45%;top:79%;}
+  .mn-piano{left:63%;top:60%;} .mn-castle{left:83%;top:30%;}  .mn-board{left:13%;top:36%;}
+  .mn-library{left:33%;top:22%;} .mn-guild{left:53%;top:16%;} .mn-cave{left:92%;top:76%;}
+  .map-path-m{display:none;}
+  @media (max-width:640px){
+    .rpgmap{aspect-ratio:10/16;}
+    .map-path-d{display:none;} .map-path-m{display:block;}
+    .map-plate small{display:none;}
+    .map-node svg{width:34px;height:34px;}
+    .mn-castle svg{width:42px;height:42px;}
+    /* 拠点の座標（スマホ・縦長マップ） */
+    .mn-here{left:20%;top:92%;}  .mn-popcorn{left:72%;top:84%;} .mn-soldier{left:26%;top:73%;}
+    .mn-piano{left:73%;top:62%;} .mn-castle{left:50%;top:47%;}  .mn-board{left:22%;top:34%;}
+    .mn-library{left:76%;top:28%;} .mn-guild{left:30%;top:17%;} .mn-cave{left:80%;top:8%;}
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/","description":"ブラウザですぐ遊べる、バブルガムのゲーム置き場。放置ゲーム・タイピングなど無料・登録不要。","inLanguage":"ja"},{"@type":"ItemList","name":"あそべるゲーム","itemListElement":[{"@type":"ListItem","position":1,"name":"クリック連打ゲーム「レイドボスラッシュ」","description":"兵士を増やして自動化する放置系ボスラッシュ。PC・スマホ対応。"},{"@type":"ListItem","position":2,"name":"パチパチタイピング","description":"パチパチ弾けるリズムで打鍵する爽快タイピング。"},{"@type":"ListItem","position":3,"name":"ソルジャータイピング","description":"タイプして戦うミリタリー風タイピング。"},{"@type":"ListItem","position":4,"name":"ピアノタイピング","description":"光ったキーを押すだけで名曲が弾ける音ゲー×タイピング。ホームポジションの練習にも。"}]}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
@@ -56,10 +97,10 @@
   <div style="max-width:1040px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;gap:12px;">
     <div style="display:flex;align-items:center;gap:clamp(10px,3vw,20px);font-weight:700;font-size:14px;">
       <a href="#play" style="color:#cfe6ee;text-decoration:none;">あそぶ</a>
-      <a href="updates.html" style="color:#cfe6ee;text-decoration:none;">アップデート</a>
+      <a href="#map" style="color:#cfe6ee;text-decoration:none;">マップ</a>
       <a href="#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+      <a href="updates.html" style="color:#cfe6ee;text-decoration:none;">アップデート</a>
       <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;color:#ffd766;text-decoration:none;font-weight:800;">ブログ ↗</a>
-      <a href="ura/" title="裏サイト ‐ 丑三つ掲示板へ" class="ura-link" style="display:inline-flex;align-items:center;font-size:15px;font-family:'MS PGothic','MS Pゴシック','Courier New',monospace;color:#33ff66;text-decoration:underline;letter-spacing:1px;text-shadow:0 0 4px #00ff44;animation:blink 1.2s steps(1) infinite;">裏サイト</a>
     </div>
   </div>
 </nav>
@@ -90,6 +131,7 @@
       <span style="flex:none;margin-top:4px;display:inline-block;width:28px;height:24px;position:relative;"><i style="position:absolute;top:0;left:0;width:4px;height:4px;background:transparent;box-shadow:4px 0 0 0 #ef4d52,8px 0 0 0 #ef4d52,16px 0 0 0 #ef4d52,20px 0 0 0 #ef4d52,0 4px 0 0 #ef4d52,4px 4px 0 0 #ef4d52,8px 4px 0 0 #ef4d52,12px 4px 0 0 #ef4d52,16px 4px 0 0 #ef4d52,20px 4px 0 0 #ef4d52,24px 4px 0 0 #ef4d52,0 8px 0 0 #ef4d52,4px 8px 0 0 #ef4d52,8px 8px 0 0 #ef4d52,12px 8px 0 0 #ef4d52,16px 8px 0 0 #ef4d52,20px 8px 0 0 #ef4d52,24px 8px 0 0 #ef4d52,4px 12px 0 0 #ef4d52,8px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,16px 12px 0 0 #ef4d52,20px 12px 0 0 #ef4d52,8px 16px 0 0 #ef4d52,12px 16px 0 0 #ef4d52,16px 16px 0 0 #ef4d52,12px 20px 0 0 #ef4d52;"></i></span>
       <span>ブラウザですぐ遊べる、手づくりゲームのあそびば。<br></span>
     </p>
+    <span aria-hidden="true" style="position:absolute;right:14px;bottom:6px;font-family:'DotGothic16',monospace;font-size:14px;color:#2c4a6e;animation:blink 1.1s steps(1) infinite;">▼</span>
   </div>
 
   <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
@@ -99,6 +141,89 @@
 </header>
 
 <main>
+<!-- ================= WORLD MAP ================= -->
+<section id="map" style="padding:clamp(30px,5vw,52px) 20px clamp(36px,6vw,56px);scroll-margin-top:70px;">
+  <div style="max-width:1040px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:4px;">
+      <span style="width:9px;height:9px;background:#ffc233;border-radius:2px;"></span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;letter-spacing:2px;color:#1e7a82;">WORLD MAP</span>
+    </div>
+    <h2 style="margin:0;text-align:center;font-weight:900;font-size:clamp(24px,5.5vw,36px);color:#2c4a6e;">ワールドマップ</h2>
+    <p style="margin:8px 0 0;text-align:center;font-family:'DotGothic16',monospace;font-size:clamp(12px,3.2vw,14px);color:#5b7796;">いきたい ばしょを えらんでね</p>
+
+    <div class="rpgmap">
+      <!-- 点線の街道（PC用/スマホ用） -->
+      <svg class="map-path map-path-d" viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M14.4 80 C24 70, 32 64, 41.6 66 C54 69, 62 76, 72 79 C82 82, 92 70, 100.8 60 C110 50, 122 40, 132.8 30" fill="none" stroke="#2c4a6e" stroke-opacity=".32" stroke-width="1.6" stroke-dasharray="3 3" stroke-linecap="round"/>
+      </svg>
+      <svg class="map-path map-path-m" viewBox="0 0 100 160" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M20 147 Q46 144 72 134 Q49 125 26 117 Q49 108 73 99 Q62 84 50 75" fill="none" stroke="#2c4a6e" stroke-opacity=".32" stroke-width="1.6" stroke-dasharray="3 3" stroke-linecap="round"/>
+      </svg>
+
+      <!-- 飾り（木・水面のきらめき・方位） -->
+      <span aria-hidden="true" style="position:absolute;left:18%;top:52%;width:10px;height:10px;background:#6b8e3a;"></span>
+      <span aria-hidden="true" style="position:absolute;left:70%;top:44%;width:8px;height:8px;background:#6b8e3a;"></span>
+      <span aria-hidden="true" style="position:absolute;left:4%;top:10%;width:6px;height:6px;background:#fff;opacity:.6;"></span>
+      <span aria-hidden="true" style="position:absolute;left:60%;top:92%;width:6px;height:6px;background:#fff;opacity:.6;"></span>
+      <span aria-hidden="true" style="position:absolute;top:10px;right:14px;font-family:'DotGothic16',monospace;font-size:12px;color:#2c4a6e;opacity:.6;">N↑</span>
+
+      <!-- 現在地マーカー -->
+      <span class="map-node mn-here" aria-hidden="true">
+        <svg viewBox="0 0 7 6" shape-rendering="crispEdges" fill="#ef4d52"><rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/><rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/></svg>
+        <span class="map-plate">いまここ！</span>
+      </span>
+
+      <!-- パチパチ平原（パチパチタイピング） -->
+      <a href="games/popcorn-typing.html" class="map-node mn-popcorn" aria-label="パチパチ平原：パチパチタイピングであそぶ">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="5" y="5" width="2" height="2" fill="#fff"/><rect x="8" y="4" width="3" height="2" fill="#fff"/><rect x="7" y="6" width="2" height="2" fill="#ffc233"/><rect x="10" y="7" width="2" height="2" fill="#fff"/><rect x="4" y="7" width="2" height="2" fill="#ffc233"/><rect x="4" y="9" width="8" height="6" fill="#ef4d52"/><rect x="6" y="9" width="1" height="6" fill="#fff"/><rect x="9" y="9" width="1" height="6" fill="#fff"/></svg>
+        <span class="map-plate">パチパチ平原<small>タイピング</small></span>
+      </a>
+
+      <!-- ソルジャーのとりで（ソルジャータイピング） -->
+      <a href="games/soldier-typing.html" class="map-node mn-soldier" aria-label="ソルジャーのとりで：ソルジャータイピングであそぶ">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><g fill="#6b8e3a"><rect x="2" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="11" y="6" width="1" height="1"/><rect x="13" y="6" width="1" height="1"/><rect x="2" y="7" width="12" height="8"/></g><rect x="12" y="2" width="1" height="4" fill="#14283f"/><rect x="9" y="2" width="3" height="2" fill="#ffc233"/><rect x="7" y="10" width="2" height="5" fill="#14283f"/></svg>
+        <span class="map-plate">ソルジャーのとりで<small>タイピング</small></span>
+      </a>
+
+      <!-- ピアノしんでん（ピアノタイピング） -->
+      <a href="games/piano-typing.html" class="map-node mn-piano" aria-label="ピアノしんでん：ピアノタイピングであそぶ">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="2" fill="#2a9aa3"/><rect x="2" y="4" width="12" height="1" fill="#2a9aa3"/><rect x="2" y="5" width="12" height="10" fill="#fff"/><rect x="4" y="5" width="2" height="5" fill="#14283f"/><rect x="8" y="5" width="2" height="5" fill="#14283f"/><rect x="12" y="5" width="2" height="5" fill="#14283f"/></svg>
+        <span class="map-plate">ピアノしんでん<small>音ゲー×タイピング</small></span>
+      </a>
+
+      <!-- ボスの城（レイドボスラッシュ） -->
+      <a href="games/clicker.html" class="map-node mn-castle" aria-label="ボスの城：クリック連打ゲーム「レイドボスラッシュ」であそぶ">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><g fill="#7e95ad"><rect x="1" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="1" y="5" width="3" height="10"/><rect x="12" y="4" width="1" height="1"/><rect x="14" y="4" width="1" height="1"/><rect x="12" y="5" width="3" height="10"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="4" y="8" width="8" height="7"/></g><rect x="7" y="2" width="1" height="5" fill="#14283f"/><rect x="8" y="2" width="3" height="2" fill="#ef4d52"/><rect x="2" y="7" width="1" height="2" fill="#ffc233"/><rect x="13" y="7" width="1" height="2" fill="#ffc233"/><rect x="7" y="11" width="2" height="4" fill="#14283f"/></svg>
+        <span class="map-plate">ボスの城<small>レイドボスラッシュ</small></span>
+      </a>
+
+      <!-- クエストけいじばん（アップデート情報） -->
+      <a href="updates.html" class="map-node mn-board" aria-label="クエストけいじばん：アップデート情報を見る">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="9" width="2" height="6" fill="#2c4a6e"/><rect x="11" y="9" width="2" height="6" fill="#2c4a6e"/><rect x="1" y="2" width="14" height="8" fill="#2c4a6e"/><rect x="2" y="3" width="12" height="6" fill="#f2e3b8"/><rect x="3" y="4" width="5" height="4" fill="#fff"/><rect x="5" y="3" width="1" height="1" fill="#ef4d52"/><rect x="9" y="5" width="4" height="1" fill="#7e95ad"/><rect x="9" y="7" width="3" height="1" fill="#7e95ad"/></svg>
+        <span class="map-plate">クエストけいじばん<small>アップデート情報</small></span>
+      </a>
+
+      <!-- としょかん（サイト内ブログ） -->
+      <a href="blog/" class="map-node mn-library" aria-label="としょかん：ゲーム記事の一覧を読む">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="12" fill="#2a9aa3"/><rect x="3" y="2" width="2" height="12" fill="#1e7a82"/><rect x="12" y="3" width="1" height="10" fill="#fff"/><rect x="6" y="5" width="6" height="2" fill="#ffc233"/></svg>
+        <span class="map-plate">としょかん<small>記事いちらん</small></span>
+      </a>
+
+      <!-- ぼうけんギルド（このサイトについて） -->
+      <a href="about.html" class="map-node mn-guild" aria-label="ぼうけんギルド：運営者プロフィールを見る">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="10" height="8" fill="#2a9aa3"/><rect x="4" y="10" width="8" height="2" fill="#2a9aa3"/><rect x="6" y="12" width="4" height="2" fill="#2a9aa3"/><rect x="7" y="14" width="2" height="1" fill="#2a9aa3"/><rect x="6" y="4" width="4" height="3" fill="#ffc233"/><rect x="7" y="7" width="2" height="2" fill="#ffc233"/></svg>
+        <span class="map-plate">ぼうけんギルド<small>うんえいしゃ</small></span>
+      </a>
+
+      <!-- ？？？（裏サイトへの隠し洞窟） -->
+      <a href="ura/" class="map-node mn-cave" aria-label="なにかがある気配…" title="なにかがある気配…">
+        <svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="3" width="4" height="1" fill="#5b7796"/><rect x="4" y="4" width="8" height="2" fill="#5b7796"/><rect x="2" y="6" width="12" height="9" fill="#5b7796"/><rect x="7" y="7" width="2" height="1" fill="#0b1320"/><rect x="6" y="8" width="4" height="7" fill="#0b1320"/></svg>
+        <span class="map-plate">？？？</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FEATURED CLICKER ================= -->
 <section id="play" style="padding:clamp(30px,5vw,52px) 20px clamp(36px,6vw,60px);background:#fff;border-top:3px solid #14283f;">
   <div style="max-width:860px;margin:0 auto;">
