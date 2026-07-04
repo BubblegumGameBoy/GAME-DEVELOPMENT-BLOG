@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     記事テンプレート（このファイルはコピー元。直接公開しない）
+     Article template (this file is the source to copy from; do not publish it directly)
 
-     ■ 新しい記事の作り方（3ステップ）
-       1. このファイルを blog/posts/ にコピーしてリネーム
-          例) blog/posts/2026-07-01-popcorn-update.html
-          （ファイル名は「日付-スラッグ.html」。スラッグは英数字とハイフン）
-       2. 下の【ここを書き換える】の箇所をすべて埋める
-          - <title> / description / og:* / canonical の URL
-          - 記事タイトル・日付・タグ・本文
-       3. blog/index.html の一覧に1件分の <a> カードを追加し、
-          必要なら index.html の「新着情報(NEWS)」にも1行追加する
+     ■ How to write a new post (3 steps)
+       1. Copy this file into blog/posts/ and rename it
+          e.g. blog/posts/2026-07-01-popcorn-update.html
+          (Filename format: "date-slug.html". Use letters, numbers, and hyphens for the slug.)
+       2. Fill in every [EDIT THIS] spot below
+          - the URLs in <title> / description / og:* / canonical
+          - the article title, date, tag, and body
+       3. Add one <a> card to the list in blog/index.html, and
+          if needed, add a line to the "What's New (NEWS)" section of index.html
 
-     ※ 本文は <article class="prose"> の中に <h2> <p> <ul> などで書くだけ。
+     ※ For the body, just write <h2> <p> <ul> etc. inside <article class="prose">.
      ============================================================ -->
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 【ここを書き換える】canonical / title / description / og -->
+<!-- [EDIT THIS] canonical / title / description / og -->
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/FILENAME.html">
-<title>記事タイトル｜Bubblegum Game</title>
-<meta name="description" content="記事の要約を120文字くらいで。検索結果に出る文章。">
+<title>Article Title | Bubblegum Game</title>
+<meta name="description" content="A roughly one-sentence summary of the article. This is the text shown in search results.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/FILENAME.html">
-<meta property="og:title" content="記事タイトル｜Bubblegum Game">
-<meta property="og:description" content="記事の要約。">
+<meta property="og:title" content="Article Title | Bubblegum Game">
+<meta property="og:description" content="A summary of the article.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,8 +47,8 @@
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
   .prose blockquote { margin:18px 0; padding:12px 16px; background:#fff; border:2px solid #cde0ea; border-radius:10px; color:#3d5b7c; }
 </style>
-<!-- 記事用の構造化データ（任意。日付・タイトルを合わせると検索で有利） -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"記事タイトル","datePublished":"2026-07-01","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/FILENAME.html"}</script>
+<!-- Structured data for the article (optional; matching the date and title helps with search) -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Article Title","datePublished":"2026-07-01","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/FILENAME.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -62,43 +62,43 @@
   <!-- nav -->
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ 記事一覧</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../../" style="color:#cfe6ee;text-decoration:none;">ホーム</a>
-        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+        <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
+        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
       </div>
     </div>
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <!-- パンくず -->
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">記事タイトル</span></p>
+    <!-- breadcrumb -->
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Article Title</span></p>
 
-    <!-- 【ここを書き換える】日付・タグ・タイトル -->
+    <!-- [EDIT THIS] date / tag / title -->
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.07.01</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">お知らせ</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 1, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">記事タイトルをここに</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Your Article Title Here</h1>
 
-    <!-- 【ここを書き換える】本文 -->
+    <!-- [EDIT THIS] body -->
     <article class="prose">
-      <p>ここに本文を書きます。段落は &lt;p&gt;…&lt;/p&gt; で囲みます。</p>
+      <p>Write your body text here. Wrap paragraphs in &lt;p&gt;…&lt;/p&gt;.</p>
 
-      <h2>見出し（大）</h2>
-      <p>本文。リンクは <a href="../../#games">このように</a> 書けます。</p>
+      <h2>Heading (large)</h2>
+      <p>Body text. You can write links <a href="../../#games">like this</a>.</p>
 
-      <h3>見出し（小）</h3>
+      <h3>Heading (small)</h3>
       <ul>
-        <li>箇条書きも使えます</li>
-        <li>2つめの項目</li>
+        <li>Bullet lists work too</li>
+        <li>A second item</li>
       </ul>
 
-      <p>画像を入れるときは images/ に置いて &lt;img src="../../images/xxx.png" alt="説明"&gt; のように書きます。</p>
+      <p>To add an image, put it in images/ and write it like &lt;img src="../../images/xxx.png" alt="description"&gt;.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← 記事一覧にもどる</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 
@@ -107,10 +107,10 @@
     <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
       <span>© 2026 Bubblegum Game</span>
       <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
-        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
-        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">運営者情報</a>
-        <a href="../../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>
+        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
   </footer>
