@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
-<title>クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話｜Bubblegum Game</title>
-<meta name="description" content="新作ブラウザゲーム「クトゥルフタイピング」を公開しました。打鍵を攻撃ではなく兵士の召喚にした理由、日替わりボス制で毎日1回の習慣型にした狙い、スコアを打鍵速度×正確率×ボス強度にして公平化した設計意図など、開発者視点でまとめます。">
+<title>Why I Replaced "Type to Attack" with "Type to Summon": Making Cthulhu Typing | Bubblegum Game</title>
+<meta name="description" content="I released Cthulhu Typing, a new browser game. Here's why I made keystrokes summon soldiers instead of dealing damage, why bosses rotate one per day for a build-a-habit feel, and why the score formula is typing speed x accuracy x boss strength.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
-<meta property="og:title" content="クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話｜Bubblegum Game">
-<meta property="og:description" content="打鍵を攻撃ではなく召喚に変えたら、タイピングが遅い人でも必ず勝てるゲームになった。新作の設計意図を開発者視点で。">
+<meta property="og:title" content="Why I Replaced &quot;Type to Attack&quot; with &quot;Type to Summon&quot;: Making Cthulhu Typing | Bubblegum Game">
+<meta property="og:description" content="Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話","datePublished":"2026-07-04","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/soldier-typing.png","description":"打鍵を攻撃ではなく召喚に変えたら、タイピングが遅い人でも必ず勝てるゲームになった。新作の設計意図を開発者視点で。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why I Replaced \"Type to Attack\" with \"Type to Summon\": Making Cthulhu Typing","datePublished":"2026-07-04","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/soldier-typing.png","description":"Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -43,55 +43,55 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ 記事一覧</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../../" style="color:#cfe6ee;text-decoration:none;">ホーム</a>
-        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+        <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
+        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
       </div>
     </div>
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">クトゥルフタイピングを公開しました</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Cthulhu Typing</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.07.04</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">新ゲーム</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 4, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Why I Replaced "Type to Attack" with "Type to Summon": Making Cthulhu Typing</h1>
 
     <article class="prose">
-      <p>新作ブラウザゲーム<a href="../../games/cthulhu-typing.html">クトゥルフタイピング</a>を公開しました。ひらがなのお題をローマ字で打ちきるたびに兵士が1体召喚され、その軍勢が自動でクトゥルフ神話のボスを攻撃し続ける、タイピング×召喚バトルです。無料・登録不要で、物理キーボードのあるPCならブラウザですぐ遊べます（スマホ非対応）。1プレイは2〜3分ほど。</p>
-      <p>本作は前作<a href="../../games/soldier-typing.html">ソルジャータイピング</a>の系譜にあたる作品です。この記事では、続編を作るにあたって何を変えたのか、その設計意図を開発者の目線でまとめておきます。</p>
+      <p>My new browser game, <a href="../../games/cthulhu-typing.html">Cthulhu Typing</a>, is live. Every time you finish typing a hiragana word in romaji, one soldier is summoned, and your growing army keeps auto-attacking a boss from the Cthulhu Mythos on its own. It's a typing-meets-summoning battle. It's free, no sign-up, and plays right in the browser on any PC with a physical keyboard (no phones). A single run takes about two to three minutes.</p>
+      <p>This game is the successor to my earlier <a href="../../games/soldier-typing.html">Soldier Typing</a>. In this post I want to walk through what I changed for the follow-up and the thinking behind those decisions, from a developer's point of view.</p>
 
-      <h2>打鍵の役割を「攻撃」から「召喚」に裏返した</h2>
-      <p>前作を公開してから、ずっと気になっていた問題がありました。タイピングゲームの多くは「打つ＝攻撃」で、打鍵が止まった瞬間にプレイヤーは無力になります。この構造だと、打つのが速い人は爽快でも、遅い人はずっと苦しいまま。上手な人だけが楽しい設計になってしまうんです。</p>
-      <p>そこで今作では、打鍵の役割そのものを裏返しました。打つことで生まれるのは攻撃ではなく<strong>兵士</strong>です。お題を1つ打ちきるごとに兵士が1体召喚され、召喚済みの兵士は、プレイヤーが手を止めているあいだも自動でボスを殴り続けてくれます。打った成果が消えずに「資産」として画面に積み上がっていく——これは放置クリッカーの快感の作り方で、それをタイピングに接ぎ木したのが本作です。</p>
-      <p>この転換のいちばんの狙いは、<strong>タイピングが遅い人でも必ずクリアできる</strong>ことでした。討伐に時間制限はなく、ゲームオーバーもありません。ゆっくりでも打ち続ければ軍勢は着実に増え、ダメージは加速し、最後には必ずボスが倒れます。一方で速い人には、軍勢がみるみる膨らんでいく増殖の気持ちよさがある。同じルールのまま、上手な人と苦手な人の両方に別々のごほうびを用意できたのが、この設計の気に入っているところです。</p>
-      <p>細かい仕掛けもこの方針に沿わせています。ことばが長いほど強い兵士が出る（2文字なら村人、5文字なら竜・天使・パラディン級）、ノーミスで5語連続で打ちきると援軍がもう1体参戦する、兵士が40体を超えると合流して「×2 ×3…」と重なって巨大化する。どれも「打った分だけ軍勢が育つ」実感を強めるための演出です。</p>
+      <h2>Flipping keystrokes from "attack" to "summon"</h2>
+      <p>Ever since I put out the first game, one thing kept nagging at me. In most typing games, typing equals attacking, which means the moment your hands stop, you're powerless. With that structure, fast typists get a thrill and slow ones just struggle the whole way through. The design only really rewards people who are already good.</p>
+      <p>So this time I flipped the role of typing itself. What your keystrokes produce isn't damage, it's <strong>soldiers</strong>. Finish one word and a soldier is summoned; every soldier you've already summoned keeps pounding the boss even while your hands rest. What you type doesn't vanish, it piles up on screen as an asset. That's the feedback loop of an idle clicker, and grafting it onto typing is the core idea of this game.</p>
+      <p>The main goal of that flip was to make sure <strong>even a slow typist can always clear the game</strong>. There's no time limit on the kill and no game over. Type at a crawl and your army still steadily grows, the damage accelerates, and the boss always falls in the end. Meanwhile, fast typists get the rush of watching their army balloon in size. Same rules, but I could hand two very different rewards to skilled and struggling players alike, and that's the part of the design I'm happiest with.</p>
+      <p>The smaller mechanics all serve that same principle. Longer words summon stronger soldiers (a two-character word gets you a villager; a five-character one calls up dragon-, angel-, or paladin-class troops). Type five words in a row with no misses and an extra ally joins the fight. Once you pass 40 soldiers, units start merging into "x2, x3..." giants. Every one of these exists to reinforce the feeling that the more you type, the more your army grows.</p>
 
-      <h2>ボスを「1日1体の日替わり」にした理由</h2>
-      <p>もうひとつの大きな決断が、ボスの出し方です。用意したボスはクトゥルフ神話の神格・眷属たち、全43体。これを最初から全部開放して自由に挑ませることもできたのですが、あえて<strong>1日1体の日替わり</strong>にして、しかも全プレイヤーが同じボスに挑む形にしました。今日クトゥルフが出ているなら、世界中の誰の画面にもクトゥルフが出ています。倒したらその日はクリアで、日本時間の深夜0時に次のボスとお題に切り替わります。</p>
-      <p>狙いは、どっぷり長時間遊ぶゲームではなく、<strong>毎日1回、2〜3分だけ遊ぶ習慣型のゲーム</strong>にすることでした。個人開発のブラウザゲームは一度クリアされたら終わり、になりがちです。それよりも「今日の神様はどいつだ」と毎日ちょっとだけ覗きに来てもらえる方が、作り手としても嬉しい。全員が同じボスというのも大事な点で、「今日のあいつ硬くない？」という共通の話題が生まれますし、ランキングも同じ土俵での勝負になります。</p>
-      <p>ちなみにボスによって兵士の集まり方も変えていて、正面を向いたボスには軍勢が左右から挟み撃ちを仕掛けます。日替わりで絵面が変わる、ささやかな楽しみです。</p>
+      <h2>Why the boss is a single "daily" pick</h2>
+      <p>The other big decision was how bosses appear. I built 43 gods and creatures from the Cthulhu Mythos. I could have unlocked all of them at once and let players tackle any they liked, but I deliberately went with <strong>one boss per day</strong>, and everyone in the world faces the same one. If Cthulhu is up today, Cthulhu is on every player's screen. Beat it and you've cleared the day; at midnight Japan time, the next boss and a fresh word list rotate in.</p>
+      <p>The aim was to make this not a game you sink hours into, but <strong>a habit game you play once a day for two or three minutes</strong>. Solo-made browser games tend to be "clear it once and you're done." I'd much rather have people drop by each day just to see "which god is it today." Everyone facing the same boss matters too: it creates a shared talking point ("isn't today's guy kind of tanky?"), and it puts the leaderboard on level ground.</p>
+      <p>The way your army assembles also changes from boss to boss. Face a boss head-on and your troops pincer it from both sides. It's a small pleasure, watching the picture shift each day.</p>
 
-      <h2>スコア式は「打鍵速度 × 正確率 × ボス強度」</h2>
-      <p>日替わりボス制には、ひとつ副作用があります。ボスには強い日と弱い日があるので、単純に「与えたダメージ」や「討伐タイム」で競うと、弱いボスの日に遊んだ人が一方的に有利になってしまう。毎日リセットされる日次ランキングを載せる以上、これは放置できません。</p>
-      <p>そこでスコアは<strong>打鍵速度 × 正確率 × ボス強度</strong>という式にしました。強いボスの日はボス強度の係数が大きくなるので、どの日に遊んでも純粋に「自分の打鍵の質」で競えます。もうひとつ意図があって、正確率を掛け算に入れているため、ミスがスコアに直接響きます。つまり速く雑に打つより、確実に打ちきる方が伸びる。タイピング練習として見たときに、いちばん身になる打ち方が、いちばんスコアが出る打ち方になるように調整しました。</p>
-      <p>ランキングは、なまえを入れてプレイするだけでその日のベストスコアが自動掲載されます。登録は不要です。日次とは別に、これまで何体討伐したかを競う全期間の累計ランキングもあるので、コツコツ派はそちらをどうぞ。</p>
+      <h2>The score formula: typing speed x accuracy x boss strength</h2>
+      <p>The daily-boss system has one side effect. Some bosses are strong and some are weak, so if you simply competed on raw damage or clear time, whoever happened to play on an easy day would have a lopsided advantage. Since I'm posting a daily leaderboard that resets every day, I couldn't let that slide.</p>
+      <p>So the score is <strong>typing speed x accuracy x boss strength</strong>. On a tough-boss day the boss-strength coefficient is larger, so no matter which day you play, you're competing purely on the quality of your typing. There's a second intention too: because accuracy is a multiplier, misses hit your score directly. Typing fast and sloppy loses to typing cleanly. Viewed as typing practice, the way of typing that does you the most good is also the way that scores the most.</p>
+      <p>For the leaderboard, you just enter a name and play, and your best score of the day is posted automatically. No registration. Alongside the daily ranking there's an all-time leaderboard for total bosses defeated, so if you're the steady, chip-away type, that one's for you.</p>
 
-      <h2>地味だけどこだわった点：IME切り替え不要</h2>
-      <p>最後に、画面には映らないこだわりをひとつ。本作は<strong>日本語入力（IME）がオンのままでもローマ字打鍵がそのまま通ります</strong>。タイピングゲームにありがちな「始める前にIMEをオフにしてください」という一手間は、前作でも案内していて、ずっと気になっていた部分でした。ブラウザゲームは思い立った瞬間に遊べるのが取り柄なのに、入り口で設定をいじらせるのはもったいない。今作ではキー入力を直接拾う方式にして、この摩擦をなくしています。</p>
-      <p>なお、プレイ記録はブラウザ（localStorage）に保存される仕組みなので、別の端末やシークレットモードには引き継がれません。いつものブラウザで遊んでもらえればと思います。</p>
+      <h2>A quiet detail I cared about: no IME toggling</h2>
+      <p>One last thing that never shows up on screen. In this game, <strong>romaji keystrokes register even with Japanese input (IME) left on</strong>. The usual typing-game hassle of "please switch your IME off before you start" was something I'd flagged in the previous game and kept feeling bothered by. Browser games are great precisely because you can play the instant the urge strikes, so making people fiddle with settings at the door felt like a waste. This time the game reads keystrokes directly, so that friction is gone.</p>
+      <p>Note that play records are saved in your browser (localStorage), so they don't carry over to other devices or private-browsing windows. Play from your usual browser and you'll be fine.</p>
 
-      <h2>今日のボスに挑んでみてください</h2>
-      <p>遊び方はシンプルです。ひらがなのお題をローマ字で打ちきる、兵士が出る、兵士が勝手に戦う。それだけ。タイピングが速い人はランキング上位を、ゆっくり派は自分のペースの討伐を楽しんでください。名状しがたい神々を村人とパラディンの大群でわしゃわしゃ殴る、あのバカバカしい画面はぜひ一度見てほしいです。</p>
-      <p>▶ <a href="../../games/cthulhu-typing.html">クトゥルフタイピングで今日のボスに挑む</a></p>
-      <p>前作の<a href="../../games/soldier-typing.html">ソルジャータイピング</a>や、リズムよく打てる<a href="../../games/popcorn-typing.html">パチパチタイピング</a>もあわせてどうぞ。</p>
+      <h2>Give today's boss a try</h2>
+      <p>The play loop is simple. Finish typing a hiragana word in romaji, a soldier appears, the soldier fights on its own. That's it. Fast typists can chase the top of the leaderboard; slower players can enjoy a kill at their own pace. And honestly, I just want you to see the sheer absurdity of unspeakable elder gods getting swarmed by a mob of villagers and paladins at least once.</p>
+      <p>▶ <a href="../../games/cthulhu-typing.html">Take on today's boss in Cthulhu Typing</a></p>
+      <p>If you like it, check out the earlier <a href="../../games/soldier-typing.html">Soldier Typing</a> and the snappy, rhythm-friendly <a href="../../games/popcorn-typing.html">Popcorn Typing</a> too.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← 記事一覧にもどる</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
     </div>
   </main>
 
@@ -99,10 +99,10 @@
     <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
       <span>© 2026 Bubblegum Game</span>
       <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
-        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
-        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">運営者情報</a>
-        <a href="../../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>
+        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
   </footer>

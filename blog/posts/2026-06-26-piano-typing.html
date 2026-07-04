@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html">
-<title>ピアノタイピングを公開しました｜「自分の手で名曲を弾く」感覚と、気づけばホームポジション練習に｜Bubblegum Game</title>
-<meta name="description" content="新作ブラウザゲーム「ピアノタイピング」を公開しました。狙ったのは“弾けた風”ではなく、自分の手で名曲を弾いている生々しい感覚。タイミング判定はなく、好きなペースで弾けます。遊んでいるうちにホームポジションが身につく、タイピング教材としても使えるゲームになりました。">
+<title>Making Piano Typing: The Feeling of "Playing a Classic with Your Own Hands" (and Sneaky Home-Row Practice) | Bubblegum Game</title>
+<meta name="description" content="I released Piano Typing, a new browser game. What I chased wasn't a fake 'sounds like you played it' effect but the vivid feeling of actually playing a classic with your own hands. There's no timing judgment, so you play at your own pace, and it quietly doubles as home-row typing practice.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html">
-<meta property="og:title" content="ピアノタイピングを公開しました｜「自分の手で名曲を弾く」感覚と、気づけばホームポジション練習に｜Bubblegum Game">
-<meta property="og:description" content="“弾けた風”ではなく、自分の手で名曲を弾く生々しい感覚を目指したら、気づけばホームポジションの教材になっていた新作ゲームの話。">
+<meta property="og:title" content="Making Piano Typing: The Feeling of &quot;Playing a Classic with Your Own Hands&quot; (and Sneaky Home-Row Practice) | Bubblegum Game">
+<meta property="og:description" content="I chased the vivid feeling of playing a classic with your own hands, not a fake 'sounds like you played it' effect, and it quietly turned into home-row practice. The story of a new game.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/piano-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"ピアノタイピングを公開しました｜「自分の手で名曲を弾く」感覚と、気づけばホームポジション練習に","datePublished":"2026-06-26","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html","image":"https://bubblegumgameboy.com/images/piano-typing.png","description":"“弾けた風”ではなく、自分の手で名曲を弾く生々しい感覚を目指したら、気づけばホームポジションの教材になっていた新作ゲームの話。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Making Piano Typing: The Feeling of \"Playing a Classic with Your Own Hands\" (and Sneaky Home-Row Practice)","datePublished":"2026-06-26","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html","image":"https://bubblegumgameboy.com/images/piano-typing.png","description":"I chased the vivid feeling of playing a classic with your own hands, not a fake 'sounds like you played it' effect, and it quietly turned into home-row practice. The story of a new game."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -43,65 +43,65 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ 記事一覧</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../../" style="color:#cfe6ee;text-decoration:none;">ホーム</a>
-        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+        <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
+        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
       </div>
     </div>
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">ピアノタイピングを公開しました</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Piano Typing</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.06.26</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">新ゲーム</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 26, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">ピアノタイピングを公開しました｜「自分の手で名曲を弾く」感覚と、気づけばホームポジション練習に</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Making Piano Typing: The Feeling of "Playing a Classic with Your Own Hands" (and Sneaky Home-Row Practice)</h1>
 
     <article class="prose">
-      <p>新作ブラウザゲーム<a href="../../games/piano-typing.html">ピアノタイピング</a>を公開しました。落ちてくるタイルが“次に押すキー”を教えてくれて、好きなペースで押すとトルコ行進曲のような名曲が弾けていく、音ゲーとタイピングを掛け合わせたゲームです。無料・登録不要、キーボードのあるPCならすぐに遊べます。</p>
+      <p>My new browser game, <a href="../../games/piano-typing.html">Piano Typing</a>, is live. Falling tiles tell you which key to press next, and as you press at your own pace, classics like Mozart's Turkish March come to life. It's a mix of rhythm game and typing. Free, no sign-up, and playable right away on any PC with a keyboard.</p>
 
-      <p><img src="../../images/piano-typing.png" alt="ピアノタイピングのプレイ画面。降ってくるタイルと、光ったキー、画面下のキーボードと指づかいガイド"></p>
+      <p><img src="../../images/piano-typing.png" alt="A Piano Typing gameplay screen showing falling tiles, a highlighted key, and the on-screen keyboard with a fingering guide"></p>
 
-      <h2>作りたかったのは「自分の手で弾いている」生々しい感覚</h2>
-      <p>このゲームでいちばんこだわったのは、“弾けた風”で終わらせないことでした。落ちてくるタイルが“次に押すキー”を教えてくれて、そのキーを押すと実際にピアノの音が鳴り、メロディが一音ずつ前に進む。ボタンを押したら勝手に演奏が流れるのではなく、自分の指が音を鳴らしている、という手応えを大事にしています。</p>
-      <p>さらに、正解を続けてコンボがつながると、ピアノにベース＆ドラム、ストリングス、オーケストラと音が重なっていきます。最初はぽつぽつと鳴っていたソロのピアノが、自分の手でだんだん分厚いアンサンブルに育っていく。この「自分が曲を作っている」感覚が、いちばんの聴かせどころです。</p>
-      <p>そして大事なのが、タイミング判定がないこと。落ちてくるタイルは“次に押すキー”の予告で、その落下に合わせる必要はありません。むしろタイルに律儀に合わせて待つと、かえって曲本来のテンポからズレてしまう。だから自分の好きなリズムで、のびのび弾いてほしいんです。時間切れで失敗することもないので、楽器も音楽ゲームも初めて、という人でも一曲まるごと弾ききれます。</p>
+      <h2>What I wanted was the vivid feeling of "playing it yourself"</h2>
+      <p>The thing I cared about most in this game was not settling for a fake "sounds like you played it" effect. A falling tile tells you the next key to press; press it and a real piano note sounds, and the melody steps forward one note at a time. It's not that the performance plays itself when you hit a button. I wanted the tangible sense that your own fingers are making the sound.</p>
+      <p>On top of that, chaining correct notes builds a combo that layers bass and drums, then strings, then a full orchestra onto the piano. What starts as a sparse solo piano grows, by your own hand, into a thick ensemble. That feeling of "I'm building this piece" is the real highlight.</p>
+      <p>And crucially, there's no timing judgment. The falling tiles are just a preview of the next key to press; you don't have to sync to their descent. In fact, dutifully waiting to match the tiles tends to throw you off the song's natural tempo. So I want you to play freely, at whatever rhythm feels right. You can't fail on a time-out either, so even someone who's never touched an instrument or a rhythm game can play a whole piece start to finish.</p>
 
-      <h2>収録曲は、誰もが知っている名曲を3曲</h2>
-      <p>試作版として、聴いたことのある曲を3曲そろえました。</p>
+      <h2>Three songs everyone knows</h2>
+      <p>For this prototype release, I lined up three tunes you'll have heard before.</p>
       <ul>
-        <li><strong>大きな古時計</strong> … 練習用。弾きやすいハ長調にアレンジしているので、まずはこれから</li>
-        <li><strong>エリーゼのために</strong>（ベートーヴェン）</li>
-        <li><strong>トルコ行進曲</strong>（モーツァルト：ロンド・アラ・トゥルカ K.331 第3楽章）</li>
+        <li><strong>My Grandfather's Clock</strong> ... for practice. It's arranged in easy-to-play C major, so start here.</li>
+        <li><strong>Für Elise</strong> (Beethoven)</li>
+        <li><strong>Turkish March</strong> (Mozart: Rondo Alla Turca, K.331, 3rd movement)</li>
       </ul>
-      <p>メロディは耳コピではなく、パブリックドメインの楽譜データから音程を起こしているので、原曲どおりです。反応を見ながら、これから曲を増やしていく予定です。</p>
+      <p>The melodies aren't transcribed by ear; the pitches come from public-domain sheet-music data, so they follow the originals. I plan to add more songs as I see how people respond.</p>
 
-      <h2>気づけば、ホームポジションの教材になっていた</h2>
-      <p>これは作ってみて気づいたことなのですが、ピアノタイピングは「ホームポジションの練習教材」としても、なかなか優秀でした。</p>
-      <p>このゲームは、よく出てくる音をホームポジション（左手のASDF・右手のJKL;）に自動で割り当てます。さらに画面下のキーボードが指ごとに色分けされていて、「[Q] ← 左小指」のように、いまどの指で押せばいいかをそのつど教えてくれます。つまり、ドレミを覚えていなくても、ガイドの通りに指を動かしているうちに、自然と「手元を見ずに、決まった指で正しいキーを押す」動きが身についていくんです。</p>
-      <p>狙って作った教材ではなく、「名曲を気持ちよく弾きたい」を突き詰めたら、結果としてタイピングの基礎練習になっていた——という発見でした。タイピングが苦手な人ほど、楽しみながらホームポジションに慣れるきっかけになると思います。せっかくなので、ホームポジションそのものについても少しだけ書いておきます。</p>
+      <h2>Before I knew it, it had become home-row practice material</h2>
+      <p>This is something I only noticed after building it, but Piano Typing turned out to be a pretty solid "home-row practice tool" as well.</p>
+      <p>The game automatically assigns frequently used notes to the home position (left hand ASDF, right hand JKL;). The on-screen keyboard at the bottom is also color-coded per finger, telling you which finger to use each time, like "[Q] then left pinky." In other words, even if you don't know your do-re-mi, moving your fingers along with the guide naturally trains the motion of "pressing the right key with the right finger, without looking at your hands."</p>
+      <p>It wasn't material I set out to make. Chasing "I want to play a classic and feel good doing it" led, as a result, to basic typing practice. That was the discovery. The more someone struggles with typing, the more this can be a way to get comfortable with the home position while having fun. Since we're here, let me say a little about the home position itself.</p>
 
-      <h3>そもそもホームポジションとは</h3>
-      <p>ホームポジションは、両手の指を置いておく「基地」の位置のこと。左手は人差し指から小指の順に <strong>F・D・S・A</strong>、右手は <strong>J・K・L・;</strong>（セミコロン）。F と J には小さな突起（ポッチ）があり、手元を見なくても人差し指でここを探せば、いつでも定位置に戻れます。各指は担当のキーへ最短で伸ばし、押したらすぐ基地に戻る——これが「手元を見ずに打つ」タッチタイピングの土台です。</p>
+      <h3>What the home position actually is</h3>
+      <p>The home position is the "base" where you rest your fingers on both hands. From index to pinky, the left hand sits on <strong>F, D, S, A</strong>, and the right hand on <strong>J, K, L, ;</strong> (semicolon). F and J have small bumps, so even without looking you can find them with your index fingers and always return to your home spot. Each finger reaches out the shortest way to its assigned key and comes straight back to base after pressing. That's the foundation of touch typing, "typing without looking at your hands."</p>
 
-      <h3>覚えるとこんなにラクになる（3つのメリット）</h3>
+      <h3>Three ways it makes life easier once you learn it</h3>
       <ul>
-        <li><strong>画面を見たまま打てる</strong>：指の定位置が決まると、キーを目で探さなくてよくなります。視線を画面に固定できるので、文章なら考えながら書け、ゲームやチャットでも下を向かずに反応できます。</li>
-        <li><strong>入力スピードが上がる</strong>：各指がホームから最短距離でキーへ届くので、指の移動が最小限に。「探して、確認して、押す」の遠回りが消え、考えたことがそのまま指に流れます。</li>
-        <li><strong>誤入力（ミスタイプ）が減る</strong>：決まった指で決まったキーを押すので運指が安定し、指が迷いません。打ち直しが減って、結果さらに速くなります。手首や肩の負担が軽いのも利点です。</li>
+        <li><strong>You can type while watching the screen</strong>: once your fingers have fixed home spots, you no longer hunt for keys with your eyes. With your gaze locked on the screen, you can write while thinking, and react in games or chat without looking down.</li>
+        <li><strong>Your input speed goes up</strong>: each finger reaches its key by the shortest path from home, so finger travel is minimal. The detour of "search, confirm, press" disappears, and what you think flows straight to your fingers.</li>
+        <li><strong>You make fewer typos</strong>: pressing set keys with set fingers keeps your fingering stable and your fingers from hesitating. Fewer re-dos means you end up faster still, and it's easier on your wrists and shoulders too.</li>
       </ul>
-      <p>理屈はシンプルですが、ホームポジションは頭ではなく“指で”覚えるもの。だからこそ、遊びながら自然と指が動くこのゲームが練習にちょうどいいんです。まずは「大きな古時計」で、手元を見ずにガイドどおり指を動かすところから始めてみてください。</p>
+      <p>The logic is simple, but the home position is something you learn with your fingers, not your head. That's exactly why a game where your fingers move naturally as you play makes for good practice. Start with My Grandfather's Clock, moving your fingers along with the guide without looking at your hands.</p>
 
-      <h2>遊んでみてください</h2>
-      <p>遊び方はかんたん。ゲーム画面を一度クリックして、あとは“次に押すキー”を教えてくれるタイルを見ながら、自分のペースでキーを押していくだけです。タイミングを合わせる必要はないので、ゆっくり一音ずつでもOK。スマホでも光ったタイルをタップすれば一応遊べますが、指づかいガイドを活かせるキーボード付きのPCがおすすめです。</p>
-      <p>まずは<a href="../../games/piano-typing.html">ピアノタイピング</a>で、名曲を一曲、自分の手で弾ききってみてください。ほかのタイピングゲームで打鍵そのものに慣れたいなら、<a href="../../games/popcorn-typing.html">パチパチタイピング</a>や<a href="../../games/soldier-typing.html">ソルジャータイピング</a>もどうぞ。</p>
+      <h2>Give it a try</h2>
+      <p>Playing is easy. Click the game screen once, then just watch the tiles that show you the next key to press and press along at your own pace. There's no timing to match, so slow, one note at a time is perfectly fine. You can technically play on a phone by tapping the lit tiles, but a PC with a keyboard, where you can make use of the fingering guide, is what I'd recommend.</p>
+      <p>Start by playing a classic from beginning to end with your own hands in <a href="../../games/piano-typing.html">Piano Typing</a>. And if you'd like to get used to the keystrokes themselves in other typing games, <a href="../../games/popcorn-typing.html">Popcorn Typing</a> and <a href="../../games/soldier-typing.html">Soldier Typing</a> are both here for you.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← 記事一覧にもどる</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
     </div>
   </main>
 
@@ -109,10 +109,10 @@
     <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
       <span>© 2026 Bubblegum Game</span>
       <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
-        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
-        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">運営者情報</a>
-        <a href="../../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>
+        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
   </footer>
