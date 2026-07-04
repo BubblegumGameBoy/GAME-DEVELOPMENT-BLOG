@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /ura/
+Disallow: /_ja-archive/
 
 Sitemap: https://bubblegumgameboy.com/sitemap.xml

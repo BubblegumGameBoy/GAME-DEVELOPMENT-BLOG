@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://bubblegumgameboy.com/games/cthulhu-typing.html">
+<title>クトゥルフタイピング｜無料ブラウザゲーム - Bubblegum Game</title>
+<meta name="description" content="ひらがなのお題をローマ字で打ちきると兵士が召喚され、自動でクトゥルフ神話のボスに攻撃し続けるタイピング×召喚バトル。ボスは1日1体の日替わり全43体、毎日リセットのランキング付き。無料・登録不要のPC専用ブラウザゲーム。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/games/cthulhu-typing.html">
+<meta property="og:title" content="クトゥルフタイピング｜無料ブラウザゲーム">
+<meta property="og:description" content="打つたび兵士が増えて、クトゥルフ神話の日替わりボスに自動攻撃。タイピング×召喚バトル。PC専用。">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="クトゥルフタイピング｜無料ブラウザゲーム">
+<meta name="twitter:description" content="打つたび兵士が増えて、日替わりボスに自動攻撃。タイピング×召喚バトル。PC専用。">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .detail{margin-top:42px;max-width:760px;}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#2c4a6e;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#3d5b7c;margin:0 0 18px;}
+  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid #d4e6ef;vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#2c4a6e;font-weight:800;background:#eef6fa;}
+  .detail td{color:#3d5b7c;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;}
+  .detail li{margin:6px 0;}
+  .detail li strong{color:#2c4a6e;font-weight:800;}
+  .detail a{color:#2a9aa3;font-weight:700;}
+  .faq{border:2px solid #d4e6ef;border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:#fff;}
+  .faq dt{font-weight:800;color:#2c4a6e;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#2a9aa3;}
+  .faq dd{margin:0 0 12px;color:#3d5b7c;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
+  /* CSSフルスクリーン（URLを変えずに画面いっぱい表示） */
+  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
+  body.fs-lock{overflow:hidden;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"クトゥルフタイピング","alternateName":"Cthulhu Typing","url":"https://bubblegumgameboy.com/games/cthulhu-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"ja","description":"ひらがなのお題をローマ字で打ちきるたびに兵士が1体召喚され、兵士たちが自動でボスを攻撃し続けるタイピング×召喚バトル。ボスはクトゥルフ神話の神格・眷属が全43体、1日1体の日替わりで全プレイヤー共通。討伐に時間制限はなく、タイピングが遅くても必ず倒せる。スコアは打鍵速度×正確率×ボス強度で、毎日リセットの日次ランキングと全期間の累計討伐ランキングを搭載。無料・PC専用。","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"今日のボスを倒したあとは、もう遊べませんか？","acceptedAnswer":{"@type":"Answer","text":"討伐後もその日のうちは繰り返しプレイでき、ベストスコアの更新を狙えます。ボスとお題は日本時間の深夜0時に切り替わるので、翌日にはまた新しいボスに挑戦できます。"}},{"@type":"Question","name":"タイピングが遅いのですが、クリアできますか？","acceptedAnswer":{"@type":"Answer","text":"できます。討伐に時間制限はなく、ゲームオーバーもありません。召喚した兵士は手を止めても自動で攻撃し続けるので、自分のペースで打っていけば必ずボスを倒せます。"}},{"@type":"Question","name":"日本語入力（IME）はオフにする必要がありますか？","acceptedAnswer":{"@type":"Answer","text":"不要です。日本語入力がオンのままでもローマ字の打鍵がそのまま認識されるので、切り替えを気にせずすぐに遊び始められます。"}},{"@type":"Question","name":"スマホやタブレットでも遊べますか？","acceptedAnswer":{"@type":"Answer","text":"遊べません。ローマ字を物理キーボードで打つゲームのため、PC専用です。"}},{"@type":"Question","name":"ランキングに参加するには登録が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"登録は不要です。なまえを入れてプレイするだけで、その日のベストスコアが自動でランキングに掲載されます。日次ランキングは毎日リセットされ、別途、全期間の累計討伐ランキングもあります。"}},{"@type":"Question","name":"プレイ記録は別のパソコンにも引き継がれますか？","acceptedAnswer":{"@type":"Answer","text":"引き継がれません。記録はブラウザ（localStorage）に保存されるため、別の端末やシークレットモードでは共有されない点にご注意ください。"}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5616851712582759"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- nav -->
+  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
+    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ あそびばに戻る</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">ブログ</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
+    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../#games" style="color:#7e95ad;text-decoration:none;">ゲーム</a> ／ <span style="color:#2c4a6e;">クトゥルフタイピング</span></p>
+
+    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#2c4a6e;">クトゥルフタイピング</h1>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border-radius:7px;padding:5px 12px;">タイピング</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border-radius:7px;padding:5px 12px;">召喚バトル</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#eaf1f7;color:#3d5b7c;border-radius:7px;padding:5px 12px;">PC専用</span>
+    </div>
+    <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#3d5b7c;">ひらがなのお題をローマ字で打ちきるたびに兵士が1体召喚され、あなたの軍勢が自動でボスを攻撃し続けるタイピング×召喚バトル。ボスはクトゥルフ神話の神々が1日1体の日替わりで登場します。物理キーボードで遊ぶPC専用ゲームです。</p>
+
+    <!-- ゲーム本体 -->
+    <div style="background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);">
+      <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+        <a href="https://play.bubblegumgameboy.com/Typingsoldier2/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#3d5b7c;color:#fff;text-decoration:none;border-radius:8px;padding:8px 16px;font-weight:700;font-size:14px;">↗ 新しいタブで開く</a>
+        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ フルスクリーンで遊ぶ</button>
+      </div>
+      <iframe id="game-frame" src="https://play.bubblegumgameboy.com/Typingsoldier2/" title="クトゥルフタイピング" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+    </div>
+    <script>
+    (function(){
+      var f=document.getElementById('game-frame'),
+          openBtn=document.getElementById('fs-btn');
+      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
+      openBtn.addEventListener('click',enter);
+      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // スマホの戻る操作で閉じる
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
+    })();
+    </script>
+
+    <p style="margin:14px 0 0;font-size:13px;color:#7e95ad;">物理キーボードのあるPCでお楽しみください（スマホ非対応）。日本語入力（IME）はオンのままでも、そのままローマ字打鍵が通ります。</p>
+
+    <!-- 詳細コンテンツ（このサイト用にまとめた遊び方・攻略・FAQ） -->
+    <section class="detail">
+      <p>このゲームで打鍵が生み出すのは「攻撃」ではなく「兵士」です。ひらがなのお題をローマ字で最後まで打ちきると兵士が1体召喚され、召喚された兵士たちはあなたが手を止めているあいだも自動でボスを殴り続けます。打てば打つほど軍勢がふくらみ、ダメージがどんどん加速していく——タイピングゲームと放置クリッカーを掛け合わせたような手触りです。立ちはだかるのはクトゥルフ神話の神格・眷属たち全43体。ボスは1日1体の日替わりで、世界中のプレイヤーが同じ相手に挑みます。1プレイは2〜3分ほど。討伐に時間制限はないので、タイピングの速さに自信がなくても大丈夫です。</p>
+
+      <h2>基本情報</h2>
+      <table>
+        <tr><th>ジャンル</th><td>タイピング × 召喚バトル（放置クリッカー風）</td></tr>
+        <tr><th>料金</th><td>無料・登録不要</td></tr>
+        <tr><th>対応環境</th><td>PC専用（物理キーボード必須・スマホ非対応）</td></tr>
+        <tr><th>入力</th><td>ローマ字入力（IMEの切り替え不要。日本語入力オンのままでOK）</td></tr>
+        <tr><th>ボス</th><td>クトゥルフ神話の神格・眷属 全43体。1日1体の日替わりで全プレイヤー共通</td></tr>
+        <tr><th>プレイ時間</th><td>1プレイ 2〜3分</td></tr>
+        <tr><th>セーブ</th><td>ブラウザ保存（localStorage）。別端末・シークレットモードには引き継がれません</td></tr>
+      </table>
+
+      <h2>遊び方</h2>
+      <ol>
+        <li><strong>① お題をローマ字で打ちきる</strong>：画面に出るひらがなのことばを最後まで打つと、兵士が1体召喚されます</li>
+        <li><strong>② 兵士は勝手に戦ってくれる</strong>：召喚済みの兵士は自動で攻撃を続けます。手を止めても戦闘は止まりません</li>
+        <li><strong>③ 打ち続けて軍勢を育てる</strong>：兵士の数が増えるほどダメージが加速。ボスのHPを削りきれば、その日の討伐は完了です</li>
+      </ol>
+      <p>倒しそこねる心配はいりません。時間制限もゲームオーバーもないので、ゆっくり打っても軍勢が積み上がっていき、最後には必ずボスが倒れます。討伐後は日本時間の深夜0時に、次のボスと新しいお題へ切り替わります。</p>
+
+      <h2>攻略のヒント</h2>
+      <ul>
+        <li><strong>長いことばは強い兵士</strong>：お題の文字数が多いほど召喚される兵士が強くなります。2文字なら村人クラスですが、5文字なら竜・天使・パラディン級。長文お題こそチャンスです</li>
+        <li><strong>ノーミス5連続で援軍</strong>：ミスなしで5語連続で打ちきると、援軍がもう1体参戦します。丁寧に打つほど軍勢の増え方が早くなります</li>
+        <li><strong>スコアを狙うなら正確さ重視</strong>：スコアは「打鍵速度 × 正確率 × ボス強度」。ミスは正確率に直接響くので、焦って打ち散らかすより、確実に打ちきるほうが伸びます</li>
+        <li><strong>40体を超えたら合体を楽しむ</strong>：兵士が40体を超えると合流して「×2 ×3…」と重なって巨大化します。画面の圧が一段変わる瞬間です</li>
+        <li><strong>ボスごとの陣形にも注目</strong>：ボスによって兵士の集まり方が変わります。正面を向いたボスには、軍勢が左右から挟み撃ちを仕掛けます</li>
+      </ul>
+
+      <h2>累計討伐ランキング</h2>
+      <p>その日のベストスコアを競う日次ランキング（毎日リセット）とは別に、これまでに何体のボスを討伐したかを競う全期間の累計ランキングがあります。なまえを入れてプレイするだけで自動掲載されるので、登録などは不要です。</p>
+      <div style="background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);">
+        <iframe src="https://play.bubblegumgameboy.com/Typingsoldier2/leaderboard.html" title="クトゥルフタイピング 累計討伐ランキング" loading="lazy" style="width:100%;height:520px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+      </div>
+      <p style="margin-top:12px;"><a href="https://play.bubblegumgameboy.com/Typingsoldier2/leaderboard.html" target="_blank" rel="noopener">ランキングを新しいタブで開く ↗</a></p>
+
+      <h2>開発者のひとこと</h2>
+      <p>前作<a href="soldier-typing.html">ソルジャータイピング</a>を作ったあと、ずっと引っかかっていたことがありました。「タイピングで敵を攻撃する」形だと、打つのが速い人と遅い人で体験の差が大きすぎるんです。そこで今作では発想を裏返して、打鍵を攻撃ではなく<strong>召喚</strong>にしました。打った成果が兵士という「資産」として画面に残り、手を止めても働き続けてくれる。だから遅い人は時間をかければ必ず勝てるし、速い人は軍勢の膨らむスピードで気持ちよくなれる。放置クリッカーの快感をタイピングに接ぎ木した、というのが今作の核です。</p>
+      <p>もうひとつの大きな決断が、ボスを1日1体の日替わりにしたことです。43体をいっぺんに開放することもできましたが、あえて「今日はハスター、明日は別の神」という形にして、全プレイヤーが同じ1体に挑む構図にしました。毎日1回、2〜3分だけ遊んで、ランキングをちらっと見て閉じる——そういう歯磨きみたいな習慣型のゲームにしたかったからです。スコアを「打鍵速度 × 正確率 × ボス強度」にしたのも同じ理由で、ボスの強い日・弱い日があっても順位争いが不公平にならないようにしています。題材にクトゥルフ神話を選んだのは、単純に自分が好きだから。名状しがたい神々を、村人やパラディンの大群でわしゃわしゃ殴るバカバカしさもふくめて楽しんでもらえたら嬉しいです。</p>
+
+      <h2>よくある質問</h2>
+      <dl class="faq">
+        <dt>今日のボスを倒したあとは、もう遊べませんか？</dt>
+        <dd>討伐後もその日のうちは繰り返しプレイでき、ベストスコアの更新を狙えます。ボスとお題は日本時間の深夜0時に切り替わるので、翌日にはまた新しいボスに挑戦できます。</dd>
+        <dt>タイピングが遅いのですが、クリアできますか？</dt>
+        <dd>できます。討伐に時間制限はなく、ゲームオーバーもありません。召喚した兵士は手を止めても自動で攻撃し続けるので、自分のペースで打っていけば必ずボスを倒せます。</dd>
+        <dt>日本語入力（IME）はオフにする必要がありますか？</dt>
+        <dd>不要です。日本語入力がオンのままでもローマ字の打鍵がそのまま認識されるので、切り替えを気にせずすぐに遊び始められます。</dd>
+        <dt>スマホやタブレットでも遊べますか？</dt>
+        <dd>遊べません。ローマ字を物理キーボードで打つゲームのため、PC専用です。</dd>
+        <dt>ランキングに参加するには登録が必要ですか？</dt>
+        <dd>登録は不要です。なまえを入れてプレイするだけで、その日のベストスコアが自動でランキングに掲載されます。日次ランキングは毎日リセットされ、別途、全期間の累計討伐ランキングもあります。</dd>
+        <dt>プレイ記録は別のパソコンにも引き継がれますか？</dt>
+        <dd>引き継がれません。記録はブラウザ（localStorage）に保存されるため、別の端末やシークレットモードでは共有されない点にご注意ください。</dd>
+      </dl>
+
+      <h2>クレジット</h2>
+      <p><strong>企画・開発</strong>：バブルガム（Bubblegum Game）<br>
+      <strong>題材</strong>：クトゥルフ神話の神格・眷属をモチーフにしています（クトゥルフ、ニャルラトホテプ、ハスター など全43体）<br>
+      <span style="font-size:13px;color:#7e95ad;">※本作は前作「<a href="soldier-typing.html">ソルジャータイピング</a>」の系譜にあたる作品です。開発のいきさつは<a href="../blog/posts/2026-07-04-cthulhu-typing.html">紹介記事</a>にまとめています。</span></p>
+    </section>
+
+    <p style="margin:34px 0 0;"><a href="../#games" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← ほかのゲームを見る</a></p>
+  </main>
+
+  <!-- footer -->
+  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>© 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
+        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
+        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">運営者情報</a>
+        <a href="../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
