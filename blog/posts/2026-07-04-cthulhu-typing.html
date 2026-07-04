@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
+<title>クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話｜Bubblegum Game</title>
+<meta name="description" content="新作ブラウザゲーム「クトゥルフタイピング」を公開しました。打鍵を攻撃ではなく兵士の召喚にした理由、日替わりボス制で毎日1回の習慣型にした狙い、スコアを打鍵速度×正確率×ボス強度にして公平化した設計意図など、開発者視点でまとめます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
+<meta property="og:title" content="クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話｜Bubblegum Game">
+<meta property="og:description" content="打鍵を攻撃ではなく召喚に変えたら、タイピングが遅い人でも必ず勝てるゲームになった。新作の設計意図を開発者視点で。">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .prose { font-size:clamp(15px,3.8vw,17px); line-height:1.95; font-weight:500; color:#3d5b7c; }
+  .prose h2 { margin:34px 0 12px; font-weight:900; font-size:clamp(20px,4.6vw,26px); color:#2c4a6e; border-left:6px solid #2a9aa3; padding-left:12px; line-height:1.35; }
+  .prose h3 { margin:26px 0 8px; font-weight:800; font-size:clamp(17px,4vw,20px); color:#2c4a6e; }
+  .prose p { margin:0 0 16px; }
+  .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
+  .prose li { margin:4px 0; }
+  .prose a { color:#2a9aa3; font-weight:700; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話","datePublished":"2026-07-04","author":{"@type":"Person","name":"バブルガム"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"ja","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/soldier-typing.png","description":"打鍵を攻撃ではなく召喚に変えたら、タイピングが遅い人でも必ず勝てるゲームになった。新作の設計意図を開発者視点で。"}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5616851712582759"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
+    <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ 記事一覧</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../../" style="color:#cfe6ee;text-decoration:none;">ホーム</a>
+        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">ゲーム</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">ホーム</a> ／ <a href="../" style="color:#7e95ad;text-decoration:none;">記事</a> ／ <span style="color:#2c4a6e;">クトゥルフタイピングを公開しました</span></p>
+
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">2026.07.04</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">新ゲーム</span>
+    </div>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">クトゥルフタイピングを公開しました｜「打って攻撃」をやめて「打って召喚」にした話</h1>
+
+    <article class="prose">
+      <p>新作ブラウザゲーム<a href="../../games/cthulhu-typing.html">クトゥルフタイピング</a>を公開しました。ひらがなのお題をローマ字で打ちきるたびに兵士が1体召喚され、その軍勢が自動でクトゥルフ神話のボスを攻撃し続ける、タイピング×召喚バトルです。無料・登録不要で、物理キーボードのあるPCならブラウザですぐ遊べます（スマホ非対応）。1プレイは2〜3分ほど。</p>
+      <p>本作は前作<a href="../../games/soldier-typing.html">ソルジャータイピング</a>の系譜にあたる作品です。この記事では、続編を作るにあたって何を変えたのか、その設計意図を開発者の目線でまとめておきます。</p>
+
+      <h2>打鍵の役割を「攻撃」から「召喚」に裏返した</h2>
+      <p>前作を公開してから、ずっと気になっていた問題がありました。タイピングゲームの多くは「打つ＝攻撃」で、打鍵が止まった瞬間にプレイヤーは無力になります。この構造だと、打つのが速い人は爽快でも、遅い人はずっと苦しいまま。上手な人だけが楽しい設計になってしまうんです。</p>
+      <p>そこで今作では、打鍵の役割そのものを裏返しました。打つことで生まれるのは攻撃ではなく<strong>兵士</strong>です。お題を1つ打ちきるごとに兵士が1体召喚され、召喚済みの兵士は、プレイヤーが手を止めているあいだも自動でボスを殴り続けてくれます。打った成果が消えずに「資産」として画面に積み上がっていく——これは放置クリッカーの快感の作り方で、それをタイピングに接ぎ木したのが本作です。</p>
+      <p>この転換のいちばんの狙いは、<strong>タイピングが遅い人でも必ずクリアできる</strong>ことでした。討伐に時間制限はなく、ゲームオーバーもありません。ゆっくりでも打ち続ければ軍勢は着実に増え、ダメージは加速し、最後には必ずボスが倒れます。一方で速い人には、軍勢がみるみる膨らんでいく増殖の気持ちよさがある。同じルールのまま、上手な人と苦手な人の両方に別々のごほうびを用意できたのが、この設計の気に入っているところです。</p>
+      <p>細かい仕掛けもこの方針に沿わせています。ことばが長いほど強い兵士が出る（2文字なら村人、5文字なら竜・天使・パラディン級）、ノーミスで5語連続で打ちきると援軍がもう1体参戦する、兵士が40体を超えると合流して「×2 ×3…」と重なって巨大化する。どれも「打った分だけ軍勢が育つ」実感を強めるための演出です。</p>
+
+      <h2>ボスを「1日1体の日替わり」にした理由</h2>
+      <p>もうひとつの大きな決断が、ボスの出し方です。用意したボスはクトゥルフ神話の神格・眷属たち、全43体。これを最初から全部開放して自由に挑ませることもできたのですが、あえて<strong>1日1体の日替わり</strong>にして、しかも全プレイヤーが同じボスに挑む形にしました。今日クトゥルフが出ているなら、世界中の誰の画面にもクトゥルフが出ています。倒したらその日はクリアで、日本時間の深夜0時に次のボスとお題に切り替わります。</p>
+      <p>狙いは、どっぷり長時間遊ぶゲームではなく、<strong>毎日1回、2〜3分だけ遊ぶ習慣型のゲーム</strong>にすることでした。個人開発のブラウザゲームは一度クリアされたら終わり、になりがちです。それよりも「今日の神様はどいつだ」と毎日ちょっとだけ覗きに来てもらえる方が、作り手としても嬉しい。全員が同じボスというのも大事な点で、「今日のあいつ硬くない？」という共通の話題が生まれますし、ランキングも同じ土俵での勝負になります。</p>
+      <p>ちなみにボスによって兵士の集まり方も変えていて、正面を向いたボスには軍勢が左右から挟み撃ちを仕掛けます。日替わりで絵面が変わる、ささやかな楽しみです。</p>
+
+      <h2>スコア式は「打鍵速度 × 正確率 × ボス強度」</h2>
+      <p>日替わりボス制には、ひとつ副作用があります。ボスには強い日と弱い日があるので、単純に「与えたダメージ」や「討伐タイム」で競うと、弱いボスの日に遊んだ人が一方的に有利になってしまう。毎日リセットされる日次ランキングを載せる以上、これは放置できません。</p>
+      <p>そこでスコアは<strong>打鍵速度 × 正確率 × ボス強度</strong>という式にしました。強いボスの日はボス強度の係数が大きくなるので、どの日に遊んでも純粋に「自分の打鍵の質」で競えます。もうひとつ意図があって、正確率を掛け算に入れているため、ミスがスコアに直接響きます。つまり速く雑に打つより、確実に打ちきる方が伸びる。タイピング練習として見たときに、いちばん身になる打ち方が、いちばんスコアが出る打ち方になるように調整しました。</p>
+      <p>ランキングは、なまえを入れてプレイするだけでその日のベストスコアが自動掲載されます。登録は不要です。日次とは別に、これまで何体討伐したかを競う全期間の累計ランキングもあるので、コツコツ派はそちらをどうぞ。</p>
+
+      <h2>地味だけどこだわった点：IME切り替え不要</h2>
+      <p>最後に、画面には映らないこだわりをひとつ。本作は<strong>日本語入力（IME）がオンのままでもローマ字打鍵がそのまま通ります</strong>。タイピングゲームにありがちな「始める前にIMEをオフにしてください」という一手間は、前作でも案内していて、ずっと気になっていた部分でした。ブラウザゲームは思い立った瞬間に遊べるのが取り柄なのに、入り口で設定をいじらせるのはもったいない。今作ではキー入力を直接拾う方式にして、この摩擦をなくしています。</p>
+      <p>なお、プレイ記録はブラウザ（localStorage）に保存される仕組みなので、別の端末やシークレットモードには引き継がれません。いつものブラウザで遊んでもらえればと思います。</p>
+
+      <h2>今日のボスに挑んでみてください</h2>
+      <p>遊び方はシンプルです。ひらがなのお題をローマ字で打ちきる、兵士が出る、兵士が勝手に戦う。それだけ。タイピングが速い人はランキング上位を、ゆっくり派は自分のペースの討伐を楽しんでください。名状しがたい神々を村人とパラディンの大群でわしゃわしゃ殴る、あのバカバカしい画面はぜひ一度見てほしいです。</p>
+      <p>▶ <a href="../../games/cthulhu-typing.html">クトゥルフタイピングで今日のボスに挑む</a></p>
+      <p>前作の<a href="../../games/soldier-typing.html">ソルジャータイピング</a>や、リズムよく打てる<a href="../../games/popcorn-typing.html">パチパチタイピング</a>もあわせてどうぞ。</p>
+    </article>
+
+    <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← 記事一覧にもどる</a>
+    </div>
+  </main>
+
+  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+    <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>© 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">プライバシーポリシー</a>
+        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">お問い合わせ</a>
+        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">運営者情報</a>
+        <a href="../../" style="color:#cfe1ec;text-decoration:none;">ホーム</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
