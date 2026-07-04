@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
 <meta property="og:title" content="Why I Replaced &quot;Type to Attack&quot; with &quot;Type to Summon&quot;: Making Cthulhu Typing | Bubblegum Game">
 <meta property="og:description" content="Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game.">
-<meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/cthulhu-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why I Replaced \"Type to Attack\" with \"Type to Summon\": Making Cthulhu Typing","datePublished":"2026-07-04","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/soldier-typing.png","description":"Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why I Replaced \"Type to Attack\" with \"Type to Summon\": Making Cthulhu Typing","datePublished":"2026-07-04","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/cthulhu-typing.png","description":"Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -63,6 +63,8 @@
     <article class="prose">
       <p>My new browser game, <a href="../../games/cthulhu-typing.html">Cthulhu Typing</a>, is live. Every time you finish typing a hiragana word in romaji, one soldier is summoned, and your growing army keeps auto-attacking a boss from the Cthulhu Mythos on its own. It's a typing-meets-summoning battle. It's free, no sign-up, and plays right in the browser on any PC with a physical keyboard (no phones). A single run takes about two to three minutes.</p>
       <p>This game is the successor to my earlier <a href="../../games/soldier-typing.html">Soldier Typing</a>. In this post I want to walk through what I changed for the follow-up and the thinking behind those decisions, from a developer's point of view.</p>
+
+      <p><img src="../../images/cthulhu-typing.png" alt="A Cthulhu Typing gameplay screen: a hiragana word prompt at the top, an army of summoned soldiers swarming from the sides, and a towering Cthulhu Mythos boss taking damage"></p>
 
       <h2>Flipping keystrokes from "attack" to "summon"</h2>
       <p>Ever since I put out the first game, one thing kept nagging at me. In most typing games, typing equals attacking, which means the moment your hands stop, you're powerless. With that structure, fast typists get a thrill and slow ones just struggle the whole way through. The design only really rewards people who are already good.</p>
