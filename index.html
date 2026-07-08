@@ -21,22 +21,93 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  @keyframes bgbob  { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-12px) rotate(var(--r,0deg));} }
-  @keyframes bgbob2 { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(10px) rotate(var(--r,0deg));} }
-  @keyframes hpulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.16);} }
-  @keyframes wobble { 0%,100%{transform:rotate(-6deg);} 50%{transform:rotate(-1deg);} }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    background:#020b18;
+  }
+  img { max-width:100%; }
 
-  /* hover states (converted from the design prototype's style-hover attributes) */
-  .j-teal:hover   { background:#23838b !important; }
-  .j-white:hover  { background:#f1f8fc !important; }
-  .j-yellow:hover { background:#f0b520 !important; }
-  .j-news:hover   { background:#f4f9fc !important; }
-  .j-row:hover    { background:#f1f8fc !important; }
-  .j-card:hover   { transform:translateY(-3px) !important; box-shadow:0 11px 0 rgba(20,40,63,.18) !important; }
+  /* ---------- the dive: one continuous gradient from surface to abyss ---------- */
+  .ocean {
+    background:linear-gradient(to bottom,
+      #1173b8 0%,      /* just under the surface */
+      #0d5a9e 12%,
+      #0a4486 28%,
+      #073268 46%,
+      #052350 60%,
+      #041a40 78%,
+      #031233 100%);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* ---------- video sections ---------- */
+  .vid-wrap { position:relative; overflow:hidden; }
+  .vid-wrap video {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    image-rendering:pixelated;
+  }
+
+  /* ---------- floating bubbles ---------- */
+  @keyframes rise {
+    0%   { transform:translateY(0) translateX(0); opacity:0; }
+    10%  { opacity:.55; }
+    90%  { opacity:.4; }
+    100% { transform:translateY(-110vh) translateX(18px); opacity:0; }
+  }
+  .bubble {
+    position:absolute; bottom:-40px; border-radius:50%;
+    border:2px solid rgba(190,230,255,.5);
+    background:rgba(190,230,255,.08);
+    animation:rise linear infinite; pointer-events:none;
+  }
+
+  /* ---------- gentle bobbing for sea objects ---------- */
+  @keyframes bob   { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-10px) rotate(var(--r,0deg));} }
+  @keyframes bob2  { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(8px) rotate(var(--r,0deg));} }
+  @keyframes glowp { 0%,100%{box-shadow:0 0 18px rgba(120,220,255,.25),0 0 0 3px rgba(120,220,255,.18);} 50%{box-shadow:0 0 34px rgba(120,220,255,.55),0 0 0 3px rgba(120,220,255,.35);} }
+  @keyframes blink { 0%,70%{opacity:1;} 71%,100%{opacity:0;} }
+  @keyframes hpulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.16);} }
+
+  /* ---------- deep-sea game objects ---------- */
+  .sea-object {
+    display:block; text-decoration:none; position:relative;
+    background:rgba(3,12,30,.72);
+    border:3px solid rgba(120,210,255,.35);
+    border-radius:16px; overflow:hidden;
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    transition:transform .15s, border-color .15s;
+    animation:bob 5.5s ease-in-out infinite, glowp 4s ease-in-out infinite;
+  }
+  .sea-object:nth-child(even) { animation-name:bob2, glowp; animation-duration:6.5s, 4.6s; }
+  .sea-object:hover { transform:translateY(-6px) scale(1.02); border-color:#ffd766; animation-play-state:paused, running; }
+  .sea-object:hover .sea-cta { background:#ffd766; color:#14283f; }
+
+  .panel {
+    background:rgba(4,16,38,.66);
+    border:2px solid rgba(120,200,255,.22);
+    border-radius:16px;
+    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  }
+  .news-item:hover, .article-item:hover { background:rgba(120,200,255,.10) !important; }
+  .btn-teal:hover  { background:#2fb3bd !important; }
+  .btn-glass:hover { background:rgba(255,255,255,.16) !important; }
   nav a { white-space:nowrap; }
+
+  .depth {
+    font-family:'DotGothic16',monospace; font-size:12px; letter-spacing:3px;
+    color:rgba(150,210,245,.55); text-align:right;
+    max-width:900px; margin:0 auto; padding:0 22px 6px;
+    user-select:none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bubble, .sea-object { animation:none !important; }
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/","description":"Free handmade browser games by indie developer Bubblegum — an idle boss-rush clicker and Japanese typing games. No downloads, no sign-up.","inLanguage":"en"},{"@type":"ItemList","name":"Games You Can Play","itemListElement":[{"@type":"ListItem","position":1,"name":"Boss Rush Clicker","description":"An idle boss-rush game where you recruit soldiers and automate the fight. Works on desktop and mobile."},{"@type":"ListItem","position":2,"name":"Cthulhu Typing","description":"A typing-meets-summoning battle: every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos. Desktop only."},{"@type":"ListItem","position":3,"name":"Popcorn Typing","description":"A snappy typing game with a popping, popcorn-like rhythm. Japanese typing practice — type hiragana words in romaji."},{"@type":"ListItem","position":4,"name":"Soldier Typing","description":"A military-themed typing game where you type to fight."},{"@type":"ListItem","position":5,"name":"Piano Typing","description":"A rhythm-meets-typing game: press the highlighted keys to play classic melodies. Great home-row practice too."}]}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
@@ -50,11 +121,11 @@
 <div style="overflow-x:hidden;">
 
 <!-- ================= NAV ================= -->
-<nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
-  <div style="max-width:1040px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;gap:12px;">
-    <div style="display:flex;align-items:center;gap:clamp(10px,3vw,20px);font-weight:700;font-size:14px;">
-      <a href="#play" style="color:#cfe6ee;text-decoration:none;">Play</a>
-      <a href="updates.html" style="color:#cfe6ee;text-decoration:none;">Updates</a>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,20,44,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px solid rgba(120,200,255,.25);">
+  <div style="max-width:1040px;margin:0 auto;padding:12px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;gap:12px;">
+    <div style="display:flex;align-items:center;gap:clamp(10px,3vw,22px);font-weight:700;font-size:14px;">
+      <a href="#updates" style="color:#cfe6ee;text-decoration:none;">Updates</a>
+      <a href="#articles" style="color:#cfe6ee;text-decoration:none;">Articles</a>
       <a href="#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
       <a href="blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
       <a href="about.html" style="color:#cfe6ee;text-decoration:none;">About</a>
@@ -62,259 +133,261 @@
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
-<header id="top" style="position:relative;overflow:hidden;padding:clamp(38px,7vw,68px) 20px clamp(30px,5vw,46px);text-align:center;">
-  <div aria-hidden="true" style="position: absolute; inset: 0px; pointer-events: none;">
-    <span style="position:absolute;top:9%;left:7%;width:24px;height:24px;background:#ef4d52;border-radius:50%;--r:0deg;animation:bgbob 4.5s ease-in-out infinite;"></span>
-    <span style="position:absolute;top:20%;right:9%;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:24px solid #ffc233;--r:12deg;animation:bgbob2 5.5s ease-in-out infinite;"></span>
-    <span style="position:absolute;bottom:14%;left:13%;width:22px;height:22px;border:5px solid #7ec8e3;border-radius:50%;--r:0deg;animation:bgbob2 6s ease-in-out infinite;"></span>
-    <span style="position:absolute;top:13%;right:23%;width:18px;height:18px;background:#3bb4bd;border-radius:4px;--r:18deg;animation:bgbob 5s ease-in-out infinite;"></span>
-    <span style="position:absolute;bottom:9%;left:43%;width:13px;height:13px;background:#ef4d52;border-radius:3px;--r:24deg;animation:bgbob 4s ease-in-out infinite;"></span>
+<!-- ================= HERO : sky & ocean surface ================= -->
+<header id="top" class="vid-wrap" style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 60px;">
+  <video autoplay muted loop playsinline poster="videos/sky-sea-poster.jpg" aria-hidden="true">
+    <source src="videos/sky-sea.mp4" type="video/mp4">
+  </video>
+  <!-- readability veil + fade into the water at the bottom -->
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,20,45,.28) 0%,rgba(5,20,45,.05) 35%,rgba(8,40,90,.0) 60%,#1173b8 99%);"></div>
+
+  <div style="position:relative;max-width:720px;">
+    <!-- soul mark (pixel heart) -->
+    <div style="width:42px;height:36px;margin:0 auto 18px;position:relative;animation:hpulse 2.4s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));"><i style="position:absolute;top:0;left:0;width:6px;height:6px;background:transparent;box-shadow:6px 0 0 0 #ef4d52,12px 0 0 0 #ef4d52,24px 0 0 0 #ef4d52,30px 0 0 0 #ef4d52,0 6px 0 0 #ef4d52,6px 6px 0 0 #ef4d52,12px 6px 0 0 #ef4d52,18px 6px 0 0 #ef4d52,24px 6px 0 0 #ef4d52,30px 6px 0 0 #ef4d52,36px 6px 0 0 #ef4d52,0 12px 0 0 #ef4d52,6px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,18px 12px 0 0 #ef4d52,24px 12px 0 0 #ef4d52,30px 12px 0 0 #ef4d52,36px 12px 0 0 #ef4d52,6px 18px 0 0 #ef4d52,12px 18px 0 0 #ef4d52,18px 18px 0 0 #ef4d52,24px 18px 0 0 #ef4d52,30px 18px 0 0 #ef4d52,12px 24px 0 0 #ef4d52,18px 24px 0 0 #ef4d52,24px 24px 0 0 #ef4d52,18px 30px 0 0 #ef4d52;"></i></div>
+
+    <h1 style="margin:0;font-weight:900;font-size:clamp(36px,9vw,70px);line-height:1.04;letter-spacing:-.5px;color:#fff;text-shadow:0 3px 0 rgba(10,40,80,.45),0 6px 24px rgba(0,20,50,.5);">Bubblegum <span style="color:#ffe27a;">Game</span></h1>
+    <p style="margin:10px 0 0;font-family:'DotGothic16',monospace;font-size:clamp(12px,3.4vw,17px);color:#eaf6ff;letter-spacing:2px;text-shadow:0 2px 8px rgba(0,20,50,.6);">- Bubblegum's little game corner -</p>
+
+    <!-- RPG dialogue box -->
+    <div style="position:relative;max-width:540px;margin:26px auto 0;background:rgba(6,22,48,.78);border:3px solid #bfe4ff;border-radius:14px;padding:16px 20px 18px;text-align:left;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);">
+      <span style="position:absolute;top:6px;left:6px;width:7px;height:7px;background:#bfe4ff;"></span>
+      <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
+      <span style="position:absolute;bottom:6px;left:6px;width:7px;height:7px;background:#bfe4ff;"></span>
+      <span style="position:absolute;bottom:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
+      <p style="margin:0;font-family:'DotGothic16',monospace;font-size:clamp(14px,3.8vw,17px);line-height:1.8;color:#eaf6ff;">Handmade games sleep on the ocean floor.<br>Dive down and wake them up.<span style="animation:blink 1.1s step-end infinite;">▼</span></p>
+    </div>
+
+    <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
+      <a href="#games" class="btn-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,17px);padding:13px 30px;border-radius:10px;border:2px solid rgba(255,255,255,.35);transition:background .12s;">🤿 Dive to the Games</a>
+      <a href="blog/" class="btn-glass" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.45);transition:background .12s;">Read the Blog →</a>
+    </div>
   </div>
 
-  <!-- soul mark (pixel heart) -->
-  <div style="width:42px;height:36px;margin:0 auto 18px;position:relative;animation:hpulse 2.4s ease-in-out infinite;"><i style="position:absolute;top:0;left:0;width:6px;height:6px;background:transparent;box-shadow:6px 0 0 0 #ef4d52,12px 0 0 0 #ef4d52,24px 0 0 0 #ef4d52,30px 0 0 0 #ef4d52,0 6px 0 0 #ef4d52,6px 6px 0 0 #ef4d52,12px 6px 0 0 #ef4d52,18px 6px 0 0 #ef4d52,24px 6px 0 0 #ef4d52,30px 6px 0 0 #ef4d52,36px 6px 0 0 #ef4d52,0 12px 0 0 #ef4d52,6px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,18px 12px 0 0 #ef4d52,24px 12px 0 0 #ef4d52,30px 12px 0 0 #ef4d52,36px 12px 0 0 #ef4d52,6px 18px 0 0 #ef4d52,12px 18px 0 0 #ef4d52,18px 18px 0 0 #ef4d52,24px 18px 0 0 #ef4d52,30px 18px 0 0 #ef4d52,12px 24px 0 0 #ef4d52,18px 24px 0 0 #ef4d52,24px 24px 0 0 #ef4d52,18px 30px 0 0 #ef4d52;"></i></div>
-
-  <h1 style="margin:0;font-weight:900;font-size:clamp(34px,9vw,66px);line-height:1.04;letter-spacing:-.5px;color:#2c4a6e;">Bubblegum <span style="color:#2a9aa3;">Game</span></h1>
-  <p style="margin:9px 0 0;font-family:'DotGothic16',monospace;font-size:clamp(12px,3.4vw,17px);color:#5b7796;letter-spacing:2px;">- Bubblegum's little game corner -</p>
-
-  <!-- RPG dialogue box -->
-  <div style="position:relative;max-width:560px;margin:24px auto 0;background:#fff;border:3px solid #14283f;border-radius:14px;padding:18px 22px 20px;text-align:left;box-shadow:0 4px 0 rgba(20,40,63,.12);">
-    <span style="position:absolute;top:6px;left:6px;width:7px;height:7px;background:#14283f;"></span>
-    <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;background:#14283f;"></span>
-    <span style="position:absolute;bottom:6px;left:6px;width:7px;height:7px;background:#14283f;"></span>
-    <span style="position:absolute;bottom:6px;right:6px;width:7px;height:7px;background:#14283f;"></span>
-    <p style="margin:0;display:flex;align-items:flex-start;gap:12px;font-size:clamp(15px,3.8vw,18px);font-weight:500;line-height:1.7;color:#2c4a6e;">
-      <span style="flex:none;margin-top:4px;display:inline-block;width:28px;height:24px;position:relative;"><i style="position:absolute;top:0;left:0;width:4px;height:4px;background:transparent;box-shadow:4px 0 0 0 #ef4d52,8px 0 0 0 #ef4d52,16px 0 0 0 #ef4d52,20px 0 0 0 #ef4d52,0 4px 0 0 #ef4d52,4px 4px 0 0 #ef4d52,8px 4px 0 0 #ef4d52,12px 4px 0 0 #ef4d52,16px 4px 0 0 #ef4d52,20px 4px 0 0 #ef4d52,24px 4px 0 0 #ef4d52,0 8px 0 0 #ef4d52,4px 8px 0 0 #ef4d52,8px 8px 0 0 #ef4d52,12px 8px 0 0 #ef4d52,16px 8px 0 0 #ef4d52,20px 8px 0 0 #ef4d52,24px 8px 0 0 #ef4d52,4px 12px 0 0 #ef4d52,8px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,16px 12px 0 0 #ef4d52,20px 12px 0 0 #ef4d52,8px 16px 0 0 #ef4d52,12px 16px 0 0 #ef4d52,16px 16px 0 0 #ef4d52,12px 20px 0 0 #ef4d52;"></i></span>
-      <span>Handmade games you can play right here in your browser.<br></span>
-    </p>
-  </div>
-
-  <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
-    <a href="#play" class="j-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;transition:background .12s;">▶ Play Now</a>
-    <a href="blog/" class="j-white" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#2c4a6e;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid #cde0ea;transition:background .12s;">Read the Blog →</a>
-  </div>
+  <!-- scroll hint pinned to the bottom of the hero -->
+  <div style="position:absolute;bottom:16px;left:0;right:0;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#f2fbff;text-shadow:0 2px 6px rgba(0,20,50,.7);">SCROLL TO DIVE ▼</div>
 </header>
 
-<main>
-<!-- ================= FEATURED CLICKER ================= -->
-<section id="play" style="padding:clamp(30px,5vw,52px) 20px clamp(36px,6vw,60px);background:#fff;border-top:3px solid #14283f;">
-  <div style="max-width:860px;margin:0 auto;">
-    <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;">
-      <span style="width:9px;height:9px;background:#ef4d52;border-radius:2px;"></span>
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;letter-spacing:2px;color:#9a6b00;">FEATURED GAME</span>
-    </div>
-    <h2 style="margin:0 0 4px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#2c4a6e;"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#2a9aa3;margin-bottom:5px;">Recruit soldiers, automate the grind</span>Boss Rush Clicker</h2>
-    <p style="margin:0 auto 14px;max-width:560px;text-align:center;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#3d5b7c;">An idle boss-rush game with 40 formidable bosses in your way. Upgrade your weapons, recruit soldiers, and let your army fight on autopilot.</p>
-    <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#fff0cc;color:#9a6b00;border-radius:7px;padding:5px 12px;">Idle Game</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border-radius:7px;padding:5px 12px;">Clicker</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#eaf1f7;color:#3d5b7c;border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
+<!-- ================= UNDERWATER DESCENT ================= -->
+<div class="ocean">
+  <!-- ambient bubbles for the whole descent -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <span class="bubble" style="left:6%;  width:14px;height:14px;animation-duration:11s;animation-delay:0s;"></span>
+    <span class="bubble" style="left:16%; width:8px; height:8px; animation-duration:14s;animation-delay:3s;"></span>
+    <span class="bubble" style="left:28%; width:18px;height:18px;animation-duration:12s;animation-delay:6s;"></span>
+    <span class="bubble" style="left:47%; width:10px;height:10px;animation-duration:15s;animation-delay:1.5s;"></span>
+    <span class="bubble" style="left:62%; width:13px;height:13px;animation-duration:10s;animation-delay:4.5s;"></span>
+    <span class="bubble" style="left:76%; width:9px; height:9px; animation-duration:13s;animation-delay:8s;"></span>
+    <span class="bubble" style="left:88%; width:16px;height:16px;animation-duration:12.5s;animation-delay:2s;"></span>
+  </div>
+
+<main style="position:relative;">
+
+<!-- ================= UPDATES ================= -->
+<!-- ▼▼▼ Updates: to add an entry, copy one <a>…</a> block below and paste it at the top ▼▼▼
+     Suggested tags: "New Game" (#2a9aa3) / "Update" (#e08a1e) / "News" (#7a93ad). -->
+<section id="updates" style="padding:clamp(48px,8vw,84px) 20px clamp(26px,4vw,40px);">
+  <p class="depth">DEPTH -20m</p>
+  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;border-bottom:2px solid rgba(120,200,255,.35);padding-bottom:10px;">
+      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#fff;">Updates</h2>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;letter-spacing:2px;">WHAT'S NEW</span>
     </div>
 
-    <a href="games/clicker.html" class="j-card" style="display:block;text-decoration:none;position:relative;background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);transition:transform .12s,box-shadow .12s;">
-      <div style="position:relative;width:100%;aspect-ratio:16/10;background:#0b1320;border-radius:11px;overflow:hidden;">
+    <a href="games/cthulhu-typing.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">July 4, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Cthulhu Typing is out! Every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos.</span>
+    </a>
+    <a href="games/piano-typing.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 26, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Piano Typing is out! Press the highlighted keys to play classic melodies — part rhythm game, part typing practice.</span>
+    </a>
+    <a href="games/clicker.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 21, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Boss Rush Clicker is out!</span>
+    </a>
+    <a href="ura/" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 15, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Opened Ura, a Japanese-style horror bulletin board — a spooky side project.</span>
+    </a>
+    <a href="blog/posts/2026-06-01-site-renewal.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 1, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">The site got a full redesign.</span>
+    </a>
+    <!-- ▲▲▲ end of updates (newest on top) ▲▲▲ -->
+
+    <div style="margin-top:16px;text-align:right;">
+      <a href="updates.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">View all updates →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEW ARTICLES ================= -->
+<section id="articles" style="padding:clamp(26px,4vw,40px) 20px;">
+  <p class="depth">DEPTH -200m</p>
+  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;border-bottom:2px solid rgba(120,200,255,.35);padding-bottom:10px;">
+      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#fff;">New Articles</h2>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;letter-spacing:2px;">FROM THE BLOG</span>
+    </div>
+
+    <a href="blog/posts/2026-06-22-clicker-strategy.html" class="article-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 22, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">A strategy guide for Boss Rush Clicker.</span>
+    </a>
+    <a href="blog/posts/2026-06-20-popcorn-typing-tips.html" class="article-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;text-decoration:none;border-radius:8px;transition:background .12s;">
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 20, 2026</span>
+      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
+      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Tips and tricks for getting better at Popcorn Typing.</span>
+    </a>
+
+    <div style="margin-top:16px;text-align:right;">
+      <a href="blog/" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">Browse all articles →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- /.ocean descent -->
+
+<!-- ================= DEEP SEA : the games sleep here ================= -->
+<section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
+  <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" aria-hidden="true">
+    <source src="videos/deep-sea.mp4" type="video/mp4">
+  </video>
+  <!-- blend the descent gradient into the video top & bottom -->
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,#031233 0%,rgba(3,18,51,0) 14%,rgba(3,18,51,0) 86%,#020b18 100%);"></div>
+
+  <div style="position:relative;max-width:900px;margin:0 auto;">
+    <p style="margin:0 0 4px;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#9fdcff;text-shadow:0 2px 8px rgba(0,10,30,.9);">DEPTH -3994m · THE GAME TRENCH</p>
+    <h2 style="margin:0 0 10px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,44px);color:#fff;text-shadow:0 3px 0 rgba(0,10,30,.6),0 8px 30px rgba(0,10,30,.8);">Relics of the Deep</h2>
+    <p style="margin:0 auto 8px;max-width:560px;text-align:center;font-size:clamp(14px,3.7vw,16px);font-weight:600;line-height:1.75;color:#cfeaff;text-shadow:0 2px 10px rgba(0,10,30,.9);">Five handmade games rest on the sea floor. Click one to play it — right here in your browser, no downloads, no sign-up.</p>
+    <p style="margin:0 auto 34px;max-width:560px;text-align:center;font-size:clamp(12px,3.2vw,14px);font-weight:500;line-height:1.7;color:#9cc4e4;text-shadow:0 2px 10px rgba(0,10,30,.9);">The typing games are Japanese typing practice — type hiragana words in romaji. A fun challenge for Japanese learners and typists alike.</p>
+
+    <!-- featured relic -->
+    <a href="games/clicker.html" class="sea-object" style="max-width:640px;margin:0 auto 34px;--r:0deg;">
+      <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;">
         <img src="images/spacebar-clicker.png" alt="Boss Rush Clicker gameplay screenshot" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <span style="position:absolute;top:10px;left:10px;font-family:'DotGothic16',monospace;font-size:11px;letter-spacing:2px;background:rgba(255,215,102,.95);color:#14283f;border-radius:6px;padding:4px 10px;">★ FEATURED RELIC</span>
+      </div>
+      <div style="padding:16px 18px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+        <div style="min-width:0;">
+          <h3 style="margin:0 0 4px;font-weight:900;font-size:clamp(19px,4.6vw,26px);color:#fff;">Boss Rush Clicker</h3>
+          <p style="margin:0;font-size:clamp(13px,3.4vw,15px);font-weight:500;line-height:1.6;color:#b8d9f2;">40 bosses block your way. Upgrade weapons, recruit soldiers, and let your army grind on autopilot. Desktop &amp; mobile.</p>
+        </div>
+        <span class="sea-cta" style="flex:none;display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;font-weight:800;font-size:15px;padding:11px 24px;border-radius:10px;transition:background .12s,color .12s;">▶ Play</span>
       </div>
     </a>
-    <div style="text-align:center;margin-top:18px;">
-      <a href="games/clicker.html" class="j-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:12px 30px;border-radius:10px;transition:background .12s;">▶ Play</a>
-    </div>
-  </div>
-</section>
 
-<!-- ================= NEWS ================= -->
-<!-- ▼▼▼ News: to add an entry, copy one <a>…</a> block below and paste it at the top ▼▼▼
-     Suggested tags: "New Game" (#2a9aa3) / "Update" (#e08a1e) / "News" (#7a93ad) / "Guide" (#6b8e3a).
-     href points at the destination (blog/posts/… for articles; use https://… and target="_blank" for external links). -->
-<section id="news" style="padding:clamp(30px,5vw,52px) 20px;background:#fff;">
-  <div style="max-width:680px;margin:0 auto;">
-    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:18px;border-bottom:3px solid #2c4a6e;padding-bottom:8px;">
-      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#2c4a6e;">What's New</h2>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:2px;">NEWS</span>
-    </div>
-
-    <a href="games/cthulhu-typing.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 4, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Cthulhu Typing is out! Every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos.</span>
-    </a>
-    <a href="games/piano-typing.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 26, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Piano Typing is out! Press the highlighted keys to play classic melodies — part rhythm game, part typing practice.</span>
-    </a>
-    <a href="blog/posts/2026-06-22-clicker-strategy.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Posted a strategy guide for Boss Rush Clicker.</span>
-    </a>
-    <a href="blog/posts/2026-06-20-popcorn-typing-tips.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 20, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Posted tips and tricks for getting better at Popcorn Typing.</span>
-    </a>
-    <a href="games/clicker.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 21, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Boss Rush Clicker is out!</span>
-    </a>
-    <a href="ura/" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 15, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">Opened Ura, a Japanese-style horror bulletin board — a spooky side project.</span>
-    </a>
-    <a href="blog/posts/2026-06-01-site-renewal.html" target="_self" class="j-news" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 4px;border-bottom:1px solid #e3edf3;text-decoration:none;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 1, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#2c4a6e;line-height:1.55;">The site got a full redesign.</span>
-    </a>
-    <!-- ▲▲▲ end of news (newest on top) ▲▲▲ -->
-
-    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;">
-      <a href="updates.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">View all updates →</a>
-      <a href="blog/" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">Browse all articles →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= MORE GAMES ================= -->
-<section id="games" style="padding:clamp(34px,6vw,64px) 20px;">
-  <div style="max-width:860px;margin:0 auto;">
-    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;">
-      <h2 style="margin:0;font-weight:900;font-size:clamp(24px,5.5vw,36px);color:#2c4a6e;text-align:center;">More Games</h2>
-      <span style="display:inline-block;width:28px;height:24px;position:relative;"><i style="position:absolute;top:0;left:0;width:4px;height:4px;background:transparent;box-shadow:4px 0 0 0 #ef4d52,8px 0 0 0 #ef4d52,16px 0 0 0 #ef4d52,20px 0 0 0 #ef4d52,0 4px 0 0 #ef4d52,4px 4px 0 0 #ef4d52,8px 4px 0 0 #ef4d52,12px 4px 0 0 #ef4d52,16px 4px 0 0 #ef4d52,20px 4px 0 0 #ef4d52,24px 4px 0 0 #ef4d52,0 8px 0 0 #ef4d52,4px 8px 0 0 #ef4d52,8px 8px 0 0 #ef4d52,12px 8px 0 0 #ef4d52,16px 8px 0 0 #ef4d52,20px 8px 0 0 #ef4d52,24px 8px 0 0 #ef4d52,4px 12px 0 0 #ef4d52,8px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,16px 12px 0 0 #ef4d52,20px 12px 0 0 #ef4d52,8px 16px 0 0 #ef4d52,12px 16px 0 0 #ef4d52,16px 16px 0 0 #ef4d52,12px 20px 0 0 #ef4d52;"></i></span>
-    </div>
-    <p style="margin:10px auto 0;max-width:640px;text-align:center;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.7;color:#5b7796;">The typing games are Japanese typing practice: you type hiragana words using romaji (roman letters). The game interfaces are in Japanese — a fun challenge for Japanese learners and typists alike.</p>
-
-    <div style="border-top:2px solid #d4e6ef;margin-top:18px;">
-      <a href="games/cthulhu-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
-        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+    <!-- the other relics -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;">
+      <a href="games/cthulhu-typing.html" class="sea-object" style="--r:-1deg;">
+        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
           <img src="images/cthulhu-typing.png" alt="Cthulhu Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </span>
-        <div style="flex:1 1 240px;min-width:0;">
-          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
-            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">Cthulhu Typing</h3>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">Typing</span>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">Desktop only</span>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#fff0cc;color:#9a6b00;border-radius:6px;padding:3px 9px;">NEW</span>
-          </div>
-          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">Every word you finish typing summons a soldier that auto-attacks the day's boss from the Cthulhu Mythos. One run per day — typing meets summoning battles.</p>
+          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
-        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">Play ▶</span>
+        <div style="padding:13px 15px 15px;">
+          <h3 style="margin:0 0 4px;font-weight:800;font-size:18px;color:#fff;">Cthulhu Typing</h3>
+          <p style="margin:0 0 8px;font-size:13px;font-weight:500;line-height:1.55;color:#b8d9f2;">Type words to summon soldiers against a daily Mythos boss. One run per day. Desktop only.</p>
+          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:13px;padding:7px 16px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
+        </div>
       </a>
-      <a href="games/piano-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
-        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+      <a href="games/piano-typing.html" class="sea-object" style="--r:1deg;">
+        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
           <img src="images/piano-typing.png" alt="Piano Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </span>
-        <div style="flex:1 1 240px;min-width:0;">
-          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
-            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">Piano Typing</h3>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">Rhythm</span>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">Desktop</span>
-          </div>
-          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">Press the highlighted keys and classics like the Turkish March play themselves. Part rhythm game, part typing — great home-row practice too.</p>
         </div>
-        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">Play ▶</span>
+        <div style="padding:13px 15px 15px;">
+          <h3 style="margin:0 0 4px;font-weight:800;font-size:18px;color:#fff;">Piano Typing</h3>
+          <p style="margin:0 0 8px;font-size:13px;font-weight:500;line-height:1.55;color:#b8d9f2;">Press the highlighted keys and classics play themselves. Part rhythm game, part typing practice.</p>
+          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:13px;padding:7px 16px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
+        </div>
       </a>
-      <a href="games/popcorn-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
-        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+      <a href="games/popcorn-typing.html" class="sea-object" style="--r:-1deg;">
+        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
           <img src="images/popcorn-typing.png" alt="Popcorn Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </span>
-        <div style="flex:1 1 240px;min-width:0;">
-          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
-            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">Popcorn Typing</h3>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">Typing</span>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">Desktop</span>
-          </div>
-          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">A snappy typing game where every keystroke pops like popcorn. Japanese typing practice — type hiragana words using romaji.</p>
         </div>
-        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">Play ▶</span>
+        <div style="padding:13px 15px 15px;">
+          <h3 style="margin:0 0 4px;font-weight:800;font-size:18px;color:#fff;">Popcorn Typing</h3>
+          <p style="margin:0 0 8px;font-size:13px;font-weight:500;line-height:1.55;color:#b8d9f2;">Every keystroke pops like popcorn. Type hiragana words using romaji.</p>
+          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:13px;padding:7px 16px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
+        </div>
       </a>
-      <a href="games/soldier-typing.html" class="j-row" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:18px 6px;text-decoration:none;border-bottom:2px solid #d4e6ef;transition:background .12s;">
-        <span style="flex:none;width:128px;aspect-ratio:4/3;background:#dfeef5;border-radius:8px;overflow:hidden;">
+      <a href="games/soldier-typing.html" class="sea-object" style="--r:1deg;">
+        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
           <img src="images/soldier-typing.png" alt="Soldier Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </span>
-        <div style="flex:1 1 240px;min-width:0;">
-          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px;">
-            <h3 style="margin:0;font-weight:800;font-size:clamp(18px,4.4vw,24px);color:#2c4a6e;">Soldier Typing</h3>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#d7f1f3;color:#1e7a82;border-radius:6px;padding:3px 9px;">Typing</span>
-            <span style="font-family:'DotGothic16',monospace;font-size:11px;background:#eaf1f7;color:#3d5b7c;border-radius:6px;padding:3px 9px;">Desktop</span>
-          </div>
-          <p style="margin:0;font-size:clamp(13px,3.5vw,15px);font-weight:500;line-height:1.6;color:#3d5b7c;">Type to take down enemies in this military-themed typing game with a satisfying keystroke rhythm.</p>
         </div>
-        <span style="flex:none;display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:700;font-size:15px;">Play ▶</span>
+        <div style="padding:13px 15px 15px;">
+          <h3 style="margin:0 0 4px;font-weight:800;font-size:18px;color:#fff;">Soldier Typing</h3>
+          <p style="margin:0 0 8px;font-size:13px;font-weight:500;line-height:1.55;color:#b8d9f2;">Type to take down enemies in this military-themed typing game.</p>
+          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:13px;padding:7px 16px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================= BLOG CONNECT ================= -->
-<section style="padding:clamp(30px,5vw,56px) 20px;background:#2c4a6e;">
-  <div style="max-width:680px;margin:0 auto;text-align:center;">
-    <p style="margin:0 0 6px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb4cf;letter-spacing:2px;">FROM THE BLOG</p>
-    <h2 style="margin:0 0 12px;font-weight:900;font-size:clamp(22px,5vw,32px);color:#fff;line-height:1.3;">Strategy guides and dev stories on the blog</h2>
-    <p style="margin:0 auto 22px;max-width:460px;font-weight:500;font-size:clamp(14px,3.7vw,16px);line-height:1.75;color:#cfe1ec;">I write strategy guides for each game, behind-the-scenes development notes, and news about the site.</p>
-    <a href="blog/" class="j-yellow" style="display:inline-flex;align-items:center;gap:7px;background:#ffc233;color:#2c4a6e;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,16px);padding:12px 28px;border-radius:10px;transition:background .12s;">Read the Blog →</a>
+<!-- ================= SEA FLOOR : profile & contact ================= -->
+<div style="background:linear-gradient(to bottom,#020b18 0%,#02091a 100%);position:relative;">
+
+<section id="about" style="padding:clamp(44px,7vw,72px) 20px clamp(24px,4vw,36px);">
+  <p class="depth">DEPTH -8000m · THE SEA FLOOR</p>
+  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
+    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#fff;">About This Site</h2>
+    <p style="margin:0 0 14px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#c7e2f5;font-weight:500;">Bubblegum Game is a collection of free browser games handmade by "Bubblegum", a solo indie developer in Japan.</p>
+    <p style="margin:0 0 16px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#c7e2f5;font-weight:500;">I'm a lifelong gamer who loves making games as much as playing them. Everything here is a lightweight HTML game you can enjoy the moment the page loads — if you like what you find, bookmark the site! I aim to update it about twice a month.</p>
+    <a href="about.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;text-decoration:none;font-weight:800;font-size:15px;">Meet the developer →</a>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" style="padding:clamp(34px,5vw,56px) 20px;">
-  <div style="max-width:680px;margin:0 auto;">
-    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#2c4a6e;">About This Site</h2>
-    <p style="margin:0 0 14px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;">Bubblegum Game is a collection of free browser games handmade by "Bubblegum", a solo indie developer in Japan.</p>
-    <p style="margin:0 0 16px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;">I'm a lifelong gamer who loves making games as much as playing them. Everything here is a lightweight HTML game you can enjoy the moment the page loads — if you like what you find, bookmark the site! I aim to update it about twice a month.</p>
-    <a href="about.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;text-decoration:none;font-weight:800;font-size:15px;">Meet the developer →</a>
+<section id="privacy" style="padding:clamp(20px,3vw,30px) 20px;">
+  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
+    <h2 style="margin:0 0 6px;font-weight:900;font-size:clamp(19px,4.4vw,26px);color:#fff;">Privacy Policy</h2>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;">Last updated: July 4, 2026</p>
+    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">This site uses Google AdSense, a third-party advertising service, and Google Analytics for traffic measurement. These services use cookies to show ads based on your interests and to collect anonymous traffic data.</p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">The full privacy policy explains how cookies are used, how to opt out of personalized ads, how contact form data is handled, and our disclaimer and copyright notice.</p>
+    <a href="privacy.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;text-decoration:none;font-weight:800;font-size:15px;">Read the full Privacy Policy →</a>
   </div>
 </section>
 
-<!-- ================= PRIVACY POLICY ================= -->
-<section id="privacy" style="padding:clamp(30px,5vw,52px) 20px;background:#eef6fa;border-top:3px solid #cfe1ec;">
-  <div style="max-width:680px;margin:0 auto;">
-    <h2 style="margin:0 0 6px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#2c4a6e;">Privacy Policy</h2>
-    <p style="margin:0 0 22px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;">Last updated: July 4, 2026</p>
-
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">This site uses Google AdSense, a third-party advertising service, and Google Analytics for traffic measurement. These services use cookies to show ads based on your interests and to collect anonymous traffic data.</p>
-    <p style="margin:0 0 16px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">The full privacy policy explains how cookies are used, how to opt out of personalized ads, how contact form data is handled, and our disclaimer and copyright notice.</p>
-    <a href="privacy.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;text-decoration:none;font-weight:800;font-size:15px;">Read the full Privacy Policy →</a>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" style="padding:clamp(30px,5vw,52px) 20px clamp(40px,6vw,64px);background:#eef6fa;">
-  <div style="max-width:680px;margin:0 auto;">
-    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#2c4a6e;">Contact</h2>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#3d5b7c;font-weight:500;">Bug reports, feedback, and business inquiries are all welcome through the form below. Common questions and typical response times are covered on the <a href="contact.html" style="color:#2a9aa3;font-weight:700;">contact page</a>.</p>
-    <div style="max-width:640px;margin-bottom:16px;">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfaDrcmZZaiC0JEf8ExZ_e1D4ZiTB4FIuP_uEOmXC7nQvuQdw/viewform?embedded=true" width="100%" height="646" style="border:0;max-width:100%;" loading="lazy" title="Contact form">Loading…</iframe>
+<section id="contact" style="padding:clamp(20px,3vw,30px) 20px clamp(44px,7vw,72px);">
+  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
+    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(19px,4.4vw,26px);color:#fff;">Contact</h2>
+    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">Bug reports, feedback, and business inquiries are all welcome through the form below. Common questions and typical response times are covered on the <a href="contact.html" style="color:#7fe3ec;font-weight:700;">contact page</a>.</p>
+    <div style="max-width:640px;margin-bottom:16px;background:#fff;border-radius:10px;overflow:hidden;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfaDrcmZZaiC0JEf8ExZ_e1D4ZiTB4FIuP_uEOmXC7nQvuQdw/viewform?embedded=true" width="100%" height="646" style="border:0;max-width:100%;display:block;" loading="lazy" title="Contact form">Loading…</iframe>
     </div>
-    <a href="contact.html" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;text-decoration:none;font-weight:800;font-size:15px;">Go to the contact page →</a>
+    <a href="contact.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;text-decoration:none;font-weight:800;font-size:15px;">Go to the contact page →</a>
   </div>
 </section>
-</main>
 
-<!-- ================= FOOTER ================= -->
-<footer style="background:#14283f;color:#cfe1ec;padding:clamp(32px,5vw,48px) 20px 26px;">
+</div>
+
+<!-- ================= FOOTER : bottom of the trench ================= -->
+<footer style="background:#01060f;color:#cfe1ec;padding:clamp(32px,5vw,48px) 20px 26px;border-top:2px solid rgba(120,200,255,.15);">
   <div style="max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;justify-content:flex-start;align-items:flex-start;">
     <div>
-      <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;letter-spacing:1px;">MENU</p>
+      <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#5f88a8;letter-spacing:1px;">MENU</p>
       <div style="display:flex;flex-direction:column;gap:10px;font-weight:700;font-size:14px;">
-        <a href="#news" style="color:#cfe1ec;text-decoration:none;">What's New</a>
-        <a href="updates.html" style="color:#cfe1ec;text-decoration:none;">Updates</a>
+        <a href="#updates" style="color:#cfe1ec;text-decoration:none;">Updates</a>
+        <a href="updates.html" style="color:#cfe1ec;text-decoration:none;">All Updates</a>
         <a href="#games" style="color:#cfe1ec;text-decoration:none;">Games</a>
         <a href="blog/" style="color:#cfe1ec;text-decoration:none;">Blog</a>
         <a href="about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
         <a href="privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
         <a href="contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="color:#8fa6bd;text-decoration:none;">Sister Blog (Japanese) ↗</a>
-        <a href="ura/" style="color:#8fa6bd;text-decoration:none;">Ura — Japanese horror board</a>
+        <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="color:#6f93b0;text-decoration:none;">Sister Blog (Japanese) ↗</a>
+        <a href="ura/" style="color:#6f93b0;text-decoration:none;">Ura — Japanese horror board</a>
       </div>
     </div>
   </div>
-  <div style="max-width:1040px;margin:28px auto 0;padding-top:17px;border-top:2px solid #2a425c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span style="font-size:13px;color:#7fa3bd;">© 2026 Bubblegum Game</span>
-    <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;">bubblegumgameboy.com</span>
+  <div style="max-width:1040px;margin:28px auto 0;padding-top:17px;border-top:2px solid #12233a;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <span style="font-size:13px;color:#5f88a8;">© 2026 Bubblegum Game</span>
+    <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#5f88a8;">bubblegumgameboy.com</span>
   </div>
 </footer>
 
