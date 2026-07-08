@@ -135,7 +135,7 @@
 
 <!-- ================= HERO : sky & ocean surface ================= -->
 <header id="top" class="vid-wrap" style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 60px;">
-  <video autoplay muted loop playsinline poster="videos/sky-sea-poster.jpg" aria-hidden="true">
+  <video autoplay muted loop playsinline poster="videos/sky-sea-poster.jpg" aria-hidden="true" data-hd="videos/sky-sea-hd.webm">
     <source src="videos/sky-sea.webm" type="video/webm">
     <source src="videos/sky-sea.mp4" type="video/mp4">
   </video>
@@ -258,7 +258,7 @@
 
 <!-- ================= DEEP SEA : the games sleep here ================= -->
 <section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
-  <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" aria-hidden="true">
+  <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" aria-hidden="true" data-hd="videos/deep-sea-hd.webm">
     <source src="videos/deep-sea.webm" type="video/webm">
     <source src="videos/deep-sea.mp4" type="video/mp4">
   </video>
@@ -394,6 +394,23 @@
 </footer>
 
 </div>
+
+<script>
+// Wide landscape screens stretch the portrait videos ~2.5x, which blurs the
+// pixel art. Swap in pre-upscaled (nearest-neighbor) HD encodes there; phones
+// keep the small files. VP9-only — browsers without it stay on the fallback.
+(function(){
+  if (!window.matchMedia('(orientation: landscape) and (min-width: 700px)').matches) return;
+  if (!document.createElement('video').canPlayType('video/webm; codecs="vp9"')) return;
+  document.querySelectorAll('video[data-hd]').forEach(function(el){
+    var webm = el.querySelector('source[type="video/webm"]');
+    if (!webm) return;
+    webm.src = el.getAttribute('data-hd');
+    el.load();
+    el.play().catch(function(){});
+  });
+})();
+</script>
 
 </body>
 </html>
