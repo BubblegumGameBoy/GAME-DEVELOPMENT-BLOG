@@ -95,6 +95,25 @@
   }
   .news-item:hover, .article-item:hover { background:rgba(120,200,255,.10) !important; }
 
+  /* ---------- treasure chest (pixel art drawn by JS into box-shadow) ---------- */
+  .chest { position:relative; flex:none; width:80px; height:50px; }
+  .chest i { position:absolute; top:0; left:0; width:5px; height:5px; background:transparent; }
+  .chest i.open { display:none; }
+  .sea-object:hover .chest i.closed { display:none; }
+  .sea-object:hover .chest i.open { display:block; }
+  .sea-object:hover .chest::before {
+    content:''; position:absolute; inset:-16px;
+    background:radial-gradient(circle, rgba(255,215,102,.5), transparent 68%);
+    pointer-events:none;
+  }
+  .chest .coin { position:absolute; top:-4px; width:7px; height:7px; background:#ffd766; border:1px solid #b8860b; border-radius:2px; opacity:0; pointer-events:none; }
+  .sea-object:hover .coin { animation:coinup 1s ease-out infinite; }
+  @keyframes coinup {
+    0%   { opacity:0; transform:translateY(4px); }
+    25%  { opacity:1; }
+    100% { opacity:0; transform:translateY(-30px) rotate(180deg); }
+  }
+
   /* ---------- contact form ---------- */
   .c-label { display:block; margin:14px 0 6px; font-family:'DotGothic16',monospace; font-size:13px; letter-spacing:1px; color:#9fdcff; }
   .c-input {
@@ -294,6 +313,7 @@
           <h3 style="margin:0 0 4px;font-weight:900;font-size:clamp(17px,4vw,21px);color:#fff;">Boss Rush Clicker</h3>
           <p style="margin:0;font-size:clamp(12px,3.2vw,13px);font-weight:500;line-height:1.6;color:#b8d9f2;">40 bosses block your way. Upgrade weapons, recruit soldiers, and let your army grind on autopilot. Desktop &amp; mobile.</p>
         </div>
+        <span class="chest" aria-hidden="true"><i class="closed"></i><i class="open"></i><span class="coin" style="left:22%;animation-delay:0s;"></span><span class="coin" style="left:46%;animation-delay:.3s;"></span><span class="coin" style="left:66%;animation-delay:.6s;"></span></span>
         <span class="sea-cta" style="flex:none;display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:14px;padding:9px 18px;border-radius:9px;transition:background .12s,color .12s;">▶ Play</span>
       </div>
     </a>
@@ -433,6 +453,49 @@
     el.load();
     el.play().catch(function(){});
   });
+})();
+
+// Treasure chest pixel art: two frames (closed / open) rendered as
+// box-shadow grids from ASCII maps, same trick as the pixel heart.
+(function(){
+  var PX = 5;
+  var COLORS = { '#':'#0d1a2e', 'A':'#8a5a2b', 'a':'#a8763d', 'G':'#ffd766', 'y':'#fff3c4', 'd':'#1a0f06' };
+  var CLOSED = [
+    '..############..',
+    '.#aaaaaaaaaaaa#.',
+    '#aAAAAAAAAAAAAa#',
+    '#AAAAAAAAAAAAAA#',
+    '################',
+    '#GGGGGGGGGGGGGG#',
+    '#AAAAAAGGAAAAAA#',
+    '#AAAAAAGGAAAAAA#',
+    '#AAAAAAAAAAAAAA#',
+    '################'
+  ];
+  var OPEN = [
+    '..############..',
+    '.#aaaaaaaaaaaa#.',
+    '#aAAAAAAAAAAAAa#',
+    '................',
+    '.#yyyyyyyyyyyy#.',
+    '#GGGGGGGGGGGGGG#',
+    '#AAAAAAGGAAAAAA#',
+    '#AAAAAAGGAAAAAA#',
+    '#AAAAAAAAAAAAAA#',
+    '################'
+  ];
+  function shadows(map){
+    var s = [];
+    map.forEach(function(row, y){
+      row.split('').forEach(function(ch, x){
+        if (COLORS[ch]) s.push((x*PX)+'px '+(y*PX)+'px 0 0 '+COLORS[ch]);
+      });
+    });
+    return s.join(',');
+  }
+  var st = document.createElement('style');
+  st.textContent = '.chest i.closed{box-shadow:'+shadows(CLOSED)+';}.chest i.open{box-shadow:'+shadows(OPEN)+';}';
+  document.head.appendChild(st);
 })();
 
 // Contact form posts straight to the Google Form backend (no iframe).
