@@ -23,22 +23,22 @@
 <style>
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
   .detail{margin-top:42px;max-width:760px;}
-  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#2c4a6e;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
-  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#3d5b7c;margin:0 0 18px;}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#b8d3ea;margin:0 0 18px;}
   .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
-  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid #d4e6ef;vertical-align:top;}
-  .detail th{white-space:nowrap;width:32%;color:#2c4a6e;font-weight:800;background:#eef6fa;}
-  .detail td{color:#3d5b7c;font-weight:500;}
-  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#3d5b7c;font-weight:500;}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
+  .detail td{color:#b8d3ea;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#b8d3ea;font-weight:500;}
   .detail li{margin:6px 0;}
-  .detail li strong{color:#2c4a6e;font-weight:800;}
-  .detail a{color:#2a9aa3;font-weight:700;}
-  .faq{border:2px solid #d4e6ef;border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:#fff;}
-  .faq dt{font-weight:800;color:#2c4a6e;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
-  .faq dt::before{content:"Q. ";color:#2a9aa3;}
-  .faq dd{margin:0 0 12px;color:#3d5b7c;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .detail li strong{color:#dff0fa;font-weight:800;}
+  .detail a{color:#7fe3ec;font-weight:700;}
+  .faq{border:2px solid rgba(120,200,255,.22);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(4,16,38,.6);}
+  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#7fe3ec;}
+  .faq dd{margin:0 0 12px;color:#b8d3ea;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
   .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
   /* CSS fullscreen (fills the screen without changing the URL) */
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
@@ -57,7 +57,7 @@
 <div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
 
   <!-- nav -->
-  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
     <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
       <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Play</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
@@ -68,13 +68,13 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
-    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../#games" style="color:#7e95ad;text-decoration:none;">Games</a> / <span style="color:#2c4a6e;">Boss Rush Clicker</span></p>
+    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Boss Rush Clicker</span></p>
 
-    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#2c4a6e;"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#2a9aa3;margin-bottom:5px;">Recruit soldiers and automate the grind</span>Boss Rush Clicker</h1>
+    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#dff0fa;"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#7fe3ec;margin-bottom:5px;">Recruit soldiers and automate the grind</span>Boss Rush Clicker</h1>
     <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#fff0cc;color:#9a6b00;border-radius:7px;padding:5px 12px;">Idle Game</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#d7f1f3;color:#1e7a82;border-radius:7px;padding:5px 12px;">Clicker</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:#eaf1f7;color:#3d5b7c;border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(255,215,102,.13);color:#ffd766;border-radius:7px;padding:5px 12px;">Idle Game</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.13);color:#7fe3ec;border-radius:7px;padding:5px 12px;">Clicker</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.12);color:#9cc4e4;border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
     </div>
     <!-- game embed (shown at 16:10; use the fullscreen button top-right for a longer session) -->
     <div style="background:#14283f;border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 8px 0 rgba(20,40,63,.18);">
@@ -147,11 +147,11 @@
       &middot; Ankimo (Innsmouth Project)</p>
     </section>
 
-    <p style="margin:34px 0 0;"><a href="../#games" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>
+    <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>
   </main>
 
   <!-- footer -->
-  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+  <footer style="background:#01060f;color:#7fa3bd;padding:22px 20px;">
     <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
       <span>© 2026 Bubblegum Game</span>
       <span style="display:flex;gap:16px;flex-wrap:wrap;">
