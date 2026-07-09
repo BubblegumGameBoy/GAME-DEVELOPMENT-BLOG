@@ -136,6 +136,10 @@
     user-select:none;
   }
 
+  @media (orientation: portrait) {
+    .games-dim { background:rgba(2,10,28,.45); }
+  }
+
   /* ---------- scroll reveal (classes are added by JS, so no-JS users see everything) ---------- */
   .rv { opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1); }
   .rv.rv-in { opacity:1; transform:translateY(0); }
@@ -296,12 +300,20 @@
 
 <!-- ================= DEEP SEA : the games sleep here ================= -->
 <section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
-  <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" aria-hidden="true" data-land-webm="videos/deep-land.webm" data-land-mp4="videos/deep-land.mp4" data-land-poster="videos/deep-land-poster.jpg">
-    <source src="videos/deep-sea.webm" type="video/webm">
-    <source src="videos/deep-sea.mp4" type="video/mp4">
-  </video>
+  <!-- the video sticks to the viewport instead of being stretched across the
+       whole (very tall) section — no more zoom blur, and it doubles as parallax -->
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+    <div style="position:sticky;top:0;height:100vh;">
+      <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" data-land-webm="videos/deep-land.webm" data-land-mp4="videos/deep-land.mp4" data-land-poster="videos/deep-land-poster.jpg">
+        <source src="videos/deep-sea.webm" type="video/webm">
+        <source src="videos/deep-sea.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
   <!-- blend the descent gradient into the video top & bottom -->
   <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,#031233 0%,rgba(3,18,51,0) 14%,rgba(3,18,51,0) 86%,#020b18 100%);"></div>
+  <!-- on phones the bright light column fights the content; dim it (landscape stays untouched) -->
+  <div aria-hidden="true" class="games-dim" style="position:absolute;inset:0;"></div>
 
   <div style="position:relative;max-width:900px;margin:0 auto;">
     <p style="margin:0 0 4px;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#9fdcff;text-shadow:0 2px 8px rgba(0,10,30,.9);">DEPTH -3994m · THE GAME TRENCH</p>
