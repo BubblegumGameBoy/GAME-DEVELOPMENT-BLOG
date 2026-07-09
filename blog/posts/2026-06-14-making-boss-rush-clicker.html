@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<title>Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Boss Rush Clicker | Bubblegum Game</title>
-<meta name="description" content="Design notes on Boss Rush Clicker. Why the bosses are Cthulhu Mythos monsters, the feel of mashing to summon allies, and the idle-and-prestige loop that lets you grow endlessly stronger, told from the design side.">
+<title>Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Mythos Slayer | Bubblegum Game</title>
+<meta name="description" content="Design notes on Mythos Slayer. Why the bosses are Cthulhu Mythos monsters, the feel of mashing to summon allies, and the idle-and-prestige loop that lets you grow endlessly stronger, told from the design side.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<meta property="og:title" content="Dev Diary: The &quot;Cthulhu x Mashing x Prestige&quot; Design Behind Boss Rush Clicker | Bubblegum Game">
+<meta property="og:title" content="Dev Diary: The &quot;Cthulhu x Mashing x Prestige&quot; Design Behind Mythos Slayer | Bubblegum Game">
 <meta property="og:description" content="Cthulhu Mythos bosses, mashing to summon allies, and an idle-plus-prestige loop that makes you endlessly stronger. Design-philosophy notes for an idle game.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
@@ -30,7 +30,7 @@
   .prose a { color:#2a9aa3; font-weight:700; }
   .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Diary: The \"Cthulhu x Mashing x Prestige\" Design Behind Boss Rush Clicker","datePublished":"2026-06-14","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"Cthulhu Mythos bosses, mashing to summon allies, and an idle-plus-prestige loop that makes you endlessly stronger. Design-philosophy notes for an idle game."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Diary: The \"Cthulhu x Mashing x Prestige\" Design Behind Mythos Slayer","datePublished":"2026-06-14","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"Cthulhu Mythos bosses, mashing to summon allies, and an idle-plus-prestige loop that makes you endlessly stronger. Design-philosophy notes for an idle game."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -52,16 +52,16 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Dev Diary: The Design Behind Boss Rush Clicker</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Dev Diary: The Design Behind Mythos Slayer</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
       <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 14, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Diary</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Boss Rush Clicker</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Mythos Slayer</h1>
 
     <article class="prose">
-      <p>It's Bubblegum. How did the site's flagship game, <a href="../../games/clicker.html">Boss Rush Clicker</a>, come to be, and what was I aiming for? I'll leave the how-to-play to the <a href="2026-06-22-clicker-strategy.html">strategy guide</a> and focus here on the design "philosophy" instead.</p>
+      <p>It's Bubblegum. How did the site's flagship game, <a href="../../games/clicker.html">Mythos Slayer</a>, come to be, and what was I aiming for? I'll leave the how-to-play to the <a href="2026-06-22-clicker-strategy.html">strategy guide</a> and focus here on the design "philosophy" instead.</p>
 
       <h2>Why the bosses are from the Cthulhu Mythos</h2>
       <p>The bosses in this game are <strong>modeled on legendary monsters from the Cthulhu Mythos</strong>. Idle games are simple by nature, so what keeps you going is <strong>curiosity</strong>: "what's going to show up next?" Instead of generic enemies, I lined up 40 Cthulhu creatures whose names alone spark a little excitement, hoping to create that pull of "just one more." And if Cthulhu fans crack a knowing smile, all the better.</p>
@@ -76,7 +76,7 @@
       <p>And the backbone of the game is <strong>prestige</strong>. Prestiging raises your coin multiplier, and the more you repeat it the more your soldiers grow without limit, until you're eventually fighting with <strong>astronomical numbers</strong>. The real joy of an idle game is the moment the figures leap by orders of magnitude. Stuck? Prestige and reset, and come back dramatically stronger. That rush of climbing is the part I most wanted you to experience.</p>
 
       <h2>Engineering "you just want to keep going"</h2>
-      <p>Exciting Cthulhu bosses, the feel of mashing and summoning, the comfort of idle progress, and the thrill of getting boundlessly stronger through prestige. I built the "you just want to keep going" sensation around those four pillars. If any of that sounds good, give <a href="../../games/clicker.html">Boss Rush Clicker</a> a try. For a concrete route through it, I've written a <a href="2026-06-22-clicker-strategy.html">strategy guide</a>.</p>
+      <p>Exciting Cthulhu bosses, the feel of mashing and summoning, the comfort of idle progress, and the thrill of getting boundlessly stronger through prestige. I built the "you just want to keep going" sensation around those four pillars. If any of that sounds good, give <a href="../../games/clicker.html">Mythos Slayer</a> a try. For a concrete route through it, I've written a <a href="2026-06-22-clicker-strategy.html">strategy guide</a>.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
