@@ -136,8 +136,15 @@
     user-select:none;
   }
 
+  /* ---------- scroll reveal (classes are added by JS, so no-JS users see everything) ---------- */
+  .rv { opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1); }
+  .rv.rv-in { opacity:1; transform:translateY(0); }
+  .rv-fade { opacity:0; transition:opacity 1.1s ease; }   /* for elements with their own transform animations */
+  .rv-fade.rv-in { opacity:1; }
+
   @media (prefers-reduced-motion: reduce) {
     .bubble, .sea-object { animation:none !important; }
+    .rv, .rv-fade { opacity:1 !important; transform:none !important; transition:none !important; }
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/","description":"Free handmade browser games by indie developer Bubblegum — an idle boss-rush clicker and Japanese typing games. No downloads, no sign-up.","inLanguage":"en"},{"@type":"ItemList","name":"Games You Can Play","itemListElement":[{"@type":"ListItem","position":1,"name":"Boss Rush Clicker","description":"An idle boss-rush game where you recruit soldiers and automate the fight. Works on desktop and mobile."},{"@type":"ListItem","position":2,"name":"Cthulhu Typing","description":"A typing-meets-summoning battle: every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos. Desktop only."},{"@type":"ListItem","position":3,"name":"Popcorn Typing","description":"A snappy typing game with a popping, popcorn-like rhythm. Japanese typing practice — type hiragana words in romaji."},{"@type":"ListItem","position":4,"name":"Soldier Typing","description":"A military-themed typing game where you type to fight."},{"@type":"ListItem","position":5,"name":"Piano Typing","description":"A rhythm-meets-typing game: press the highlighted keys to play classic melodies. Great home-row practice too."}]}]}</script>
@@ -452,6 +459,29 @@
     el.load();
     el.play().catch(function(){});
   });
+})();
+
+// Scroll reveal: sections surface from the dark as you dive down.
+// The bobbing cards can't transition transform (their keyframe animation
+// owns it), so they fade only; panels slide up as well.
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var slide = document.querySelectorAll('.panel, .depth, #games > div > p, #games > div > h2, #contact h2');
+  var fade  = document.querySelectorAll('.sea-object');
+  slide.forEach(function(el){ el.classList.add('rv'); });
+  fade.forEach(function(el, i){
+    el.classList.add('rv-fade');
+    el.style.transitionDelay = (i % 5) * 110 + 'ms';
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('rv-in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.rv, .rv-fade').forEach(function(el){ io.observe(el); });
 })();
 
 // Treasure chest pixel art: two frames (closed / open) rendered as
