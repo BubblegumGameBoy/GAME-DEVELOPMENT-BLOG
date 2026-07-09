@@ -190,7 +190,7 @@
     </div>
 
     <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
-      <a href="#games" class="btn-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,17px);padding:13px 30px;border-radius:10px;border:2px solid rgba(255,255,255,.35);transition:background .12s;">🤿 Dive to the Games</a>
+      <a href="#games" class="btn-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,17px);padding:13px 30px;border-radius:10px;border:2px solid rgba(255,255,255,.35);transition:background .12s;">Dive to the Games ↓</a>
       <a href="blog/" class="btn-glass" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.45);transition:background .12s;">Read the Blog →</a>
     </div>
   </div>
@@ -400,10 +400,9 @@
       <input class="c-input" id="cf-email" type="email" name="entry.1045781291" required autocomplete="email">
       <label class="c-label" for="cf-msg">Message</label>
       <textarea class="c-input" id="cf-msg" name="entry.839337160" required rows="6"></textarea>
-      <button type="submit" class="btn-teal" style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#2a9aa3;color:#fff;border:2px solid rgba(255,255,255,.3);font-family:inherit;font-weight:800;font-size:15px;padding:12px 30px;border-radius:10px;cursor:pointer;transition:background .12s;">📨 Send Message</button>
+      <button type="submit" class="btn-teal" style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#2a9aa3;color:#fff;border:2px solid rgba(255,255,255,.3);font-family:inherit;font-weight:800;font-size:15px;padding:12px 30px;border-radius:10px;cursor:pointer;transition:background .12s;">Send Message</button>
     </form>
     <div id="contact-done" hidden style="max-width:560px;padding:22px 20px;border:2px solid rgba(127,227,236,.5);border-radius:12px;text-align:center;">
-      <p style="margin:0 0 6px;font-size:28px;">🍾</p>
       <p style="margin:0 0 4px;font-weight:800;font-size:17px;color:#fff;">Your message in a bottle is on its way!</p>
       <p style="margin:0;font-size:14px;color:#c7e2f5;font-weight:500;">Thanks for writing — I read every message.</p>
     </div>
@@ -514,7 +513,7 @@
         document.getElementById('contact-done').hidden = false;
       })
       .catch(function(){
-        btn.disabled = false; btn.textContent = '📨 Send Message';
+        btn.disabled = false; btn.textContent = 'Send Message';
         document.getElementById('contact-fail').hidden = false;
       });
   });
