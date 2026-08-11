@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://bubblegumgameboy.com/games/creature-fishing.html">
+<title>Creature Fishing | Free Browser Game - Bubblegum Game</title>
+<meta name="description" content="A free browser fishing game where you play a slime on a tiny island inside a wooden crate. 172 fish to catch, from real species to Cthulhu Mythos creatures, plus online islands where up to 12 players fish together. No install, no account, desktop and mobile.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/games/creature-fishing.html">
+<meta property="og:title" content="Creature Fishing | Free Browser Game">
+<meta property="og:description" content="Fish for 172 species as a slime on an island in a crate. Real fish, invented fish, and Cthulhu Mythos creatures. Online islands for up to 12 players. Free, desktop and mobile.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/creature-fishing.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creature Fishing | Free Browser Game">
+<meta name="twitter:description" content="Fish for 172 species as a slime on an island in a crate. Online islands for up to 12 players. Free, desktop and mobile.">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/creature-fishing.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail h3{margin:24px 0 8px;font-weight:800;font-size:clamp(17px,4vw,20px);color:#dff0fa;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
+  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
+  .detail td{color:#cbe4f7;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
+  .detail li{margin:6px 0;}
+  .detail li strong{color:#dff0fa;font-weight:800;}
+  .detail a{color:#7fe3ec;font-weight:700;}
+  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
+  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#7fe3ec;}
+  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
+  body::before { content:''; position:fixed; inset:0; z-index:-1;
+    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
+               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
+  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
+  body.fs-lock{overflow:hidden;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Creature Fishing","alternateName":"Bubblegum Fishing Island","url":"https://bubblegumgameboy.com/games/creature-fishing.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["en","ja"],"playMode":["SinglePlayer","MultiPlayer"],"description":"A browser fishing game where you play a slime on a tiny island inside a wooden crate. 172 fish to catch across real species, invented species and Cthulhu Mythos creatures, plus online islands holding up to 12 players each. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many fish are there?","acceptedAnswer":{"@type":"Answer","text":"172 species: 102 real fish and sea creatures, 51 invented for this game, and 19 from myth and folklore. More are still being added."}},{"@type":"Question","name":"I get a bite but never catch anything. What am I doing wrong?","acceptedAnswer":{"@type":"Answer","text":"You are almost certainly mashing too early. If you press before the bite lands, the line just comes back up empty. Cast, take your hands off the keys, and only start mashing once you feel the hit."}},{"@type":"Question","name":"Can I play with other people?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the bait box and choose the shared islands. There are six public islands and each holds up to 12 players. You can see other people walking and fishing, and there is a chat."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap the slime to cast and tap repeatedly to reel in. Landscape orientation is recommended, and the first load is large enough that Wi-Fi is a good idea."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- nav -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
+    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Play</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
+        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
+    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Creature Fishing</span></p>
+
+    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#7fe3ec;margin-bottom:5px;">172 fish, one slime, and a very small island</span>Creature Fishing</h1>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(255,215,102,.12);color:#ffd766;border:1px solid rgba(255,215,102,.4);border-radius:7px;padding:5px 12px;">Fishing</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Online</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
+    </div>
+    <!-- game embed -->
+    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
+      </div>
+      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
+        <iframe id="game-frame" src="https://fishing.bubblegumgameboy.com/" title="Creature Fishing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var f=document.getElementById('game-frame'),
+          openBtn=document.getElementById('fs-btn');
+      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
+      openBtn.addEventListener('click',enter);
+      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
+    })();
+    </script>
+
+    <section class="detail">
+      <p>There is a small island floating inside a wooden crate, and standing on it is a slime holding a fishing rod. That is the whole setup. You cast a line into the water and wait, and eventually something comes up.</p>
+
+      <p>What comes up is the interesting part. There are <strong>172 species</strong> in the game. Most are real animals, some I invented, and nineteen of them should not exist. You can be reeling in a bluefin tuna one minute and a Deep One the next.</p>
+
+      <p>The first load is large, so give it a moment before you decide it is broken.</p>
+
+      <h2>At a Glance</h2>
+      <table>
+        <tr><th>Genre</th><td>Fishing, collection, tiny sandbox</td></tr>
+        <tr><th>Price</th><td>Free, no install, no account</td></tr>
+        <tr><th>Platform</th><td>Desktop (Chrome / Edge / Firefox / Safari) and mobile</td></tr>
+        <tr><th>Saves</th><td>Auto-saved in your browser</td></tr>
+        <tr><th>Fish</th><td>172 species (102 real, 51 invented, 19 mythological)</td></tr>
+        <tr><th>Online</th><td>6 public islands, up to 12 players each, with chat</td></tr>
+        <tr><th>Languages</th><td>English and Japanese, switchable in game</td></tr>
+      </table>
+
+      <h2>How to Play</h2>
+      <ol>
+        <li><strong>Cast</strong>: hold the spacebar, or tap the slime on mobile. The line flies out into the water</li>
+        <li><strong>Wait</strong>: this part is not optional. Take your hands off the keys</li>
+        <li><strong>Reel</strong>: when you feel the bite, mash the spacebar (or tap repeatedly). The rod comes up and the fish is yours</li>
+        <li><strong>Repeat</strong>: fill in the index one species at a time</li>
+      </ol>
+
+      <p>That really is all of it. Everything else in the game is somewhere to walk to.</p>
+
+      <h3>If you keep getting bites but never landing anything</h3>
+      <p>You are mashing too early. Pressing before the bite registers just pulls an empty line back up. <strong>The waiting is the mechanic</strong>, not dead time between the good parts, so cast and then genuinely stop touching the controls.</p>
+
+      <p>The opposite mistake costs you too. Once the hit lands, hesitation loses the fish. How fast you mash from that moment is more or less your catch rate.</p>
+
+      <h2>Controls</h2>
+      <table>
+        <tr><th>Cast / reel in</th><td>Spacebar, or click and tap the slime</td></tr>
+        <tr><th>Walk</th><td>WASD, arrow keys, or click the ground</td></tr>
+        <tr><th>Open the menu</th><td>Click the brown bait box on the beach</td></tr>
+        <tr><th>Fish index</th><td>Bait box, then the index</td></tr>
+        <tr><th>Set your name</th><td>Bait box, then profile</td></tr>
+        <tr><th>Go to a shared island</th><td>Bait box, then the shared islands</td></tr>
+        <tr><th>Chat</th><td>Enter, or the talk button</td></tr>
+        <tr><th>Close chat</th><td>Escape, or click the game screen</td></tr>
+      </table>
+
+      <h2>The Fish Index</h2>
+      <p>Everything you catch is recorded. Species you have not caught stay hidden, so the index doubles as a list of what is still out there.</p>
+
+      <table>
+        <tr><th>Common</th><td>102 species. Real fish and sea creatures, from red sea bream and rainbow trout up to the blue whale, the giant isopod and the oarfish. A few prehistoric ones too, like Xiphactinus and the belemnite</td></tr>
+        <tr><th>Fantasy</th><td>51 species. Invented for this game. Moon-Lantern Fish, Emberglass Koi, Nullwater Catfish, a juvenile rift leviathan</td></tr>
+        <tr><th>Mythos</th><td>19 species. Eleven from the Cthulhu Mythos and eight from sea folklore around the world</td></tr>
+      </table>
+
+      <h3>The nineteen that should not be in a fishing game</h3>
+      <p>This is the part I spent the most time on. From the Cthulhu Mythos: the Deep One, the Great Race of Yith, Glaaki, Shaggai, Mordiggian, the Hunting Horror, the Shapeless Spawn, the Black Young. From folklore: Akkorokamui from Ainu tradition, the Bake Kujira and the Ningyo from Japan, the Kraken from Norse myth, the Hippocampus and Cetus from Greece, the Selkie from Celtic legend, and the Melusine Eel from France.</p>
+
+      <p>The whole reason they are in here is the moment where you are quietly working through the tuna and something ancient takes the hook instead.</p>
+
+      <h2>Playing With Other People</h2>
+      <p>Open the bait box and choose the shared islands. There are six public ones and each holds up to twelve people.</p>
+
+      <p>It is not competitive and it is not co-op. Several people are simply fishing in the same water, each doing their own thing, and you can see the moment someone lands a catch. That sounds like very little. In practice it changes the feel of an evening more than I expected it to.</p>
+
+      <p>There is a chat on Enter. Please do not put real names, addresses or contact details in it, because strangers can read it.</p>
+
+      <h2>Developer's Note</h2>
+      <p>This game shipped with <strong>thirteen fish</strong>, not 172.</p>
+
+      <p>The reason was memory. Every species you add is more data the browser has to hold, and past a certain point the whole thing gets sluggish in a way no amount of pretty art makes up for. Getting from thirteen to 172 was not a content problem, it was a rendering problem, and most of that work was rewriting how fish get drawn so that adding another one stopped being expensive.</p>
+
+      <p>I am still adding them. The index is built to keep growing.</p>
+
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Is it really free?</dt>
+        <dd>Yes. No install, no account. Open the page and fish.</dd>
+        <dt>I get a bite but never catch anything.</dt>
+        <dd>You are mashing before the bite lands, which just pulls the line up empty. Cast, wait with your hands off the controls, and mash only once you feel the hit.</dd>
+        <dt>Can I play on a phone?</dt>
+        <dd>Yes. Landscape is much better, and the first load is big enough that Wi-Fi is worth it.</dd>
+        <dt>How many fish are there?</dt>
+        <dd>172 right now: 102 real, 51 invented, 19 from myth and folklore. More are still coming.</dd>
+        <dt>Can my save data be lost?</dt>
+        <dd>Progress is stored in your browser, so clearing your cache or site data will wipe it, and private browsing will not keep it. There is no transfer between devices.</dd>
+      </dl>
+    </section>
+
+    <div style="margin-top:30px;">
+      <a href="../blog/" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">→ Read the devlog</a>
+    </div>
+  </main>
+
+  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>© 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
