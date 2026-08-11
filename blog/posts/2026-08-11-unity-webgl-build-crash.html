@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-08-11-unity-webgl-build-crash.html">
+<title>Unity Editor crashed building my WebGL game, twice, without an error message | Bubblegum Game</title>
+<meta name="description" content="The last thing standing between Creature Raising Kit and release was a WebGL build that took down Unity Editor itself, with no error and an empty output folder. Here is what actually caused it, plus the human-faced creature I cut and the island that started out brown.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-08-11-unity-webgl-build-crash.html">
+<meta property="og:title" content="Unity Editor crashed building my WebGL game, twice, without an error message">
+<meta property="og:description" content="A WebGL build that crashed the editor instead of failing, an abandoned creature with a human face, and an island that looked like a prototype aquarium. The making of Creature Raising Kit.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/creature-raising-kit.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .prose { font-size:clamp(15px,3.8vw,17px); line-height:1.95; font-weight:500; color:#3d5b7c; }
+  .prose h2 { margin:34px 0 12px; font-weight:900; font-size:clamp(20px,4.6vw,26px); color:#2c4a6e; border-left:6px solid #2a9aa3; padding-left:12px; line-height:1.35; }
+  .prose h3 { margin:26px 0 8px; font-weight:800; font-size:clamp(17px,4vw,20px); color:#2c4a6e; }
+  .prose p { margin:0 0 16px; }
+  .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
+  .prose li { margin:4px 0; }
+  .prose a { color:#2a9aa3; font-weight:700; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:104px; max-width:104px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unity Editor crashed building my WebGL game, twice, without an error message","datePublished":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-08-11-unity-webgl-build-crash.html"}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
+    <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
+        <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">The WebGL build that crashed the editor</span></p>
+
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Note</span>
+    </div>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Unity Editor crashed building my WebGL game, twice, without an error message</h1>
+
+    <article class="prose">
+
+      <p class="byline">I built this game. This is a record of what went wrong while making <a href="../../games/creature-raising-kit.html">Creature Raising Kit</a>, written from my own build logs.</p>
+
+      <p>The game was finished. Feeding worked, molting worked, the letters were going out to real players and coming back. All that was left was producing a WebGL build.</p>
+
+      <p>The build did not fail. Unity Editor closed.</p>
+
+      <p>No error dialog, no message in the console, no partial output. The editor process was simply gone and the output folder was empty. I ran it again to see whether it was a fluke. It died in the same place.</p>
+
+      <h2>Why an empty error is worse than a loud one</h2>
+
+      <p>A compile error tells you where to look. This gave me nothing, because it was not a failure inside my game code at all. It was a native crash in the editor while it was chewing through assets and references in the scene, before it ever got to the part where my code matters.</p>
+
+      <p>Which means the usual instinct is wrong. I spent the first stretch re-reading scripts, and none of that was ever going to help. The problem was in what the scene was dragging along with it.</p>
+
+      <h3>What I went through, in order</h3>
+
+      <table class="dtable">
+        <thead><tr><th>Suspect</th><th>Why it matters for a WebGL build</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Suspect">Leftover assets</td><td data-label="Why">Things I had stopped using but never deleted still get processed</td></tr>
+          <tr><td data-label="Suspect">Render pipeline mismatch</td><td data-label="Why">Materials authored against a different pipeline than the project now targets</td></tr>
+          <tr><td data-label="Suspect">Texture sizes</td><td data-label="Why">Source textures far larger than anything the game actually displays</td></tr>
+          <tr><td data-label="Suspect">Prefab references</td><td data-label="Why">Prefabs still referenced from the scene, pulling their whole dependency chain into the build</td></tr>
+        </tbody>
+      </table>
+
+      <p>Working through that list one item at a time is unglamorous and it is also the entire fix. There was no clever trick at the end of it. The build went through once the scene stopped carrying things it did not need.</p>
+
+      <p>If you are hitting the same wall: <strong>stop looking at your scripts</strong>. An editor that dies rather than erroring is telling you the problem is upstream of your code.</p>
+
+      <h2>The creature I cut, and why</h2>
+
+      <p>The crash was the last problem. The first one was that this was supposed to be a different game entirely.</p>
+
+      <p>The original plan was a creature with a human face, heavily inspired by Seaman. A face visible inside the egg, and that same face carried through every later form.</p>
+
+      <figure>
+        <img src="../../images/creature-kit-seaman-concept.jpg" alt="Early concept art of a blue sea creature with a realistic human face">
+        <figcaption>The original concept. I was going to build a whole pet game around this face.</figcaption>
+      </figure>
+
+      <p>Two things killed it.</p>
+
+      <p>The first was rigging. I wanted a sea slug that moved with an insect's twitchiness, and I could not get that out of the rig no matter how long I spent on it. It kept coming out smooth and pleasant, which was the opposite of the point.</p>
+
+      <p>The second reason is the one I would actually pass on to someone else. I built the island in Unity, put the creature on it, and looked through the real game camera instead of at concept art. What I saw was not a face. It was a small silhouette wandering around at a distance, because that is what a player looking at an island actually sees.</p>
+
+      <p>All the work was in a detail nobody would be looking at. So growth moved from the face to the things you can read at that distance: how it walks, and how much space it takes up.</p>
+
+      <h2>The island started out brown</h2>
+
+      <figure>
+        <img src="../../images/creature-kit-early-island.jpg" alt="An early build of the island: brown ground, brown water, and a single white egg">
+        <figcaption>The early island. Brown ground, brown water, one white egg.</figcaption>
+      </figure>
+
+      <p>This is what it looked like before it looked like anything. Brown ground, brown water, some rocks and plants, and a white egg sitting in the middle of it. The edges of the box were the most visible thing on screen. It read less like a beach than like a prototype aquarium.</p>
+
+      <p>Getting from there to something you can idle on was a long tail of small passes: sand colour, where shallow water becomes deep water, the line where the waves break, rock placement, tree shade, birds, fish. None of it was about making the screen impressive. It was about making it somewhere you would leave open for a while with nothing happening.</p>
+
+      <h2>Growth is a molt, not a level-up</h2>
+
+      <figure>
+        <img src="../../images/creature-raising-kit.png" alt="The creature molting, its old shell left behind">
+        <figcaption>Molting. The old shell stays behind.</figcaption>
+      </figure>
+
+      <p>The creature ended up built around a crab. Feeding pushes growth along, but hitting the threshold does not transform it on the spot.</p>
+
+      <p>Instead, at some point while it is calmly going about its day, it molts. The old shell is left on the sand and something different walks away from it.</p>
+
+      <p>That delay is the whole design. A number going up is not a feeling. Looking back at the island and realising the thing walking around on it is not the thing that was there this morning is a feeling.</p>
+
+      <h2>Letters, and everything that comes with strangers</h2>
+
+      <figure>
+        <img src="../../images/creature-kit-letter.jpg" alt="The letter writing screen, with Japanese text input inside the game">
+        <figcaption>Writing a letter. Text input works in-page on both desktop and mobile.</figcaption>
+      </figure>
+
+      <p>Raising a creature on your own leaves the game sealed inside your browser tab. The bottled letters exist to put a crack in that.</p>
+
+      <p>What you write goes to another person playing the game. You do not choose who. It drifts, it washes up somewhere, and if a reply comes back it arrives the same way, whenever it happens to arrive. Reading a letter and returning it to the sea gives you sea glass, which is what food costs, so the social half feeds the raising half.</p>
+
+      <p>The moment you let strangers write to each other you inherit a second job. There is a word filter, a cap on how often you can send, and a report button on every letter. Text input also turned out to be its own small project: getting Japanese input and backspace behaving correctly inside a WebGL canvas, on desktop and on phones, is not free.</p>
+
+      <h2>What it cost, and what is next</h2>
+
+      <table class="dtable">
+        <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Item">Build time</td><td data-label="Detail">About one month</td></tr>
+          <tr><td data-label="Item">Abandoned direction</td><td data-label="Detail">Human-faced creature, cut after rigging and camera tests</td></tr>
+          <tr><td data-label="Item">Hardest technical problem</td><td data-label="Detail">The WebGL build crashing the editor with no error</td></tr>
+          <tr><td data-label="Item">Hosting</td><td data-label="Detail">GitHub Pages over HTTPS, embedded in an iframe</td></tr>
+        </tbody>
+      </table>
+
+      <p>The project landed a long way from where it started. A game about talking to a face became a game about watching a crab and writing to strangers.</p>
+
+      <p>Now that the server side for letters exists, the direction I want next is more presence: players moving around inside the same island, with the uglier creatures, able to talk to each other there. Leaning harder into the online half rather than the idle half.</p>
+
+      <p><a href="../../games/creature-raising-kit.html">Creature Raising Kit</a> is free in the browser, no install and no account.</p>
+
+    </article>
+
+    <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
+    </div>
+  </main>
+
+  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+    <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>© 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
