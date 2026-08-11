@@ -44,6 +44,10 @@ sitemap.xml / CNAME
 | パチパチタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
 | ソルジャータイピング | タイピング | PCのみ | `games/soldier-typing.html` | https://play.bubblegumgameboy.com/Bubble-Wars/ |
 | ピアノタイピング | 音ゲー／タイピング | PC推奨（スマホはタップ可） | `games/piano-typing.html` | https://play.bubblegumgameboy.com/BeatTyping/ |
+| クトゥルフタイピング | タイピング／デイリーボス | PCのみ | `games/cthulhu-typing.html` | https://play.bubblegumgameboy.com/Typingsoldier2/ |
+| クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://fishing.bubblegumgameboy.com/ |
+| クリーチャー育成キット | 放置育成／手紙交換（Unity WebGL） | PC・スマホ | `games/creature-raising-kit.html` | https://play.bubblegumgameboy.com/Creature-raisingkit/ |
+| 5億年観測記録 | クリッカー／思考実験（**日本語のみ**） | PC推奨 | `games/five-hundred-million-years.html` | https://5okunen-game.pages.dev/ |
 
 サムネイル画像は `images/` に配置：
 `spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png` / `piano-typing.png`。
@@ -96,7 +100,19 @@ sitemap.xml / CNAME
 ## TODO / メモ
 
 - OGP 画像 `images/ogp.png`（横長の専用バナー）は未作成。暫定で各スクショを `og:image` に使用中。
-- 広告：忍者AD（admax / `adm.shinobi.jp`）の枠は **全ページから撤去済み**（AdSense 審査のため他社広告ネットワークを排除）。AdSense 承認後に、発行された `<script ... adsbygoogle.js?client=ca-pub-XXXX>` を各ページに設置する。
+- 広告：忍者AD（admax / `adm.shinobi.jp`）の枠は **全ページから撤去済み**（AdSense 審査のため他社広告ネットワークを排除）。
+- **AdSense（2026-08-11 現在）**：承認済みアカウントは `pub-2203567155161909` の**1つだけ**。各ページに以下の2つを設置済み（全49ファイル）。
+  - サイト所有確認：`<meta name="google-adsense-account" content="ca-pub-2203567155161909">`
+  - 広告配信：`<script async src="...adsbygoogle.js?client=ca-pub-2203567155161909">`
+  - `ads.txt`：`google.com, pub-2203567155161909, DIRECT, f08c47fec0942fa0`
+  - ※ 過去に日本口座で作った2つ目のアカウント `pub-5616851712582759` のコードが全ページに残っていたが、2026-08-11 に置換済み。**AdSenseは1人1アカウント。新規アカウントは作らず「サイトを追加」する。追加時はwww無しのトップレベルドメインを入力する。**
+
+### 記事の書き方
+
+執筆ルールは `C:\Users\Kazuya\Documents\blog\CLAUDE.md`（はてな／読書ブログ向けだが思想は共通）。要点は「SEOをやりすぎない」「冒頭に結論ボックスとメタ説明を置かない」「一次情報を入れる」。英語記事も同じ思想で、加えて次の2点を守る。
+
+- **記事にAIの活用を書かない。** 言及した瞬間にエンゲージメントが落ちる。制作の一次情報は「作者が自分のゲームに慣れすぎて初見の判断ができなかった」のように、気づきの側で書く。
+- **冒頭で開発者本人であることを明示する。** 攻略記事は誰でも書けるが、内部数値を開示できるのは作者だけ。これが唯一の差別化。
 - 裏サイト「ささなき駅」は実画像（`station.png` / `tunnel.png`）未設置でも SVG にフォールバックして動作。
 - 将来: タイピング系ゲームの多言語対応 / ポータルへの AdSense 申請。
 
