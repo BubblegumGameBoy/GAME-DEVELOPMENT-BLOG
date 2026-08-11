@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html">
-<title>Making Piano Typing: The Feeling of "Playing a Classic with Your Own Hands" (and Sneaky Home-Row Practice) | Bubblegum Game</title>
-<meta name="description" content="I released Piano Typing, a new browser game. What I chased wasn't a fake 'sounds like you played it' effect but the vivid feeling of actually playing a classic with your own hands. There's no timing judgment, so you play at your own pace, and it quietly doubles as home-row typing practice.">
+<title>Typing practice is boring and piano practice is not, and the only difference is sound | Bubblegum Game</title>
+<meta name="description" content="Both are repetitive finger drills. One of them people do for years voluntarily. I built a typing game around that difference, and then spent all of my time on audio latency.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html">
-<meta property="og:title" content="Making Piano Typing: The Feeling of &quot;Playing a Classic with Your Own Hands&quot; (and Sneaky Home-Row Practice) | Bubblegum Game">
-<meta property="og:description" content="I chased the vivid feeling of playing a classic with your own hands, not a fake 'sounds like you played it' effect, and it quietly turned into home-row practice. The story of a new game.">
+<meta property="og:title" content="Typing practice is boring and piano practice is not, and the only difference is sound">
+<meta property="og:description" content="Why I built home-row practice as a piano, and why a few milliseconds of delay destroys the whole illusion.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/piano-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -29,9 +29,26 @@
   .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
   .prose li { margin:4px 0; }
   .prose a { color:#2a9aa3; font-weight:700; }
-  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:88px; max-width:88px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Making Piano Typing: The Feeling of \"Playing a Classic with Your Own Hands\" (and Sneaky Home-Row Practice)","datePublished":"2026-06-26","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html","image":"https://bubblegumgameboy.com/images/piano-typing.png","description":"I chased the vivid feeling of playing a classic with your own hands, not a fake 'sounds like you played it' effect, and it quietly turned into home-row practice. The story of a new game."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Typing practice is boring and piano practice is not, and the only difference is sound","datePublished":"2026-06-26","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-26-piano-typing.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -44,7 +61,7 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
         <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
         <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
@@ -53,56 +70,80 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Piano Typing</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Piano Typing</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 26, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 26, 2026 · updated August 11, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Making Piano Typing: The Feeling of "Playing a Classic with Your Own Hands" (and Sneaky Home-Row Practice)</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Typing practice is boring and piano practice is not, and the only difference is sound</h1>
 
     <article class="prose">
-      <p>My new browser game, <a href="../../games/piano-typing.html">Piano Typing</a>, is live. Falling tiles tell you which key to press next, and as you press at your own pace, classics like Mozart's Turkish March come to life. It's a mix of rhythm game and typing. Free, no sign-up, and playable right away on any PC with a keyboard.</p>
 
-      <p><img src="../../images/piano-typing.png" alt="A Piano Typing gameplay screen showing falling tiles, a highlighted key, and the on-screen keyboard with a fingering guide"></p>
+      <p class="byline">I made this game. This is why it exists and what nearly killed it.</p>
 
-      <h2>What I wanted was the vivid feeling of "playing it yourself"</h2>
-      <p>The thing I cared about most in this game was not settling for a fake "sounds like you played it" effect. A falling tile tells you the next key to press; press it and a real piano note sounds, and the melody steps forward one note at a time. It's not that the performance plays itself when you hit a button. I wanted the tangible sense that your own fingers are making the sound.</p>
-      <p>On top of that, chaining correct notes builds a combo that layers bass and drums, then strings, then a full orchestra onto the piano. What starts as a sparse solo piano grows, by your own hand, into a thick ensemble. That feeling of "I'm building this piece" is the real highlight.</p>
-      <p>And crucially, there's no timing judgment. The falling tiles are just a preview of the next key to press; you don't have to sync to their descent. In fact, dutifully waiting to match the tiles tends to throw you off the song's natural tempo. So I want you to play freely, at whatever rhythm feels right. You can't fail on a time-out either, so even someone who's never touched an instrument or a rhythm game can play a whole piece start to finish.</p>
+      <p>Sit with this for a second, because it is the entire reason this game exists.</p>
 
-      <h2>Three songs everyone knows</h2>
-      <p>For this prototype release, I lined up three tunes you'll have heard before.</p>
-      <ul>
-        <li><strong>My Grandfather's Clock</strong> ... for practice. It's arranged in easy-to-play C major, so start here.</li>
-        <li><strong>Für Elise</strong> (Beethoven)</li>
-        <li><strong>Turkish March</strong> (Mozart: Rondo Alla Turca, K.331, 3rd movement)</li>
-      </ul>
-      <p>The melodies aren't transcribed by ear; the pitches come from public-domain sheet-music data, so they follow the originals. I plan to add more songs as I see how people respond.</p>
+      <p>Typing practice is repeating the same finger movements until they stop needing thought. Piano practice is repeating the same finger movements until they stop needing thought. Structurally they are the same activity.</p>
 
-      <h2>Before I knew it, it had become home-row practice material</h2>
-      <p>This is something I only noticed after building it, but Piano Typing turned out to be a pretty solid "home-row practice tool" as well.</p>
-      <p>The game automatically assigns frequently used notes to the home position (left hand ASDF, right hand JKL;). The on-screen keyboard at the bottom is also color-coded per finger, telling you which finger to use each time, like "[Q] then left pinky." In other words, even if you don't know your do-re-mi, moving your fingers along with the guide naturally trains the motion of "pressing the right key with the right finger, without looking at your hands."</p>
-      <p>It wasn't material I set out to make. Chasing "I want to play a classic and feel good doing it" led, as a result, to basic typing practice. That was the discovery. The more someone struggles with typing, the more this can be a way to get comfortable with the home position while having fun. Since we're here, let me say a little about the home position itself.</p>
+      <p>People quit typing practice in a week. People do piano for decades.</p>
 
-      <h3>What the home position actually is</h3>
-      <p>The home position is the "base" where you rest your fingers on both hands. From index to pinky, the left hand sits on <strong>F, D, S, A</strong>, and the right hand on <strong>J, K, L, ;</strong> (semicolon). F and J have small bumps, so even without looking you can find them with your index fingers and always return to your home spot. Each finger reaches out the shortest way to its assigned key and comes straight back to base after pressing. That's the foundation of touch typing, "typing without looking at your hands."</p>
+      <p>The difference is not discipline. It is that one of them makes a sound when you get it right, and the other one moves a counter.</p>
 
-      <h3>Three ways it makes life easier once you learn it</h3>
-      <ul>
-        <li><strong>You can type while watching the screen</strong>: once your fingers have fixed home spots, you no longer hunt for keys with your eyes. With your gaze locked on the screen, you can write while thinking, and react in games or chat without looking down.</li>
-        <li><strong>Your input speed goes up</strong>: each finger reaches its key by the shortest path from home, so finger travel is minimal. The detour of "search, confirm, press" disappears, and what you think flows straight to your fingers.</li>
-        <li><strong>You make fewer typos</strong>: pressing set keys with set fingers keeps your fingering stable and your fingers from hesitating. Fewer re-dos means you end up faster still, and it's easier on your wrists and shoulders too.</li>
-      </ul>
-      <p>The logic is simple, but the home position is something you learn with your fingers, not your head. That's exactly why a game where your fingers move naturally as you play makes for good practice. Start with My Grandfather's Clock, moving your fingers along with the guide without looking at your hands.</p>
+      <figure>
+        <img src="../../images/piano-typing.png" alt="Piano Typing, with the next key to press highlighted on screen">
+        <figcaption>The key lights up, you press it, a note happens.</figcaption>
+      </figure>
 
-      <h2>Give it a try</h2>
-      <p>Playing is easy. Click the game screen once, then just watch the tiles that show you the next key to press and press along at your own pace. There's no timing to match, so slow, one note at a time is perfectly fine. You can technically play on a phone by tapping the lit tiles, but a PC with a keyboard, where you can make use of the fingering guide, is what I'd recommend.</p>
-      <p>Start by playing a classic from beginning to end with your own hands in <a href="../../games/piano-typing.html">Piano Typing</a>. And if you'd like to get used to the keystrokes themselves in other typing games, <a href="../../games/popcorn-typing.html">Popcorn Typing</a> and <a href="../../games/soldier-typing.html">Soldier Typing</a> are both here for you.</p>
+      <h2>So I made the drill into an instrument</h2>
+
+      <p>Piano Typing is home-row practice. Keys light up, you press them, and what comes out is an actual piece of music. There are three of them:</p>
+
+      <table class="dtable">
+        <thead><tr><th>Piece</th><th>Also known as</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Piece">My Grandfather's Clock</td><td data-label="Known as">The one everyone in Japan learns as a child</td></tr>
+          <tr><td data-label="Piece">Für Elise</td><td data-label="Known as">Beethoven. You know it even if you think you do not</td></tr>
+          <tr><td data-label="Piece">Turkish March</td><td data-label="Known as">Mozart. The fast one</td></tr>
+        </tbody>
+      </table>
+
+      <p>The important design decision, and the one I would defend hardest: <strong>the game does not play the song for you.</strong> It would have been far easier to trigger a backing track and let your keystrokes fire off decorative sound effects on top. Plenty of rhythm games do exactly that and they feel fine.</p>
+
+      <p>I did not want the illusion of playing. I wanted the thing itself. Every note you hear is a key you pressed. Stop pressing and the music stops, in the middle of a phrase, sounding exactly as wrong as it would on a real piano.</p>
+
+      <p>The tradeoff is that a bad run sounds bad. Which is correct. That is what practising is.</p>
+
+      <h2>Almost all of the work was in the delay</h2>
+
+      <p>Here is where the project nearly fell over.</p>
+
+      <p>The gap between pressing a key and hearing the note has to be effectively zero. Not "fast". Not "under a tenth of a second, that is fine". If there is any perceptible delay at all, the feeling of playing evaporates instantly and completely, and what you are left with is a typing drill with sound effects attached, which is the thing I was trying to escape.</p>
+
+      <p>It is a strange failure mode to debug, because nothing is broken. Nothing errors. The game just does not feel like anything. You press a key, a sound occurs, and your hands and your ears have quietly concluded they are two separate events.</p>
+
+      <p>Browsers do not make this easy. The audio stack has its own scheduling, and the naive approach of creating a sound when a key goes down puts you at the mercy of it. I ended up on Tone.js for the timing control, and the majority of my hours on this project went into that one problem rather than into anything you could point at on screen.</p>
+
+      <p>When it finally landed, the difference was not subtle. Same notes, same graphics, same everything, and suddenly your hands believe they are doing it.</p>
+
+      <h2>The sneaky part</h2>
+
+      <p>The pieces are arranged to sit on the home row. Playing them is finger placement practice, and you are not thinking about finger placement at all, because you are thinking about Für Elise.</p>
+
+      <p>That is the whole trick, and it is not a very complicated one. Give the drill a reason to exist that is not the drill.</p>
+
+      <h2>Would I do it again</h2>
+
+      <p>Three songs is not many, and I know it. The reason there are three rather than thirty is that each one has to be arranged to fit the home row and then tested for feel, and the second part takes much longer than the first.</p>
+
+      <p>Nobody has ever asked me for a fourth song. Nobody has asked me anything about this game at all. But it is the one I go back and open for no reason, which is probably the most honest review I can give it.</p>
+
+      <p><a href="../../games/piano-typing.html">Piano Typing</a> is free in the browser. Headphones recommended, obviously.</p>
+
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 

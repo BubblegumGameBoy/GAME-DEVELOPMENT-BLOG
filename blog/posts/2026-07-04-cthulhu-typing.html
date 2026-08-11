@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
-<title>Why I Replaced "Type to Attack" with "Type to Summon": Making Cthulhu Typing | Bubblegum Game</title>
-<meta name="description" content="I released Cthulhu Typing, a new browser game. Here's why I made keystrokes summon soldiers instead of dealing damage, why bosses rotate one per day for a build-a-habit feel, and why the score formula is typing speed x accuracy x boss strength.">
+<title>Long words summon dragons: how Cthulhu Typing rewards you for not panicking | Bubblegum Game</title>
+<meta name="description" content="Everyone in the world fights the same boss on the same day, and your score is divided by that boss's strength so the leaderboard stays fair. The design behind my daily-boss typing game, with the real numbers.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html">
-<meta property="og:title" content="Why I Replaced &quot;Type to Attack&quot; with &quot;Type to Summon&quot;: Making Cthulhu Typing | Bubblegum Game">
-<meta property="og:description" content="Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game.">
+<meta property="og:title" content="Long words summon dragons: how Cthulhu Typing rewards you for not panicking">
+<meta property="og:description" content="Why typing a five-letter word is worth three times a two-letter one, and why the leaderboard divides your score by the boss.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/cthulhu-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -29,9 +29,27 @@
   .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
   .prose li { margin:4px 0; }
   .prose a { color:#2a9aa3; font-weight:700; }
-  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .prose code { background:#fff; border:1px solid #cde0ea; border-radius:5px; padding:1px 6px; font-family:'Courier New',monospace; font-size:.92em; color:#2c4a6e; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:92px; max-width:92px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why I Replaced \"Type to Attack\" with \"Type to Summon\": Making Cthulhu Typing","datePublished":"2026-07-04","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html","image":"https://bubblegumgameboy.com/images/cthulhu-typing.png","description":"Once typing summoned soldiers instead of dealing damage, even slow typists could always win. The design thinking behind my new game."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Long words summon dragons: how Cthulhu Typing rewards you for not panicking","datePublished":"2026-07-04","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -44,7 +62,7 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
         <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
         <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
@@ -53,48 +71,104 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Cthulhu Typing</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Cthulhu Typing</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 4, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 4, 2026 · updated August 11, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Why I Replaced "Type to Attack" with "Type to Summon": Making Cthulhu Typing</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Long words summon dragons: how Cthulhu Typing rewards you for not panicking</h1>
 
     <article class="prose">
-      <p>My new browser game, <a href="../../games/cthulhu-typing.html">Cthulhu Typing</a>, is live. Every time you finish typing a hiragana word in romaji, one soldier is summoned, and your growing army keeps auto-attacking a boss from the Cthulhu Mythos on its own. It's a typing-meets-summoning battle. It's free, no sign-up, and plays right in the browser on any PC with a physical keyboard (no phones). A single run takes about two to three minutes.</p>
-      <p>This game is the successor to my earlier <a href="../../games/soldier-typing.html">Soldier Typing</a>. In this post I want to walk through what I changed for the follow-up and the thinking behind those decisions, from a developer's point of view.</p>
 
-      <p><img src="../../images/cthulhu-typing.png" alt="A Cthulhu Typing gameplay screen: a hiragana word prompt at the top, an army of summoned soldiers swarming from the sides, and a towering Cthulhu Mythos boss taking damage"></p>
+      <p class="byline">I made this game. The numbers below come out of my own source rather than from playing and guessing.</p>
 
-      <h2>Flipping keystrokes from "attack" to "summon"</h2>
-      <p>Ever since I put out the first game, one thing kept nagging at me. In most typing games, typing equals attacking, which means the moment your hands stop, you're powerless. With that structure, fast typists get a thrill and slow ones just struggle the whole way through. The design only really rewards people who are already good.</p>
-      <p>So this time I flipped the role of typing itself. What your keystrokes produce isn't damage, it's <strong>soldiers</strong>. Finish one word and a soldier is summoned; every soldier you've already summoned keeps pounding the boss even while your hands rest. What you type doesn't vanish, it piles up on screen as an asset. That's the feedback loop of an idle clicker, and grafting it onto typing is the core idea of this game.</p>
-      <p>The main goal of that flip was to make sure <strong>even a slow typist can always clear the game</strong>. There's no time limit on the kill and no game over. Type at a crawl and your army still steadily grows, the damage accelerates, and the boss always falls in the end. Meanwhile, fast typists get the rush of watching their army balloon in size. Same rules, but I could hand two very different rewards to skilled and struggling players alike, and that's the part of the design I'm happiest with.</p>
-      <p>The smaller mechanics all serve that same principle. Longer words summon stronger soldiers (a two-character word gets you a villager; a five-character one calls up dragon-, angel-, or paladin-class troops). Type five words in a row with no misses and an extra ally joins the fight. Once you pass 40 soldiers, units start merging into "x2, x3..." giants. Every one of these exists to reinforce the feeling that the more you type, the more your army grows.</p>
+      <p>In my first typing game, keystrokes were attacks. Type fast, deal damage. It works, and it has one problem I could not stop noticing: if you are slow, you lose. Not eventually, not narrowly. You just do not get to finish.</p>
 
-      <h2>Why the boss is a single "daily" pick</h2>
-      <p>The other big decision was how bosses appear. I built 43 gods and creatures from the Cthulhu Mythos. I could have unlocked all of them at once and let players tackle any they liked, but I deliberately went with <strong>one boss per day</strong>, and everyone in the world faces the same one. If Cthulhu is up today, Cthulhu is on every player's screen. Beat it and you've cleared the day; at midnight Japan time, the next boss and a fresh word list rotate in.</p>
-      <p>The aim was to make this not a game you sink hours into, but <strong>a habit game you play once a day for two or three minutes</strong>. Solo-made browser games tend to be "clear it once and you're done." I'd much rather have people drop by each day just to see "which god is it today." Everyone facing the same boss matters too: it creates a shared talking point ("isn't today's guy kind of tanky?"), and it puts the leaderboard on level ground.</p>
-      <p>The way your army assembles also changes from boss to boss. Face a boss head-on and your troops pincer it from both sides. It's a small pleasure, watching the picture shift each day.</p>
+      <p>So in this one, keystrokes do not attack. They summon.</p>
 
-      <h2>The score formula: typing speed x accuracy x boss strength</h2>
-      <p>The daily-boss system has one side effect. Some bosses are strong and some are weak, so if you simply competed on raw damage or clear time, whoever happened to play on an easy day would have a lopsided advantage. Since I'm posting a daily leaderboard that resets every day, I couldn't let that slide.</p>
-      <p>So the score is <strong>typing speed x accuracy x boss strength</strong>. On a tough-boss day the boss-strength coefficient is larger, so no matter which day you play, you're competing purely on the quality of your typing. There's a second intention too: because accuracy is a multiplier, misses hit your score directly. Typing fast and sloppy loses to typing cleanly. Viewed as typing practice, the way of typing that does you the most good is also the way that scores the most.</p>
-      <p>For the leaderboard, you just enter a name and play, and your best score of the day is posted automatically. No registration. Alongside the daily ranking there's an all-time leaderboard for total bosses defeated, so if you're the steady, chip-away type, that one's for you.</p>
+      <p>Your words put soldiers on the field, and the soldiers do the fighting on their own timer, every 1.2 seconds, whether or not you are still typing. A slow typist builds an army more slowly than a fast one, but the army does not care how it got there. Given enough time, a slow player still wins.</p>
 
-      <h2>A quiet detail I cared about: no IME toggling</h2>
-      <p>One last thing that never shows up on screen. In this game, <strong>romaji keystrokes register even with Japanese input (IME) left on</strong>. The usual typing-game hassle of "please switch your IME off before you start" was something I'd flagged in the previous game and kept feeling bothered by. Browser games are great precisely because you can play the instant the urge strikes, so making people fiddle with settings at the door felt like a waste. This time the game reads keystrokes directly, so that friction is gone.</p>
-      <p>Note that play records are saved in your browser (localStorage), so they don't carry over to other devices or private-browsing windows. Play from your usual browser and you'll be fine.</p>
+      <figure>
+        <img src="../../images/cthulhu-typing.png" alt="Cthulhu Typing: an army of summoned soldiers attacking a Mythos boss">
+        <figcaption>Everything on this field came from a completed word.</figcaption>
+      </figure>
 
-      <h2>Give today's boss a try</h2>
-      <p>The play loop is simple. Finish typing a hiragana word in romaji, a soldier appears, the soldier fights on its own. That's it. Fast typists can chase the top of the leaderboard; slower players can enjoy a kill at their own pace. And honestly, I just want you to see the sheer absurdity of unspeakable elder gods getting swarmed by a mob of villagers and paladins at least once.</p>
-      <p>▶ <a href="../../games/cthulhu-typing.html">Take on today's boss in Cthulhu Typing</a></p>
-      <p>If you like it, check out the earlier <a href="../../games/soldier-typing.html">Soldier Typing</a> and the snappy, rhythm-friendly <a href="../../games/popcorn-typing.html">Popcorn Typing</a> too.</p>
+      <h2>The word length is the whole game</h2>
+
+      <p>What you type does not just decide how many soldiers appear. It decides <em>which</em> soldiers appear.</p>
+
+      <table class="dtable">
+        <thead><tr><th>Word length</th><th>Tier</th><th>Who shows up</th><th>Damage</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Length">1 to 2</td><td data-label="Tier">Apprentice</td><td data-label="Who">Villager, Farmer</td><td data-label="Damage">6</td></tr>
+          <tr><td data-label="Length">3</td><td data-label="Tier">Warrior</td><td data-label="Who">Swordsman, Dwarf Warrior, Dwarf Soldier</td><td data-label="Damage">9</td></tr>
+          <tr><td data-label="Length">4</td><td data-label="Tier">Elite</td><td data-label="Who">Knight, Heavy Infantry, Archer, Elf Archer</td><td data-label="Damage">12 to 13</td></tr>
+          <tr><td data-label="Length">5</td><td data-label="Tier">Hero</td><td data-label="Who">Wizard, Warlock, and above</td><td data-label="Damage">18+</td></tr>
+        </tbody>
+      </table>
+
+      <p>Five characters is the longest word in the pool, which makes it the top tier by definition. There is a comment in my source that says exactly that: the word list maxes out at five, so five is where the dragons and angels live.</p>
+
+      <p><strong>A five-letter word is worth three times a two-letter word, per soldier.</strong> Not three times the letters. Three times the damage, permanently, from a unit that then keeps attacking for the rest of the fight.</p>
+
+      <p>Which produces the one piece of advice that actually matters here: when a long word comes up and you are not sure of it, <strong>take the extra half second and get it right</strong>. Rushing a five-letter word into a mistake trades a Warlock for nothing. Nailing it slowly still buys you a Warlock.</p>
+
+      <p>There are 465 unique words in the pool, which is the largest word list I have written for anything.</p>
+
+      <h2>Everyone fights the same boss on the same day</h2>
+
+      <p>There are 43 bosses. You do not choose between them and you cannot grind them. The game picks one:</p>
+
+      <p><code>todaysBoss = ROSTER[dayIndexInJST % 43]</code></p>
+
+      <p>The date is calculated in Japan time, so the boss rolls over at midnight JST regardless of where you are. Everyone playing on a given day is fighting the same thing, which is the entire reason the leaderboard is interesting rather than just a list of who has played most.</p>
+
+      <p>One run per day. That constraint was the point of building it.</p>
+
+      <h3>Boss HP, and the fairness problem it created</h3>
+
+      <p>Boss HP is linear, not exponential:</p>
+
+      <p><code>hp = 16,000 + index × 520</code></p>
+
+      <p>So the weakest boss in the rotation has 16,000 HP and the strongest has 37,840. That is a spread of more than double.</p>
+
+      <p>Which broke the leaderboard the moment I thought about it. If today's boss has 16,000 HP and tomorrow's has 37,840, then tomorrow's scores are inflated by nothing more than the calendar. Being good would matter less than showing up on a Thursday.</p>
+
+      <p>The fix is one line:</p>
+
+      <p><code>strength = todaysBossHP / 24,000</code></p>
+
+      <p>Every score is divided by that. 24,000 is the reference point where the multiplier is exactly 1.0, and everything else scales around it. A monster day gets its scores deflated, a soft day gets them inflated, and what survives is how well you actually typed.</p>
+
+      <p>It is a small piece of arithmetic that took an embarrassingly long time to think of, and without it the ranking would have been meaningless.</p>
+
+      <h2>There is no limit on your army</h2>
+
+      <p>The sprite cap in this game is 2,000, which the source comment describes as effectively unlimited. I have never come close to it.</p>
+
+      <p>That is a deliberate contrast with <a href="clicker.html">my clicker</a>, where the number of units you can field is bounded by screen space and that limit shapes the entire late game. Here, the field just keeps filling up. If you type well for long enough, the boss disappears behind your own soldiers.</p>
+
+      <p>Watching that happen is most of why I built it.</p>
+
+      <h2>What I would tell you if you asked</h2>
+
+      <ul>
+        <li><strong>Accuracy over speed on long words.</strong> A five-letter word is a Hero-tier unit. Do not throw it away going fast</li>
+        <li><strong>Short words are not wasted.</strong> A Villager at 6 damage still attacks every 1.2 seconds forever. Volume is real</li>
+        <li><strong>Do not panic at the strong bosses.</strong> The score already accounts for them. A good run against a 37,840 HP boss scores the same as a good run against a 16,000 one</li>
+        <li><strong>Come back tomorrow.</strong> That is the whole shape of the game. One boss, one day, one attempt</li>
+      </ul>
+
+      <p>Nobody has ever asked me any of this, in fairness. There are no comments on this game and no messages about it. I wrote it down because I opened the source to check something else and realised the score normalisation is invisible to anyone playing, and it is the part I am proudest of.</p>
+
+      <p><a href="../../games/cthulhu-typing.html">Cthulhu Typing</a> is free in the browser. It is Japanese typing practice, typed in romaji.</p>
+
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 

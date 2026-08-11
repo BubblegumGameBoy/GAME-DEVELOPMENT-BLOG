@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<title>Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Mythos Slayer | Bubblegum Game</title>
-<meta name="description" content="Design notes on Mythos Slayer. Why the bosses are Cthulhu Mythos monsters, the feel of mashing to summon allies, and the idle-and-prestige loop that lets you grow endlessly stronger, told from the design side.">
+<title>I paid for the boss art on a game that has never earned a yen | Bubblegum Game</title>
+<meta name="description" content="Mythos Slayer is a clicker with 40 Cthulhu Mythos bosses. The art is commissioned, the code is mine, and the whole thing exists because of one specific feeling I wanted to build a game around.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html">
-<meta property="og:title" content="Dev Diary: The &quot;Cthulhu x Mashing x Prestige&quot; Design Behind Mythos Slayer | Bubblegum Game">
-<meta property="og:description" content="Cthulhu Mythos bosses, mashing to summon allies, and an idle-plus-prestige loop that makes you endlessly stronger. Design-philosophy notes for an idle game.">
-<meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
+<meta property="og:title" content="I paid for the boss art on a game that has never earned a yen">
+<meta property="og:description" content="Why the bosses are Cthulhu Mythos creatures, why clicking summons instead of attacking, and the one decision I paid real money for.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/mythos-slayer-title.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,9 +29,26 @@
   .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
   .prose li { margin:4px 0; }
   .prose a { color:#2a9aa3; font-weight:700; }
-  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:88px; max-width:88px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Diary: The \"Cthulhu x Mashing x Prestige\" Design Behind Mythos Slayer","datePublished":"2026-06-14","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"Cthulhu Mythos bosses, mashing to summon allies, and an idle-plus-prestige loop that makes you endlessly stronger. Design-philosophy notes for an idle game."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I paid for the boss art on a game that has never earned a yen","datePublished":"2026-06-14","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -44,7 +61,7 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
         <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
         <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
@@ -53,35 +70,81 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Dev Diary: The Design Behind Mythos Slayer</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Mythos Slayer</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 14, 2026</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Diary</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 14, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Note</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Dev Diary: The "Cthulhu x Mashing x Prestige" Design Behind Mythos Slayer</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">I paid for the boss art on a game that has never earned a yen</h1>
 
     <article class="prose">
-      <p>It's Bubblegum. How did the site's flagship game, <a href="../../games/clicker.html">Mythos Slayer</a>, come to be, and what was I aiming for? I'll leave the how-to-play to the <a href="2026-06-22-clicker-strategy.html">strategy guide</a> and focus here on the design "philosophy" instead.</p>
 
-      <h2>Why the bosses are from the Cthulhu Mythos</h2>
-      <p>The bosses in this game are <strong>modeled on legendary monsters from the Cthulhu Mythos</strong>. Idle games are simple by nature, so what keeps you going is <strong>curiosity</strong>: "what's going to show up next?" Instead of generic enemies, I lined up 40 Cthulhu creatures whose names alone spark a little excitement, hoping to create that pull of "just one more." And if Cthulhu fans crack a knowing smile, all the better.</p>
+      <p class="byline">I built this game. This is the design side of it. The balance maths lives in <a href="2026-08-10-mythos-slayer-balance.html">a separate post</a>.</p>
 
-      <h2>The feel of "mash to summon"</h2>
-      <p>You play by mashing the spacebar (or clicking). But it's not only about hitting the boss. I placed the fun in <strong>summoning allies (soldiers, archers, dwarves) and filling the screen with a crowd</strong>. The satisfaction of striking with your own hand, plus the reassurance of a growing party fighting alongside you: those two things at once are what this game feels like.</p>
+      <p>Mythos Slayer has forty bosses in it, and they are all drawn by someone who is not me, because I commissioned them.</p>
 
-      <h2>The comfort of progress even while idle</h2>
-      <p>Games that stall unless you keep your hands moving get exhausting fast. So I designed it so that <strong>even while idle, your commoners gather coins and your soldiers keep hitting the boss</strong>. Bosses reappear after they fall, so your forces and your coins keep growing even while you're away from the keyboard. Whether it's "time to really mash" or "time to just leave it running," I wanted the comfort of always moving forward.</p>
+      <p>I want to be clear about the financial logic there, since there is not any. This is a free browser game made by one person. It had, at the point I placed that order, earned exactly nothing, and it has continued to earn exactly nothing since. I paid an artist anyway.</p>
 
-      <h2>The thrill of getting "endlessly stronger" through prestige</h2>
-      <p>And the backbone of the game is <strong>prestige</strong>. Prestiging raises your coin multiplier, and the more you repeat it the more your soldiers grow without limit, until you're eventually fighting with <strong>astronomical numbers</strong>. The real joy of an idle game is the moment the figures leap by orders of magnitude. Stuck? Prestige and reset, and come back dramatically stronger. That rush of climbing is the part I most wanted you to experience.</p>
+      <figure>
+        <img src="../../images/mythos-slayer-title.png" alt="The Mythos Slayer title screen, offering Japanese, English and Chinese">
+        <figcaption>The title screen. Three languages, forty bosses waiting behind it.</figcaption>
+      </figure>
 
-      <h2>Engineering "you just want to keep going"</h2>
-      <p>Exciting Cthulhu bosses, the feel of mashing and summoning, the comfort of idle progress, and the thrill of getting boundlessly stronger through prestige. I built the "you just want to keep going" sensation around those four pillars. If any of that sounds good, give <a href="../../games/clicker.html">Mythos Slayer</a> a try. For a concrete route through it, I've written a <a href="2026-06-22-clicker-strategy.html">strategy guide</a>.</p>
+      <h2>Why the bosses are Cthulhu Mythos creatures</h2>
+
+      <p>An idle clicker is, mechanically, a spreadsheet with a progress bar. The numbers go up. That is genuinely enough to keep people playing, which is a slightly unnerving fact about all of us.</p>
+
+      <p>But the thing that makes you push to the <em>next</em> boss rather than closing the tab is wanting to see what the next one looks like. That is not a numbers problem. That is an art problem.</p>
+
+      <p>Cthulhu Mythos entities are perfect for this for a boring practical reason: they are already designed to be visually escalating. The rotation moves from things that are merely unpleasant up through things that should not be depicted at all. A Ratkin at boss 1 and a Hound of Tindalos at boss 28 are the same difficulty curve expressed as pictures.</p>
+
+      <p>They also come with names that do half the work. Night-gaunt. Gloom Wraith. You have not met the thing yet and you already have an opinion about it.</p>
+
+      <p>Which is why I paid for the art. The whole retention model of the game rests on the bosses being worth arriving at, and I was not going to get that out of my own drawing. The credit for those goes to <a href="https://x.com/Kome_to_Matsuri" target="_blank" rel="noopener">@Kome_to_Matsuri</a> and to Ankimo of the Innsmouth Project.</p>
+
+      <h2>Clicking summons, it does not attack</h2>
+
+      <p>The other structural decision is that mashing the spacebar does not primarily hurt the boss. It builds an army that hurts the boss.</p>
+
+      <p>The difference matters more than it sounds. If clicking is damage, then stopping clicking is stopping progress, and the game becomes a test of how long you are willing to abuse your own hand. If clicking is recruitment, then everything you do while you are present keeps paying out while you are absent.</p>
+
+      <p>You come back to a screen where your line of soldiers has been quietly working. That is the feeling I was building around.</p>
+
+      <p>It also means the twenty units in the game are the actual progression, not decoration. The Swordsman does 2 damage. The Demon God at the far end does 50 million. Watching that ladder get built is the game.</p>
+
+      <h2>Rebirth exists because I hit a wall in my own game</h2>
+
+      <p>Prestige was not planned. It got added because I played far enough to break it.</p>
+
+      <p>Boss HP multiplies by 2.42 every step. Your damage does not scale like that, because units come in fixed tiers and you eventually run out of room to put them. So there is a point where the curve simply leaves you behind, and I found it by playing, not by calculating.</p>
+
+      <p>Rebirth resets everything for a permanent gold multiplier, and unlocks at Boss 10. It is the release valve for a structural problem I built and then walked into.</p>
+
+      <p>I got the formula wrong the first time, too. In the original version, resetting the instant it unlocked was always mathematically correct, which meant the choice was not a choice. It is now scaled by how deep you got, so waiting actually pays. The details are in <a href="2026-08-10-mythos-slayer-balance.html">the balance post</a>.</p>
+
+      <h2>Three languages, no audience</h2>
+
+      <p>The game ships in Japanese, English and Chinese. Every unit name, every boss name, every piece of UI, three times over.</p>
+
+      <p>Nobody asked for that. There is no Chinese-speaking player base clamouring for it, because as far as I can tell there is no player base clamouring for anything. I have received zero messages about this game since it went up.</p>
+
+      <p>I did it because a browser game costs nothing to open, and the only thing standing between someone anywhere in the world and playing it is whether they can read the button. Removing that seemed worth an evening.</p>
+
+      <h2>What this actually is</h2>
+
+      <p>If you tally it up honestly: commissioned art, three localisations, twenty balanced units, forty bosses, a prestige system rebuilt once. For a free game with no players and no revenue.</p>
+
+      <p>I do not have a business case for that. What I have is that I wanted the thing to exist and be good, and I was willing to pay a real artist to make it so, and none of that requires anyone to show up for it to have been worth doing.</p>
+
+      <p>Though if someone did show up, I would not hate it.</p>
+
+      <p><a href="../../games/clicker.html">Mythos Slayer</a> is free in the browser, no install and no account.</p>
+
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 

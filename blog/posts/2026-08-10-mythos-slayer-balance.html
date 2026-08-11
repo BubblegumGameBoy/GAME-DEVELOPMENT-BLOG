@@ -155,7 +155,11 @@
         </tbody>
       </table>
 
-      <p>Boss 1 and Boss 6 are read directly off my own save. Everything between and after is the 2.42 multiplier applied forward. If you want to check my working: 300 multiplied by 2.42 five times is 24,899.7, and the game displays 24.9K.</p>
+      <p>There is no estimation in that table. The whole curve is one line in the source:</p>
+
+      <p><code>bossMaxHp = floor(300 * 2.42 ^ (wave - 1))</code></p>
+
+      <p>Boss 1 is the 300. Every boss after it is that number multiplied by 2.42 again. If you want to check the arithmetic: 300 multiplied by 2.42 five times is 24,899.7, and the game displays 24.9K.</p>
 
       <h3>Does it still hold twenty-seven bosses later?</h3>
 
@@ -245,9 +249,26 @@
 
       <p>Put those together and the late game has a ceiling. Bounded unit count, stepped damage tiers, boss HP climbing at 2.42 per step. Playing my own build far enough, I hit a point where the boss curve kept going and my damage had nowhere left to go. The run was stuck.</p>
 
-      <p>Rebirth is the release valve. It unlocks at Boss 10, at 854K HP, which is roughly where that ceiling starts to bite. Reset, gain a permanent multiplier, come back with a higher floor.</p>
+      <p>Rebirth is the release valve. It unlocks at Boss 10, at 854K HP, which is roughly where that ceiling starts to bite. Reset, gain a permanent gold multiplier, come back with a higher floor.</p>
 
-      <p>I rebuilt the Rebirth multipliers once as well. In the first version, resetting the instant it unlocked was always correct, which made the choice meaningless. Now the reward scales with how far you got before resetting, so holding out actually pays.</p>
+      <p>I rebuilt the Rebirth multipliers once as well. In the first version, resetting the instant it unlocked was always correct, which made the choice meaningless. The formula now reads:</p>
+
+      <p><code>prestigeFactor = 1 + 0.4 * deepestBossCleared</code></p>
+
+      <p>Which turns the decision into arithmetic you can actually do:</p>
+
+      <table class="dtable">
+        <thead><tr><th>Reset after clearing</th><th>Permanent gold multiplier</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Reset after">Boss 10 (the earliest allowed)</td><td data-label="Multiplier">x5</td></tr>
+          <tr><td data-label="Reset after">Boss 15</td><td data-label="Multiplier">x7</td></tr>
+          <tr><td data-label="Reset after">Boss 20</td><td data-label="Multiplier">x9</td></tr>
+          <tr><td data-label="Reset after">Boss 28</td><td data-label="Multiplier">x12.2</td></tr>
+          <tr><td data-label="Reset after">Boss 40</td><td data-label="Multiplier">x17</td></tr>
+        </tbody>
+      </table>
+
+      <p>Pushing ten bosses deeper before resetting is worth four extra multipliers, permanently. That is the trade the old version did not offer, because the old version handed you everything at the first opportunity and left nothing to think about.</p>
 
       <h2>The early-game churn I decided not to fix</h2>
 

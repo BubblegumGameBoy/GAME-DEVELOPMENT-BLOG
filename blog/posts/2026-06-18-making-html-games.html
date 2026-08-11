@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html">
-<title>Dev Diary: I Make These Because I Love the "Old Internet" | Bubblegum Game</title>
-<meta name="description" content="A post about the philosophy behind my solo game development. I love the early-internet feel, from old-style bulletin boards to the days before YouTube had ads, and I make things to get that feeling back. I also touch on my horror side-project bulletin board and the influence of Undertale.">
+<title>I fixed a multiplayer bug in a game with no players | Bubblegum Game</title>
+<meta name="description" content="My changelog is a list of problems reported by nobody. A note on making browser games for the old internet, and on what maintenance means when there is no audience to maintain them for.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html">
-<meta property="og:title" content="Dev Diary: I Make These Because I Love the &quot;Old Internet&quot; | Bubblegum Game">
-<meta property="og:description" content="A post about the philosophy behind my solo game development. I love the early-internet feel, from old-style bulletin boards to the days before YouTube had ads, and I make things to get that feeling back. I also touch on my horror side-project bulletin board and the influence of Undertale.">
-<meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
+<meta property="og:title" content="I fixed a multiplayer bug in a game with no players">
+<meta property="og:description" content="What my changelog actually records, and why I keep making things that open in one click and belong to nobody.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/site-home.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,9 +29,26 @@
   .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
   .prose li { margin:4px 0; }
   .prose a { color:#2a9aa3; font-weight:700; }
-  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:78px; max-width:78px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Diary: I Make These Because I Love the \"Old Internet\"","datePublished":"2026-06-18","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"A post about the philosophy behind my solo game development. I love the early-internet feel, from old-style bulletin boards to the days before YouTube had ads, and I make things to get that feeling back. I also touch on my horror side-project bulletin board and the influence of Undertale."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I fixed a multiplayer bug in a game with no players","datePublished":"2026-06-18","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-18-making-html-games.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -44,7 +61,7 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
         <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
         <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
@@ -53,31 +70,82 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">I Make These Because I Love the "Old Internet"</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making browser games</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 18, 2026</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Diary</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 18, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Note</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Dev Diary: I Make These Because I Love the "Old Internet"</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">I fixed a multiplayer bug in a game with no players</h1>
 
     <article class="prose">
-<p>Hi, it's Bubblegum. As a hobby, I make games you can play easily in a browser. This time, rather than "how" I build them, I want to write about <strong>what I care about while building them</strong>: my thinking as a maker. More than the tech, this is the part that sits at my core.</p>
-<h2>What I love is the "old internet"</h2>
-<p>I'm just crazy about the feel of the early internet. <strong>The days before YouTube had ads</strong>, <strong>the era when 2ch-style bulletin boards were still the mainstream</strong>. That messy, ramshackle internet where you were loosely connected to some stranger in the middle of the night, and everything had a handmade quality to it. Today's convenience is nice too, but I've never been able to forget that "I don't quite get it, but it's exciting" feeling from back then.</p>
-<h2>So I built a "hidden site"</h2>
-<p>Wanting to give shape to that "back to the old net" feeling with my own hands is why I made <a href="../../ura/">Ura, the "Ushimitsu Bulletin Board"</a>. It looks like an old-school message board itself, recreating the air of being on a late-night occult channel. In particular, <a href="../../ura/sasanaki.html">"Sasanaki Station"</a> is an experience where you become one of the residents, posting into a live thread yourself. I'd be happy if it lets you relive the feeling of staying up late on those old boards.</p>
-<h2>The influence of Undertale</h2>
-<p>The work that's shaped my game-making the most is Undertale. I love those <strong>"wait, what?" moments mid-play</strong>, the way it gently subverts what the player expects. In my own games too, I care about not just being playable, but <strong>slipping in a little surprise or twist while you're in the middle of playing</strong>. The way the situation shifts partway through <a href="../../games/soldier-typing.html">Soldier Typing</a> is an expression of that same idea.</p>
-<h2>Lightweight, plus a little surprise</h2>
-<p>The reason I stick with browser games is that <strong>the ease of "just open a URL and play"</strong> is directly continuous with the casualness of the old net. No install, no sign-up. You wander in, you're surprised for a moment, and then you go back to your day. I'll keep aiming for that combination of lightness and small surprises.</p>
-<h2>Going forward</h2>
-<p>I'll keep making things centered on "that old-internet feeling," things that might make you smile or catch you a little off guard. If you like, peek at the <a href="../../#games">games list</a> or the <a href="../../ura/">hidden site</a> and feel a bit of that old air.</p>
+
+      <p class="byline">One person, eight browser games, and a changelog nobody asked for.</p>
+
+      <p>On the 26th of July I shipped a fix for a bug in <a href="../../games/creature-fishing.html">Creature Fishing</a> where, during online play, another player could take control of your character.</p>
+
+      <p>Read that again with the important detail attached: <strong>there were no other players.</strong></p>
+
+      <p>Nobody had this happen to them. Nobody reported it. I found it by opening two browser windows and playing against myself, discovered that window two could seize window one, and spent an evening fixing a griefing exploit for a griefer who does not exist.</p>
+
+      <figure>
+        <img src="../../images/site-home.png" alt="The Bubblegum Game home page">
+        <figcaption>The whole thing. Open in a browser, no account, no download.</figcaption>
+      </figure>
+
+      <h2>My changelog is a list of things that happened to nobody</h2>
+
+      <p>Once you notice this it is hard to stop noticing. Here is a genuine sample.</p>
+
+      <table class="dtable">
+        <thead><tr><th>Date</th><th>What I fixed</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Date">Jul 26</td><td data-label="Fixed">Players clipping through walls</td></tr>
+          <tr><td data-label="Date">Jul 26</td><td data-label="Fixed">A sea slug that was duplicating itself indefinitely</td></tr>
+          <tr><td data-label="Date">Jul 26</td><td data-label="Fixed">Another player being able to take control of your character</td></tr>
+          <tr><td data-label="Date">Aug 3</td><td data-label="Fixed">The main character ignoring prompts entirely</td></tr>
+          <tr><td data-label="Date">Aug 3</td><td data-label="Fixed">The main character beginning to speak in HTML</td></tr>
+        </tbody>
+      </table>
+
+      <p>That last one deserves its moment. In <a href="../../games/five-hundred-million-years.html">500 Million Years</a> you watch a boy spend eternity alone in an empty space, and for a while there he would occasionally start emitting markup tags mid-sentence, like a man losing his grip on language in a very specific and modern way.</p>
+
+      <p>I fixed it. I did keep the part where he sometimes communicates non-verbally, because that one turned out to be better than what I had written on purpose.</p>
+
+      <h2>Why keep doing this</h2>
+
+      <p>What I actually miss about the internet I grew up on is not the design. It is that things on it were made by one person for no reason.</p>
+
+      <p>Somebody's page about a topic. A text board with fourteen regulars. A small strange thing that existed because its author wanted it to exist, with no growth strategy attached and nothing at the end of it. You clicked a link and you were in, and there was no account, no install, no onboarding, and no ads before the thing you came for.</p>
+
+      <p>That is the specification I actually build against. Every game here opens in one click. None of them ask who you are. They save to your own browser and belong to nobody.</p>
+
+      <p>The other influence, and I will name it since it shows: Undertale. Not the mechanics, the sense that a small game is allowed to be strange and personal and to have opinions. It gave a lot of us permission.</p>
+
+      <p>There is also <a href="../../ura/" rel="nofollow">a hidden board</a> on this site, a Japanese-style horror bulletin board with an original story on it built as a homage to an old net legend. It is not linked from the front page. Finding it is the point of it.</p>
+
+      <h2>The part I did not expect</h2>
+
+      <p>I assumed making things nobody plays would feel bad. It mostly does not, and I have thought about why.</p>
+
+      <p>Maintenance turns out to be its own reward. Fixing the multiplayer exploit was satisfying <em>because</em> it was invisible. There was no one to thank me and no metric that moved. The game just quietly became correct, and I was the only person in the world who knew.</p>
+
+      <p>That is a completely different feeling from shipping something that gets applause, and I am not sure it is worse.</p>
+
+      <p>What does get to me, occasionally, is the fishing game. It is the best thing I have made, it has 172 species and an online mode, and its player count is a rounding error. That one stings.</p>
+
+      <h2>So it stays up</h2>
+
+      <p>All eight games are still running and I still patch them. The changelog will keep filling up with fixes for problems that have never inconvenienced a living person.</p>
+
+      <p>If you clicked through to any of them, you are now one of the few people this applies to, and the wall-clipping bug you will never experience was fixed specifically for you.</p>
+
+      <p><a href="../../#games">All eight games are here.</a> Free, no install, no account.</p>
 
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 

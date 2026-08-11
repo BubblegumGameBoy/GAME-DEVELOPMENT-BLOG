@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html">
-<title>Mythos Slayer Strategy: Summon, Upgrade, and Prestige to Slay the Cthulhu Bosses | Bubblegum Game</title>
-<meta name="description" content="A strategy guide for Mythos Slayer. Mash the spacebar to summon soldiers, archers, and dwarves, upgrade your weapons, coins, and speed, farm coins while idle, and use prestige to grind down all 40 Cthulhu Mythos bosses.">
+<title>The expensive units in Mythos Slayer are a trap, and I am the one who built them | Bubblegum Game</title>
+<meta name="description" content="A Swordsman costs 40 gold per point of damage per second. The Demon God costs 500,000. A strategy guide for my own idle clicker, including the two units that break the pattern and the reset timing that is worth four permanent multipliers.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html">
-<meta property="og:title" content="Mythos Slayer Strategy: Summon, Upgrade, and Prestige to Slay the Cthulhu Bosses | Bubblegum Game">
-<meta property="og:description" content="A strategy guide for Mythos Slayer. Mash the spacebar to summon soldiers, archers, and dwarves, upgrade your weapons, coins, and speed, farm coins while idle, and use prestige to grind down all 40 Cthulhu Mythos bosses.">
+<meta property="og:title" content="The expensive units in Mythos Slayer are a trap, and I am the one who built them">
+<meta property="og:description" content="Gold per DPS for all twenty units, the two that break the curve, and when to actually hit Rebirth.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -29,9 +29,27 @@
   .prose ul, .prose ol { margin:0 0 16px; padding-left:1.4em; }
   .prose li { margin:4px 0; }
   .prose a { color:#2a9aa3; font-weight:700; }
-  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0; }
+  .prose img { max-width:100%; height:auto; border:3px solid #14283f; border-radius:12px; display:block; margin:18px 0 6px; }
+  .prose figure { margin:18px 0; }
+  .prose figcaption { font-size:12.5px; color:#7e95ad; text-align:center; margin:0 0 8px; }
+  .prose code { background:#fff; border:1px solid #cde0ea; border-radius:5px; padding:1px 6px; font-family:'Courier New',monospace; font-size:.92em; color:#2c4a6e; }
+  .byline { font-size:13.5px; color:#3d5b7c; background:#fff; border:2px solid #cde0ea; border-left:6px solid #2a9aa3; border-radius:10px; padding:11px 15px; margin:0 0 26px; line-height:1.8; font-weight:600; }
+  .dtable { width:100%; border-collapse:collapse; font-size:14px; margin:18px 0; background:#fff; border:2px solid #cde0ea; border-radius:10px; overflow:hidden; }
+  .dtable th { background:#2c4a6e; color:#ffffff; padding:9px 12px; text-align:left; font-weight:800; font-size:13px; }
+  .dtable td { padding:9px 12px; border-bottom:1px solid #dceaf2; line-height:1.7; }
+  .dtable tbody tr:last-child td { border-bottom:none; }
+  .dtable tbody tr:nth-child(even) td { background:#f4fafd; }
+  @media (max-width:560px) {
+    .dtable { display:block; border:none; background:transparent; }
+    .dtable thead { display:none; }
+    .dtable tbody, .dtable tr, .dtable td { display:block; width:100%; }
+    .dtable tr { border:2px solid #cde0ea; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+    .dtable td { display:flex; align-items:flex-start; padding:7px 11px; border-bottom:1px solid #eaf4f9; font-size:13px; }
+    .dtable td::before { content:attr(data-label); font-weight:800; font-size:11px; color:#7e95ad; min-width:92px; max-width:92px; flex-shrink:0; padding-right:8px; margin-right:9px; border-right:2px solid #dceaf2; line-height:1.6; }
+    .dtable tbody tr:nth-child(even) td { background:#fff; }
+  }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mythos Slayer Strategy: Summon, Upgrade, and Prestige to Slay the Cthulhu Bosses","datePublished":"2026-06-22","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html","image":"https://bubblegumgameboy.com/images/spacebar-clicker.png","description":"A strategy guide for Mythos Slayer. Mash the spacebar to summon soldiers, archers, and dwarves, upgrade your weapons, coins, and speed, farm coins while idle, and use prestige to grind down all 40 Cthulhu Mythos bosses."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The expensive units in Mythos Slayer are a trap, and I am the one who built them","datePublished":"2026-06-22","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html"}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -44,7 +62,7 @@
 
   <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
     <div style="max-width:760px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Blog</a>
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Blog</a>
       <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
         <a href="../../" style="color:#cfe6ee;text-decoration:none;">Home</a>
         <a href="../../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
@@ -53,31 +71,126 @@
   </nav>
 
   <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Mythos Slayer Strategy</span></p>
+    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Mythos Slayer strategy</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026 · updated August 11, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Mythos Slayer Strategy: Summon, Upgrade, and Prestige to Slay the Cthulhu Bosses</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">The expensive units in Mythos Slayer are a trap, and I am the one who built them</h1>
 
     <article class="prose">
-<p><a href="../../games/clicker.html">Mythos Slayer</a> is an idle boss-rush game where you mash to summon allies and grind down bosses from the Cthulhu Mythos. The basic controls and where the upgrade tabs live are covered on the <a href="../../games/clicker.html">game page's how-to-play section</a>, so here I'll go a step deeper into where to put your effort to grow fastest.</p>
-<h2>Where to spend your first upgrades</h2>
-<p>There are plenty of things to spend coins on, but when in doubt, early on you can't go wrong starting with weapon upgrades. Once each hit lands harder, the boss in front of you melts at a good tempo and your coin flow suddenly picks up. Click power is the foundation, so if it's thin, nothing else really takes off.</p>
-<p>Once your damage has some room to spare, move on to coin gain and speed. Coin gain is the fuel that turns every other upgrade, and speed raises your raw number of actions. Thicken them up in the order weapon then coin gain then speed, and your earnings naturally accelerate.</p>
-<h2>Make idle time the main way you earn</h2>
-<p>In this game, the time you're away from your desk is prime earning time. Your commoners gather coins, your soldiers keep hitting the boss, and since bosses revive after they fall, coins pile up just from leaving it running. Before bed or when you step out for a bit, beef up your automatic earners. That alone makes the next morning's coin total wildly bigger.</p>
-<p>That said, it isn't built so that progress stalls the moment your hands stop. There's time for hard mashing and time for just leaving it be, and either way you keep moving forward, so the trick is fitting it around your day.</p>
-<h2>When you stall, prestige is the answer</h2>
-<p>When progress starts to feel heavy, that's your cue to prestige. Prestiging raises your coin multiplier; your progress resets, but the next loop becomes dramatically lighter in return. Rather than hoarding it because it feels wasteful, going for the multiplier is faster in the end.</p>
-<p>As you repeat prestige, upgrade, prestige again, your soldiers' damage keeps gaining digits, until at last you're mowing bosses down with numbers almost too big to read. That moment of "the numbers breaking down," so characteristic of idle games, is the tastiest part of this one.</p>
-<p>The right way to grow is different for everyone, so start by getting a feel for <a href="../../games/clicker.html">Mythos Slayer</a> and finding your own approach. If you're curious why I designed it this way, I've written about it in the <a href="2026-06-14-making-boss-rush-clicker.html">dev diary</a>.</p>
+
+      <p class="byline">I made this game. I also had to sit down and work out how to play it properly, which is a slightly embarrassing thing to admit.</p>
+
+      <p>Here is the situation I kept getting into with my own game.</p>
+
+      <p>Gold piles up. A unit I have never been able to afford finally goes from grey to lit. I buy it immediately, because that is what the whole loop has been training me to do for the last twenty minutes. And then progress gets <em>slower</em>, and I sit there wondering whether I broke something.</p>
+
+      <p>I did not break anything. I bought the wrong thing, in a game I wrote.</p>
+
+      <figure>
+        <img src="../../images/spacebar-clicker.png" alt="Mythos Slayer in the late game, with a boss at 6.92 trillion HP and a line of summoned units">
+        <figcaption>Late game. This state took two Rebirths to reach.</figcaption>
+      </figure>
+
+      <h2>What a unit actually costs you</h2>
+
+      <p>The number the game shows you is the price. The number that matters is the price divided by the damage per second you get for it.</p>
+
+      <p>So I pulled every unit out of the game data and did that division. This is the result, and it is worse than I expected.</p>
+
+      <table class="dtable">
+        <thead><tr><th>Unit</th><th>Cost</th><th>DPS</th><th>Gold per DPS</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Unit">Swordsman</td><td data-label="Cost">80</td><td data-label="DPS">2</td><td data-label="Gold/DPS">40</td></tr>
+          <tr><td data-label="Unit">Dwarf Warrior</td><td data-label="Cost">280</td><td data-label="DPS">4</td><td data-label="Gold/DPS">70</td></tr>
+          <tr><td data-label="Unit">Archer</td><td data-label="Cost">600</td><td data-label="DPS">5</td><td data-label="Gold/DPS">120</td></tr>
+          <tr><td data-label="Unit">Heavy Infantry</td><td data-label="Cost">3,500</td><td data-label="DPS">12</td><td data-label="Gold/DPS">292</td></tr>
+          <tr><td data-label="Unit">Steel Dwarf</td><td data-label="Cost">8,800</td><td data-label="DPS">20</td><td data-label="Gold/DPS">440</td></tr>
+          <tr><td data-label="Unit">Wizard</td><td data-label="Cost">20,000</td><td data-label="DPS">30</td><td data-label="Gold/DPS">667</td></tr>
+          <tr><td data-label="Unit">Knight</td><td data-label="Cost">100,000</td><td data-label="DPS">90</td><td data-label="Gold/DPS">1,111</td></tr>
+          <tr><td data-label="Unit">Paladin</td><td data-label="Cost">500,000</td><td data-label="DPS">200</td><td data-label="Gold/DPS">2,500</td></tr>
+          <tr><td data-label="Unit">Elf Archer</td><td data-label="Cost">2.5M</td><td data-label="DPS">500</td><td data-label="Gold/DPS">5,000</td></tr>
+          <tr><td data-label="Unit">Warlock</td><td data-label="Cost">12M</td><td data-label="DPS">1,300</td><td data-label="Gold/DPS">9,231</td></tr>
+          <tr><td data-label="Unit">Dark Knight</td><td data-label="Cost">60M</td><td data-label="DPS">3,200</td><td data-label="Gold/DPS">18,750</td></tr>
+          <tr><td data-label="Unit">Jade Dragon</td><td data-label="Cost">300M</td><td data-label="DPS">7,778</td><td data-label="Gold/DPS">38,571</td></tr>
+          <tr><td data-label="Unit">Violet Dragon</td><td data-label="Cost">1.5B</td><td data-label="DPS">20,000</td><td data-label="Gold/DPS">75,000</td></tr>
+          <tr><td data-label="Unit">Crimson Dragon</td><td data-label="Cost">8B</td><td data-label="DPS">50,000</td><td data-label="Gold/DPS">160,000</td></tr>
+          <tr><td data-label="Unit">Archangel</td><td data-label="Cost">40B</td><td data-label="DPS">125,000</td><td data-label="Gold/DPS">320,000</td></tr>
+          <tr><td data-label="Unit">Ancient Jade Dragon</td><td data-label="Cost">200B</td><td data-label="DPS">1.33M</td><td data-label="Gold/DPS">150,000</td></tr>
+          <tr><td data-label="Unit">Awakened Crimson Dragon</td><td data-label="Cost">1T</td><td data-label="DPS">5M</td><td data-label="Gold/DPS">200,000</td></tr>
+          <tr><td data-label="Unit">Seraph</td><td data-label="Cost">5T</td><td data-label="DPS">6M</td><td data-label="Gold/DPS">833,333</td></tr>
+          <tr><td data-label="Unit">Demon God</td><td data-label="Cost">25T</td><td data-label="DPS">50M</td><td data-label="Gold/DPS">500,000</td></tr>
+        </tbody>
+      </table>
+
+      <p>The Swordsman buys a point of damage per second for 40 gold. The Demon God buys the same point for 500,000.</p>
+
+      <p><strong>The most expensive unit in the game is roughly 12,500 times less gold-efficient than the cheapest one.</strong> Every step up that ladder is a worse deal than the step before it, and the game never says so. It just lights the button up and waits.</p>
+
+      <h3>Two units break the pattern, and they are the best purchases in the game</h3>
+
+      <p>Look again at the Ancient Jade Dragon and the Awakened Crimson Dragon. Their gold-per-DPS goes <em>down</em> compared to what sits either side of them, which happens nowhere else in the list.</p>
+
+      <p>The reason is a single property in their data: they fire three projectiles instead of one. That triples their real output while the price only follows the normal curve.</p>
+
+      <p>The Archangel just above them costs 320,000 per DPS. The Ancient Jade Dragon costs 150,000. It is less than half the price for the same damage, and it is the <em>next</em> unit up.</p>
+
+      <p>I would like to claim that was a considered piece of design. Honestly it started as a way to make the big dragons feel appropriately dramatic on screen, and the balance implication only became obvious later, when I did this exact division.</p>
+
+      <h2>So how should you actually play</h2>
+
+      <p>The efficiency table looks like it says "only ever buy Swordsmen", and that is wrong, because damage is not the only thing being bought.</p>
+
+      <p>Boss HP follows <code>300 × 2.42^(wave-1)</code>. It multiplies by 2.42 every single step, forever. Cheap units cannot keep pace with that no matter how many you stack, because you run out of places to put them long before the maths works out.</p>
+
+      <p>Which gives you the actual rule:</p>
+
+      <ul>
+        <li><strong>Early on, do not skip tiers.</strong> The cheap units are so much more efficient that buying up too fast is the most common way to stall out. Keep buying what you can afford in volume</li>
+        <li><strong>Buy the next tier when you are stuck, not when you can afford it.</strong> Affordability is the trap. Being unable to progress is the actual signal</li>
+        <li><strong>Prioritise the Ancient Jade Dragon and the Awakened Crimson Dragon.</strong> They are the only two purchases in the game that get cheaper per point of damage. Reaching them is worth planning around</li>
+        <li><strong>Do not neglect the Upgrade tab.</strong> Kitchen Knife costs 60 gold and carries the entire opening before you own a single unit. Crit chance and crit damage keep scaling your tapping long after your tapping should have stopped mattering</li>
+      </ul>
+
+      <h2>Rebirth is arithmetic, not vibes</h2>
+
+      <p>Rebirth unlocks at Boss 10 and resets everything for a permanent gold multiplier. The formula is:</p>
+
+      <p><code>multiplier = 1 + 0.4 × deepest boss cleared</code></p>
+
+      <table class="dtable">
+        <thead><tr><th>Reset after clearing</th><th>Permanent gold multiplier</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Reset after">Boss 10 (earliest possible)</td><td data-label="Multiplier">x5</td></tr>
+          <tr><td data-label="Reset after">Boss 15</td><td data-label="Multiplier">x7</td></tr>
+          <tr><td data-label="Reset after">Boss 20</td><td data-label="Multiplier">x9</td></tr>
+          <tr><td data-label="Reset after">Boss 28</td><td data-label="Multiplier">x12.2</td></tr>
+          <tr><td data-label="Reset after">Boss 40</td><td data-label="Multiplier">x17</td></tr>
+        </tbody>
+      </table>
+
+      <p>Ten extra bosses before you reset is worth four extra permanent multipliers. That is a lot to give up for the satisfaction of pressing the button the moment it unlocks.</p>
+
+      <p>An earlier version of the game did not work this way. Resetting instantly was always correct, so there was no decision in it at all, and I rebuilt the formula specifically to put one back.</p>
+
+      <p>The practical advice: <strong>do not reset at Boss 10 unless you are properly stuck.</strong> Push until the wall is real, then take the bigger multiplier.</p>
+
+      <h2>The part I got wrong for a while</h2>
+
+      <p>For a long stretch the version of this guide that existed said the opposite. It told you to prestige early, and that the multiplier was a flat permanent doubling.</p>
+
+      <p>That was written from memory of an older build and it was simply wrong. The bosses were listed wrong too, and so was the unit count. Nobody ever pointed any of this out to me. I found it by opening my own game files to write this rewrite, which is a strange way to receive a bug report.</p>
+
+      <p>Anyway. The numbers above are the ones in the shipping build. If they change, it is because I changed them, and I will come back and fix this page again.</p>
+
+      <p><a href="../../games/clicker.html">Mythos Slayer</a> is free in the browser, in English, Japanese and Chinese.</p>
 
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to all articles</a>
+      <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
     </div>
   </main>
 
