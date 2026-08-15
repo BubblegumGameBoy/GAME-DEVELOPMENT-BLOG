@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /ura/
 Disallow: /_ja-archive/
+
+# /ura/ is intentionally NOT disallowed here. Those pages carry
+# <meta name="robots" content="noindex,follow">, and a crawler has to be able
+# to fetch a page before it can read that tag. Disallowing the path would make
+# the noindex unreadable and could leave the board in the index anyway.
 
 Sitemap: https://bubblegumgameboy.com/sitemap.xml
