@@ -48,6 +48,12 @@ sitemap.xml / CNAME
 | クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://fishing.bubblegumgameboy.com/ |
 | クリーチャー育成キット | 放置育成／手紙交換（Unity WebGL） | PC・スマホ | `games/creature-raising-kit.html` | https://play.bubblegumgameboy.com/Creature-raisingkit/ |
 | 5億年観測記録 | クリッカー／思考実験（**日本語のみ**） | PC推奨 | `games/five-hundred-million-years.html` | https://5okunen-game.pages.dev/ |
+| Dig Planet（みんなで掘る、巨大な謎） | 共同発掘クリッカー／オンライン（three.js、**日本語UIのみ**） | PC・スマホ | `games/dig-planet.html` | https://bubblegum-dig.bubblegum-island.workers.dev/ |
+
+> **Dig Planet の埋め込みについて**: 配信元が `play.bubblegumgameboy.com` ではなく Cloudflare Workers
+> （`bubblegum-dig.bubblegum-island.workers.dev`）。あちら側の `web/public/_headers` の
+> `frame-ancestors` に `https://bubblegumgameboy.com` を追加してデプロイしないと iframe が真っ白になる
+> （2026-08-20 に追加済み）。サムネイルは `images/dig-planet.png`。
 
 サムネイル画像は `images/` に配置：
 `spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png` / `piano-typing.png`。

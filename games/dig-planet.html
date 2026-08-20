@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-2203567155161909">
+<link rel="canonical" href="https://bubblegumgameboy.com/games/dig-planet.html">
+<title>Dig Planet | Free Browser Game - Bubblegum Game</title>
+<meta name="description" content="A free browser mining clicker where everyone digs the same planet in real time. 384x384x384 voxels, six layers of rock, ore veins worth up to 60x, and something buried at the core. No install, no account, desktop and mobile. Japanese interface.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/games/dig-planet.html">
+<meta property="og:title" content="Dig Planet | Free Browser Game">
+<meta property="og:description" content="One planet, everyone digging it at once. Your holes stay in everyone else's world. 26 million voxels, seven skill branches, and something buried that a pickaxe will not go through.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/dig-planet.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dig Planet | Free Browser Game">
+<meta name="twitter:description" content="One shared planet, dug in real time by everyone who opens the page. Free, desktop and mobile.">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/dig-planet.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail h3{margin:24px 0 8px;font-weight:800;font-size:clamp(17px,4vw,20px);color:#dff0fa;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
+  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
+  .detail td{color:#cbe4f7;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
+  .detail li{margin:6px 0;}
+  .detail li strong{color:#dff0fa;font-weight:800;}
+  .detail a{color:#7fe3ec;font-weight:700;}
+  .notice{border:2px solid rgba(239,140,51,.45);background:rgba(239,140,51,.1);border-radius:12px;padding:12px 16px;margin:0 0 18px;font-size:clamp(13px,3.6vw,15px);line-height:1.8;color:#f3d9bd;font-weight:600;}
+  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
+  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#7fe3ec;}
+  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
+  body::before { content:''; position:fixed; inset:0; z-index:-1;
+    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
+               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
+  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
+  body.fs-lock{overflow:hidden;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Dig Planet","alternateName":"BubblegumDig","url":"https://bubblegumgameboy.com/games/dig-planet.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["ja"],"playMode":["MultiPlayer","SinglePlayer"],"description":"A shared-world mining clicker in the browser. Every player digs the same 384x384x384 voxel planet in real time, collects the fragments, and spends them on seven branches of skills. Ore veins multiply a swing by up to 60 times, and something is buried at the core that a pickaxe will not go through. Free, works on desktop and mobile. The interface is Japanese.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Am I really digging the same planet as everyone else?","acceptedAnswer":{"@type":"Answer","text":"Yes. The hole you dig stays in everyone else's world, and theirs appear in yours. You can see who is connected right now and where on the planet they are digging."}},{"@type":"Question","name":"Is the game in English?","acceptedAnswer":{"@type":"Answer","text":"The interface is Japanese only. Digging is done with the mouse, the spacebar and a handful of single keys, so the controls table on this page covers everything you need. An English interface is on the list."}},{"@type":"Question","name":"I dig but I cannot pick anything up.","acceptedAnswer":{"@type":"Answer","text":"Suction only reaches near the surface. Zoom in about two steps with the wheel, or pinch on a phone, then switch to suction with Q and hold on the hole you just made. If the tool icon in the middle of the screen is grey, you are still too far away."}},{"@type":"Question","name":"Can one person dig out the whole planet?","acceptedAnswer":{"@type":"Answer","text":"No. Clearing it completely takes more than 26 million voxels. Reaching the thing buried inside is another matter, and that is within range of a first session."}},{"@type":"Question","name":"Does my progress carry over to another device?","acceptedAnswer":{"@type":"Answer","text":"Blocks and skill levels are saved in your browser. To move them, use the transfer button at the bottom right to issue an eight-character code. It lasts ten minutes and works once."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- nav -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
+    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">&#9664; Back to Play</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
+        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
+    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Dig Planet</span></p>
+
+    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#7fe3ec;margin-bottom:5px;">One planet, and everyone is digging it at once</span>Dig Planet</h1>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(255,215,102,.12);color:#ffd766;border:1px solid rgba(255,215,102,.4);border-radius:7px;padding:5px 12px;">Mining clicker</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Online</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(239,140,51,.14);color:#ef8c33;border:1px solid rgba(239,140,51,.45);border-radius:7px;padding:5px 12px;">Japanese Only</span>
+    </div>
+    <!-- game embed -->
+    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">&#9974; Play Fullscreen</button>
+      </div>
+      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
+        <iframe id="game-frame" src="https://bubblegum-dig.bubblegum-island.workers.dev/" title="Dig Planet" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var f=document.getElementById('game-frame'),
+          openBtn=document.getElementById('fs-btn');
+      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
+      openBtn.addEventListener('click',enter);
+      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
+    })();
+    </script>
+
+    <section class="detail">
+      <p>There is one planet, and everybody who opens this page is digging it. Not a copy of it &mdash; the same one. The hole you make stays in everyone else's world, and the holes other people make are already waiting for you when you arrive.</p>
+
+      <p class="notice"><strong>Language note:</strong> the interface is Japanese only. Digging is done with the mouse, the spacebar and about eight single keys, so the <a href="#controls">controls table</a> below is genuinely all you need. An English interface is on my list.</p>
+
+      <p>Nobody finishes this. The planet is <strong>384 &times; 384 &times; 384 voxels</strong>, which is more than 26 million of them, so it gets dug the way a hole in a park gets dug: a bit at a time, by whoever is around. What you can finish is reaching the middle. Something is buried in there that a pickaxe will not go through.</p>
+
+      <p>The first load takes a few seconds while the shape of the planet comes down. When it is ready you are asked for a name, and that name floats over the spot where you are digging for everybody else to see.</p>
+
+      <h2>At a Glance</h2>
+      <table>
+        <tr><th>Genre</th><td>Shared-world mining clicker, idle-friendly</td></tr>
+        <tr><th>Price</th><td>Free, no install, no account</td></tr>
+        <tr><th>Platform</th><td>Desktop (Chrome / Edge / Firefox / Safari) and mobile</td></tr>
+        <tr><th>Players</th><td>Everyone shares one planet. No player cap</td></tr>
+        <tr><th>World</th><td>384&sup3; voxels, over 26 million to clear completely</td></tr>
+        <tr><th>Terrain</th><td>Earth's coastlines, six layers by depth, and 45 destructible buildings across eight real cities</td></tr>
+        <tr><th>Skills</th><td>Seven branches. Only dig speed has no level cap</td></tr>
+        <tr><th>Saves</th><td>Auto-saved in your browser. An eight-character code moves them to another device</td></tr>
+        <tr><th>Language</th><td>Japanese interface</td></tr>
+      </table>
+
+      <h2>How to Play</h2>
+      <ol>
+        <li><strong>Dig</strong>: click the planet, or hold the spacebar. Holding is not slower than clicking &mdash; it swings at the same rate</li>
+        <li><strong>Get close</strong>: zoom in about two steps with the wheel, or pinch on a phone. This is the step everybody skips</li>
+        <li><strong>Collect</strong>: press <strong>Q</strong> to swap the pickaxe for the suction tool, then hold on the hole you just made. The fragments turn into blocks</li>
+        <li><strong>Upgrade</strong>: press <strong>S</strong> and spend the blocks. The next swing removes more than the last one did</li>
+      </ol>
+
+      <p>Fragments sit there for 90 seconds and then they are gone. For the first 2.5 seconds they are yours alone; after that anyone can hoover them up, which in a busy spot is either a nuisance or a living, depending on how you look at it.</p>
+
+      <h3 id="controls">Controls</h3>
+      <table>
+        <tr><th>Dig</th><td>Left click, spacebar, or tap the screen</td></tr>
+        <tr><th>Swap tool</th><td>Q or Tab, or the pickaxe / suction buttons on screen</td></tr>
+        <tr><th>Collect fragments</th><td>Hold with the suction tool equipped, close to the surface</td></tr>
+        <tr><th>Turn the planet</th><td>Right-drag, or drag on mobile</td></tr>
+        <tr><th>Zoom</th><td>Mouse wheel, or pinch</td></tr>
+        <tr><th>Skill board</th><td>S, or the board button at the bottom of the screen</td></tr>
+        <tr><th>Machines</th><td>A auto-miner, D roomba, E blast, W water</td></tr>
+        <tr><th>Auto-swing</th><td>R (unlocks with the auto-miner)</td></tr>
+        <tr><th>Chat</th><td>Enter to open, Enter again to send</td></tr>
+        <tr><th>Sound</th><td>M, or the speaker button at the bottom right</td></tr>
+      </table>
+
+      <h2>The Seven Skills</h2>
+      <ul>
+        <li><strong>Pickaxe</strong>: how much one swing removes. Every level you buy is guaranteed to change the number</li>
+        <li><strong>Dig speed</strong>: shortens the gap between swings. The only branch with no level cap</li>
+        <li><strong>Suction core</strong>: reach, radius, and how many fragments come in at once</li>
+        <li><strong>Auto-miner</strong>: a machine you plant on the surface that keeps chewing at its own patch</li>
+        <li><strong>Roomba</strong>: a brass disc that chases loose fragments down and collects them for you</li>
+        <li><strong>Blast</strong>: three seconds of fuse, then it takes out everything around it</li>
+        <li><strong>Water</strong>: floods the hollow you dug and stays about a minute. Cooling hot rock makes it soft again</li>
+      </ul>
+
+      <h2>Depth Is the Reward</h2>
+      <p>The rock changes colour as you go: surface, crust, bedrock, a blue layer, hot red stone, and finally lava. Each change is a change in what you are pulling out.</p>
+
+      <p>Ore veins run through all of it. When a swing lands in one, that swing pays out several times over &mdash; <strong>three times for copper, eight for amethyst, twenty for gold, sixty for diamond</strong>. Veins never reach the surface, and the deeper you are, the better the odds of the rare ones. Every find is written into your mineral notebook.</p>
+
+      <p>The hot layers cost you. Dry red rock and lava resist the pickaxe, and the way through is the water skill: flood the area, cool it, and the rock gives way normally again.</p>
+
+      <h2>What Is Buried Inside</h2>
+      <p>I am not going to say. There is something down there, it is hard, and a pickaxe does not go through it.</p>
+
+      <p>When someone reaches it, everyone connected is told. It has <strong>eight distinct parts</strong>, and for each one the game records the name of whoever uncovered it first.</p>
+
+      <h2>Other People</h2>
+      <p>There is no lobby and no room code. Open the page and you are on the planet with whoever else is on it, each of you working your own patch of it.</p>
+
+      <p>Chat is on Enter. Please keep real names, addresses and contact details out of it, because strangers can read it. There is also a <a href="https://bubblegum-dig.bubblegum-island.workers.dev/leaderboard" target="_blank" rel="noopener">running leaderboard</a> of total voxels removed, which is the honest measure of who has actually been putting the hours in.</p>
+
+      <h2>Developer's Note</h2>
+      <p>The suction tool started with a radius of four voxels, which I picked because it sounded reasonable. Then I measured what a new player was actually aiming at, and the nearest fragment was typically 6.1 voxels away. Every new player was holding the button down over an empty patch of rock and getting nothing at all.</p>
+
+      <p>It is ten now, and the tutorial says out loud that you have to zoom in first. That one number was the difference between a game about digging and a game that appeared to be broken on arrival.</p>
+
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Is it really free?</dt>
+        <dd>Yes. No install, no account. Open the page and dig.</dd>
+        <dt>Am I really digging the same planet as everyone else?</dt>
+        <dd>The same one. Your holes stay in their world and theirs are in yours, and you can see who is connected and where they are working.</dd>
+        <dt>Is it in English?</dt>
+        <dd>Not yet &mdash; the interface is Japanese. The controls table above covers everything the game asks you to do.</dd>
+        <dt>I dig, but I cannot pick anything up.</dt>
+        <dd>Suction only reaches near the surface. Zoom in two steps, swap to suction with Q, and hold on the hole. A grey tool icon in the middle of the screen means you are still too far out.</dd>
+        <dt>Can I dig the whole thing myself?</dt>
+        <dd>No. Clearing it takes more than 26 million voxels. Reaching the thing at the centre, though, is well within a first session.</dd>
+        <dt>Can I play on a phone?</dt>
+        <dd>Yes. Tap to dig, and the buttons along the bottom cover the tools, the machines, the blast and the water, so nothing needs a keyboard.</dd>
+        <dt>Will my progress be there tomorrow?</dt>
+        <dd>Blocks and skill levels are saved in your browser. Clearing site data wipes them, and another device or browser starts fresh. The transfer button at the bottom right issues an eight-character code that lasts ten minutes and works once.</dd>
+        <dt>I dig and dig and it never ends.</dt>
+        <dd>That is the design. It is one rock for everybody, so measure a session in veins hit and parts uncovered rather than in progress bars.</dd>
+      </dl>
+    </section>
+
+    <div style="margin-top:30px;">
+      <a href="../blog/" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">&rarr; Read the devlog</a>
+    </div>
+  </main>
+
+  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>&copy; 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
