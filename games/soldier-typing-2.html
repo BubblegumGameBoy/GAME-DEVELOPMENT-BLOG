@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-2203567155161909">
+<link rel="canonical" href="https://bubblegumgameboy.com/games/soldier-typing-2.html">
+<title>Soldier Typing 2 | Free Browser Game - Bubblegum Game</title>
+<meta name="description" content="The sequel to Soldier Typing. Type hiragana words in romaji to summon soldiers who march and fight on their own, across six waves - plus a hidden boss and a route that only opens on a later run. Free, no sign-up, plays right in your browser on PC.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubblegumgameboy.com/games/soldier-typing-2.html">
+<meta property="og:title" content="Soldier Typing 2 | Free Browser Game">
+<meta property="og:description" content="Type to summon soldiers, hold the line for six waves, and find the boss that isn't on the map. Japanese typing practice, for PC.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing-2.png">
+<meta property="og:site_name" content="Bubblegum Game">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Soldier Typing 2 | Free Browser Game">
+<meta name="twitter:description" content="Type to summon soldiers and hold the line for six waves. There is more than one way out. For PC.">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/soldier-typing-2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
+  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
+  .detail h3{margin:22px 0 8px;font-weight:800;font-size:clamp(16px,3.9vw,19px);color:#dff0fa;}
+  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
+  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
+  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
+  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
+  .detail td{color:#cbe4f7;font-weight:500;}
+  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
+  .detail li{margin:6px 0;}
+  .detail li strong{color:#dff0fa;font-weight:800;}
+  .detail a{color:#7fe3ec;font-weight:700;}
+  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
+  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
+  .faq dt::before{content:"Q. ";color:#7fe3ec;}
+  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
+  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
+  /* spoiler block: shut by default, so the surprise survives a casual read */
+  .spoiler{border:2px solid rgba(239,140,51,.45);background:rgba(52,26,10,.5);border-radius:12px;padding:4px 18px;margin:8px 0 18px;}
+  .spoiler summary{cursor:pointer;font-weight:800;color:#ffbd73;padding:12px 0;font-size:clamp(14px,3.7vw,16px);list-style:none;}
+  .spoiler summary::-webkit-details-marker{display:none;}
+  .spoiler summary::before{content:"\25B6  ";font-size:12px;}
+  .spoiler[open] summary::before{content:"\25BC  ";}
+  .spoiler h3{color:#ffbd73;margin-top:18px;}
+  .spoiler p,.spoiler li{color:#e6d3c2;}
+  /* deep-sea backdrop: the video's poster frame, heavily dimmed */
+  body::before { content:''; position:fixed; inset:0; z-index:-1;
+    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
+               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
+  /* CSS fullscreen (fills the screen without changing the URL) */
+  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
+  body.fs-lock{overflow:hidden;}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Soldier Typing 2","alternateName":"Soldier Typing II","url":"https://bubblegumgameboy.com/games/soldier-typing-2.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"en","gamePlatform":"Web browser","description":"The sequel to Soldier Typing. You type romaji to summon soldiers, who march forward and fight on their own, through six waves. Some waves are cleared by surviving the timer rather than by defeating everything. There is also a hidden boss reachable two different ways, and a further route that opens after a second clear. The game interface is in Japanese - you type hiragana words in romaji, which makes it good Japanese typing practice. Free, for PC.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Bubblegum"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need to play the first Soldier Typing first?","acceptedAnswer":{"@type":"Answer","text":"No. Wave 1 teaches you everything you need. Playing the first game first does change how a couple of later scenes read, but nothing is locked behind it."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"It is a keyboard game, so we recommend playing on a PC."}},{"@type":"Question","name":"My keystrokes are not registering correctly.","acceptedAnswer":{"@type":"Answer","text":"You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start playing."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Defeat the boss of wave 6. Not every wave is won by clearing it - on some waves you only have to survive until the timer runs out. If an enemy reaches your castle, it is game over."}},{"@type":"Question","name":"Is my progress saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, in your own browser. Come back on the same browser and the same page and your run count and unlocks are still there. A different browser, or a private window, starts from zero."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- nav -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
+    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">&#9664; Back to Play</a>
+      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
+        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
+        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
+    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Soldier Typing 2</span></p>
+
+    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);">Soldier Typing 2</h1>
+    <p style="margin:0 0 10px;font-family:'DotGothic16',monospace;font-size:13px;color:#8fb6d4;">Japanese title: &#12477;&#12523;&#12472;&#12515;&#12540;&#12479;&#12452;&#12500;&#12531;&#12464;&#65298;</p>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Japanese Typing</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(255,215,102,.12);color:#ffd766;border:1px solid rgba(255,215,102,.4);border-radius:7px;padding:5px 12px;">Sequel</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">PC</span>
+    </div>
+    <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#cbe4f7;">Type a word and a soldier walks out of your castle. He keeps walking whether you watch him or not. Six waves, one boss at the end of them, and a couple of doors that are not on the map. Played with a keyboard, for PC.</p>
+
+    <!-- game embed -->
+    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">&#9187; Play Fullscreen</button>
+      </div>
+      <iframe id="game-frame" src="https://soldier-typing-2.pages.dev/" title="Soldier Typing 2" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:700px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+    </div>
+    <script>
+    (function(){
+      var f=document.getElementById('game-frame'),
+          openBtn=document.getElementById('fs-btn');
+      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
+      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
+      openBtn.addEventListener('click',enter);
+      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // close on mobile back gesture
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
+    })();
+    </script>
+
+    <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a keyboard. The game interface is in Japanese - you type hiragana words using romaji (Latin letters), so it's good practice if you're learning Japanese. If you use Japanese input software, turn the IME off before you start.</p>
+
+    <!-- ranking board (served by the game app; the game submits scores to it) -->
+    <section class="detail" style="margin-top:30px;">
+      <h2 style="margin-top:0;">Ranking</h2>
+      <p>Scores from players who cleared the game. Enter a name when you start a run, or your score won't reach the board. Soldier Typing 2 keeps its own table, separate from the first game's.</p>
+      <div style="border:2px solid rgba(255,215,102,.3);border-radius:10px;overflow:hidden;background:#0a0a1a;">
+        <iframe src="https://soldier-typing-2.pages.dev/ranking.html" title="Soldier Typing 2 score ranking" loading="lazy" style="display:block;width:100%;height:min(540px,72vh);border:0;"></iframe>
+      </div>
+    </section>
+
+    <!-- details (how to play, what changed, spoilers, FAQ) -->
+    <section class="detail">
+      <p>I made this game, so the wave counts and the routes below come from the build itself rather than from poking at it and guessing.</p>
+
+      <p>The loop is the one the first game ran on. Words appear in hiragana with the romaji spelled out underneath, you type the romaji, a soldier spawns, and from there he is on his own. Chain words without a mistake and a combo multiplier stacks onto your score. Let anything reach the castle and the run ends. What changes is the reason you are typing, and it changes more than once.</p>
+
+      <p style="font-weight:700;color:#dff0fa;">Before you play: this is a keyboard game, so PC is recommended. If you have a Japanese IME installed, switch it off first.</p>
+
+      <h2>At a Glance</h2>
+      <table>
+        <tr><th>Genre</th><td>Typing / lane defense</td></tr>
+        <tr><th>Price</th><td>Free, no install, no sign-up</td></tr>
+        <tr><th>Platform</th><td>PC recommended (keyboard controls)</td></tr>
+        <tr><th>Input</th><td>Romaji (Latin letters; turn Japanese IME off if you have one)</td></tr>
+        <tr><th>Language</th><td>Game interface is in Japanese - type hiragana words in romaji</td></tr>
+        <tr><th>Length</th><td>6 waves</td></tr>
+        <tr><th>Saves</th><td>In your browser, per device</td></tr>
+        <tr><th>Prequel</th><td><a href="soldier-typing.html">Soldier Typing</a> (not required)</td></tr>
+      </table>
+
+      <h2>How to Play</h2>
+      <ul>
+        <li>Type the romaji under the hiragana word to summon a soldier</li>
+        <li>Soldiers march toward the enemy and fight without further input</li>
+        <li>Finish words back to back to build a combo multiplier on your score</li>
+        <li>If an enemy reaches your castle, it's game over</li>
+        <li>Defeat the wave 6 boss to clear the game</li>
+      </ul>
+      <p>Not every wave wants the same thing from you. Some are won by clearing the field, and on others the timer running out is itself the win condition, so more soldiers is not always the answer. The banner at the start of a wave tells you which kind you are in. Past that, just keep your hands moving.</p>
+
+      <h2>What's Different From the First Game</h2>
+      <ul>
+        <li><strong>Six waves instead of five</strong>, with a longer boss at the end of them</li>
+        <li><strong>Waves you survive rather than clear</strong>, which the first game never asked for</li>
+        <li><strong>A hidden boss</strong> with its own separate score line, reachable two different ways</li>
+        <li><strong>A route that only opens after a second clear</strong>, with no attack command in it at all</li>
+        <li><strong>Its own ranking table</strong>, so scores never mix with the original's</li>
+      </ul>
+      <p>Everything else is deliberately familiar. If you played the first one, your hands already know this game.</p>
+
+      <h2>The Doors That Aren't On the Map</h2>
+      <p>There are three ways past the ordinary ending. The block below is shut on purpose. It tells you how to get in and nothing about what is on the other side.</p>
+
+      <details class="spoiler">
+        <summary>Show how to reach the hidden boss and the extra route (entry conditions only)</summary>
+
+        <h3>1. Click the background 50 times</h3>
+        <ol>
+          <li>Play normally and defeat the wave 6 boss</li>
+          <li>On the clear screen, take the option to start a second run</li>
+          <li>During waves 1 and 2 of that second run, click the sky or the grass 50 times in total</li>
+        </ol>
+        <p>Cracks show up partway through. Keep going to 50. Only clicks inside the game scene count, so the input panel, the settings button and the page around the game are all excluded. You can click anywhere in the scene, and you do not need to click fast. When wave 1 ends and the prompt to continue appears, press Enter to move into wave 2. Reloading the page puts the count back to zero.</p>
+
+        <h3>2. Summon nothing</h3>
+        <p>This one works on a first run. It leads to the same hidden boss, only the door is different.</p>
+        <ol>
+          <li>Enter a name, start the game, and let wave 1 run without typing a single word</li>
+          <li>When the prompt to continue appears, press Enter and nothing else</li>
+          <li>Sit out wave 2 the same way, all the way to the end</li>
+        </ol>
+        <p>If a soldier slips out, restarting is more reliable than trying to recover. And do not read this as press nothing at all. The Enter between wave 1 and wave 2 is the one key you do need.</p>
+
+        <h3>3. The broken next run</h3>
+        <p>Play the second run normally and defeat the wave 6 boss again. The input panel comes apart. On the clear screen after that, an option to continue into a broken run appears, and taking it starts a different kind of route, one with no attack command anywhere in it. Follow what the screen tells you from there.</p>
+
+        <p style="font-size:13px;color:#c8ab90;">Your run count and unlocks live in your browser's storage. Pick up where you left off from the same browser and the same page.</p>
+      </details>
+
+      <h2>Developer's Note</h2>
+      <p>This started as a byte-for-byte copy of the first game's live build. I changed the save keys and the score table so the two could not contaminate each other, then kept editing until it was not the same game any more. Sequels get talked about as though they start from a blank page. This one started from a finished one, which is a stranger place to work, because every change has to argue with something that already worked.</p>
+      <p>The part I got wrong for the longest time was wave 1. I knew what was coming later, so I kept making the opening too knowing, seeding little hints that were invisible to me and, I suspect, loud to anyone meeting the game cold. The version that shipped is the plainest wave 1 I wrote.</p>
+
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Do I need to play the first Soldier Typing first?</dt>
+        <dd>No. Wave 1 teaches you everything you need. Playing the first game first does change how a couple of later scenes read, but nothing is locked behind it. You can <a href="soldier-typing.html">play the original here</a>.</dd>
+        <dt>Can I play on a phone?</dt>
+        <dd>It's a keyboard game, so we recommend playing on a PC.</dd>
+        <dt>My keystrokes aren't registering correctly.</dt>
+        <dd>You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start.</dd>
+        <dt>How do I win?</dt>
+        <dd>Defeat the wave 6 boss. Note that not every wave is won by clearing it. On some you only have to survive until the timer runs out. If an enemy reaches your castle, it's game over.</dd>
+        <dt>Is my progress saved?</dt>
+        <dd>Yes, in your own browser. Come back on the same browser and the same page and your run count and unlocks are still there. A different browser, or a private window, starts from zero.</dd>
+      </dl>
+    </section>
+
+    <!-- prequel -->
+    <section class="detail">
+      <h2 style="margin-top:0;">Play the First One</h2>
+      <p>The original is still up and still free. It is shorter, and it runs on the same keystrokes, so it makes a decent warm-up.</p>
+      <a href="soldier-typing.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:rgba(10,30,62,.6);border:2px solid rgba(120,200,255,.25);border-radius:12px;padding:12px 14px;">
+        <img src="../images/soldier-typing.png" alt="Soldier Typing" width="112" height="84" loading="lazy" style="width:112px;height:84px;object-fit:cover;border-radius:8px;display:block;flex:none;">
+        <span style="min-width:0;">
+          <span style="display:block;font-weight:900;font-size:17px;color:#fff;">Soldier Typing</span>
+          <span style="display:block;font-size:13px;font-weight:500;line-height:1.6;color:#b8d9f2;">Five waves, five bosses, and a turn you probably won't see coming.</span>
+        </span>
+      </a>
+    </section>
+
+    <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">&#8592; Browse More Games</a></p>
+  </main>
+
+  <!-- footer -->
+  <footer style="background:#01060f;color:#7fa3bd;padding:22px 20px;">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
+      <span>&copy; 2026 Bubblegum Game</span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
+        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
+        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
+        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

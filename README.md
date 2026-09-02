@@ -21,6 +21,7 @@ games/
   clicker.html                 クリック連打ゲーム「レイドボスラッシュ」（iframe 埋め込み）
   popcorn-typing.html          パチパチタイピング（iframe 埋め込み）
   soldier-typing.html          ソルジャータイピング（iframe 埋め込み）
+  soldier-typing-2.html        ソルジャータイピング２（iframe 埋め込み）
   piano-typing.html            ピアノタイピング（iframe 埋め込み）
 blog/
   index.html                   記事一覧
@@ -43,6 +44,7 @@ sitemap.xml / CNAME
 | クリック連打ゲーム「レイドボスラッシュ」 | 放置（いちおし） | PC・スマホ | `games/clicker.html` | https://play.bubblegumgameboy.com/spacebar-clicker/ |
 | パチパチタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
 | ソルジャータイピング | タイピング | PCのみ | `games/soldier-typing.html` | https://play.bubblegumgameboy.com/Bubble-Wars/ |
+| ソルジャータイピング２ | タイピング／隠しボス・周回 | PCのみ | `games/soldier-typing-2.html` | https://soldier-typing-2.pages.dev/ |
 | ピアノタイピング | 音ゲー／タイピング | PC推奨（スマホはタップ可） | `games/piano-typing.html` | https://play.bubblegumgameboy.com/BeatTyping/ |
 | クトゥルフタイピング | タイピング／デイリーボス | PCのみ | `games/cthulhu-typing.html` | https://play.bubblegumgameboy.com/Typingsoldier2/ |
 | クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://fishing.bubblegumgameboy.com/ |
@@ -54,6 +56,11 @@ sitemap.xml / CNAME
 > （`bubblegum-dig.bubblegum-island.workers.dev`）。あちら側の `web/public/_headers` の
 > `frame-ancestors` に `https://bubblegumgameboy.com` を追加してデプロイしないと iframe が真っ白になる
 > （2026-08-20 に追加済み）。サムネイルは `images/dig-planet.png`。
+
+> **ソルジャータイピング２ の埋め込みについて**: 配信元が `play.bubblegumgameboy.com` ではなく Cloudflare Pages
+（`soldier-typing-2.pages.dev`）。ゲーム本体のソースは `C:\Users\Kazuya\BuublegumGame\タイピングソルジャー２`。
+> ランキングは Firestore の `scores2` コレクションで１と分離済み。サムネイルは `images/soldier-typing-2.png`
+> （PV素材 `promo/clip02-wave5.mp4` から切り出し）。iframe は高さ 700px（ゲーム本体の最大描画高は 604px）。
 
 サムネイル画像は `images/` に配置：
 `spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png` / `piano-typing.png`。
