@@ -49,10 +49,9 @@
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Cthulhu Typing","url":"https://bubblegumgameboy.com/games/cthulhu-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"en","description":"A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your soldiers keep attacking the boss automatically. 43 Cthulhu Mythos gods and creatures appear as bosses, one per day, shared by all players worldwide. There is no time limit, so even slow typists always win. Score is typing speed x accuracy x boss strength, with a daily leaderboard that resets every day plus an all-time total-kills leaderboard. Free, PC only. The game interface is in Japanese - great practice for Japanese learners.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Once I beat today's boss, is that it for the day?","acceptedAnswer":{"@type":"Answer","text":"No - you can keep replaying the same boss all day to improve your best score. The boss and the word list switch over at midnight Japan time, so a new boss is waiting for you the next day."}},{"@type":"Question","name":"I'm a slow typist. Can I still win?","acceptedAnswer":{"@type":"Answer","text":"Yes. There is no time limit and no game over. Soldiers you have already summoned keep attacking even while your hands are resting, so as long as you keep typing at your own pace, the boss will always fall eventually."}},{"@type":"Question","name":"Do I need Japanese input software (an IME) to play?","acceptedAnswer":{"@type":"Answer","text":"No. You type the words using plain romaji (Latin letters), so a regular keyboard is all you need. The game even ignores IME state, so it works no matter how your input is configured."}},{"@type":"Question","name":"Can I play on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"No. The game is built around typing romaji on a physical keyboard, so it is PC only."}},{"@type":"Question","name":"Do I need an account to appear on the leaderboard?","acceptedAnswer":{"@type":"Answer","text":"No registration needed. Just enter a name and play - your best score of the day is posted to the leaderboard automatically. The daily ranking resets every day, and there is a separate all-time ranking for total bosses defeated."}},{"@type":"Question","name":"Does my progress carry over to another computer?","acceptedAnswer":{"@type":"Answer","text":"No. Records are saved in your browser (localStorage), so they are not shared across devices or in private/incognito windows."}}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Cthulhu Typing","url":"https://bubblegumgameboy.com/games/cthulhu-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"en","description":"A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your soldiers keep attacking the boss automatically. 43 Cthulhu Mythos gods and creatures appear as bosses, one per day, shared by all players worldwide. There is no time limit, so even slow typists always win. Score is typing speed x accuracy x boss strength, with a daily leaderboard that resets every day plus an all-time total-kills leaderboard. Free, PC only. English controls and help are available; the practice text and story are Japanese - great practice for Japanese learners.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Once I beat today's boss, is that it for the day?","acceptedAnswer":{"@type":"Answer","text":"Yes. The current normal game allows one clear per day on a saved profile. A new boss is selected at midnight Japan time; reload the game after midnight to load the next day."}},{"@type":"Question","name":"I'm a slow typist. Can I still win?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no time limit and no game over. Your summoned soldiers keep attacking even while you rest, so as long as you keep typing at your own pace, the boss will always fall."}},{"@type":"Question","name":"Do I need Japanese input software (an IME)?","acceptedAnswer":{"@type":"Answer","text":"No. You type plain romaji with a regular keyboard. Turn Japanese IME off so the game can read the Latin-letter keystrokes. The displayed romaji tells you what to type."}},{"@type":"Question","name":"Can I play on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"No. It's built around typing romaji on a physical keyboard, so it's PC only."}},{"@type":"Question","name":"Do I need an account for the leaderboard?","acceptedAnswer":{"@type":"Answer","text":"No registration needed. Enter a name, play, and your best score of the day is posted automatically. The daily ranking resets each day, and there's a separate all-time ranking for total kills."}},{"@type":"Question","name":"Does my progress carry over to another computer?","acceptedAnswer":{"@type":"Answer","text":"No. Your local profile and daily-clear state use browser storage. Submitted names and scores are also sent to the online leaderboard. Clearing site data can lose access to your local profile; there is no account-based transfer."}}]}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -89,7 +88,8 @@
         <a href="https://play.bubblegumgameboy.com/Typingsoldier2/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#3d5b7c;color:#fff;text-decoration:none;border-radius:8px;padding:8px 16px;font-weight:700;font-size:14px;">↗ Open in New Tab</a>
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <iframe id="game-frame" src="https://play.bubblegumgameboy.com/Typingsoldier2/" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+      <aside style="margin:16px 0;padding:16px;border:1px solid #50708b;border-radius:10px;color:#dff0fa;line-height:1.7;"><strong>Quick start in English</strong><p style="margin:8px 0 0;">Enter a public nickname and press Start today’s challenge (or Enter). Copy the Latin letters below each Japanese word to summon soldiers. There is no battle time limit. A normal save allows one boss clear per day, changing at midnight Japan time; reload after midnight. Story and deity names remain Japanese.</p></aside>
+<iframe id="game-frame" src="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
     </div>
     <script>
     (function(){
@@ -103,11 +103,11 @@
     })();
     </script>
 
-    <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a physical keyboard (not available on phones). Heads-up: the game interface is in Japanese - you type hiragana words using romaji (Latin letters), which makes it great practice if you're learning Japanese.</p>
+    <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a physical keyboard (not available on phones). Heads-up: English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), which makes it great practice if you're learning Japanese.</p>
 
     <!-- details (how to play, tips, and FAQ written for this site) -->
     <section class="detail">
-      <p>In this game, your keystrokes don't produce attacks - they produce <strong>soldiers</strong>. Finish typing a hiragana word in romaji and a soldier appears; every soldier you've summoned keeps pounding on the boss even while your hands are resting. The more you type, the bigger your army grows and the faster the damage snowballs - it feels like a typing game crossed with an idle clicker. Standing in your way are 43 gods and creatures from the Cthulhu Mythos. One boss appears per day, and every player in the world faces the same one. A run takes about 2-3 minutes, and there's no time limit on the kill, so you don't need to be a fast typist. The game is in Japanese, so it doubles nicely as Japanese typing practice: the words appear in hiragana and you type them in romaji.</p>
+      <p>In this game, your keystrokes don't produce attacks - they produce <strong>soldiers</strong>. Finish typing a hiragana word in romaji and a soldier appears; every soldier you've summoned keeps pounding on the boss even while your hands are resting. The more you type, the bigger your army grows and the faster the damage snowballs - it feels like a typing game crossed with an idle clicker. Standing in your way are 43 gods and creatures from the Cthulhu Mythos. One boss appears per day, and every player in the world faces the same one. Run length depends on your typing speed, and there's no time limit on the kill, so you don't need to be a fast typist. The game is in Japanese, so it doubles nicely as Japanese typing practice: the words appear in hiragana and you type them in romaji.</p>
 
       <h2>At a Glance</h2>
       <table>
@@ -115,10 +115,10 @@
         <tr><th>Price</th><td>Free, no sign-up, no install</td></tr>
         <tr><th>Platform</th><td>PC only (physical keyboard required; not playable on phones)</td></tr>
         <tr><th>Input</th><td>Romaji (Latin letters). No Japanese input software needed - the game reads your keystrokes directly</td></tr>
-        <tr><th>Language</th><td>Game interface is in Japanese; words are shown in hiragana and typed in romaji - great for Japanese learners</td></tr>
+        <tr><th>Language</th><td>English controls and help; Japanese practice text; words are shown in hiragana and typed in romaji - great for Japanese learners</td></tr>
         <tr><th>Bosses</th><td>43 Cthulhu Mythos gods and creatures. One per day, shared by all players</td></tr>
-        <tr><th>Session length</th><td>About 2-3 minutes per run</td></tr>
-        <tr><th>Saves</th><td>Stored in your browser (localStorage). Not shared across devices or incognito windows</td></tr>
+        <tr><th>Session length</th><td>Varies with typing speed and the daily boss</td></tr>
+        <tr><th>Saves</th><td>Local profile in browser storage; submitted names and scores also appear online. No account-based transfer</td></tr>
       </table>
 
       <h2>How to Play</h2>
@@ -127,7 +127,7 @@
         <li><strong>2. Soldiers fight on their own</strong>: everyone you've summoned keeps attacking automatically. The battle never stops, even when you do</li>
         <li><strong>3. Keep typing to grow your army</strong>: more soldiers means faster damage. Whittle the boss's HP to zero and today's hunt is complete</li>
       </ol>
-      <p>Don't worry about failing. There's no time limit and no game over - type as slowly as you like, your army keeps stacking up, and the boss will always fall in the end. After the kill, the next boss and a fresh word list arrive at midnight Japan time.</p>
+      <p>Don't worry about failing. There's no time limit and no game over - type as slowly as you like, your army keeps stacking up, and your army keeps damaging the boss while the game runs. After the kill, the next boss and a fresh word list arrive at midnight Japan time.</p>
 
       <h2>Tips</h2>
       <ul>
@@ -152,17 +152,17 @@
       <h2>FAQ</h2>
       <dl class="faq">
         <dt>Once I beat today's boss, is that it for the day?</dt>
-        <dd>No - you can keep replaying the same boss all day to improve your best score. The boss and word list switch over at midnight Japan time, so a new boss is waiting the next day.</dd>
+        <dd>Yes. The current normal game allows one clear per day on a saved profile. A new boss is selected at midnight Japan time; reload the game after midnight to load the next day.</dd>
         <dt>I'm a slow typist. Can I still win?</dt>
         <dd>Yes. There's no time limit and no game over. Your summoned soldiers keep attacking even while you rest, so as long as you keep typing at your own pace, the boss will always fall.</dd>
         <dt>Do I need Japanese input software (an IME)?</dt>
-        <dd>No. You type plain romaji with a regular keyboard. The game reads keystrokes directly, so it works regardless of your input settings - and it's a fun way to practice reading hiragana if you're studying Japanese.</dd>
+        <dd>No. You type plain romaji with a regular keyboard. Turn Japanese IME off so the game can read the Latin-letter keystrokes. The displayed romaji tells you what to type.</dd>
         <dt>Can I play on a phone or tablet?</dt>
         <dd>No. It's built around typing romaji on a physical keyboard, so it's PC only.</dd>
         <dt>Do I need an account for the leaderboard?</dt>
         <dd>No registration needed. Enter a name, play, and your best score of the day is posted automatically. The daily ranking resets each day, and there's a separate all-time ranking for total kills.</dd>
         <dt>Does my progress carry over to another computer?</dt>
-        <dd>No. Records live in your browser (localStorage), so they aren't shared across devices or in private/incognito windows.</dd>
+        <dd>No. Your local profile and daily-clear state use browser storage. Submitted names and scores are also sent to the online leaderboard. Clearing site data can lose access to your local profile; there is no account-based transfer.</dd>
       </dl>
 
       <h2>Credits</h2>
@@ -185,7 +185,8 @@
         <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>

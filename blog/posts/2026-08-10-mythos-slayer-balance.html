@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-08-10-mythos-slayer-balance.html">
-<title>How I balanced Mythos Slayer: 2.42x per boss, and a curve I stole from my own game | Bubblegum Game</title>
-<meta name="description" content="Boss HP in Mythos Slayer multiplies by 2.42 every step. Here is how I got to that number, including the version that collapsed, the full boss HP and unit cost tables from my own save, and the early-game churn I chose not to fix.">
+<title>Mythos Slayer balance: boss health, gold and progression | Bubblegum Game</title>
+<meta name="description" content="A worked explanation of boss health, gold rewards, upgrades and Rebirth in the current Mythos Slayer build.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-08-10-mythos-slayer-balance.html">
-<meta property="og:title" content="How I balanced Mythos Slayer: 2.42x per boss | Bubblegum Game">
-<meta property="og:description" content="The balance devlog for my idle clicker, with the real numbers: boss HP curve, unit DPS tiers, upgrade costs, and the early-game churn I chose not to fix.">
+<meta property="og:title" content="Mythos Slayer balance: boss health, gold and progression">
+<meta property="og:description" content="A worked explanation of boss health, gold rewards, upgrades and Rebirth in the current Mythos Slayer build.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -49,9 +49,8 @@
     .dtable tbody tr:nth-child(even) td { background:#fff; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How I balanced Mythos Slayer: 2.42x per boss, and a curve I stole from my own game","datePublished":"2026-08-10","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-08-10-mythos-slayer-balance.html"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mythos Slayer balance: boss health, gold and progression","datePublished":"2026-08-10","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-08-10-mythos-slayer-balance.html"}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -76,27 +75,17 @@
     <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Balancing Mythos Slayer</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">August 10, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">August 10, 2026 · updated September 9, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">Devlog</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">How I balanced Mythos Slayer: 2.42x per boss, and a curve I stole from my own game</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Mythos Slayer balance: boss health, gold and progression</h1>
 
     <article class="prose">
 
-      <p class="byline">I built this game. Every number below comes from my own build and save data, not from playing someone else's clicker.</p>
-
-      <p>The hardest part of making an idle clicker is not the code. It is one number.</p>
-
-      <p>In Mythos Slayer, boss HP multiplies by <strong>2.42</strong> every time you advance. Boss 1 has 300 HP. Boss 6 has 24,900. That is 300 multiplied by 2.42 five times over.</p>
-
-      <p>Getting to 2.42 took longer than building everything else in the game. This is the record of how I got there, including the version that collapsed, and the problem I looked at and decided not to fix.</p>
-
-      <figure>
-        <img src="../../images/mythos-slayer-title.png" alt="Mythos Slayer title screen with the language select menu offering Japanese, English and Chinese">
-        <figcaption>The title screen. Three languages, and then straight into Boss 1.</figcaption>
-      </figure>
-
-      <h2>Version one scaled by digits, and it broke immediately</h2>
+<p class="byline">A source-based walkthrough, checked September 9, 2026.</p>
+<p>Mythos Slayer uses different growth factors for boss health and gold rewards. Health rises faster, so the same attack setup takes longer to beat later bosses. Purchases, repeat-kill rewards and Rebirth change how quickly you can overcome that gap.</p>
+<p><strong>Correction:</strong> the previous table rounded some values incorrectly and described Crit Chance as gaining five percentage points per level. It starts at 5% and gains two points per level. This revision also removes development-history claims that cannot be established from the current build.</p>
+<h2>Version one scaled by digits, and it broke immediately</h2>
 
       <p>My first approach was the obvious one. Give each boss an HP value one digit longer than the last. Hundreds, then thousands, then tens of thousands. Clean to implement, easy to reason about.</p>
 
@@ -118,186 +107,50 @@
 
       <p>It did not hand me the answer. It gave me the shape of the problem, which is the part you cannot fix until you can see it.</p>
 
-      <h2>The fix: I did not design a new curve. I ported one</h2>
+      <h2>Using the typing game as a starting point</h2>
 
       <p>This is the part I would probably dress up if I were trying to sound clever, so let me just say it plainly.</p>
 
-      <p>I did not derive a fresh difficulty curve for Mythos Slayer. I took the one I had already tuned for <a href="../../games/soldier-typing.html">Soldier Typing</a>, my typing game, and brought it across.</p>
+      <p>I did not derive a fresh difficulty curve for Mythos Slayer. I started from the balance work I had already done for <a href="../../games/soldier-typing.html">Soldier Typing</a>, my typing game, and adapted it for the clicker.</p>
 
       <figure>
         <img src="../../images/soldier-typing.png" alt="Soldier Typing: knights advancing on an enemy castle while the player types the word shown at the bottom of the screen">
         <figcaption>Soldier Typing, where the curve came from. You type words to summon soldiers, and they march on the enemy castle.</figcaption>
       </figure>
 
-      <p>That curve was built by working backwards from average human typing speed. Take how fast a typical person actually inputs, work out roughly how much damage that produces at a given stage of progression, then set boss HP so the fight lands inside the window you want. Not a multiplier picked because it looked right. A multiplier that falls out of a target time-to-kill.</p>
+      <p>That curve was built by working backwards from average human typing speed. Take how fast a typical person actually inputs, work out roughly how much damage that produces at a given stage of progression, then set boss HP so the fight lands inside the window you want. Not a multiplier picked because it looked right. The target fight length gave me a starting point for tuning.</p>
 
-      <p>The translation to a clicker was one substitution. A fast typist becomes a fast tapper. Both are just input rate, and the curve does not care which key you are hitting.</p>
+      <p>The translation to a clicker was one substitution. A fast typist becomes a fast tapper. Both provide an input rate to work from, but automatic allies and upgrades still need their own balance pass.</p>
 
       <p>The honest reason I did it this way is that reusing something that already works is easier than building it again. But it turned out to be the better call regardless, because that curve had already survived contact with real players in another game. Starting from something tested beat starting from a blank sheet.</p>
 
       <p>What came out the other side was 2.42.</p>
 
-      <h3>The full boss HP curve</h3>
-
-      <table class="dtable">
-        <thead><tr><th>Boss</th><th>HP</th><th>Note</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Boss">1</td><td data-label="HP">300</td><td data-label="Note">Ratkin, the Sewer Vermin. Observed</td></tr>
-          <tr><td data-label="Boss">2</td><td data-label="HP">726</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">3</td><td data-label="HP">1,757</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">4</td><td data-label="HP">4,252</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">5</td><td data-label="HP">10,290</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">6</td><td data-label="HP">24,900</td><td data-label="Note">Night-gaunt, the Gloom Wraith. Observed</td></tr>
-          <tr><td data-label="Boss">7</td><td data-label="HP">60,258</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">8</td><td data-label="HP">145,825</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">9</td><td data-label="HP">352,897</td><td data-label="Note">Calculated</td></tr>
-          <tr><td data-label="Boss">10</td><td data-label="HP">854,010</td><td data-label="Note">Rebirth unlocks here</td></tr>
-        </tbody>
-      </table>
-
-      <p>There is no estimation in that table. The whole curve is one line in the source:</p>
-
-      <p><code>bossMaxHp = floor(300 * 2.42 ^ (wave - 1))</code></p>
-
-      <p>Boss 1 is the 300. Every boss after it is that number multiplied by 2.42 again. If you want to check the arithmetic: 300 multiplied by 2.42 five times is 24,899.7, and the game displays 24.9K.</p>
-
-      <h3>Does it still hold twenty-seven bosses later?</h3>
-
-      <p>It does, and I can show you.</p>
-
-      <figure>
-        <img src="../../images/spacebar-clicker.png" alt="Mythos Slayer late game: Boss 28, the Hound of Tindalos, with 6.92T HP, 21 units on the field and two rebirths completed">
-        <figcaption>Boss 28, the Hound of Tindalos. 6.92T HP, 21 units, two rebirths in. Shown here in the Japanese UI.</figcaption>
-      </figure>
-
-      <p>Boss 28 has 6.92 trillion HP. Run the same multiplier out twenty-seven steps from Boss 1 and you get 300 multiplied by 2.42 to the twenty-seventh, which is 6.92 trillion.</p>
-
-      <p>That is the whole point of picking a single ratio instead of hand-authoring each boss. One number, applied consistently, and the curve is still doing exactly what I designed it to do twenty-seven bosses later. If I had tuned each fight by hand, that consistency would have drifted apart somewhere around boss ten and I would never have noticed.</p>
-
-      <p>The other two numbers in that screenshot matter as well. Twenty-one units on the field, up from ten at Boss 6. And two rebirths completed, which is what made reaching Boss 28 possible at all. More on that below.</p>
-
-      <!-- IMAGE: Boss 1 screen (Ratkin 288/300, Units 0) -->
-
-      <h2>Two systems, not one</h2>
-
-      <p>Damage in Mythos Slayer comes from two places, and understanding the split is most of the game.</p>
-
-      <p><strong>Summon</strong> puts units on the field. They deal damage on their own, forever, whether or not you are touching the keyboard. Farmer and Villager do not fight at all, they collect gold.</p>
-
-      <p><strong>Upgrade</strong> is everything else. Tap damage, crit, gold rate, attack speed. These are global and they never stop mattering.</p>
-
-      <p>Here is the Upgrade panel at the start of a run.</p>
-
-      <table class="dtable">
-        <thead><tr><th>Upgrade</th><th>Effect</th><th>Cost</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Upgrade">Kitchen Knife</td><td data-label="Effect">Raises tap / spacebar damage</td><td data-label="Cost">60 G</td></tr>
-          <tr><td data-label="Upgrade">Coin Pouch</td><td data-label="Effect">Kill bonus +20% gold from boss kills</td><td data-label="Cost">120 G</td></tr>
-          <tr><td data-label="Upgrade">Crit Chance</td><td data-label="Effect">Crit rate +5%, capped at 75%</td><td data-label="Cost">250 G</td></tr>
-          <tr><td data-label="Upgrade">Gold Gain</td><td data-label="Effect">All gold +10%</td><td data-label="Cost">500 G</td></tr>
-          <tr><td data-label="Upgrade">Gale Blessing</td><td data-label="Effect">Ally attack speed +5%</td><td data-label="Cost">800 G</td></tr>
-          <tr><td data-label="Upgrade">Crit Damage</td><td data-label="Effect">Crit multiplier x2.0</td><td data-label="Cost">900 G</td></tr>
-          <tr><td data-label="Upgrade">Gold Rush</td><td data-label="Effect">Gold per tap +5%</td><td data-label="Cost">1.20K G</td></tr>
-        </tbody>
-      </table>
-
-      <p>The cost order is the design telling you something. Kitchen Knife at 60 G is what carries you through Boss 1 before you own a single unit. Gold Rush at 1.20K is twenty times that, and it only pays off once you are tapping a lot. The gap between them is roughly where your first summons should be landing.</p>
-
-      <!-- IMAGE: Upgrade tab -->
-
-      <h2>What the unit tiers actually look like</h2>
-
-      <p>Real save data from Boss 6. Ten units summoned, 1.69K DPS, 316K gold per minute.</p>
-
-      <table class="dtable">
-        <thead><tr><th>Unit</th><th>Level</th><th>DPS (current to next)</th><th>Upgrade cost</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Unit">Swordsman</td><td data-label="Level">2</td><td data-label="DPS">10 to 14</td><td data-label="Cost">274 G</td></tr>
-          <tr><td data-label="Unit">Heavy Infantry</td><td data-label="Level">0</td><td data-label="DPS">22 to 43</td><td data-label="Cost">6.30K G</td></tr>
-          <tr><td data-label="Unit">Dwarf Warrior</td><td data-label="Level">6</td><td data-label="DPS">48 to 55</td><td data-label="Cost">3.48K G</td></tr>
-          <tr><td data-label="Unit">Archer</td><td data-label="Level">9</td><td data-label="DPS">86 to 95</td><td data-label="Cost">19.6K G</td></tr>
-          <tr><td data-label="Unit">Steel Dwarf</td><td data-label="Level">2</td><td data-label="DPS">106 to 140</td><td data-label="Cost">30.2K G</td></tr>
-          <tr><td data-label="Unit">Wizard</td><td data-label="Level">3</td><td data-label="DPS">210 to 262</td><td data-label="Cost">94.6K G</td></tr>
-          <tr><td data-label="Unit">Knight</td><td data-label="Level">2</td><td data-label="DPS">478 to 632</td><td data-label="Cost">342K G</td></tr>
-          <tr><td data-label="Unit">Paladin</td><td data-label="Level">1</td><td data-label="DPS">722 to 1.06K</td><td data-label="Cost">1.24M G</td></tr>
-        </tbody>
-      </table>
-
-      <p>Two gold generators sit alongside these. At Boss 6 my Farmer is level 12 collecting 741 G, and Villager is level 0 collecting 57 G. At the very start of a run, Farmer costs 25 G and collects 1 G.</p>
-
-      <p>Read the cost column against the DPS column and the stepping is obvious. Swordsman to Heavy Infantry roughly doubles your damage for twenty-three times the price. Wizard to Knight roughly doubles it again for 3.6 times the price. Knight to Paladin buys 1.5 times the damage for 3.6 times the price.</p>
-
-      <p>That is the shape I wanted. Each tier is a real jump, and each jump costs enough that you have to commit to it.</p>
-
-      <!-- IMAGE: Boss 6 screen with the full line of units -->
-
-      <h3>How to actually play this</h3>
-
-      <ul>
-        <li><strong>Buy gold generation before damage in the early bosses.</strong> Damage you cannot afford to upgrade is worth less than income you can. Summoning a single Farmer takes gold per minute from 36 to 126 for 25 G, and that compounds into everything else.</li>
-        <li><strong>A level 0 unit one tier up usually beats a heavily levelled unit one tier down.</strong> Heavy Infantry at level 0 already out-damages Swordsman at level 2. If you can afford the next tier, buy it instead of levelling what you have.</li>
-        <li><strong>The Wizard to Knight cost jump is where most runs stall.</strong> 94.6K to 342K is the largest relative wall in the mid game. That is the point to consider resetting rather than grinding through it.</li>
-      </ul>
-
-      <h2>Why Rebirth exists: the screen is a hard limit</h2>
-
-      <p>Rebirth, the prestige system, was not in the original plan. It exists because of a constraint I could not design around.</p>
-
-      <p>Your damage comes from units standing on the field, which means the number you can have is bounded by how many fit on the screen. That is a physical limit, not a balance decision, and no amount of tuning removes it.</p>
-
-      <p>On top of that, units step rather than scale. Farmer, Swordsman, Dwarf Warrior, Archer, up through Knight and Paladin. You do not smoothly ramp. You unlock a tier and then sit at it until you can afford the next.</p>
-
-      <p>Put those together and the late game has a ceiling. Bounded unit count, stepped damage tiers, boss HP climbing at 2.42 per step. Playing my own build far enough, I hit a point where the boss curve kept going and my damage had nowhere left to go. The run was stuck.</p>
-
-      <p>Rebirth is the release valve. It unlocks at Boss 10, at 854K HP, which is roughly where that ceiling starts to bite. Reset, gain a permanent gold multiplier, come back with a higher floor.</p>
-
-      <p>I rebuilt the Rebirth multipliers once as well. In the first version, resetting the instant it unlocked was always correct, which made the choice meaningless. The formula now reads:</p>
-
-      <p><code>prestigeFactor = 1 + 0.4 * deepestBossCleared</code></p>
-
-      <p>Which turns the decision into arithmetic you can actually do:</p>
-
-      <table class="dtable">
-        <thead><tr><th>Reset after clearing</th><th>Permanent gold multiplier</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Reset after">Boss 10 (the earliest allowed)</td><td data-label="Multiplier">x5</td></tr>
-          <tr><td data-label="Reset after">Boss 15</td><td data-label="Multiplier">x7</td></tr>
-          <tr><td data-label="Reset after">Boss 20</td><td data-label="Multiplier">x9</td></tr>
-          <tr><td data-label="Reset after">Boss 28</td><td data-label="Multiplier">x12.2</td></tr>
-          <tr><td data-label="Reset after">Boss 40</td><td data-label="Multiplier">x17</td></tr>
-        </tbody>
-      </table>
-
-      <p>Pushing ten bosses deeper before resetting is worth four extra multipliers, permanently. That is the trade the old version did not offer, because the old version handed you everything at the first opportunity and left nothing to think about.</p>
-
-      <h2>The early-game churn I decided not to fix</h2>
-
-      <p>When I looked at where players were leaving, the answer was blunt. The biggest drop-off was in the early game.</p>
-
-      <p>The obvious response is to soften the opening. Cheaper first upgrades, a faster Boss 1, a smoother on-ramp. I did not do it.</p>
-
-      <p>The payoff of an idle clicker comes from contrast. The opening is supposed to feel tight. What makes the late game land is the memory of that grind, and then the moment your numbers run away from you and a boss that should have taken minutes evaporates. Flatten the opening and you flatten the payoff with it.</p>
-
-      <p>So I made the trade knowingly. I accepted losing players at the start in exchange for the people who stay getting the thing this genre is actually good at.</p>
-
-      <p>I am not claiming that is right for every game. It is a genre call, and I made it with the numbers in front of me rather than by ignoring them.</p>
-
-      <h2>What I am not adding</h2>
-
-      <p>The thing I keep wanting to build is a skill tree. It would fit, and it would give the Rebirth loop more to chew on.</p>
-
-      <p>I am not going to add it.</p>
-
-      <p>The appeal here is that you open the page and understand the whole game in about ten seconds. Summon, upgrade, push, rebirth. A skill tree adds a layer you have to study before you can play, and for a browser game someone opens on a break, that cost is higher than the depth is worth. Stacking on systems is the easiest way to make a simple game worse.</p>
-
-      <h2>What this cost to build</h2>
-
-      <p>Honestly, Mythos Slayer was one of my cheaper projects. Almost all the effort went into the balance work above rather than into implementation, and the balance work itself got shortened by lifting a curve I had already tuned elsewhere. The games I built afterwards, particularly the fishing game and the Unity projects, took far more time and far more of everything else.</p>
-
-      <p>Which is its own lesson. The expensive part of this game was never building it. It was deciding what one number should be, and then being willing to throw away the first answer.</p>
-
-      <p><a href="../../games/clicker.html">Mythos Slayer runs in the browser</a> in English, Japanese and Chinese. Free, no install, no account.</p>
-
+      <p>The development story above describes how I approached tuning. The figures below describe the current build; they are calculations, not measurements of how every player behaves.</p>
+<h2>The first ten bosses, calculated exactly</h2>
+<p>In cycle 1, maximum health is floor(300 &times; 2.42<sup>boss number &minus; 1</sup>). The floor is applied to the full formula; the next boss is not calculated by multiplying the previous rounded HP value.</p>
+<table class="dtable"><thead><tr><th>Boss</th><th>Cycle-1 HP</th></tr></thead><tbody><tr><td data-label="Boss">1</td><td data-label="Cycle-1 HP">300</td></tr>
+<tr><td data-label="Boss">2</td><td data-label="Cycle-1 HP">726</td></tr>
+<tr><td data-label="Boss">3</td><td data-label="Cycle-1 HP">1,756</td></tr>
+<tr><td data-label="Boss">4</td><td data-label="Cycle-1 HP">4,251</td></tr>
+<tr><td data-label="Boss">5</td><td data-label="Cycle-1 HP">10,289</td></tr>
+<tr><td data-label="Boss">6</td><td data-label="Cycle-1 HP">24,899</td></tr>
+<tr><td data-label="Boss">7</td><td data-label="Cycle-1 HP">60,257</td></tr>
+<tr><td data-label="Boss">8</td><td data-label="Cycle-1 HP">145,823</td></tr>
+<tr><td data-label="Boss">9</td><td data-label="Cycle-1 HP">352,893</td></tr>
+<tr><td data-label="Boss">10</td><td data-label="Cycle-1 HP">854,003</td></tr></tbody></table>
+<p>Boss 6 therefore has 24,899 HP, which the compact display shows as about 24.9K. Boss 28 has 6,920,478,698,215 HP, or about 6.92T. Compact displays are useful while playing, but should not be read as exact integer values.</p>
+<h2>Gold grows at a different rate</h2>
+<p>The base kill reward is floor(80 &times; 2.05<sup>boss number &minus; 1</sup>), before cycle and upgrade factors are applied inside the floor. With no bonuses, Boss 1 pays 80 gold and Boss 2 pays 164. Health has multiplied by 2.42, while the reward has multiplied by 2.05.</p>
+<p>Every fifth kill of the same boss adds a bonus equal to ten times that kill's normal reward. Including the ordinary payment, that kill pays eleven times the normal amount. A defeated boss respawns after about 1.5 seconds, which matters when comparing rapid farming with a slower, higher-paying target.</p>
+<p>Tap gold is derived from the kill-reward calculation. Farmer and Villager income also uses the tap-gold function. As a result, Coin Pouch affects those sources as well as boss kills; describing it as a boss-kill-only upgrade is misleading.</p>
+<h2>Click damage and critical hits</h2>
+<p>Base click damage is round(2 &times; 1.18<sup>level</sup> &times; 1.3<sup>floor(level / 10)</sup>). At levels 0 and 1, that rounds to 2. The current weapon card uses this same function for its preview. Every tenth level adds the 1.3 factor; weapon art stops changing after the tenth weapon, while the formula continues.</p>
+<p>Critical chance is min(75%, 5% + 2% &times; level), reaching its cap after 35 upgrades. Critical damage begins at &times;2 and adds 0.3 per level. For average damage, multiply base click damage by 1 + critical chance &times; (critical multiplier &minus; 1). These are expected values over many attacks, not a promise about the next hit.</p>
+<h2>Progression continues beyond a full clear</h2>
+<p>The first defeat of Boss 40 opens the credits. Pressing Next Boss there starts a new cycle with 50 times the health factor and six times the gold factor. Those factors compound on later cycles. Rebirth retains the current cycle, resets purchases and multiplies the existing permanent gold bonus by 1 + 0.4 times the highest boss cleared in that cycle.</p>
+<p>There is no calculation awarding income for time spent with the page closed. The attack loop uses animation frames, so a hidden browser tab can also stop or slow progress. Keep the game visible when comparing farming rates.</p>
+<p><a href="2026-06-22-clicker-strategy.html">Use these figures to compare purchases</a>, or <a href="../../games/clicker.html">play Mythos Slayer</a>. Source: <a href="https://play.bubblegumgameboy.com/spacebar-clicker/">the public game build</a>, functions bossMaxHp, goldReward, hitGold, clickBaseDmg and prestigeFactor.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
@@ -316,7 +169,8 @@
         <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>

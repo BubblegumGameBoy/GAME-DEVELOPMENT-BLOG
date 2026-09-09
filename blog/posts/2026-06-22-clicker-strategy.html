@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html">
-<title>The expensive units in Mythos Slayer are a trap, and I am the one who built them | Bubblegum Game</title>
-<meta name="description" content="A Swordsman costs 40 gold per point of damage per second. The Demon God costs 500,000. A strategy guide for my own idle clicker, including the two units that break the pattern and the reset timing that is worth four permanent multipliers.">
+<title>Mythos Slayer: choosing upgrades and timing Rebirth | Bubblegum Game</title>
+<meta name="description" content="Compare real upgrade gains, unit damage and compounded Rebirth bonuses in Mythos Slayer.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html">
-<meta property="og:title" content="The expensive units in Mythos Slayer are a trap, and I am the one who built them">
-<meta property="og:description" content="Gold per DPS for all twenty units, the two that break the curve, and when to actually hit Rebirth.">
+<meta property="og:title" content="Mythos Slayer: choosing upgrades and timing Rebirth">
+<meta property="og:description" content="Compare real upgrade gains, unit damage and compounded Rebirth bonuses in Mythos Slayer.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/spacebar-clicker.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -49,9 +49,8 @@
     .dtable tbody tr:nth-child(even) td { background:#fff; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The expensive units in Mythos Slayer are a trap, and I am the one who built them","datePublished":"2026-06-22","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mythos Slayer: choosing upgrades and timing Rebirth","datePublished":"2026-06-22","dateModified":"2026-09-09","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-22-clicker-strategy.html"}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -74,119 +73,35 @@
     <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Mythos Slayer strategy</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026 · updated September 9, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">The expensive units in Mythos Slayer are a trap, and I am the one who built them</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Mythos Slayer: choosing upgrades and timing Rebirth</h1>
 
     <article class="prose">
 
-      <p class="byline">I made this game. I also had to sit down and work out how to play it properly, which is a slightly embarrassing thing to admit.</p>
-
-      <p>Here is the situation I kept getting into with my own game.</p>
-
-      <p>Gold piles up. A unit I have never been able to afford finally goes from grey to lit. I buy it immediately, because that is what the whole loop has been training me to do for the last twenty minutes. And then progress gets <em>slower</em>, and I sit there wondering whether I broke something.</p>
-
-      <p>I did not break anything. I bought the wrong thing, in a game I wrote.</p>
-
-      <figure>
-        <img src="../../images/spacebar-clicker.png" alt="Mythos Slayer in the late game, with a boss at 6.92 trillion HP and a line of summoned units">
-        <figcaption>Late game. This state took two Rebirths to reach.</figcaption>
-      </figure>
-
-      <h2>What a unit actually costs you</h2>
-
-      <p>The number the game shows you is the price. The number that matters is the price divided by the damage per second you get for it.</p>
-
-      <p>So I pulled every unit out of the game data and did that division. This is the result, and it is worse than I expected.</p>
-
-      <table class="dtable">
-        <thead><tr><th>Unit</th><th>Cost</th><th>DPS</th><th>Gold per DPS</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Unit">Swordsman</td><td data-label="Cost">80</td><td data-label="DPS">2</td><td data-label="Gold/DPS">40</td></tr>
-          <tr><td data-label="Unit">Dwarf Warrior</td><td data-label="Cost">280</td><td data-label="DPS">4</td><td data-label="Gold/DPS">70</td></tr>
-          <tr><td data-label="Unit">Archer</td><td data-label="Cost">600</td><td data-label="DPS">5</td><td data-label="Gold/DPS">120</td></tr>
-          <tr><td data-label="Unit">Heavy Infantry</td><td data-label="Cost">3,500</td><td data-label="DPS">12</td><td data-label="Gold/DPS">292</td></tr>
-          <tr><td data-label="Unit">Steel Dwarf</td><td data-label="Cost">8,800</td><td data-label="DPS">20</td><td data-label="Gold/DPS">440</td></tr>
-          <tr><td data-label="Unit">Wizard</td><td data-label="Cost">20,000</td><td data-label="DPS">30</td><td data-label="Gold/DPS">667</td></tr>
-          <tr><td data-label="Unit">Knight</td><td data-label="Cost">100,000</td><td data-label="DPS">90</td><td data-label="Gold/DPS">1,111</td></tr>
-          <tr><td data-label="Unit">Paladin</td><td data-label="Cost">500,000</td><td data-label="DPS">200</td><td data-label="Gold/DPS">2,500</td></tr>
-          <tr><td data-label="Unit">Elf Archer</td><td data-label="Cost">2.5M</td><td data-label="DPS">500</td><td data-label="Gold/DPS">5,000</td></tr>
-          <tr><td data-label="Unit">Warlock</td><td data-label="Cost">12M</td><td data-label="DPS">1,300</td><td data-label="Gold/DPS">9,231</td></tr>
-          <tr><td data-label="Unit">Dark Knight</td><td data-label="Cost">60M</td><td data-label="DPS">3,200</td><td data-label="Gold/DPS">18,750</td></tr>
-          <tr><td data-label="Unit">Jade Dragon</td><td data-label="Cost">300M</td><td data-label="DPS">7,778</td><td data-label="Gold/DPS">38,571</td></tr>
-          <tr><td data-label="Unit">Violet Dragon</td><td data-label="Cost">1.5B</td><td data-label="DPS">20,000</td><td data-label="Gold/DPS">75,000</td></tr>
-          <tr><td data-label="Unit">Crimson Dragon</td><td data-label="Cost">8B</td><td data-label="DPS">50,000</td><td data-label="Gold/DPS">160,000</td></tr>
-          <tr><td data-label="Unit">Archangel</td><td data-label="Cost">40B</td><td data-label="DPS">125,000</td><td data-label="Gold/DPS">320,000</td></tr>
-          <tr><td data-label="Unit">Ancient Jade Dragon</td><td data-label="Cost">200B</td><td data-label="DPS">1.33M</td><td data-label="Gold/DPS">150,000</td></tr>
-          <tr><td data-label="Unit">Awakened Crimson Dragon</td><td data-label="Cost">1T</td><td data-label="DPS">5M</td><td data-label="Gold/DPS">200,000</td></tr>
-          <tr><td data-label="Unit">Seraph</td><td data-label="Cost">5T</td><td data-label="DPS">6M</td><td data-label="Gold/DPS">833,333</td></tr>
-          <tr><td data-label="Unit">Demon God</td><td data-label="Cost">25T</td><td data-label="DPS">50M</td><td data-label="Gold/DPS">500,000</td></tr>
-        </tbody>
-      </table>
-
-      <p>The Swordsman buys a point of damage per second for 40 gold. The Demon God buys the same point for 500,000.</p>
-
-      <p><strong>The most expensive unit in the game is roughly 12,500 times less gold-efficient than the cheapest one.</strong> Every step up that ladder is a worse deal than the step before it, and the game never says so. It just lights the button up and waits.</p>
-
-      <h3>Two units break the pattern, and they are the best purchases in the game</h3>
-
-      <p>Look again at the Ancient Jade Dragon and the Awakened Crimson Dragon. Their gold-per-DPS goes <em>down</em> compared to what sits either side of them, which happens nowhere else in the list.</p>
-
-      <p>The reason is a single property in their data: they fire three projectiles instead of one. That triples their real output while the price only follows the normal curve.</p>
-
-      <p>The Archangel just above them costs 320,000 per DPS. The Ancient Jade Dragon costs 150,000. It is less than half the price for the same damage, and it is the <em>next</em> unit up.</p>
-
-      <p>I would like to claim that was a considered piece of design. Honestly it started as a way to make the big dragons feel appropriately dramatic on screen, and the balance implication only became obvious later, when I did this exact division.</p>
-
-      <h2>So how should you actually play</h2>
-
-      <p>The efficiency table looks like it says "only ever buy Swordsmen", and that is wrong, because damage is not the only thing being bought.</p>
-
-      <p>Boss HP follows <code>300 × 2.42^(wave-1)</code>. It multiplies by 2.42 every single step, forever. Cheap units cannot keep pace with that no matter how many you stack, because you run out of places to put them long before the maths works out.</p>
-
-      <p>Which gives you the actual rule:</p>
-
-      <ul>
-        <li><strong>Early on, do not skip tiers.</strong> The cheap units are so much more efficient that buying up too fast is the most common way to stall out. Keep buying what you can afford in volume</li>
-        <li><strong>Buy the next tier when you are stuck, not when you can afford it.</strong> Affordability is the trap. Being unable to progress is the actual signal</li>
-        <li><strong>Prioritise the Ancient Jade Dragon and the Awakened Crimson Dragon.</strong> They are the only two purchases in the game that get cheaper per point of damage. Reaching them is worth planning around</li>
-        <li><strong>Do not neglect the Upgrade tab.</strong> Kitchen Knife costs 60 gold and carries the entire opening before you own a single unit. Crit chance and crit damage keep scaling your tapping long after your tapping should have stopped mattering</li>
-      </ul>
-
-      <h2>Rebirth is arithmetic, not vibes</h2>
-
-      <p>Rebirth unlocks at Boss 10 and resets everything for a permanent gold multiplier. The formula is:</p>
-
-      <p><code>multiplier = 1 + 0.4 × deepest boss cleared</code></p>
-
-      <table class="dtable">
-        <thead><tr><th>Reset after clearing</th><th>Permanent gold multiplier</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Reset after">Boss 10 (earliest possible)</td><td data-label="Multiplier">x5</td></tr>
-          <tr><td data-label="Reset after">Boss 15</td><td data-label="Multiplier">x7</td></tr>
-          <tr><td data-label="Reset after">Boss 20</td><td data-label="Multiplier">x9</td></tr>
-          <tr><td data-label="Reset after">Boss 28</td><td data-label="Multiplier">x12.2</td></tr>
-          <tr><td data-label="Reset after">Boss 40</td><td data-label="Multiplier">x17</td></tr>
-        </tbody>
-      </table>
-
-      <p>Ten extra bosses before you reset is worth four extra permanent multipliers. That is a lot to give up for the satisfaction of pressing the button the moment it unlocks.</p>
-
-      <p>An earlier version of the game did not work this way. Resetting instantly was always correct, so there was no decision in it at all, and I rebuilt the formula specifically to put one back.</p>
-
-      <p>The practical advice: <strong>do not reset at Boss 10 unless you are properly stuck.</strong> Push until the wall is real, then take the bigger multiplier.</p>
-
-      <h2>The part I got wrong for a while</h2>
-
-      <p>For a long stretch the version of this guide that existed said the opposite. It told you to prestige early, and that the multiplier was a flat permanent doubling.</p>
-
-      <p>That was written from memory of an older build and it was simply wrong. The bosses were listed wrong too, and so was the unit count. Nobody ever pointed any of this out to me. I found it by opening my own game files to write this rewrite, which is a strange way to receive a bug report.</p>
-
-      <p>Anyway. The numbers above are the ones in the shipping build. If they change, it is because I changed them, and I will come back and fix this page again.</p>
-
-      <p><a href="../../games/clicker.html">Mythos Slayer</a> is free in the browser, in English, Japanese and Chinese.</p>
-
+<p class="byline">A practical guide checked against the current game source on September 9, 2026.</p>
+<p>When progress slows in Mythos Slayer, the useful comparison is what your next purchase adds for its price. A new unit, an upgrade to one you own and a hero upgrade all use the same gold. Their benefits depend on your current levels.</p>
+<p><strong>Correction:</strong> an earlier version of this guide treated the advanced dragons' three visible projectiles as three damage hits. The current game applies damage once per volley. It also does not let you buy unlimited copies of the same unit: each type is recruited once and then upgraded.</p>
+<h2>Compare an upgrade with a new recruit</h2>
+<p>At base level, a Swordsman costs 80 gold and deals 2 damage per second. Its first upgrade costs 144 gold and raises its damage from 2 to 3.8, before attack-speed bonuses. That is 1.8 additional DPS for 144 gold. A Dwarf Warrior costs 280 gold and adds 4 base DPS. For this particular comparison, the upgrade costs 80 gold per additional DPS; the recruit costs 70. The cheaper button and the more efficient button are different.</p>
+<p>This example assumes both purchases are available, no Gale Blessing levels, and no awakening bonus. The recruit list unlocks in order. Check the next available card rather than assuming you can skip directly to a late unit.</p>
+<h2>Why an old unit can become useful again</h2>
+<p>A unit's damage uses its base damage multiplied by 1 + 0.9 times its level. Each 50-level milestone multiplies this by another 50. Upgrade prices grow by 1.38 per level. These milestones mean a base-recruitment table alone cannot tell you what to buy in a developed save.</p>
+<p>For example, a level-49 Swordsman has a damage factor of 45.1. At level 50 the factor becomes 46 &times; 50, or 2,300. The damage jump is large, but reaching that level has a cost. Compare the milestone price with other upgrades you can actually afford.</p>
+<h2>Visible projectiles do not multiply the damage</h2>
+<table class="dtable"><thead><tr><th>Unit</th><th>Recruitment price</th><th>Base DPS</th></tr></thead><tbody>
+<tr><td data-label="Unit">Archangel</td><td data-label="Price">40 billion</td><td data-label="Base DPS">125,000</td></tr>
+<tr><td data-label="Unit">Ancient Jade Dragon</td><td data-label="Price">200 billion</td><td data-label="Base DPS">about 444,444</td></tr>
+<tr><td data-label="Unit">Awakened Crimson Dragon</td><td data-label="Price">1 trillion</td><td data-label="Base DPS">about 1,666,667</td></tr>
+<tr><td data-label="Unit">Seraph</td><td data-label="Price">5 trillion</td><td data-label="Base DPS">6,000,000</td></tr>
+</tbody></table>
+<p>These figures are damage divided by the base attack interval, at unit level zero with no speed upgrades. The advanced dragons launch three visual projectiles, but that is not a reason to triple these rates. Animation and overkill can also make short observed fights differ from a theoretical DPS rate.</p>
+<h2>Evaluate Rebirth as a time trade-off</h2>
+<p>After clearing Boss 10, Rebirth resets your purchases and applies a factor of 1 + 0.4 times the highest boss cleared in the current cycle. It multiplies the permanent bonus you already have. A first reset at Boss 10 gives &times;5. Another reset there changes &times;5 to &times;25. Resetting at Boss 20 gives a factor of &times;9 instead.</p>
+<p>Going deeper earns a larger factor but delays the next run. The formula does not establish a universally optimal reset point. Consider how long the next boss will take and whether a nearby unit milestone can help. The Rebirth button shows your current bonus and the proposed result.</p>
+<p>Rebirth preserves the boss cycle. If you have entered cycle 2, resetting does not return enemy health to cycle 1. Review that choice before moving beyond Boss 40.</p>
+<p><a href="../../games/clicker.html">Play Mythos Slayer and see the controls</a>. The calculations above use <a href="https://play.bubblegumgameboy.com/spacebar-clicker/">the public game's source</a>, including unitDmg, unitIv, unitUpgCost, doUnitVolley and prestigeFactor.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
@@ -204,7 +119,8 @@
         <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>

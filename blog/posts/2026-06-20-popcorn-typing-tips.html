@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-20-popcorn-typing-tips.html">
-<title>There is a note in my own config file saying the machines are useless | Bubblegum Game</title>
-<meta name="description" content="Popcorn Typing looks like an idle game, so players buy the machines. I wrote the machines to be deliberately weak. The real engine is your hands, and here are the numbers that prove it.">
+<title>Popcorn Typing: combos, upgrades and offline earnings | Bubblegum Game</title>
+<meta name="description" content="Learn the Japanese button labels, combo rewards, word completion bonuses and offline limits in Popcorn Typing.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-20-popcorn-typing-tips.html">
-<meta property="og:title" content="There is a note in my own config file saying the machines are useless">
-<meta property="og:description" content="Why buying equipment in Popcorn Typing is the wrong instinct, the full combo table, and the multiplication stack nobody sees.">
+<meta property="og:title" content="Popcorn Typing: combos, upgrades and offline earnings">
+<meta property="og:description" content="Learn the Japanese button labels, combo rewards, word completion bonuses and offline limits in Popcorn Typing.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/popcorn-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -50,9 +50,8 @@
     .dtable tbody tr:nth-child(even) td { background:#fff; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"There is a note in my own config file saying the machines are useless","datePublished":"2026-06-20","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-20-popcorn-typing-tips.html"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Popcorn Typing: combos, upgrades and offline earnings","datePublished":"2026-06-20","dateModified":"2026-09-09","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-20-popcorn-typing-tips.html"}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -75,124 +74,31 @@
     <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Popcorn Typing tips</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 20, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 20, 2026 · updated September 9, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">There is a note in my own config file saying the machines are useless</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Popcorn Typing: combos, upgrades and offline earnings</h1>
 
     <article class="prose">
 
-      <p class="byline">I made this game. What follows is taken out of my own balance file, comments included.</p>
-
-      <p>Popcorn Typing has frying pans, microwaves, and eventually machinery of increasingly silly scale. It looks exactly like every idle game you have played, so you do what idle games have trained you to do: you buy the machines.</p>
-
-      <p>Buried in the balance file, in a comment nobody was ever supposed to read, is this instruction to myself:</p>
-
-      <blockquote>Manual input is strongest, so keep the machines' output low. Their job is to look good sitting on the screen popping away.</blockquote>
-
-      <p>The equipment in this game is scenery. I built it that way deliberately, and then never told anybody.</p>
-
-      <figure>
-        <img src="../../images/popcorn-typing.png" alt="Popcorn Typing gameplay, kernels bursting across the screen as words are typed">
-        <figcaption>Every kernel on screen came from a keystroke, not a machine.</figcaption>
-      </figure>
-
-      <h2>What actually produces popcorn</h2>
-
-      <p>One line governs the entire game:</p>
-
-      <p><code>kernels per keystroke = variety × level × combo</code></p>
-
-      <p>Three multipliers, all of which you drive with your hands. The machines are not in that equation at all. They add a trickle on top.</p>
-
-      <h3>The combo is where the game is won</h3>
-
-      <table class="dtable">
-        <thead><tr><th>Consecutive correct keystrokes</th><th>Multiplier</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Streak">0</td><td data-label="Multiplier">x1</td></tr>
-          <tr><td data-label="Streak">10</td><td data-label="Multiplier">x2</td></tr>
-          <tr><td data-label="Streak">25</td><td data-label="Multiplier">x3</td></tr>
-          <tr><td data-label="Streak">50</td><td data-label="Multiplier">x4</td></tr>
-          <tr><td data-label="Streak">100</td><td data-label="Multiplier">x6</td></tr>
-          <tr><td data-label="Streak">200</td><td data-label="Multiplier">x10</td></tr>
-        </tbody>
-      </table>
-
-      <p>One mistake sends this to zero. Not down a step. <strong>Zero.</strong></p>
-
-      <p>Two hundred consecutive correct keystrokes for the top multiplier is the entire skill ceiling of the game, and it is brutal in a way I did not fully appreciate until I tried to do it myself. Somewhere past a hundred you start noticing your own fingers, which is exactly when you fumble.</p>
-
-      <p>The practical consequence is unintuitive: <strong>slow down.</strong> A steady rhythm at x10 beats frantic typing that keeps resetting to x1. Accuracy is not a nice-to-have here, it is the multiplier.</p>
-
-      <h3>Varieties are the big jumps</h3>
-
-      <table class="dtable">
-        <thead><tr><th>Variety</th><th>Kernels per character</th><th>Cost</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Variety">Ordinary corn</td><td data-label="Per char">1</td><td data-label="Cost">free, you start here</td></tr>
-          <tr><td data-label="Variety">Caramel corn</td><td data-label="Per char">15</td><td data-label="Cost">2,500</td></tr>
-          <tr><td data-label="Variety">Truffle salt corn</td><td data-label="Per char">350</td><td data-label="Cost">250,000</td></tr>
-          <tr><td data-label="Variety">Solid gold corn</td><td data-label="Per char">9,000</td><td data-label="Cost">20,000,000</td></tr>
-        </tbody>
-      </table>
-
-      <p>Fifteen times, then twenty-three times, then twenty-six times. These are not incremental upgrades, they are the spine of your progression, and they are the thing to save for.</p>
-
-      <p>Gold corn does not stop. After you own it, each further research level doubles your per-character output, with the cost rising 2.1x each time. That is the endgame: there is no final variety, just an ever-doubling one.</p>
-
-      <h3>Level is the cheapest multiplier in the game</h3>
-
-      <p>Level 2 costs 60 kernels. Sixty. Each level after that costs 1.5x the last, which stays affordable far longer than anything else on offer.</p>
-
-      <p>Level multiplies your output directly, and it also increases how many kernels visibly burst per keystroke, one extra per level, capped at 18 for the sake of the poor browser.</p>
-
-      <p>If you take one thing from this page: <strong>early on, buy levels before machines.</strong> Level 2 costs 60. The first frying pan costs 60 and produces 1.5 kernels per second. The level is not close to a fair fight.</p>
-
-      <h3>Finish the word</h3>
-
-      <p>Completing a whole word pays a bonus of characters x base kernels x 5, plus a large burst. Abandoning a word halfway through pays nothing at all.</p>
-
-      <h2>So where do the machines fit</h2>
-
-      <p>They earn while you are not typing, and that is genuinely all. Cost growth is 1.18 per unit bought, and the price bands sit about ten times apart so there is always a visible next goal.</p>
-
-      <p>Buy them when you have spare kernels, not instead of levels and varieties. And enjoy them, because honestly the popping animation is most of why they exist.</p>
-
-      <h2>The containers are the actual story</h2>
-
-      <p>Your goal is filling a container. Fill it, get a reward, move to a bigger one. There are sixteen, and the list is the most fun thing in the file.</p>
-
-      <table class="dtable">
-        <thead><tr><th>Container</th><th>Needed</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Container">Small cup</td><td data-label="Needed">500</td></tr>
-          <tr><td data-label="Container">Mega bucket</td><td data-label="Needed">90,000</td></tr>
-          <tr><td data-label="Container">Dump truck</td><td data-label="Needed">3.5 million</td></tr>
-          <tr><td data-label="Container">An entire building</td><td data-label="Needed">9 million</td></tr>
-          <tr><td data-label="Container">A whole city</td><td data-label="Needed">50 million</td></tr>
-          <tr><td data-label="Container">The Japanese archipelago</td><td data-label="Needed">130 million</td></tr>
-          <tr><td data-label="Container">Earth</td><td data-label="Needed">300 million</td></tr>
-          <tr><td data-label="Container">The solar system</td><td data-label="Needed">3 billion</td></tr>
-          <tr><td data-label="Container">The Milky Way</td><td data-label="Needed">10 billion</td></tr>
-          <tr><td data-label="Container">The entire universe</td><td data-label="Needed">40 billion</td></tr>
-        </tbody>
-      </table>
-
-      <p>The background switches to space partway up that list, around Earth. And filling the universe is not the end either, because past the last entry the requirement simply multiplies by eight forever.</p>
-
-      <p>I remember writing that line and thinking it was a cheap joke. It is the part of the game I am now fondest of.</p>
-
-      <h2>Nobody has ever asked me any of this</h2>
-
-      <p>The honest context for this page: not one person has ever sent me a question about this game. No comments, no messages, nothing. I have no idea whether anyone has hit x10 combo or reached the universe.</p>
-
-      <p>So this guide is not answering demand. It is me opening my own balance file, finding a note I left for myself about the machines being decoration, and realising that a player would have absolutely no way of knowing that.</p>
-
-      <p>If you do get to the universe, I would genuinely like to hear about it.</p>
-
-      <p><a href="../../games/popcorn-typing.html">Popcorn Typing</a> is free in the browser. It is Japanese typing practice, typed in romaji.</p>
-
+<p class="byline">Practical notes checked against the live configuration and game logic on September 9, 2026.</p>
+<p>Popcorn Typing rewards both correct keys and completed words. Facilities provide a separate source of income. Understanding those three contributions helps you choose what to upgrade when the next container feels slow.</p>
+<h2>Start without knowing the Japanese menus</h2>
+<p>Press ▶ はじめる (Start), then copy the Latin-letter prompt. Key 1, labelled レベルUP, buys a level. Key 2, 施設購入, buys a facility. Key 3, 品種研究, researches a variety. If you use a Japanese IME, turn it off while playing. These controls are also clickable buttons.</p>
+<p>The prompts are Japanese words or phrases written for romaji input. The game does not provide English definitions or pronunciation lessons. Treat it as practice typing the displayed letter sequences, and use a separate learning resource if you want to study their meanings.</p>
+<h2>Keep the combo, but finish the word</h2>
+<p>The combo multiplier becomes &times;2 after 10 correct keys, &times;3 after 25, &times;4 after 50, &times;6 after 100 and &times;10 after 200. One mistake resets the count to zero and returns the multiplier to &times;1. A slower pace can be worthwhile if it keeps a streak intact, but the ideal speed depends on how often you make mistakes.</p>
+<p>In normal mode, output per correct key is variety output &times; level &times; combo multiplier. Completing a prompt pays an additional bonus: its kana-string length &times; the per-key output at completion &times; 5. Kana length and the number of Latin-letter keystrokes are different.</p>
+<p>For example, a two-kana word at base variety, level 1 and a &times;1 combo gives a completion bonus of 10 kernels, in addition to the kernels already earned from typing its romaji. Pressing Enter skips the current word. It does not undo kernels earned from correct keys, but it gives no completion bonus.</p>
+<h2>Levels and varieties change manual output</h2>
+<p>The starting variety gives a base output of 1. Caramel costs 2,500 and gives 15; Truffle Salt costs 250,000 and gives 350; Solid Gold costs 20 million and gives 9,000. Those are base values before level and combo multipliers. Further gold-variety research doubles its output.</p>
+<p>Compare the cost of your next level with the time needed to save for the next variety. Research gives a large jump, but buying smaller upgrades can improve earnings while you save. There is no single purchase order established by these values alone.</p>
+<h2>What facilities do while you are away</h2>
+<p>Seven facility types range from a frying pan producing 1.5 kernels per second to Popcorn World producing 1,200. Each purchase makes the next of that type 18% more expensive. The button prioritizes the cheapest affordable unowned type, then the highest-tier affordable type if no unowned type is affordable.</p>
+<p>When you return after closing the game, offline income is credited at 50% of your facility rate for up to eight hours. With only one base frying pan, eight hours away gives 1.5 &times; 0.5 &times; 28,800 = 21,600 kernels. That is an example before the post-clear production multiplier.</p>
+<h2>Containers and saving</h2>
+<p>There are 16 named containers. Filling one pays half its capacity as a reward. Filling the universe unlocks a &times;100 replay mode; containers beyond the named list grow by a factor of eight. The game saves locally every five seconds. Clearing its site data removes that save.</p>
+<p><a href="../../games/popcorn-typing.html">Play and see the complete facility list</a>. Sources: <a href="https://play.bubblegumgameboy.com/popcorn-typing/src/config.js">configuration</a>, <a href="https://play.bubblegumgameboy.com/popcorn-typing/src/game.js">game calculations</a> and <a href="https://play.bubblegumgameboy.com/popcorn-typing/src/main.js">input handling</a>.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
@@ -210,7 +116,8 @@
         <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>

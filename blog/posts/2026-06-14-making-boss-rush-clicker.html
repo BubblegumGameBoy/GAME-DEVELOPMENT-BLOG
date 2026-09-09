@@ -48,9 +48,8 @@
     .dtable tbody tr:nth-child(even) td { background:#fff; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I paid for the boss art on a game that has never earned a yen","datePublished":"2026-06-14","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I paid for the boss art on a game that has never earned a yen","datePublished":"2026-06-14","dateModified":"2026-09-09","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-14-making-boss-rush-clicker.html"}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -73,7 +72,7 @@
     <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Making Mythos Slayer</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 14, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 14, 2026 · updated September 9, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#ef8c33;border-radius:5px;padding:3px 9px;">Dev Note</span>
     </div>
     <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">I paid for the boss art on a game that has never earned a yen</h1>
@@ -103,29 +102,16 @@
 
       <p>Which is why I paid for the art. The whole retention model of the game rests on the bosses being worth arriving at, and I was not going to get that out of my own drawing. The credit for those goes to <a href="https://x.com/Kome_to_Matsuri" target="_blank" rel="noopener">@Kome_to_Matsuri</a> and to Ankimo of the Innsmouth Project.</p>
 
-      <h2>Clicking summons, it does not attack</h2>
-
-      <p>The other structural decision is that mashing the spacebar does not primarily hurt the boss. It builds an army that hurts the boss.</p>
-
-      <p>The difference matters more than it sounds. If clicking is damage, then stopping clicking is stopping progress, and the game becomes a test of how long you are willing to abuse your own hand. If clicking is recruitment, then everything you do while you are present keeps paying out while you are absent.</p>
-
-      <p>You come back to a screen where your line of soldiers has been quietly working. That is the feeling I was building around.</p>
-
-      <p>It also means the twenty units in the game are the actual progression, not decoration. The Swordsman does 2 damage. The Demon God at the far end does 50 million. Watching that ladder get built is the game.</p>
-
-      <h2>Rebirth exists because I hit a wall in my own game</h2>
-
-      <p>Prestige was not planned. It got added because I played far enough to break it.</p>
-
-      <p>Boss HP multiplies by 2.42 every step. Your damage does not scale like that, because units come in fixed tiers and you eventually run out of room to put them. So there is a point where the curve simply leaves you behind, and I found it by playing, not by calculating.</p>
-
-      <p>Rebirth resets everything for a permanent gold multiplier, and unlocks at Boss 10. It is the release valve for a structural problem I built and then walked into.</p>
-
-      <p>I got the formula wrong the first time, too. In the original version, resetting the instant it unlocked was always mathematically correct, which meant the choice was not a choice. It is now scaled by how deep you got, so waiting actually pays. The details are in <a href="2026-08-10-mythos-slayer-balance.html">the balance post</a>.</p>
+      <h2>Clicking and summoning do different jobs</h2>
+      <p><strong>Mechanics correction, September 9, 2026:</strong> spacebar presses and taps directly damage the boss and earn gold. Recruitment is a separate purchase in the Summon panel. There are 24 recruitable unit types; each is recruited once and then upgraded. The Farmer and Villager produce gold, while the other units attack.</p>
+      <p>The basic Swordsman deals 2 damage per attack; the Demon God starts at 50 million. Unit levels and attack-speed upgrades change those rates. Their attacks run through the animation loop, so a hidden tab can pause or slow them. Closing the page does not award offline earnings.</p>
+      <h2>Rebirth and a stalled run</h2>
+      <p>Boss health grows by a factor of 2.42 within a cycle. Unit damage increases with levels, including a large multiplier every 50 levels. Rebirth unlocks after clearing Boss 10 and resets purchases while multiplying the existing permanent gold bonus. It preserves the current boss cycle.</p>
+      <p>The new factor is 1 + 0.4 times the highest boss cleared in the current cycle. Going deeper increases that factor but takes more time, so an optimal reset point cannot be inferred from the multiplier alone. See the <a href="2026-08-10-mythos-slayer-balance.html">current balance walkthrough</a> for the exact calculations.</p>
 
       <h2>Three languages, no audience</h2>
 
-      <p>The game ships in Japanese, English and Chinese. Every unit name, every boss name, every piece of UI, three times over.</p>
+      <p>The game ships in Japanese, English and Chinese. The main game provides language choices at the title screen.</p>
 
       <p>Nobody asked for that. There is no Chinese-speaking player base clamouring for it, because as far as I can tell there is no player base clamouring for anything. I have received zero messages about this game since it went up.</p>
 
@@ -158,7 +144,8 @@
         <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>

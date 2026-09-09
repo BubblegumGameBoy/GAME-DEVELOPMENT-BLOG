@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/blog/posts/2026-06-16-soldier-typing-strategy.html">
-<title>Soldier Typing strategy, with the actual numbers from my own game files | Bubblegum Game</title>
-<meta name="description" content="Every boss HP value, every unit's damage and range, and the one design decision that changes how you should play: the enemies never get stronger. A strategy guide written by the developer, using the real values.">
+<title>Soldier Typing: wave triggers, boss stats and controls | Bubblegum Game</title>
+<meta name="description" content="Understand how to summon soldiers, trigger bosses and continue between waves in Soldier Typing.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bubblegumgameboy.com/blog/posts/2026-06-16-soldier-typing-strategy.html">
-<meta property="og:title" content="Soldier Typing strategy, with the actual numbers from my own game files">
-<meta property="og:description" content="Real boss HP, real unit stats, and why Wave 2 is the hardest fight in the game even though it is not the last one.">
+<meta property="og:title" content="Soldier Typing: wave triggers, boss stats and controls">
+<meta property="og:description" content="Understand how to summon soldiers, trigger bosses and continue between waves in Soldier Typing.">
 <meta property="og:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
@@ -49,9 +49,8 @@
     .dtable tbody tr:nth-child(even) td { background:#fff; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Soldier Typing strategy, with the actual numbers from my own game files","datePublished":"2026-06-16","dateModified":"2026-08-11","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-16-soldier-typing-strategy.html"}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Soldier Typing: wave triggers, boss stats and controls","datePublished":"2026-06-16","dateModified":"2026-09-09","author":{"@type":"Person","name":"Bubblegum"},"publisher":{"@type":"Organization","name":"Bubblegum Game"},"inLanguage":"en","mainEntityOfPage":"https://bubblegumgameboy.com/blog/posts/2026-06-16-soldier-typing-strategy.html"}</script>
+<script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
@@ -74,117 +73,34 @@
     <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="../../" style="color:#7e95ad;text-decoration:none;">Home</a> / <a href="../" style="color:#7e95ad;text-decoration:none;">Blog</a> / <span style="color:#2c4a6e;">Soldier Typing strategy</span></p>
 
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 16, 2026 · updated August 11, 2026</span>
+      <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 16, 2026 · updated September 9, 2026</span>
       <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Guide</span>
     </div>
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Soldier Typing strategy, with the actual numbers from my own game files</h1>
+    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">Soldier Typing: wave triggers, boss stats and controls</h1>
 
     <article class="prose">
 
-      <p class="byline">I built this game, so the numbers below are not estimates from playing. They are the values in my own source.</p>
-
-      <p>Most strategy guides for a game this small are guesswork dressed up as advice. I do not have to guess, so here is the real thing: every boss stat, every unit stat, and the one design decision that should change how you play.</p>
-
-      <figure>
-        <img src="../../images/soldier-typing.png" alt="Soldier Typing: knights advancing on an enemy castle while the player types the word at the bottom of the screen">
-        <figcaption>Type the word, a soldier spawns, the soldier walks at the castle. That is the loop.</figcaption>
-      </figure>
-
-      <h2>The thing nobody would guess: the enemies never get stronger</h2>
-
-      <p>There is a line in the source that reads, more or less, <code>waveMult = 1</code>, with a note next to it saying enemies stay at Wave 1 strength throughout.</p>
-
-      <p>That is not a bug and it is not laziness. Goblins in Wave 5 have exactly the same 80 HP and 2 damage as goblins in Wave 1. The trash never scales.</p>
-
-      <p>Your side does, slightly. From <strong>Wave 4 onward, every unit you spawn gets 10% more HP</strong>. Nothing else changes.</p>
-
-      <p>So the difficulty curve in this game is carried entirely by the bosses. If a wave feels hard, it is the boss doing it, not the mob. Play accordingly: you are never fighting a rising tide, you are fighting five specific monsters with five specific problems.</p>
-
-      <h2>Every boss, with real values</h2>
-
-      <table class="dtable">
-        <thead><tr><th>Wave</th><th>Boss</th><th>HP</th><th>Damage</th><th>Speed</th><th>Reach</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Wave">1</td><td data-label="Boss">Amoeba</td><td data-label="HP">500</td><td data-label="Damage">5</td><td data-label="Speed">0.013</td><td data-label="Reach">70</td></tr>
-          <tr><td data-label="Wave">2</td><td data-label="Boss">Nyarga, the flying demon cat</td><td data-label="HP">3,600</td><td data-label="Damage">8</td><td data-label="Speed">0.012</td><td data-label="Reach">80</td></tr>
-          <tr><td data-label="Wave">3</td><td data-label="Boss">Vel, the great bat</td><td data-label="HP">3,200</td><td data-label="Damage">12</td><td data-label="Speed">0.015</td><td data-label="Reach">75</td></tr>
-          <tr><td data-label="Wave">4</td><td data-label="Boss">The Demon Lord</td><td data-label="HP">1,600</td><td data-label="Damage">24</td><td data-label="Speed">0.006</td><td data-label="Reach">85</td></tr>
-          <tr><td data-label="Wave">5</td><td data-label="Boss">God</td><td data-label="HP">9,600</td><td data-label="Damage">42</td><td data-label="Speed">0.011</td><td data-label="Reach">110</td></tr>
-        </tbody>
-      </table>
-
-      <p>Look at the HP column and notice that it does not climb. It goes 500, then 3,600, then <em>down</em> to 3,200, then down again to 1,600, then explodes to 9,600.</p>
-
-      <h3>Which means Wave 2 is the real difficulty spike</h3>
-
-      <p>The jump from Wave 1 to Wave 2 is <strong>7.2 times more boss HP</strong>. Nothing else in the game comes close to that as a single step. If people bounce off this game, that is where it happens, and it happens because they are still playing it like Wave 1 was teaching them to.</p>
-
-      <p>Wave 2 is where you have to stop casually typing and start actually spawning at volume.</p>
-
-      <h3>The Demon Lord is a trick, not a wall</h3>
-
-      <p>Wave 4 looks terrifying and has less than half the HP of the fight before it. 1,600, versus Vel's 3,200.</p>
-
-      <p>What it has instead is <strong>24 damage per hit</strong>, double Vel's, and the slowest movement in the game at 0.006. It is a glass cannon that lumbers. It deletes whatever it reaches, and it takes a long time to reach anything.</p>
-
-      <p>The counter falls out of those two numbers: do not feed it. Its damage only matters if your units walk into range one at a time, and its slowness means you have time to build up before contact. Wave 4 punishes trickling and barely notices a swarm.</p>
-
-      <h3>God is the only genuine HP check</h3>
-
-      <p>9,600 HP, 42 damage, and a reach of 110, which is the longest in the game by a clear margin. Vel reaches 75. God reaches 110, so it starts hitting your line noticeably earlier than anything else.</p>
-
-      <p>This is the fight the whole game is actually about. Everything before it is teaching you to sustain spawn volume so you can survive this one.</p>
-
-      <h2>Your units, with real values</h2>
-
-      <table class="dtable">
-        <thead><tr><th>Unit</th><th>HP</th><th>Damage</th><th>Attack every</th><th>Range</th><th>Speed</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Unit">Soldier</td><td data-label="HP">35</td><td data-label="Damage">11</td><td data-label="Attack">1,000ms</td><td data-label="Range">34</td><td data-label="Speed">0.046</td></tr>
-          <tr><td data-label="Unit">Archer</td><td data-label="HP">22</td><td data-label="Damage">15</td><td data-label="Attack">1,400ms</td><td data-label="Range">140</td><td data-label="Speed">0.035</td></tr>
-          <tr><td data-label="Unit">Hero</td><td data-label="HP">9,999</td><td data-label="Damage">120</td><td data-label="Attack">1,200ms</td><td data-label="Range">40</td><td data-label="Speed">0.055</td></tr>
-        </tbody>
-      </table>
-
-      <p>And what you are fighting through to get to the boss:</p>
-
-      <table class="dtable">
-        <thead><tr><th>Enemy</th><th>HP</th><th>Damage</th><th>Attack every</th><th>Speed</th></tr></thead>
-        <tbody>
-          <tr><td data-label="Enemy">Goblin</td><td data-label="HP">80</td><td data-label="Damage">2</td><td data-label="Attack">1,300ms</td><td data-label="Speed">0.038</td></tr>
-          <tr><td data-label="Enemy">Hobgoblin</td><td data-label="HP">160</td><td data-label="Damage">6</td><td data-label="Attack">1,600ms</td><td data-label="Speed">0.024</td></tr>
-        </tbody>
-      </table>
-
-      <h3>The archer is better than it looks, and dies to a stiff breeze</h3>
-
-      <p>Archers out-damage soldiers, 15 to 11, and they reach <strong>140 versus the soldier's 34</strong>. That is roughly four times the range. An archer standing behind your line contributes for the entire fight without ever being touched.</p>
-
-      <p>The catch is 22 HP. A hobgoblin hitting for 6 kills an archer in four swings; the Demon Lord's 24 damage erases one instantly. Archers are free damage exactly as long as something else is standing in front of them, and worthless the moment they are not.</p>
-
-      <p>Soldiers do less damage each but have 35 HP and move at 0.046, faster than either enemy type. They are the wall. Archers are the payload.</p>
-
-      <h3>The Hero is worth eleven soldiers</h3>
-
-      <p>120 damage per swing against the soldier's 11, plus 9,999 HP, which in practice means it does not die. It also moves at 0.055, the fastest thing on the field, so it reaches the front before your other units do.</p>
-
-      <p>When it shows up in Wave 4, the fight changes character completely. It is not a small buff.</p>
-
-      <h2>What all of that adds up to</h2>
-
-      <ul>
-        <li><strong>Wave 1 is a tutorial.</strong> 500 HP. Whatever you do works. Do not learn your habits here</li>
-        <li><strong>Wave 2 is where the game starts.</strong> 7.2x the HP of Wave 1. Switch to typing for volume, not for accuracy points</li>
-        <li><strong>Wave 3 is easier than Wave 2 on paper.</strong> 3,200 versus 3,600, and Vel is faster at 0.015, so it closes the distance sooner. It feels harder than it is</li>
-        <li><strong>Wave 4 is a positioning puzzle.</strong> Low HP, huge damage, very slow. Build up, then commit. Never trickle</li>
-        <li><strong>Wave 5 is a stamina test.</strong> 9,600 HP and the longest reach in the game. Nothing clever here, just sustained volume</li>
-        <li><strong>Short words beat perfect words.</strong> A spawned unit contributes whether or not the word was impressive. Speed of spawning is the resource</li>
-      </ul>
-
-      <p>None of that is visible from inside the game, which is exactly why I wrote it down.</p>
-
-      <p><a href="../../games/soldier-typing.html">Soldier Typing</a> is free in the browser. It is Japanese typing practice, so words are typed in romaji, which makes it a decent workout if you are learning.</p>
-
+<p class="byline">A guide to the current live build, checked September 9, 2026.</p>
+<p>Soldier Typing is a five-wave lane-defense game controlled by typing Japanese prompts in romaji. Completing a word summons a soldier, which moves and fights automatically. Your decisions are mainly about maintaining input and reacting to the current wave state; you cannot hold completed soldiers in reserve and deploy them together on command.</p>
+<h2>Use the displayed letters</h2>
+<p>Turn off Japanese IME conversion if you have it enabled. Read the remaining Latin letters under the kana and copy them to complete the word. For example, ねこ is displayed as neko. You do not need to know its meaning to enter those keys.</p>
+<p>Each wave has 30 entries, making 150 pool entries in total. There are 139 distinct kana prompts because some words recur across waves. The later vocabulary has battle, demon-lord and divine themes, but it is not a sequence of English-language lessons.</p>
+<h2>Know when a boss should appear</h2>
+<p>An allied unit reaching enemy territory triggers the boss. If that has not happened after 90 seconds of active wave time, a timer triggers it instead. Ninety seconds is a spawn deadline, not a time limit for completing the wave.</p>
+<p>Defeating the boss clears the wave. In waves 1&ndash;4, destroying the enemy castle after the boss has spawned can also clear it. In wave 5, the castle is protected while the final boss is alive. An enemy reaching your own castle ends the game.</p>
+<p>After a wave-clear message, there is a short delay before the game accepts Enter to continue. If the battlefield looks inactive, check whether the wave is already cleared before treating it as a missing-boss problem.</p>
+<h2>Compare the first three bosses</h2>
+<table class="dtable"><thead><tr><th>Boss</th><th>HP</th><th>Base damage</th><th>Attack interval</th></tr></thead><tbody>
+<tr><td data-label="Boss">Amoeba</td><td data-label="HP">500</td><td data-label="Damage">5</td><td data-label="Interval">1.0 seconds</td></tr>
+<tr><td data-label="Boss">Nyalga</td><td data-label="HP">3,600</td><td data-label="Damage">8</td><td data-label="Interval">1.3 seconds</td></tr>
+<tr><td data-label="Boss">Vel</td><td data-label="HP">3,200</td><td data-label="Damage">12</td><td data-label="Interval">0.9 seconds</td></tr>
+</tbody></table>
+<p>Nyalga has 7.2 times Amoeba's health. Vel has less health than Nyalga but moves faster and has a stronger, more frequent base attack. Health alone therefore does not describe the pressure a boss puts on your army. Special attacks add another difference.</p>
+<details><summary>Wave 4 and wave 5 statistics (spoilers)</summary>
+<p>The Demon Lord has 1,600 HP, 24 base damage, a 1.8-second attack interval and base movement speed 0.006. God has 9,600 HP, 42 base damage, a 1.3-second interval and attack range 110. These are definition values; special events and allied support also affect the actual fight.</p></details>
+<h2>Keep the advice within the controls</h2>
+<p>Continue finishing prompts so replacements reach the front. Advice such as choosing only short words, saving units for a mass deployment, or selecting a different troop type would describe controls this game does not offer. Work on a steady pace with fewer corrections, and pay attention to the continue prompt between waves.</p>
+<p><a href="../../games/soldier-typing.html">Play Soldier Typing</a>. Source: <a href="https://play.bubblegumgameboy.com/Bubble-Wars/">the public game build</a>, including WORD_POOLS, BOSS_DEFS, spawnEnemies, onBossDead and onWaveClear.</p>
     </article>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
@@ -202,7 +118,8 @@
         <a href="../../" style="color:#cfe1ec;text-decoration:none;">Home</a>
       </span>
     </div>
-  </footer>
+  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</footer>
 
 </div>
 </body>
