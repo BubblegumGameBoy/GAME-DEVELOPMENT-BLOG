@@ -6,7 +6,7 @@
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/games/soldier-typing.html">
 <title>Soldier Typing | Free Browser Game - Bubblegum Game</title>
-<meta name="description" content="A military-style typing game where every word you type summons a soldier to fight for you. Type hiragana words in romaji - great Japanese typing practice. Free, no sign-up, plays right in your browser on PC.">
+<meta name="description" content="Type romaji to summon soldiers and hold the castle. 5 waves, 5 bosses, 150 Japanese words shown in hiragana, and every sprite drawn in code. Full guide with the real numbers from the source, plus an online ranking. Free browser typing game, PC recommended.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bubblegumgameboy.com/games/soldier-typing.html">
 <meta property="og:title" content="Soldier Typing | Free Browser Game">
@@ -48,9 +48,17 @@
   /* CSS fullscreen (fills the screen without changing the URL) */
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
+  /* spoiler block: shut by default, so the surprise survives a casual read */
+  .spoiler{border:2px solid rgba(239,140,51,.45);background:rgba(52,26,10,.5);border-radius:12px;padding:4px 18px;margin:8px 0 18px;}
+  .spoiler summary{cursor:pointer;font-weight:800;color:#ffbd73;padding:12px 0;font-size:clamp(14px,3.7vw,16px);list-style:none;}
+  .spoiler summary::-webkit-details-marker{display:none;}
+  .spoiler summary::before{content:"\25B6  ";font-size:12px;}
+  .spoiler[open] summary::before{content:"\25BC  ";}
+  .spoiler h3{color:#ffbd73;margin-top:18px;}
+  .spoiler p,.spoiler li{color:#e6d3c2;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Soldier Typing","url":"https://bubblegumgameboy.com/games/soldier-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"en","description":"A typing game where you type romaji to summon soldiers and battle waves of monsters. Soldiers march and fight automatically; clear all 5 waves and defeat each boss to win. The game interface is in Japanese - you type hiragana words in romaji, which makes it good Japanese typing practice. Free, for PC.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"It is a keyboard game, so we recommend playing on a PC."}},{"@type":"Question","name":"My keystrokes are not registering correctly.","acceptedAnswer":{"@type":"Answer","text":"You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start playing."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Defeat the boss of all 5 waves to clear the game. If an enemy reaches your castle, it is game over."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Soldier Typing","url":"https://bubblegumgameboy.com/games/soldier-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":"en","description":"A typing lane-defense game: type romaji to summon soldiers who fight on their own, hold the castle across 5 waves and 5 bosses, drawing on 150 Japanese words shown in hiragana. Free, plays in the browser, PC recommended.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"It's a keyboard game, so we recommend playing on a PC."}},{"@type":"Question","name":"My keystrokes aren't registering correctly.","acceptedAnswer":{"@type":"Answer","text":"You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start."}},{"@type":"Question","name":"Do I need to read Japanese?","acceptedAnswer":{"@type":"Answer","text":"No. The words are shown in hiragana with the romaji spelled out, and you type the romaji. You do not need to know what any of them mean, though it is decent practice if you are learning."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Defeat the boss of all 5 waves to clear the game. If an enemy reaches your castle, it's game over."}},{"@type":"Question","name":"Nothing is happening and there's no boss.","acceptedAnswer":{"@type":"Answer","text":"Ninety seconds into a wave the boss is sent out whether or not you triggered it, so a wave cannot stall permanently. If the screen is empty, it is about to stop being empty."}},{"@type":"Question","name":"Does my score go anywhere?","acceptedAnswer":{"@type":"Answer","text":"Enter a name when you start and your score reaches the online ranking board, which everyone playing shares. Soldier Typing 2 keeps a separate table, so scores from the two games never mix."}},{"@type":"Question","name":"Do I need to play this before the sequel?","acceptedAnswer":{"@type":"Answer","text":"No. Soldier Typing 2 stands on its own, though it does assume your hands already know the loop."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -114,38 +122,58 @@
 
     <!-- details (how to play, characters, and FAQ written for this site) -->
     <section class="detail">
-      <p>Type romaji to summon soldiers and hold the line against a horde of monsters. The more you type, the more soldiers march out - they advance and fight on their own. Keep enemies away from your castle and take down the boss of each wave. A keyboard game for PC, and since the words are Japanese (shown in hiragana, typed in romaji), it doubles as Japanese typing practice.</p>
+      <p>Type romaji to summon soldiers and hold the line against a horde of monsters. The more you type, the more soldiers march out &mdash; they advance and fight on their own. Keep enemies away from your castle and take down the boss of each wave. A keyboard game for PC, and since the words are Japanese (shown in hiragana, typed in romaji), it doubles as Japanese typing practice.</p>
 
       <p style="font-weight:700;color:#dff0fa;">Before you play: this is a keyboard game, so PC is recommended. If you have a Japanese IME installed, switch it off first.</p>
 
+      <p>I built this one, so the word counts, wave lengths and boss numbers below are read off the source rather than estimated from playing.</p>
+
       <h2>At a Glance</h2>
       <table>
-        <tr><th>Genre</th><td>Typing / tower-defense style</td></tr>
-        <tr><th>Price</th><td>Free, no install</td></tr>
+        <tr><th>Genre</th><td>Typing / lane defense</td></tr>
+        <tr><th>Price</th><td>Free, no install, no sign-up</td></tr>
         <tr><th>Platform</th><td>PC recommended (keyboard controls)</td></tr>
         <tr><th>Input</th><td>Romaji (Latin letters; turn Japanese IME off if you have one)</td></tr>
-        <tr><th>Language</th><td>Game interface is in Japanese - type hiragana words in romaji</td></tr>
+        <tr><th>Language</th><td>Game interface is in Japanese &mdash; type hiragana words in romaji</td></tr>
         <tr><th>Length</th><td>5 waves, 5 bosses</td></tr>
+        <tr><th>Vocabulary</th><td>150 words, 30 per wave, none shared between waves</td></tr>
+        <tr><th>Music</th><td>7 tracks, with separate boss themes</td></tr>
+        <tr><th>Ranking</th><td>Online, shared by all players</td></tr>
+        <tr><th>Sequel</th><td><a href="soldier-typing-2.html">Soldier Typing 2</a></td></tr>
       </table>
 
       <h2>How to Play</h2>
       <ul>
         <li>Type the romaji shown at the bottom of the screen accurately to summon a soldier</li>
-        <li>Soldiers automatically march toward the enemy and fight</li>
+        <li>Soldiers automatically march toward the enemy and fight without further input</li>
         <li>If an enemy reaches your castle, it's game over</li>
-        <li>Defeat the boss of every wave (waves 1-5) to win</li>
+        <li>Defeat the boss of every wave (waves 1&ndash;5) to win</li>
       </ul>
-      <p>That's the whole control scheme - just type. Keep your hands moving and keep sending soldiers to the front.</p>
+      <p>That's the whole control scheme &mdash; just type. Keep your hands moving and keep sending soldiers to the front. There is no attack button, no unit selection and nothing to click; the only thing standing between you and the castle falling is how fast you can spell.</p>
 
-      <h2>Characters</h2>
+      <h2>The Words</h2>
+      <p>Each wave draws from its own pool of thirty words, and no word appears in more than one wave, so 150 in total. The difficulty curve is in the length rather than in obscurity: wave 1 is two and three kana (neko, inu, yama, sora), and waves 2 through 5 sit at three and four (sakura, yuusha, kaminari, tanabata).</p>
+      <p>What changes after wave 2 is the subject matter, not the difficulty. Wave 3 is themed on battle, wave 4 on the demon lord, wave 5 on the divine. The words you are typing tell you where the story has got to, which is the only narration this game has.</p>
+
+      <h2>The Bosses</h2>
+      <p>Every wave ends on a boss, and if you have not triggered one within 90 seconds the game sends it out anyway, so no wave can stall forever.</p>
       <ul>
-        <li><strong>Soldier</strong>: your main unit, summoned by typing</li>
-        <li><strong>Hero</strong>: a support unit</li>
-        <li><strong>Demon Lord</strong>: keep pushing through the waves and an interesting twist awaits...</li>
+        <li><strong>Amoeba</strong> &mdash; 500 HP, 5 damage. The tutorial in monster form</li>
+        <li><strong>Nyalga, the Flying Magic Cat</strong> &mdash; 3,600 HP. Seven times the health of the first boss, arriving one wave later</li>
+        <li><strong>Vel, the Great Bat of the Night Sky</strong> &mdash; 3,200 HP but faster and hitting harder than Nyalga; the health bar is not the whole story</li>
       </ul>
+      <details class="spoiler">
+        <summary>Show the wave 4 and wave 5 bosses (spoilers)</summary>
+        <p>Wave 4 is the <strong>Demon Lord</strong>, and the numbers are deliberately strange: 1,600 HP, the lowest of any boss after the first, paired with 24 damage a hit and the slowest movement in the game. He is not built to be a wall. He is built to change what the game is about, and the wave 4 music is a different track from every other boss for that reason.</p>
+        <p>Wave 5 is <strong>God</strong>: 9,600 HP, 42 damage, and the longest attack range in the game at 110. This is the only fight where your soldiers start dying faster than you can spell them into existence, and the answer is not accuracy, it is not stopping.</p>
+      </details>
+
+      <h2>Everything Here Is Drawn in Code</h2>
+      <p>There are no image files in this game. Every character &mdash; the soldiers, the archers, the goblins, the hobgoblins, the amoeba, the cat, the bat, the hero, the demon lord, the god &mdash; is a sprite defined as data in the source and painted to the canvas at runtime, two frames each so they animate. Ten characters, twenty frames, all of it typed out by hand. It is why the whole game is one file and loads instantly, and it is also why everything is the size it is: I could not draw anything more detailed than that at that resolution.</p>
 
       <h2>Developer's Note</h2>
       <p>Rattle off short words and soldiers come pouring out, until the screen is buzzing with your own little army. I love games like Undertale that hit you with a "wait, what?" moment mid-play, so I tucked a small surprise into this one too. I hope the turn things take around wave 4 catches you off guard.</p>
+      <p>The 90-second forced boss was a late addition and it fixed a problem I had not seen coming. Good typists were clearing the field so fast that the boss trigger never fired, and they sat in an empty wave wondering what they had done wrong. Being punished for playing well is the worst kind of bug, because it does not look like one.</p>
 
       <h2>FAQ</h2>
       <dl class="faq">
@@ -153,8 +181,16 @@
         <dd>It's a keyboard game, so we recommend playing on a PC.</dd>
         <dt>My keystrokes aren't registering correctly.</dt>
         <dd>You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start.</dd>
+        <dt>Do I need to read Japanese?</dt>
+        <dd>No. The words are shown in hiragana with the romaji spelled out, and you type the romaji. You do not need to know what any of them mean, though it is decent practice if you are learning.</dd>
         <dt>How do I win?</dt>
         <dd>Defeat the boss of all 5 waves to clear the game. If an enemy reaches your castle, it's game over.</dd>
+        <dt>Nothing is happening and there's no boss.</dt>
+        <dd>Ninety seconds into a wave the boss is sent out whether or not you triggered it, so a wave cannot stall permanently. If the screen is empty, it is about to stop being empty.</dd>
+        <dt>Does my score go anywhere?</dt>
+        <dd>Enter a name when you start and your score reaches the online ranking board above, which everyone playing shares. Soldier Typing 2 keeps a separate table, so scores from the two games never mix.</dd>
+        <dt>Do I need to play this before the sequel?</dt>
+        <dd>No. Soldier Typing 2 stands on its own, though it does assume your hands already know the loop.</dd>
       </dl>
     </section>
 

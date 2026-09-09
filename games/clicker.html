@@ -6,7 +6,7 @@
 <meta name="google-adsense-account" content="ca-pub-2203567155161909">
 <link rel="canonical" href="https://bubblegumgameboy.com/games/clicker.html">
 <title>Mythos Slayer | Free Browser Game - Bubblegum Game</title>
-<meta name="description" content="An idle boss-rush game where 40 tougher-and-tougher bosses stand in your way. Upgrade your weapons, recruit soldiers to automate your attacks, and let your army keep hunting even while you're away. How to play, tips, and FAQ included. Free, works on desktop and mobile.">
+<meta name="description" content="An idle boss-rush clicker: 40 Cthulhu Mythos bosses, 24 units you recruit to automate the fight, 10 weapon tiers and a prestige system, plus a ten-second speed test at the door and an online leaderboard. Full guide with the real formulas from the source. Free, English / Japanese / Chinese, desktop and mobile.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bubblegumgameboy.com/games/clicker.html">
 <meta property="og:title" content="Mythos Slayer | Free Browser Game">
@@ -49,8 +49,8 @@
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Mythos Slayer","url":"https://bubblegumgameboy.com/games/clicker.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":"en","description":"An idle boss-rush game where 40 tougher-and-tougher bosses stand in your way. Upgrade your weapons and recruit soldiers to automate your attacks, and your army keeps hunting bosses even while you're away. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Instead of the spacebar, you tap the screen to attack."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"It's saved automatically in your browser, but it will be lost if you clear your browser cache or site data. It also can't be carried over to another device."}},{"@type":"Question","name":"Does progress from the embedded version on this page carry over to the fullscreen version?","acceptedAnswer":{"@type":"Answer","text":"Yes, it carries over."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Mythos Slayer","url":"https://bubblegumgameboy.com/games/clicker.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["en","ja","zh"],"description":"An idle boss-rush clicker against 40 Cthulhu Mythos bosses. Upgrade your click, recruit 24 units to automate the fight, evolve through 10 weapon tiers, and prestige for a permanent gold multiplier that scales with how deep you got. Includes a ten-second speed test and an online leaderboard. Free, desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. You tap the screen instead of pressing the spacebar, and the unit layout switches to a portrait arrangement on narrow screens."}},{"@type":"Question","name":"Is it in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, and in Japanese and Chinese. The one exception is the leaderboard screen, which is still Japanese only."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"It is saved automatically in your browser, but it will be lost if you clear your cache or site data, and it does not travel to another device."}},{"@type":"Question","name":"Does progress from the embedded version on this page carry over to the fullscreen version?","acceptedAnswer":{"@type":"Answer","text":"Yes. They are the same page and the same storage."}},{"@type":"Question","name":"When should I prestige?","acceptedAnswer":{"@type":"Answer","text":"Not the moment it unlocks at Boss 10. The permanent gold multiplier is 1 + 0.4 for every boss you have cleared, so prestiging at Boss 10 gives you 5x and prestiging at Boss 20 gives you 9x. Go as deep as you can still make progress, then reset."}},{"@type":"Question","name":"Does the game keep earning while the tab is closed?","acceptedAnswer":{"@type":"Answer","text":"Your units keep attacking while the game is open, including while you are looking at another tab in the same browser. There is no separate offline earnings calculation for time spent with the page fully closed."}},{"@type":"Question","name":"What happens when I beat all 40 bosses?","acceptedAnswer":{"@type":"Answer","text":"The credits roll and then the set restarts at a higher cycle, where each boss has 50x the health and pays 6x the gold."}},{"@type":"Question","name":"Do I have to take the speed test?","acceptedAnswer":{"@type":"Answer","text":"It only appears on your first visit and you can skip naming yourself. You can re-take it later from the player menu."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17WNKDX3ZB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17WNKDX3ZB');</script>
 <!-- Google AdSense -->
@@ -104,46 +104,101 @@
 
     <!-- details (how to play, tips, and FAQ written for this site) -->
     <section class="detail">
-      <p>You start with a single click for 1 damage. Save up gold to upgrade your weapons, and recruit soldiers to automate your attacks — your army keeps hunting bosses even while you're away. <strong>40 bosses</strong>, each tougher than the last, stand in your way, so it's an idle boss-rush you take on by upgrading and recruiting.</p>
+      <p>I wrote this game, so the numbers on this page come out of the build itself rather than from playing it and estimating. Where a formula is simple enough to state, I have stated it.</p>
+
+      <p>You open with a single click that does 2 damage, against a boss with 300 hit points. That is the whole game at the start. Gold from every hit goes into two piles: upgrades that make your own click hurt more, and units that fight for you whether or not you are at the keyboard. Forty bosses are stacked ahead of you and each one has roughly two and a half times the health of the one before, which is far faster than clicking alone can ever grow. The game is the argument between those two curves.</p>
 
       <h2>At a Glance</h2>
       <table>
-        <tr><th>Genre</th><td>Idle boss-rush</td></tr>
-        <tr><th>Price</th><td>Free, no install</td></tr>
+        <tr><th>Genre</th><td>Idle boss-rush / clicker</td></tr>
+        <tr><th>Price</th><td>Free, no install, no sign-up</td></tr>
         <tr><th>Platform</th><td>Desktop (Chrome / Edge / Firefox / Safari) and mobile</td></tr>
-        <tr><th>Saves</th><td>Auto-saved (stored in your browser)</td></tr>
-        <tr><th>Content</th><td>40 bosses, 17 unit types, a prestige system</td></tr>
+        <tr><th>Language</th><td>English, Japanese and Chinese</td></tr>
+        <tr><th>Bosses</th><td>40, then the whole set again at higher difficulty</td></tr>
+        <tr><th>Units</th><td>24 recruitable, from Farmer to Demon God</td></tr>
+        <tr><th>Weapons</th><td>10 tiers, each with its own cursor and sound</td></tr>
+        <tr><th>Upgrades</th><td>7 lines, including crit chance and ally attack speed</td></tr>
+        <tr><th>Leaderboard</th><td>Online, shared by all players, two boards</td></tr>
+        <tr><th>Saves</th><td>Auto-saved in your browser, per device</td></tr>
       </table>
+
+      <h2>The Speed Test at the Door</h2>
+      <p>Before the game proper there is a ten-second test. You give a name, then hit the spacebar (or tap the orb) as fast as you can until the timer runs out. Your hit count becomes a POWER number at a hundred times the count, so 60 hits reads as 6,000 power, and it buys you a starting purse of five gold per hit with a floor of 100 so that a slow run still walks away with something.</p>
+      <p>The power number is not balance, it is a greeting. It goes on a board against everyone else who has ever taken the test, and once at least thirty people have taken it the screen tells you where you landed among them. You can re-take it later from the same menu if you want another go at the number.</p>
 
       <h2>How to Play</h2>
       <ol>
-        <li><strong>Attack</strong>: hit the boss with the spacebar or by clicking (tapping on mobile)</li>
-        <li><strong>Earn gold</strong>: every attack earns gold</li>
-        <li><strong>Recruit allies</strong>: more allies means your attacks get automated</li>
-        <li><strong>Upgrade</strong>: power up both your allies and your click in the "Upgrade" tab</li>
-        <li><strong>Move to the next boss</strong>: defeated bosses respawn so you can farm them. When you're ready, hit "Next Boss ▶" at the top right to move on (you can go back, too)</li>
-        <li><strong>Prestige</strong>: unlocked at Boss 7. It resets your progress, but in exchange your gold earnings become a permanent 5x</li>
+        <li><strong>Attack</strong>: spacebar or click on desktop, tap on mobile. Every hit damages the boss and earns gold</li>
+        <li><strong>Summon</strong>: the "Summon" tab holds the 24 units. They attack on their own timers and keep attacking while the tab is closed</li>
+        <li><strong>Upgrade</strong>: the "Upgrade" tab is a different list. This is where your own click, your crit and your gold rates live</li>
+        <li><strong>Farm</strong>: a defeated boss respawns immediately, so you can beat the same one repeatedly. Every fifth kill of the same boss pays a bonus coin worth ten times that kill's gold</li>
+        <li><strong>Move on</strong>: "Next Boss" at the top right when you are ready. You can walk back down to an earlier boss at any time, and that is a normal thing to do, not a failure</li>
+        <li><strong>Prestige</strong>: unlocks once you have cleared Boss 10</li>
       </ol>
+
+      <h2>The Seven Upgrade Lines</h2>
+      <p>These are the ones on the "Upgrade" tab, and they are worth reading rather than buying by price order, because two of them cap and the rest do not.</p>
+      <ul>
+        <li><strong>Click Power</strong> &mdash; 2 damage to start, multiplied by 1.18 for every level you buy, and by a further 1.3 at every tenth level</li>
+        <li><strong>Crit Chance</strong> &mdash; starts at 5% and climbs 2 points a level to a hard ceiling of 75%</li>
+        <li><strong>Crit Damage</strong> &mdash; the multiplier starts at &times;2 and adds 0.3 a level, with no ceiling</li>
+        <li><strong>Coin Pouch</strong> &mdash; +20% gold per level, but only on boss kills</li>
+        <li><strong>Gold Gain</strong> &mdash; +10% per level on everything</li>
+        <li><strong>Gold Rush</strong> &mdash; +5% per level on gold per tap, so it rewards the hands-on style</li>
+        <li><strong>Gale Blessing</strong> &mdash; +5% attack speed per level for your units, capped at 40 levels</li>
+      </ul>
+      <p>Crit Chance and Crit Damage multiply each other, which is why clicking stays relevant much longer than it looks like it should. Crit Chance stops paying at 75%, so once it is there the money belongs to Crit Damage.</p>
+
+      <h2>Ten Weapons</h2>
+      <p>Every tenth Click Power upgrade evolves the weapon in your hand. There are ten of them and you keep the last one for as long as you keep upgrading past it. These are not decorations: the tenth level in each block carries a &times;1.3 damage step on top of the ordinary &times;1.18, so a new weapon in your hand really does mean a harder hit.</p>
+      <p>Kitchen Knife, Assassin Dagger, Steel Shortsword, Knight's Longsword, Breakfang Axe, War Hammer, Greatslayer, Muramasa Blade, Dragonslayer, and Excalibur. Each one gets its own mouse cursor, its own colour on the hit effect and its own strike sound, which is synthesised in the browser rather than loaded as a file. The War Hammer crushes instead of cutting and sounds like it. Ninety upgrades is a long way to go, and this is the game marking the distance in something other than a number.</p>
+
+      <h2>Twenty-Four Units</h2>
+      <p>The roster starts with a Farmer for 25 gold and ends with a Demon God for twenty-five trillion. Two of the twenty-four, the Farmer and the Villager, produce gold rather than damage. The rest fight, some in melee, some at range with arrows, bolts, bombs and cannon shells that actually travel, and the dragons and angels fly in orbits around the boss instead of standing in a line. The last stretch of the roster is Ancient Jade Dragon, Awakened Crimson Dragon, Seraph and Demon God, and by then a single unit is doing more damage per swing than your entire early game produced.</p>
+
+      <h2>Prestige, and When To Do It</h2>
+      <p>Prestige unlocks after you clear Boss 10. It wipes gold, units, upgrades and kill counts, and hands back a permanent gold multiplier for the next run. The multiplier is not fixed: it is 1 + 0.4 for every boss you had cleared when you pulled the lever. Clear Boss 10 and prestige immediately and you get &times;5. Push to Boss 20 first and you get &times;9.</p>
+      <p>So the instinct to prestige the moment it lights up is wrong, and it is wrong in a way that costs you the whole next run. Prestige when your progress has genuinely stalled, not when the button turns on.</p>
+
+      <h2>What Happens After Boss 40</h2>
+      <p>Boss 40 is Cthulhu, and killing it rolls the credits. It does not end the game. The set starts over at the next cycle, where every boss has fifty times the health it had last time and pays six times the gold. That ratio is deliberately unkind: health outruns income, so a second lap is not a victory tour, it is the same argument again with worse terms.</p>
+
+      <h2>The Leaderboard</h2>
+      <p>The trophy button opens an online board shared by everyone playing, showing the top 100. There are two of them: cumulative damage, which is a record of how long you have played, and power, which is the ten-second test from the door and takes about ten seconds to compete on. If the board cannot be reached, the game falls back to the records stored on your own device and says so rather than showing you an empty list.</p>
+      <p>The board is in Japanese at the moment, along with the standalone ranking page. The game itself is fully translated; that one screen has not caught up yet.</p>
 
       <h2>Tips</h2>
       <ul>
-        <li>Clicking is king early on. Think of units as your "idle earners"</li>
-        <li>When you get stuck, the golden rule is to go back to an earlier boss and farm</li>
-        <li>Raising your crit rate and crit multiplier makes clicking hit like a truck</li>
-        <li>Prestige early once it unlocks — the sooner you do, the longer you enjoy the permanent 5x</li>
+        <li>Clicking carries the early game, and it compounds: Click Power is multiplicative, not additive, so the tenth level is worth far more than the first</li>
+        <li>When you stall, walk back to an earlier boss and farm it. The fifth-kill bonus coin makes repeat kills on a boss you can actually beat quickly better than slow attempts at one you cannot</li>
+        <li>Buy Crit Chance to 75%, then stop and put everything into Crit Damage</li>
+        <li>The Farmer and the Villager look like weak fighters because they are not fighters</li>
+        <li>Do not prestige the moment it unlocks. Every extra boss you clear first is worth another +0.4 forever</li>
       </ul>
 
       <h2>Developer's Note</h2>
-      <p>"I'll go to bed after just one more boss" is the most dangerous trap of all. The bosses are modeled on creatures from the Cthulhu Mythos, so if you recognize the names and designs, they'll hit you just right. The boss art is genuinely cool — I paid for it.</p>
+      <p>"One more boss and then bed" is the most dangerous sentence in this game, and I say it to myself while testing my own build, which should tell you something.</p>
+      <p>The bosses are drawn from the Cthulhu Mythos, so if you know the names, the designs will land. That art is the one part of this game I did not make. I commissioned it, and it is the reason the whole thing looks like more than a spreadsheet with a spacebar attached.</p>
+      <p>The hardest number to get right was the one nobody sees: 2.42, the rate boss health grows at. At 2.3 the game gave itself away and you could feel the ending from Boss 15. At 2.6 the wall arrived before the units did and the middle just stopped. There is a long write-up of how that curve was found, with the actual figures, on <a href="../blog/posts/2026-08-10-mythos-slayer-balance.html">the blog</a>.</p>
 
       <h2>FAQ</h2>
       <dl class="faq">
         <dt>Can I play on a phone?</dt>
-        <dd>Yes. Instead of the spacebar, you tap the screen to attack.</dd>
+        <dd>Yes. You tap the screen instead of pressing the spacebar, and the unit layout switches to a portrait arrangement on narrow screens.</dd>
+        <dt>Is it in English?</dt>
+        <dd>Yes, and in Japanese and Chinese. The one exception is the leaderboard screen, which is still Japanese only.</dd>
         <dt>Can my save data be lost?</dt>
-        <dd>It's saved automatically in your browser, but it will be lost if you clear your browser cache or site data. It also can't be carried over to another device.</dd>
+        <dd>It is saved automatically in your browser, but it will be lost if you clear your cache or site data, and it does not travel to another device.</dd>
         <dt>Does progress from the embedded version on this page carry over to the fullscreen version?</dt>
-        <dd>Yes, it carries over.</dd>
+        <dd>Yes. They are the same page and the same storage.</dd>
+        <dt>When should I prestige?</dt>
+        <dd>Not the moment it unlocks at Boss 10. The permanent gold multiplier is 1 + 0.4 for every boss you have cleared, so prestiging at Boss 10 gives you 5x and prestiging at Boss 20 gives you 9x. Go as deep as you can still make progress, then reset.</dd>
+        <dt>Does the game keep earning while the tab is closed?</dt>
+        <dd>Your units keep attacking while the game is open, including while you are looking at another tab in the same browser. There is no separate offline earnings calculation for time spent with the page fully closed.</dd>
+        <dt>What happens when I beat all 40 bosses?</dt>
+        <dd>The credits roll and then the set restarts at a higher cycle, where each boss has 50x the health and pays 6x the gold.</dd>
+        <dt>Do I have to take the speed test?</dt>
+        <dd>It only appears on your first visit and you can skip naming yourself. You can re-take it later from the player menu.</dd>
       </dl>
 
       <h2>Credits</h2>
