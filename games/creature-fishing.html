@@ -48,12 +48,14 @@
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Creature Fishing","alternateName":"Bubblegum Fishing Island","url":"https://bubblegumgameboy.com/games/creature-fishing.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":"ja","playMode":["SinglePlayer","MultiPlayer"],"description":"A browser fishing game where you play a slime on a tiny island inside a wooden crate. 172 fish to catch across real species, invented species and Cthulhu Mythos creatures, plus online islands holding up to 12 players each. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No install, no account. Open the page and fish."}},{"@type":"Question","name":"I get a bite but never catch anything.","acceptedAnswer":{"@type":"Answer","text":"You are mashing before the bite lands, which just pulls the line up empty. Cast, wait with your hands off the controls, and mash only once you feel the hit."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Landscape is much better, and the first load is big enough that Wi-Fi is worth it."}},{"@type":"Question","name":"How many fish are there?","acceptedAnswer":{"@type":"Answer","text":"172 right now: 102 real, 51 invented, 19 from myth and folklore. More are still coming."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is stored in your browser, so clearing your cache or site data will wipe it, and private browsing will not keep it. There is no transfer between devices."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Creature Fishing","alternateName":"Bubblegum Fishing Island","url":"https://bubblegumgameboy.com/games/creature-fishing.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["ja","en"],"playMode":["SinglePlayer","MultiPlayer"],"description":"A browser fishing game where you play a slime on a tiny island inside a wooden crate. 172 fish to catch across real species, invented species and Cthulhu Mythos creatures, plus online islands holding up to 12 players each. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No install, no account. Open the page and fish."}},{"@type":"Question","name":"I get a bite but never catch anything.","acceptedAnswer":{"@type":"Answer","text":"You are mashing before the bite lands, which just pulls the line up empty. Cast, wait with your hands off the controls, and mash only once you feel the hit."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Landscape is much better, and the first load is big enough that Wi-Fi is worth it."}},{"@type":"Question","name":"How many fish are there?","acceptedAnswer":{"@type":"Answer","text":"172 right now: 102 real, 51 invented, 19 from myth and folklore. More are still coming."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is stored in your browser, so clearing site data can erase it, and private browsing may discard it when the session ends. There is no transfer between devices."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -79,26 +81,17 @@
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Online</span>
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
     </div>
+<aside class="game-entry"><p><strong>Mouse, touch or keyboard</strong> · English and Japanese; switch in game</p><p>Cast with Spacebar or by tapping the slime, then wait for the bite before reeling. Open the beach bait box for the fish index and other menus. This Unity game has a larger first download.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
     <!-- game embed -->
     <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
       <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
-        <iframe id="game-frame" src="https://fishing.bubblegumgameboy.com/" title="Creature Fishing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      <div style="position:relative;width:100%;background:#0b1320;border-radius:11px;overflow:hidden;">
+        <div class="game-stage" data-play-height="clamp(560px,84vh,960px)" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/creature-fishing.png" alt="Creature Fishing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Creature Fishing</button><noscript><p><a href="https://fishing.bubblegumgameboy.com/" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://fishing.bubblegumgameboy.com/" title="Creature Fishing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
       </div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://fishing.bubblegumgameboy.com/" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <section class="detail">
       <p>There is a small island floating inside a wooden crate, and standing on it is a slime holding a fishing rod. That is the whole setup. You cast a line into the water and wait, and eventually something comes up.</p>
@@ -184,7 +177,7 @@
         <dt>How many fish are there?</dt>
         <dd>172 right now: 102 real, 51 invented, 19 from myth and folklore. More are still coming.</dd>
         <dt>Can my save data be lost?</dt>
-        <dd>Progress is stored in your browser, so clearing your cache or site data will wipe it, and private browsing will not keep it. There is no transfer between devices.</dd>
+        <dd>Progress is stored in your browser, so clearing site data can erase it, and private browsing may discard it when the session ends. There is no transfer between devices.</dd>
       </dl>
     </section>
 

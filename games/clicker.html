@@ -50,11 +50,13 @@
   body.fs-lock{overflow:hidden;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Mythos Slayer","url":"https://bubblegumgameboy.com/games/clicker.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["en","ja","zh"],"description":"An idle boss-rush clicker against 40 Cthulhu Mythos bosses. Upgrade your click, recruit 24 units to automate the fight, evolve through 10 weapon tiers, and prestige for a permanent gold multiplier that scales with how deep you got. Includes a ten-second speed test and an online leaderboard. Free, desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. You tap the screen instead of pressing the spacebar, and the unit layout switches to a portrait arrangement on narrow screens."}},{"@type":"Question","name":"Is it in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, and in Japanese and Chinese, including the leaderboard. The game remembers which one you picked."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is saved in your browser. Clearing site data can erase it; it does not automatically transfer to another device."}},{"@type":"Question","name":"Does progress from the embedded version on this page carry over to the fullscreen version?","acceptedAnswer":{"@type":"Answer","text":"Yes. They are the same page and the same storage."}},{"@type":"Question","name":"When should I prestige?","acceptedAnswer":{"@type":"Answer","text":"Compare the time needed for another boss with the benefit of restarting. Each prestige multiplies your existing gold bonus by 1 + 0.4 times the highest boss cleared in the current cycle: 5x at Boss 10 or 9x at Boss 20."}},{"@type":"Question","name":"Does the game keep earning while the tab is closed?","acceptedAnswer":{"@type":"Answer","text":"Units earn while the game is running, but background tabs can pause or throttle its animation loop. There is no offline earnings calculation for time spent with the page closed. Keep the game visible for dependable progress."}},{"@type":"Question","name":"What happens when I beat all 40 bosses?","acceptedAnswer":{"@type":"Answer","text":"The first full clear opens the credits. Next Boss from Boss 40 starts another cycle with a 50x health factor and a 6x gold factor."}},{"@type":"Question","name":"Do I have to take the speed test?","acceptedAnswer":{"@type":"Answer","text":"It only appears on your first visit and you can skip naming yourself. You can re-take it later from the player menu."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. You tap the screen instead of pressing the spacebar, and the unit layout switches to a portrait arrangement on narrow screens."}},{"@type":"Question","name":"Is it in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, and in Japanese and Chinese, including the leaderboard. The game remembers which one you picked."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is saved in your browser. Clearing site data can erase it; it does not automatically transfer to another device."}},{"@type":"Question","name":"Does progress from the embedded version on this page carry over to the fullscreen version?","acceptedAnswer":{"@type":"Answer","text":"The Play Fullscreen button expands this same running game without reloading it. Opening a separate tab is different: browser privacy settings may keep embedded and direct-tab saves separate."}},{"@type":"Question","name":"When should I prestige?","acceptedAnswer":{"@type":"Answer","text":"Compare the time needed for another boss with the benefit of restarting. Each prestige multiplies your existing gold bonus by 1 + 0.4 times the highest boss cleared in the current cycle: 5x at Boss 10 or 9x at Boss 20."}},{"@type":"Question","name":"Does the game keep earning while the tab is closed?","acceptedAnswer":{"@type":"Answer","text":"Units earn while the game is running, but background tabs can pause or throttle its animation loop. There is no offline earnings calculation for time spent with the page closed. Keep the game visible for dependable progress."}},{"@type":"Question","name":"What happens when I beat all 40 bosses?","acceptedAnswer":{"@type":"Answer","text":"The first full clear opens the credits. Next Boss from Boss 40 starts another cycle with a 50x health factor and a 6x gold factor."}},{"@type":"Question","name":"Do I have to take the speed test?","acceptedAnswer":{"@type":"Answer","text":"It only appears on your first visit and you can skip naming yourself. You can re-take it later from the player menu."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -81,25 +83,16 @@
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
     </div>
     <!-- game embed (shown at 16:10; use the fullscreen button top-right for a longer session) -->
-    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
+    <aside class="game-entry"><p><strong>Mouse, touch or Spacebar</strong> · English, Japanese and Chinese</p><p>Tap the boss to earn gold, then buy a Farmer or Swordsman in Summon. English opens automatically from this page.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
+<div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
       <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
-        <iframe id="game-frame" src="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" title="Mythos Slayer" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      <div style="position:relative;width:100%;background:#0b1320;border-radius:11px;overflow:hidden;">
+        <div class="game-stage" data-play-height="clamp(560px,84vh,960px)" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/spacebar-clicker.png" alt="Mythos Slayer preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Mythos Slayer</button><noscript><p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" title="Mythos Slayer" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
       </div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // close on mobile back gesture
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <!-- details (how to play, tips, and FAQ written for this site) -->
     <section class="detail">
@@ -189,7 +182,7 @@
         <dt>Can my save data be lost?</dt>
         <dd>Progress is saved in your browser. Clearing site data can erase it; it does not automatically transfer to another device.</dd>
         <dt>Does progress from the embedded version on this page carry over to the fullscreen version?</dt>
-        <dd>Yes. They are the same page and the same storage.</dd>
+        <dd>The Play Fullscreen button expands this same running game without reloading it. Opening a separate tab is different: browser privacy settings may keep embedded and direct-tab saves separate.</dd>
         <dt>When should I prestige?</dt>
         <dd>Compare the time needed for another boss with the benefit of restarting. Each prestige multiplies your existing gold bonus by 1 + 0.4 times the highest boss cleared in the current cycle: 5x at Boss 10 or 9x at Boss 20.</dd>
         <dt>Does the game keep earning while the tab is closed?</dt>
@@ -204,6 +197,7 @@
       <p>Boss art and design by:<br>
       &middot; <a href="https://x.com/Kome_to_Matsuri" target="_blank" rel="noopener">@Kome_to_Matsuri</a><br>
       &middot; Ankimo (Innsmouth Project)</p>
+<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><strong>Check the implementation</strong><p>Click damage, prestige, boss health and gold are calculated in the linked game source. <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">Read the reviewed source version</a> (September 9, 2026). Later updates may change the numbers.</p></aside>
     </section>
 
     <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>

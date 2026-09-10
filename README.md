@@ -134,3 +134,12 @@ sitemap.xml / CNAME
 1. このリポジトリで GitHub Pages を有効化（Source: `main` / root）
 2. 独自ドメイン `bubblegumgameboy.com` は接続済み（DNS: Aレコード4つ + www CNAME）
 3. ゲーム配信は `bubblegumgameboy.github.io` リポジトリ側で `play.bubblegumgameboy.com` を設定
+
+## 2026-09-10: 英語の読者向け導線
+
+- play-guide.html: 10本の比較、初回操作、4語の練習。typing-warmup.js と連動。
+- 全ゲーム紹介は game-page.js / game-page.css を共用。data-game-src のゲームは Play を押すまで読み込まない。全画面を閉じても再読込しない。
+- 問い合わせは contact.html の Google フォームで受付を確認。no-cors の fetch 成功を送信成功と扱わない。
+- _config.yml はテストと原稿テンプレートを公開対象から除外。管理画面は維持。
+- 新しい記事も privacy-controls.js を使用。本文を更新したら FAQ の構造化データも同期する。
+- 確認: node --test test/*.test.cjs

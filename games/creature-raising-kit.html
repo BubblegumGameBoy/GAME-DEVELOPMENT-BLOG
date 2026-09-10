@@ -50,12 +50,14 @@
   #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
   body.fs-lock{overflow:hidden;}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Creature Raising Kit","alternateName":"Bubblegum Island","url":"https://bubblegumgameboy.com/games/creature-raising-kit.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":"ja","playMode":["SinglePlayer","MultiPlayer"],"description":"A quiet idle pet game set on a small island inside a box. Feed your creature to grow it, wait for it to molt into a new form, and exchange anonymous letters in bottles with other players' islands. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do the letters really reach other players?","acceptedAnswer":{"@type":"Answer","text":"Yes. You do not choose a recipient. Letters drift and wash up on someone's island, and replies come back the same way, so a fast response is never guaranteed."}},{"@type":"Question","name":"My creature met the conditions but nothing happened.","acceptedAnswer":{"@type":"Answer","text":"Evolution is not instant. It molts at some point while it is calmly living on the island. Feed it, then let it be for a while."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Landscape is better. One finger rotates the camera, two fingers pinch to zoom. The first load is large, so use Wi-Fi if you can."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is stored in your browser, so clearing your cache or site data will wipe it. Private browsing will not keep it, and there is no transfer between devices."}},{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No install and no account."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Creature Raising Kit","alternateName":"Bubblegum Island","url":"https://bubblegumgameboy.com/games/creature-raising-kit.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["ja","en"],"playMode":["SinglePlayer","MultiPlayer"],"description":"A quiet idle pet game set on a small island inside a box. Feed your creature to grow it, wait for it to molt into a new form, and exchange anonymous letters in bottles with other players' islands. Free, works on desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do the letters really reach other players?","acceptedAnswer":{"@type":"Answer","text":"Yes. You do not choose a recipient. Letters drift and wash up on someone's island, and replies come back the same way, so a fast response is never guaranteed."}},{"@type":"Question","name":"My creature met the conditions but nothing happened.","acceptedAnswer":{"@type":"Answer","text":"Evolution is not instant. It molts at some point while it is calmly living on the island. Feed it, then let it be for a while."}},{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. Landscape is better. One finger rotates the camera, two fingers pinch to zoom. The first load is large, so use Wi-Fi if you can."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is stored in your browser, so clearing site data can erase it. Private browsing may discard it when the session ends, and there is no transfer between devices."}},{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No install and no account."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -81,25 +83,16 @@
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
     </div>
 
-    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
+    <aside class="game-entry"><p><strong>Mouse or touch</strong> · English and Japanese; switch in game</p><p>Use the JA/EN button beside RESET to change the interface language. Click the food box to feed the creature and a bottle or postbox to read letters. Player-written letters keep their original language.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
+<div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
       <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
-        <iframe id="game-frame" src="https://play.bubblegumgameboy.com/Creature-raisingkit/" title="Creature Raising Kit" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      <div style="position:relative;width:100%;background:#0b1320;border-radius:11px;overflow:hidden;">
+        <div class="game-stage" data-play-height="clamp(560px,84vh,960px)" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/creature-raising-kit.png" alt="Creature Raising Kit preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Creature Raising Kit</button><noscript><p><a href="https://play.bubblegumgameboy.com/Creature-raisingkit/" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Creature-raisingkit/" title="Creature Raising Kit" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
       </div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Creature-raisingkit/" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <section class="detail">
       <p>A small island sits inside a box, surrounded by water. A creature walks around on it. You feed it, and over time it stops being the thing it was.</p>
@@ -173,7 +166,7 @@
         <dt>Can I play on a phone?</dt>
         <dd>Yes. Landscape is better. One finger rotates the camera, two fingers pinch to zoom. The first load is large, so use Wi-Fi if you can.</dd>
         <dt>Can my save data be lost?</dt>
-        <dd>Progress is stored in your browser, so clearing your cache or site data will wipe it. Private browsing will not keep it, and there is no transfer between devices.</dd>
+        <dd>Progress is stored in your browser, so clearing site data can erase it. Private browsing may discard it when the session ends, and there is no transfer between devices.</dd>
         <dt>Is it really free?</dt>
         <dd>Yes. No install and no account.</dd>
       </dl>

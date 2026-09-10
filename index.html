@@ -157,6 +157,8 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<script src="/home-motion.js" defer></script>
+<style>body.motion-paused *,body.motion-paused *::before,body.motion-paused *::after{animation-play-state:paused!important}</style>
 </head>
 <body>
 
@@ -177,9 +179,9 @@
 
 <!-- ================= HERO : sky & ocean surface ================= -->
 <header id="top" class="vid-wrap" style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 60px;">
-  <video autoplay muted loop playsinline poster="videos/sky-sea-poster.jpg" aria-hidden="true" data-land-webm="videos/sky-land.webm" data-land-mp4="videos/sky-land.mp4" data-land-poster="videos/sky-land-poster.jpg">
-    <source src="videos/sky-sea.webm" type="video/webm">
-    <source src="videos/sky-sea.mp4" type="video/mp4">
+  <video muted loop playsinline preload="none" poster="videos/sky-sea-poster.jpg" aria-hidden="true" data-land-webm="videos/sky-land.webm" data-land-mp4="videos/sky-land.mp4" data-land-poster="videos/sky-land-poster.jpg">
+    <source data-src="videos/sky-sea.webm" type="video/webm">
+    <source data-src="videos/sky-sea.mp4" type="video/mp4">
   </video>
   <!-- readability veil + fade into the water at the bottom -->
   <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,20,45,.28) 0%,rgba(5,20,45,.05) 35%,rgba(8,40,90,.0) 60%,#1173b8 99%);"></div>
@@ -197,13 +199,13 @@
       <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
       <span style="position:absolute;bottom:6px;left:6px;width:7px;height:7px;background:#bfe4ff;"></span>
       <span style="position:absolute;bottom:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
-      <p style="margin:0;font-family:'DotGothic16',monospace;font-size:clamp(14px,3.8vw,17px);line-height:1.8;color:#eaf6ff;">Handmade games sleep on the ocean floor.<br>Dive down and wake them up.<span style="animation:blink 1.1s step-end infinite;">▼</span></p>
+      <p style="margin:0;font-family:'DotGothic16',monospace;font-size:clamp(14px,3.8vw,17px);line-height:1.8;color:#eaf6ff;">Free browser games, made by one developer.<br>Play a game, learn its mechanics, or explore how it was built.<span style="animation:blink 1.1s step-end infinite;">▼</span></p>
     </div>
 
     <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
       <a href="#games" class="btn-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,17px);padding:13px 30px;border-radius:10px;border:2px solid rgba(255,255,255,.35);transition:background .12s;">Dive to the Games ↓</a>
-      <a href="blog/" class="btn-glass" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.45);transition:background .12s;">Read the Blog →</a>
-    </div>
+      <a href="play-guide.html" class="btn-glass" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.45);transition:background .12s;">Find Your First Game →</a>
+    </div><p><button id="motion-toggle" type="button" hidden aria-pressed="false" style="font:inherit;font-size:13px;border:1px solid #c9eaff;color:#fff;background:#173851;padding:8px 14px;border-radius:6px;cursor:pointer;">Pause background animation</button></p>
   </div>
 
   <!-- scroll hint pinned to the bottom of the hero -->
@@ -319,9 +321,9 @@
        whole (very tall) section — no more zoom blur, and it doubles as parallax -->
   <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
     <div style="position:sticky;top:0;height:100vh;">
-      <video autoplay muted loop playsinline poster="videos/deep-sea-poster.jpg" data-land-webm="videos/deep-land.webm" data-land-mp4="videos/deep-land.mp4" data-land-poster="videos/deep-land-poster.jpg">
-        <source src="videos/deep-sea.webm" type="video/webm">
-        <source src="videos/deep-sea.mp4" type="video/mp4">
+      <video muted loop playsinline preload="none" poster="videos/deep-sea-poster.jpg" data-land-webm="videos/deep-land.webm" data-land-mp4="videos/deep-land.mp4" data-land-poster="videos/deep-land-poster.jpg">
+        <source data-src="videos/deep-sea.webm" type="video/webm">
+        <source data-src="videos/deep-sea.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -334,10 +336,10 @@
     <p style="margin:0 0 4px;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#9fdcff;text-shadow:0 2px 8px rgba(0,10,30,.9);">DEPTH -3994m · THE GAME TRENCH</p>
     <h2 style="margin:0 0 10px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,44px);color:#fff;text-shadow:0 3px 0 rgba(0,10,30,.6),0 8px 30px rgba(0,10,30,.8);">Relics of the Deep</h2>
     <p style="margin:0 auto 8px;max-width:560px;text-align:center;font-size:clamp(14px,3.7vw,16px);font-weight:600;line-height:1.75;color:#cfeaff;text-shadow:0 2px 10px rgba(0,10,30,.9);">Ten handmade games rest on the sea floor. Click one to play it — right here in your browser, no downloads, no sign-up.</p>
-    <p style="margin:0 auto 34px;max-width:560px;text-align:center;font-size:clamp(12px,3.2vw,14px);font-weight:500;line-height:1.7;color:#9cc4e4;text-shadow:0 2px 10px rgba(0,10,30,.9);">The typing games are Japanese typing practice — type hiragana words in romaji. A fun challenge for Japanese learners and typists alike.</p>
+    <p style="margin:0 auto 34px;max-width:560px;text-align:center;font-size:clamp(12px,3.2vw,14px);font-weight:500;line-height:1.7;color:#9cc4e4;text-shadow:0 2px 10px rgba(0,10,30,.9);">Piano Typing teaches single-letter keys. The other typing games use Japanese words with Latin-letter prompts. Choose by controls and language in the <a href="play-guide.html" style="color:#90e8ee;">first-game guide</a>.</p>
 
     <div style="margin:0 0 26px;padding:18px 20px;border:1px solid #72c6d5;border-radius:12px;background:rgba(4,16,38,.85);color:#dff0fa;line-height:1.8;">
-      <h3 style="margin:0 0 8px;color:#fff;">Start here</h3>
+      <h3 style="margin:0 0 8px;color:#fff;">Start here</h3><p><a href="play-guide.html" style="color:#90e8ee;">Compare all ten games and try a typing warm-up →</a></p>
       <p style="margin:0 0 8px;"><strong>Play in English:</strong> <a href="games/clicker.html" style="color:#7fe3ec;">Mythos Slayer</a> offers a clicker with an English language option. <a href="games/dig-planet.html" style="color:#7fe3ec;">Dig Planet</a> opens in English here and supports mouse or touch controls.</p>
       <p style="margin:0;"><strong>Practice romaji on a PC:</strong> <a href="games/popcorn-typing.html" style="color:#7fe3ec;">Popcorn Typing</a> and <a href="games/soldier-typing.html" style="color:#7fe3ec;">Soldier Typing</a> have English instructions for their main controls. Their main buttons now have English labels. Japanese practice words remain unchanged; copy the displayed Latin letters.</p>
     </div>
@@ -488,20 +490,7 @@
     <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(19px,4.4vw,26px);color:#fff;">Contact</h2>
     <p style="margin:0 0 18px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">Bug reports, feedback, and business inquiries are all welcome. Common questions and typical response times are covered on the <a href="contact.html" style="color:#7fe3ec;font-weight:700;">contact page</a>.</p>
 
-    <form id="contact-form" style="max-width:560px;">
-      <label class="c-label" for="cf-name">Name <span style="font-weight:500;color:#8fc9e8;">(optional)</span></label>
-      <input class="c-input" id="cf-name" type="text" name="entry.2005620554" autocomplete="name">
-      <label class="c-label" for="cf-email">Email</label>
-      <input class="c-input" id="cf-email" type="email" name="entry.1045781291" required autocomplete="email">
-      <label class="c-label" for="cf-msg">Message</label>
-      <textarea class="c-input" id="cf-msg" name="entry.839337160" required rows="6"></textarea>
-      <button type="submit" class="btn-teal" style="margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#2a9aa3;color:#fff;border:2px solid rgba(255,255,255,.3);font-family:inherit;font-weight:800;font-size:15px;padding:12px 30px;border-radius:10px;cursor:pointer;transition:background .12s;">Send Message</button>
-    </form>
-    <div id="contact-done" hidden style="max-width:560px;padding:22px 20px;border:2px solid rgba(127,227,236,.5);border-radius:12px;text-align:center;">
-      <p style="margin:0 0 4px;font-weight:800;font-size:17px;color:#fff;">Your message in a bottle is on its way!</p>
-      <p style="margin:0;font-size:14px;color:#c7e2f5;font-weight:500;">Thanks for writing — I read every message.</p>
-    </div>
-    <p id="contact-fail" hidden style="max-width:560px;font-size:14px;color:#ffb3b8;font-weight:600;">Hmm, the message couldn't be sent. Please try again, or use the form on the <a href="contact.html" style="color:#7fe3ec;">contact page</a>.</p>
+    <p style="color:#c7e2f5;line-height:1.8;">Tell me which game you played, what happened and which device you used. English messages are welcome.</p><a class="btn-teal" href="contact.html" style="display:inline-block;padding:12px 24px;background:#17656d;color:#fff;border:2px solid #7fe3ec;border-radius:10px;font-weight:800;">Open the contact form →</a>
   </div>
 </section>
 
@@ -534,20 +523,7 @@
 </div>
 
 <script>
-// The default sources are portrait (framed for phones). On landscape screens
-// swap in the landscape encodes so nothing gets stretched or over-cropped.
-(function(){
-  if (!window.matchMedia('(orientation: landscape) and (min-width: 700px)').matches) return;
-  document.querySelectorAll('video[data-land-webm]').forEach(function(el){
-    var webm = el.querySelector('source[type="video/webm"]');
-    var mp4  = el.querySelector('source[type="video/mp4"]');
-    if (webm) webm.src = el.getAttribute('data-land-webm');
-    if (mp4)  mp4.src  = el.getAttribute('data-land-mp4');
-    el.poster = el.getAttribute('data-land-poster');
-    el.load();
-    el.play().catch(function(){});
-  });
-})();
+
 
 // Scroll reveal: sections surface from the dark as you dive down.
 // The bobbing cards can't transition transform (their keyframe animation
@@ -615,27 +591,7 @@
   document.head.appendChild(st);
 })();
 
-// Contact form posts straight to the Google Form backend (no iframe).
-// no-cors means the response is opaque, so reaching .then() = sent.
-(function(){
-  var form = document.getElementById('contact-form');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('button[type=submit]');
-    btn.disabled = true; btn.textContent = 'Sending…';
-    fetch('https://docs.google.com/forms/d/e/1FAIpQLSfaDrcmZZaiC0JEf8ExZ_e1D4ZiTB4FIuP_uEOmXC7nQvuQdw/formResponse',
-      { method:'POST', mode:'no-cors', body:new FormData(form) })
-      .then(function(){
-        form.hidden = true;
-        document.getElementById('contact-done').hidden = false;
-      })
-      .catch(function(){
-        btn.disabled = false; btn.textContent = 'Send Message';
-        document.getElementById('contact-fail').hidden = false;
-      });
-  });
-})();
+
 </script>
 
 </body>

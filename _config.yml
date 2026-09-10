@@ -1,0 +1,5 @@
+exclude:
+  - test
+  - README.md
+  - _ja-archive
+  - blog/_template.html

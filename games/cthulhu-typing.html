@@ -55,6 +55,8 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -82,26 +84,17 @@
     </div>
     <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#cbe4f7;">A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your growing army keeps attacking the boss on its own. Bosses are gods from the Cthulhu Mythos, one new one every day. Played with a physical keyboard - PC only.</p>
 
+<aside class="game-entry"><p><strong>Physical keyboard</strong> · English controls; Japanese words with Latin-letter prompts</p><p>Enter a nickname and start today’s challenge. Complete the displayed Latin letters to summon soldiers. Defeating the boss submits the score; there is one successful clear per day.</p><p class="keyboard-notice">On a phone? These controls need a physical keyboard. <a href="../play-guide.html#touch">See games with touch controls</a>.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
     <!-- game embed -->
     <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
       <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
         <a href="https://play.bubblegumgameboy.com/Typingsoldier2/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#3d5b7c;color:#fff;text-decoration:none;border-radius:8px;padding:8px 16px;font-weight:700;font-size:14px;">↗ Open in New Tab</a>
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <aside style="margin:16px 0;padding:16px;border:1px solid #50708b;border-radius:10px;color:#dff0fa;line-height:1.7;"><strong>Quick start in English</strong><p style="margin:8px 0 0;">Enter a public nickname and press Start today’s challenge (or Enter). Copy the Latin letters below each Japanese word to summon soldiers. There is no battle time limit. A normal save allows one boss clear per day, changing at midnight Japan time; reload after midnight. Story and deity names remain Japanese.</p></aside>
-<iframe id="game-frame" src="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+
+<div class="game-stage" data-play-height="680px" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/cthulhu-typing.png" alt="Cthulhu Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Cthulhu Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // close on mobile back gesture
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a physical keyboard (not available on phones). Heads-up: English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), which makes it great practice if you're learning Japanese.</p>
 
@@ -169,6 +162,7 @@
       <p><strong>Design &amp; development</strong>: Bubblegum (Bubblegum Game)<br>
       <strong>Theme</strong>: based on the gods and creatures of the Cthulhu Mythos (Cthulhu, Nyarlathotep, Hastur, and more - 43 in total)<br>
       <span style="font-size:13px;color:#8fb6d4;">This game is the successor to <a href="soldier-typing.html">Soldier Typing</a>. The story behind its development is covered in <a href="../blog/posts/2026-07-04-cthulhu-typing.html">this blog post</a>.</span></p>
+<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><strong>Check the implementation</strong><p>The calcScore function shows how typing speed, accuracy and boss strength combine. <a href="https://github.com/BubblegumGameBoy/Typingsoldier2/blob/82b5ded35a90a32dea8930dbba266f84f9ad82bb/index.html#L786">Read the reviewed source version</a> (September 9, 2026). Later updates may change the numbers.</p></aside>
     </section>
 
     <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>

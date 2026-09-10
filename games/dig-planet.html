@@ -55,6 +55,8 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -81,26 +83,17 @@
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
       <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(239,140,51,.14);color:#ef8c33;border:1px solid rgba(239,140,51,.45);border-radius:7px;padding:5px 12px;">English / Japanese</span>
     </div>
+<aside class="game-entry"><p><strong>Mouse or touch; keyboard shortcuts optional</strong> · English and Japanese</p><p>Choose a public nickname, then click an exposed rock to dig. Your changes are shared with other players. The EN/JA control changes the interface language.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
     <!-- game embed -->
     <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
       <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">&#9974; Play Fullscreen</button>
       </div>
-      <div style="position:relative;width:100%;height:clamp(560px,84vh,960px);background:#0b1320;border-radius:11px;overflow:hidden;">
-        <iframe id="game-frame" src="https://bubblegum-dig.bubblegum-island.workers.dev/?lang=en" title="Dig Planet" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe>
+      <div style="position:relative;width:100%;background:#0b1320;border-radius:11px;overflow:hidden;">
+        <div class="game-stage" data-play-height="clamp(560px,84vh,960px)" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/dig-planet.png" alt="Dig Planet preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Dig Planet</button><noscript><p><a href="https://bubblegum-dig.bubblegum-island.workers.dev/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://bubblegum-dig.bubblegum-island.workers.dev/?lang=en" title="Dig Planet" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
       </div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://bubblegum-dig.bubblegum-island.workers.dev/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <section class="detail">
       <p>There is one planet, and everybody who opens this page is digging it. Not a copy of it &mdash; the same one. The hole you make stays in everyone else's world, and the holes other people make are already waiting for you when you arrive.</p>

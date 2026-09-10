@@ -63,6 +63,8 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/game-page.css">
+<script src="/game-page.js" defer></script>
 </head>
 <body>
 
@@ -89,25 +91,16 @@
     </div>
     <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#cbe4f7;">A military-style typing game where you type to summon soldiers and fight off a monster army. The keystroke rhythm is deeply satisfying. Played with a keyboard, for PC.</p>
 
+<aside class="game-entry"><p><strong>Physical keyboard</strong> · English controls; Japanese words with Latin-letter prompts</p><p>Press Start and copy the displayed Latin letters with IME off. Completed words summon soldiers. After a wave, wait for the result and press Enter to continue.</p><p class="keyboard-notice">On a phone? These controls need a physical keyboard. <a href="../play-guide.html#touch">See games with touch controls</a>.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
     <!-- game embed -->
     <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
       <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
         <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
       </div>
-      <aside style="margin:16px 0;padding:16px;border:1px solid #50708b;border-radius:10px;color:#dff0fa;line-height:1.7;"><strong>Quick start in English</strong><p style="margin:8px 0 0;">Enter a public nickname if you want one, then press START. Copy the Latin letters below the Japanese word; completing a word summons a soldier. Keep your Japanese IME off. After a wave clears, wait for the continue prompt, then press Enter. Story and character names remain Japanese.</p></aside>
-<iframe id="game-frame" src="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" title="Soldier Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
+
+<div class="game-stage" data-play-height="680px" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/soldier-typing.png" alt="Soldier Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Soldier Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" title="Soldier Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
     </div>
-    <script>
-    (function(){
-      var f=document.getElementById('game-frame'),
-          openBtn=document.getElementById('fs-btn');
-      function enter(){ if(f.classList.contains('fs-on'))return; f.classList.add('fs-on'); document.body.classList.add('fs-lock'); history.pushState({fs:1},''); }
-      function exit(){ f.classList.remove('fs-on'); document.body.classList.remove('fs-lock'); }
-      openBtn.addEventListener('click',enter);
-      window.addEventListener('popstate',function(){ if(f.classList.contains('fs-on')) exit(); });   // close on mobile back gesture
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && f.classList.contains('fs-on')) history.back(); });
-    })();
-    </script>
+    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
 
     <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a keyboard. English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), so it's great practice if you're learning Japanese. If you use Japanese input software, turn the IME off before you start.</p>
 
@@ -118,6 +111,7 @@
       <div style="border:2px solid rgba(255,215,102,.3);border-radius:10px;overflow:hidden;background:#0a0a1a;">
         <iframe src="https://play.bubblegumgameboy.com/Bubble-Wars/ranking.html" title="Soldier Typing score ranking" loading="lazy" style="display:block;width:100%;height:min(540px,72vh);border:0;"></iframe>
       </div>
+<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><strong>Check the implementation</strong><p>The published game source includes the five word pools and wave logic. <a href="https://github.com/BubblegumGameBoy/Bubble-Wars/blob/76dfc71a7e108780145c491de6d1cf112273d82a/docs/index.html#L1172">Read the reviewed source version</a> (September 9, 2026). Later updates may change the numbers.</p></aside>
     </section>
 
     <!-- details (how to play, characters, and FAQ written for this site) -->
