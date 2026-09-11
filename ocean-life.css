@@ -1,4 +1,7 @@
 .ocean,#games{overflow:clip}
+/* Keep the video attached to the viewport throughout the tall game list. */
+.game-water{position:absolute;inset:0;overflow:clip;pointer-events:none}
+.game-water-view{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 84%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 84%,transparent)}
 .ocean>main,#games>.dive-content{z-index:1}
 html{scroll-padding-top:64px}
 html.motion-paused{scroll-behavior:auto}
