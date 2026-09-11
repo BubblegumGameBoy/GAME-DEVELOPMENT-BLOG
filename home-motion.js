@@ -3,8 +3,10 @@
   const videos=Array.from(document.querySelectorAll('video[data-land-webm]'));
   const button=document.getElementById('motion-toggle');
   if(!button)return;
+  const buttons=[button,...document.querySelectorAll('[data-motion-toggle]')];
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const landscape=window.matchMedia('(orientation: landscape) and (min-width: 700px)').matches;
-  let paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+  let paused=reduced.matches || !!(navigator.connection && navigator.connection.saveData);
   const visible=new Set();
   function update(video){
     if(paused || !visible.has(video)){video.pause();return;}
@@ -17,13 +19,18 @@
     video.play().catch(function(){});
   }
   function sync(){
-    button.textContent=paused?'Play background animation':'Pause background animation';
-    button.setAttribute('aria-pressed',String(paused));
+    buttons.forEach(function(control){
+      control.textContent=control===button ? (paused?'Play background animation':'Pause background animation') : (paused?'Resume motion':'Pause motion');
+      control.setAttribute('aria-pressed',String(paused));
+    });
     document.body.classList.toggle('motion-paused',paused);
+    document.documentElement.classList.toggle('motion-paused',paused);
     videos.forEach(update);
+    window.dispatchEvent(new CustomEvent('site-motion-change',{detail:{paused:paused}}));
   }
   videos.forEach(function(video){if(landscape)video.poster=video.dataset.landPoster;});
-  button.addEventListener('click',function(){paused=!paused;sync();});
+  buttons.forEach(function(control){control.addEventListener('click',function(){paused=!paused;sync();});});
+  reduced.addEventListener('change',function(){paused=reduced.matches || !!(navigator.connection && navigator.connection.saveData);sync();});
   button.hidden=false;
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target);update(entry.target);});},{threshold:0.01});
