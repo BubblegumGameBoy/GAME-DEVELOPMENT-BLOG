@@ -1,0 +1,116 @@
+/* A single, visibility-aware animation loop for the sea life. No scroll capture. */
+(function () {
+  'use strict';
+  const encounter = document.getElementById('whale-encounter');
+  if (!encounter) return;
+  const whale = encounter.querySelector('.whale-traveller');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const scenes = Array.from(document.querySelectorAll('.ocean-current')).map((el, index) => ({
+    el, canvas: el.querySelector('canvas'), index, visible: false, width: 0, height: 0
+  }));
+  let encounterVisible = false, paused = document.body.classList.contains('motion-paused');
+  let frame = 0, last = 0, time = 0, smoothY = scrollY, previousY = scrollY, velocity = 0;
+  const mod = (n, d) => ((n % d) + d) % d;
+  const clamp = n => Math.max(0, Math.min(1, n));
+  function size() {
+    scenes.forEach(scene => {
+      scene.width = scene.el.clientWidth;
+      scene.height = innerHeight;
+      const ratio = Math.min(devicePixelRatio || 1, innerWidth < 700 ? 1 : 1.5);
+      scene.canvas.width = Math.round(scene.width * ratio);
+      scene.canvas.height = Math.round(scene.height * ratio);
+      scene.ctx = scene.canvas.getContext('2d');
+      scene.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    });
+  }
+  function fish(ctx, x, y, length, angle, phase, opacity, near) {
+    const beat = Math.sin(phase), bend = Math.sin(phase - .8);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.scale(length / 60, length / 60);
+    ctx.fillStyle = near ? `rgba(134,209,214,${opacity})` : `rgba(82,144,176,${opacity})`;
+    // The caudal fin and rear body flex independently of the head.
+    ctx.beginPath(); ctx.moveTo(-16, 0);
+    ctx.bezierCurveTo(-26, beat * 3, -31, -11 + beat * 7, -38, -12 + beat * 7);
+    ctx.quadraticCurveTo(-33, beat * 4, -38, 12 + beat * 7);
+    ctx.quadraticCurveTo(-25, 6 + beat * 3, -16, 0); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(27, 0);
+    ctx.bezierCurveTo(16, -11, -6, -10, -23, bend * 3);
+    ctx.bezierCurveTo(-6, 9, 17, 9, 27, 0); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-5, -6); ctx.lineTo(-9, -15); ctx.lineTo(8, -6); ctx.fill();
+    ctx.fillStyle = `rgba(202,245,241,${opacity * .65})`;
+    ctx.beginPath(); ctx.ellipse(15, -2, 1.5, 1.5, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+  function school(scene) {
+    const {ctx, width, height} = scene;
+    ctx.clearRect(0, 0, width, height);
+    const count = width < 700 ? 14 : 26;
+    const current = smoothY * .26;
+    for (let group = 0; group < 2; group++) {
+      const direction = group === 0 ? 1 : -1;
+      const base = mod(time * (group ? 15 : 24) + current + group * 490 + scene.index * 240, width + 660) - 330;
+      for (let i = 0; i < count; i++) {
+        const row = i % 5, column = Math.floor(i / 5);
+        const follow = time * .7 - column * .24;
+        const x = direction > 0 ? base - column * 39 - row * 11 : width - base + column * 36 + row * 10;
+        const y = height * (group ? .72 : .33) + (row - 2) * 24 + Math.sin(follow + row * .3) * 30 + Math.sin(time * .21) * 45;
+        const turn = Math.cos(follow) * .14;
+        fish(ctx, x, y, (group ? 18 : 28) + Math.sin(i * 8) * 7, (direction > 0 ? 0 : Math.PI) + turn,
+          time * (6 + Math.min(4, Math.abs(velocity) * .012)) - i * .65, group ? .25 : .52, !group);
+      }
+    }
+    // Marine particles move at a slower depth plane than the fish.
+    for (let i = 0; i < 20; i++) {
+      const x = mod(i * 137.7 + Math.sin(time * .17 + i) * 24, width);
+      const y = mod(i * 97.1 - time * 7 - smoothY * .12, height);
+      ctx.fillStyle = `rgba(185,233,237,${.1 + (i % 4) * .025})`;
+      ctx.beginPath(); ctx.arc(x, y, i % 4 ? 1 : 2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function moveWhale() {
+    if (!encounterVisible) return;
+    const rect = encounter.getBoundingClientRect();
+    const p = clamp((innerHeight * .6 - rect.top - (scrollY - smoothY)) / (rect.height + innerHeight * .15));
+    const width = encounter.clientWidth;
+    const travel = (p - .47) * width * 1.12 + Math.sin(time * .18) * 32;
+    const drift = Math.sin(time * .32) * 14;
+    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${(Math.sin(p * Math.PI * 2) * -28 + drift).toFixed(1)}px,0) rotate(${(-4 + p * 7).toFixed(2)}deg)`;
+    encounter.style.setProperty('--encounter-progress', p.toFixed(3));
+  }
+  function active() { return !paused && !reduced.matches && !document.hidden && (encounterVisible || scenes.some(s => s.visible)); }
+  function tick(now) {
+    frame = 0;
+    if (!active()) { last = 0; return; }
+    // Bound rendering to 30 fps, and avoid a time jump after a background tab.
+    if (last && now - last < 32) { frame = requestAnimationFrame(tick); return; }
+    const dt = last ? Math.min(.06, (now - last) / 1000) : 1 / 30;
+    last = now; time += dt;
+    smoothY += (scrollY - smoothY) * Math.min(1, dt * 7);
+    velocity += ((smoothY - previousY) / dt - velocity) * .12;
+    previousY = smoothY;
+    scenes.forEach(scene => { if (scene.visible) school(scene); });
+    moveWhale();
+    frame = requestAnimationFrame(tick);
+  }
+  function sync() {
+    const stopped = paused || reduced.matches || document.hidden;
+    encounter.classList.toggle('sea-life-stopped', stopped || !encounterVisible);
+    if (active() && !frame) frame = requestAnimationFrame(tick);
+    if (!active() && frame) { cancelAnimationFrame(frame); frame = 0; last = 0; }
+    if (reduced.matches) whale.style.transform = 'none';
+  }
+  size();
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.target === encounter) encounterVisible = entry.isIntersecting;
+        else scenes.find(scene => scene.el === entry.target).visible = entry.isIntersecting;
+      }); sync();
+    }, {threshold:0});
+    scenes.forEach(scene => observer.observe(scene.el)); observer.observe(encounter);
+  }
+  window.addEventListener('resize', () => { size(); sync(); }, {passive:true});
+  window.addEventListener('site-motion-change', event => { paused = event.detail.paused; sync(); });
+  document.addEventListener('visibilitychange', sync);
+  reduced.addEventListener('change', sync);
+  sync();
+})();

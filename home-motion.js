@@ -3,7 +3,6 @@
   const videos=Array.from(document.querySelectorAll('video[data-land-webm]'));
   const button=document.getElementById('motion-toggle');
   if(!button)return;
-  const buttons=[button,...document.querySelectorAll('[data-motion-toggle]')];
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const landscape=window.matchMedia('(orientation: landscape) and (min-width: 700px)').matches;
   let paused=reduced.matches || !!(navigator.connection && navigator.connection.saveData);
@@ -19,17 +18,15 @@
     video.play().catch(function(){});
   }
   function sync(){
-    buttons.forEach(function(control){
-      control.textContent=control===button ? (paused?'Play background animation':'Pause background animation') : (paused?'Resume motion':'Pause motion');
-      control.setAttribute('aria-pressed',String(paused));
-    });
+    button.textContent=paused?'Play background animation':'Pause background animation';
+    button.setAttribute('aria-pressed',String(paused));
     document.body.classList.toggle('motion-paused',paused);
     document.documentElement.classList.toggle('motion-paused',paused);
     videos.forEach(update);
     window.dispatchEvent(new CustomEvent('site-motion-change',{detail:{paused:paused}}));
   }
   videos.forEach(function(video){if(landscape)video.poster=video.dataset.landPoster;});
-  buttons.forEach(function(control){control.addEventListener('click',function(){paused=!paused;sync();});});
+  button.addEventListener('click',function(){paused=!paused;sync();});
   reduced.addEventListener('change',function(){paused=reduced.matches || !!(navigator.connection && navigator.connection.saveData);sync();});
   button.hidden=false;
   if('IntersectionObserver' in window){

@@ -158,20 +158,12 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
 <script src="/home-motion.js" defer></script>
-<link rel="stylesheet" href="/home-dive.css">
-<script src="/home-dive.js" defer></script>
+<link rel="stylesheet" href="/ocean-life.css">
+<script src="/ocean-life.js" defer></script>
 <style>body.motion-paused *,body.motion-paused *::before,body.motion-paused *::after{animation-play-state:paused!important}</style>
 </head>
 <body>
-<aside id="dive-meter" class="dive-meter" aria-label="Ocean depth along this page" hidden>
-  <span class="dive-caption">DEPTH</span>
-  <span class="dive-reading"><span id="dive-value">0</span> <small>m</small></span>
-  <span id="dive-zone" class="dive-zone">SURFACE</span>
-  <div class="dive-track" aria-hidden="true"></div>
-  <button type="button" data-motion-toggle aria-pressed="false">Pause motion</button>
-</aside>
-
-<div style="overflow-x:hidden;">
+<div style="overflow-x:clip;">
 
 <!-- ================= NAV ================= -->
 <nav id="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,20,44,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px solid rgba(120,200,255,.25);">
@@ -223,23 +215,7 @@
 
 <!-- ================= UNDERWATER DESCENT ================= -->
 <div class="ocean">
-<div class="dive-fish-layer" aria-hidden="true">
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.16" data-reverse="false" style="top:16%;--fish-size:96px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.51" data-reverse="true" style="top:51%;--fish-size:72px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.84" data-reverse="false" style="top:84%;--fish-size:112px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-</div>
+<div class="ocean-current" aria-hidden="true"><canvas></canvas></div>
   <!-- ambient bubbles for the whole descent -->
   <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
     <span class="bubble" style="left:6%;  width:14px;height:14px;animation-duration:11s;animation-delay:0s;"></span>
@@ -352,6 +328,48 @@
 </main>
 </div><!-- /.ocean descent -->
 
+
+<!-- A quiet encounter between the reading room and the game trench. -->
+<section id="whale-encounter" class="whale-encounter" aria-hidden="true">
+  <div class="encounter-stage">
+<svg class="encounter-far-whale" aria-hidden="true" viewBox="0 0 1200 480"><path fill="#82c5cf" d="M170 235C330 80 850 50 1050 225Q1140 330 944 339C560 384 310 286 170 265L30 345 85 245 20 151Z"/></svg>
+    <div class="whale-traveller" aria-hidden="true">
+      <svg class="whale-art" viewBox="0 0 1200 500" focusable="false">
+        <defs>
+          <linearGradient id="whale-back" x1="0" y1="0" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#55919a"/><stop offset=".32" stop-color="#29576b"/><stop offset=".7" stop-color="#15394f"/><stop offset="1" stop-color="#0d2539"/></linearGradient>
+          <linearGradient id="whale-belly" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#558890"/><stop offset=".45" stop-color="#a0bfc0"/><stop offset="1" stop-color="#426979"/></linearGradient>
+          <linearGradient id="whale-fin" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#325e70"/><stop offset=".58" stop-color="#254e64"/><stop offset="1" stop-color="#8dadb4"/></linearGradient>
+          <linearGradient id="whale-tail-color"><stop stop-color="#17384d"/><stop offset="1" stop-color="#3e727e"/></linearGradient>
+        </defs>
+        <g class="whale-far-flipper"><path fill="#173b50" d="M762 262Q866 311 951 415Q972 445 928 427Q824 393 731 291Z"/></g>
+        <g class="whale-tail">
+          <path fill="url(#whale-tail-color)" d="M276 227Q203 232 162 201Q102 137 25 128Q35 182 91 223Q115 243 148 248Q103 263 78 296Q49 333 25 355Q115 355 169 298Q201 270 278 278Z"/>
+          <path fill="none" stroke="#82bac3" stroke-opacity=".24" stroke-width="3" d="M30 133Q115 152 164 214Q204 242 263 241M33 349Q115 328 166 281"/>
+        </g>
+        <path fill="url(#whale-back)" d="M198 239C305 212 367 164 488 144C530 137 563 134 583 122Q598 75 626 71Q617 112 661 131C766 123 846 133 928 159C1010 184 1081 215 1111 260Q1146 325 1056 350C957 388 820 378 696 365C473 354 332 280 197 271Z"/>
+        <path fill="url(#whale-belly)" opacity=".85" d="M469 291Q684 350 932 326Q1057 317 1117 288Q1122 325 1056 350C957 388 820 378 696 365Q558 354 469 291Z"/>
+        <path fill="none" stroke="#b4dddd" stroke-opacity=".28" stroke-width="3" d="M212 239C355 209 383 159 551 145M671 140Q870 126 1039 216"/>
+        <path fill="none" stroke="#092336" stroke-width="4" d="M786 291Q958 307 1119 276"/>
+        <g fill="none" stroke="#335c6c" stroke-width="2" opacity=".72">
+          <path d="M802 310Q898 355 1037 351"/><path d="M836 309Q929 350 1061 343"/>
+          <path d="M870 309Q965 343 1082 333"/><path d="M903 307Q1000 333 1098 321"/>
+          <path d="M937 304Q1036 322 1109 307"/><path d="M770 312Q858 358 1002 361"/>
+          <path d="M739 315Q821 358 961 367"/>
+        </g>
+        <g class="whale-flipper">
+          <path fill="url(#whale-fin)" d="M692 278C674 281 652 315 624 340C574 387 508 438 441 451Q412 458 431 467C499 481 601 439 660 391Q720 347 722 315Q720 292 692 278Z"/>
+          <path fill="none" stroke="#a7cace" stroke-opacity=".38" stroke-width="3" d="M693 298Q634 392 449 458"/>
+          <path fill="none" stroke="#0b293e" stroke-opacity=".55" stroke-width="4" d="M693 309Q651 384 551 432"/>
+        </g>
+        <ellipse cx="999" cy="251" rx="8" ry="6" fill="#061520"/><circle cx="1001" cy="249" r="2" fill="#d3efea"/>
+        <path d="M907 159q16-10 30 3" fill="none" stroke="#102e41" stroke-width="5" stroke-linecap="round"/>
+        <g fill="#74a4ac" opacity=".35"><ellipse cx="1062" cy="227" rx="6" ry="3"/><ellipse cx="1078" cy="239" rx="5" ry="3"/><ellipse cx="1039" cy="214" rx="6" ry="3"/><ellipse cx="1024" cy="206" rx="4" ry="2"/><ellipse cx="1090" cy="254" rx="5" ry="3"/></g>
+        <g fill="#aad0d2" opacity=".17"><circle cx="833" cy="190" r="3"/><circle cx="852" cy="198" r="2"/><circle cx="793" cy="178" r="2"/><circle cx="719" cy="190" r="3"/><circle cx="659" cy="206" r="2"/><circle cx="691" cy="181" r="2"/><circle cx="926" cy="224" r="3"/><circle cx="884" cy="248" r="2"/></g>
+      </svg>
+    </div>
+</div>
+</section>
+
 <!-- ================= DEEP SEA : the games sleep here ================= -->
 <section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
   <!-- the video sticks to the viewport instead of being stretched across the
@@ -369,23 +387,7 @@
   <!-- on phones the bright light column fights the content; dim it (landscape stays untouched) -->
   <div aria-hidden="true" class="games-dim" style="position:absolute;inset:0;"></div>
 
-<div class="dive-fish-layer" aria-hidden="true">
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.13" data-reverse="false" style="top:13%;--fish-size:96px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.44" data-reverse="true" style="top:44%;--fish-size:72px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-    <svg class="dive-fish" viewBox="0 0 64 32" focusable="false" data-level="0.79" data-reverse="false" style="top:79%;--fish-size:112px">
-      <path fill="currentColor" d="M4 8h4v4h8V8h8V4h20v4h8v4h8v8h-8v4h-8v4H24v-4h-8v-4H8v4H4z"/>
-      <path fill="#14394c" opacity=".55" d="M24 20h20v4H24zM28 8h4v12h-4z"/>
-      <path fill="#effbff" d="M48 12h4v4h-4z"/>
-    </svg>
-</div>
+<div class="ocean-current" aria-hidden="true"><canvas></canvas></div>
   <div class="dive-content" style="position:relative;max-width:900px;margin:0 auto;">
     <p style="margin:0 0 4px;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#9fdcff;text-shadow:0 2px 8px rgba(0,10,30,.9);">DEPTH -3994m · THE GAME TRENCH</p>
     <h2 style="margin:0 0 10px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,44px);color:#fff;text-shadow:0 3px 0 rgba(0,10,30,.6),0 8px 30px rgba(0,10,30,.8);">Relics of the Deep</h2>

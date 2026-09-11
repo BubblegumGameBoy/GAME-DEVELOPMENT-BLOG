@@ -1,0 +1,31 @@
+.ocean,#games{overflow:clip}
+.ocean>main,#games>.dive-content{z-index:1}
+html{scroll-padding-top:64px}
+html.motion-paused{scroll-behavior:auto}
+body.motion-paused .rv,body.motion-paused .rv-fade{opacity:1!important;transform:none!important;transition:none!important}
+.ocean-current{position:absolute;inset:0;pointer-events:none;overflow:clip}
+.ocean-current canvas{position:sticky;top:0;display:block;width:100%;height:100vh}
+.whale-encounter{height:175svh;min-height:1000px;position:relative;background:#03132d;--encounter-progress:0}
+.encounter-stage{position:sticky;top:0;height:100svh;min-height:580px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 64% 0%,#1b66777a,transparent 63%),linear-gradient(#031233,#06263d 46%,#031233)}
+.encounter-stage::before{content:'';position:absolute;inset:-20%;background:repeating-linear-gradient(110deg,transparent 0 13%,#96e5e60a 15%,transparent 18% 30%);transform:translateX(calc(var(--encounter-progress) * -6%));pointer-events:none}
+.whale-traveller{position:absolute;left:calc(50% - min(57vw,700px));top:25%;width:min(114vw,1400px);will-change:transform;filter:drop-shadow(0 40px 30px #010d1a66);pointer-events:none}
+.whale-art{display:block;width:100%;height:auto;overflow:visible}
+.whale-tail{transform-origin:220px 250px;animation:whale-stroke 5.6s ease-in-out infinite}
+.whale-flipper{transform-origin:688px 296px;animation:whale-fin 6.8s ease-in-out infinite}
+.whale-far-flipper{transform-origin:758px 268px;animation:whale-fin 6.8s ease-in-out -2s infinite}
+@keyframes whale-stroke{0%,100%{transform:rotate(-5deg) scaleY(.9)}50%{transform:rotate(6deg) scaleY(1.08)}}
+@keyframes whale-fin{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(9deg)}}
+.encounter-far-whale{position:absolute;width:24%;left:65%;top:29%;opacity:.12;filter:blur(1px);transform:rotate(-9deg);pointer-events:none}
+.sea-life-stopped .whale-art *{animation-play-state:paused!important}
+@media(max-width:700px){
+ .whale-encounter{height:155svh;min-height:900px}
+ .whale-traveller{width:180vw;left:-40vw;top:35%}
+ .encounter-far-whale{width:46%;left:58%;top:38%}
+}
+@media(prefers-reduced-motion:reduce){
+ .ocean-current{display:none}
+ .whale-encounter{height:90svh;min-height:650px}
+ .encounter-stage{position:relative;height:100%;min-height:650px}
+ .whale-art *{animation:none!important}
+ .whale-traveller{transform:none!important}
+}
