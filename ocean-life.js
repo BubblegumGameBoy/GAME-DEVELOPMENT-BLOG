@@ -69,12 +69,21 @@
   function moveWhale() {
     if (!encounterVisible) return;
     const rect = encounter.getBoundingClientRect();
-    const p = clamp((innerHeight * .6 - rect.top - (scrollY - smoothY)) / (rect.height + innerHeight * .15));
+    // Use the pinned part of the scene as a camera approach, then a close pass.
+    const p = clamp((innerHeight * .12 - rect.top - (scrollY - smoothY)) / Math.max(1, rect.height - innerHeight * .76));
     const width = encounter.clientWidth;
-    const travel = (p - .47) * width * 1.12 + Math.sin(time * .18) * 32;
-    const drift = Math.sin(time * .32) * 14;
-    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${(Math.sin(p * Math.PI * 2) * -28 + drift).toFixed(1)}px,0) rotate(${(-4 + p * 7).toFixed(2)}deg)`;
+    const approach = p * p * (3 - 2 * p);
+    const pass = clamp((p - .72) / .28);
+    const scale = .14 + 2.46 * Math.pow(approach, 1.45);
+    const travel = width * (.03 * (1 - approach) + .65 * pass * pass);
+    const drift = Math.sin(time * .32) * (3 + approach * 10);
+    const lift = innerHeight * (-.08 * (1 - approach) - .14 * pass) + drift;
+    // A frontal approach with slight banking, followed by a close pass to the right.
+    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${lift.toFixed(1)}px,0) perspective(1400px) rotateY(${(Math.sin(time * .2) * 3).toFixed(2)}deg) rotate(${(-3 + approach * 6).toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+    whale.style.opacity = (.2 + .8 * Math.min(1, approach * 1.8)).toFixed(3);
+    whale.style.filter = `blur(${(2.8 * Math.pow(1 - approach, 3)).toFixed(2)}px) brightness(${(.55 + approach * .62).toFixed(3)})`;
     encounter.style.setProperty('--encounter-progress', p.toFixed(3));
+    encounter.style.setProperty('--whale-proximity', approach.toFixed(3));
   }
   function active() { return !paused && !reduced.matches && !document.hidden && (encounterVisible || scenes.some(s => s.visible)); }
   function tick(now) {
@@ -96,7 +105,11 @@
     encounter.classList.toggle('sea-life-stopped', stopped || !encounterVisible);
     if (active() && !frame) frame = requestAnimationFrame(tick);
     if (!active() && frame) { cancelAnimationFrame(frame); frame = 0; last = 0; }
-    if (reduced.matches) whale.style.transform = 'none';
+    if (reduced.matches) {
+      whale.style.transform = 'none';
+      whale.style.opacity = '1';
+      whale.style.filter = 'none';
+    }
   }
   size();
   if ('IntersectionObserver' in window) {

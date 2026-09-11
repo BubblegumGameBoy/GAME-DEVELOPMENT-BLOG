@@ -332,39 +332,53 @@
 <!-- A quiet encounter between the reading room and the game trench. -->
 <section id="whale-encounter" class="whale-encounter" aria-hidden="true">
   <div class="encounter-stage">
-<svg class="encounter-far-whale" aria-hidden="true" viewBox="0 0 1200 480"><path fill="#82c5cf" d="M170 235C330 80 850 50 1050 225Q1140 330 944 339C560 384 310 286 170 265L30 345 85 245 20 151Z"/></svg>
     <div class="whale-traveller" aria-hidden="true">
-      <svg class="whale-art" viewBox="0 0 1200 500" focusable="false">
+      <svg class="whale-art" viewBox="0 0 1200 900" focusable="false">
         <defs>
-          <linearGradient id="whale-back" x1="0" y1="0" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#55919a"/><stop offset=".32" stop-color="#29576b"/><stop offset=".7" stop-color="#15394f"/><stop offset="1" stop-color="#0d2539"/></linearGradient>
-          <linearGradient id="whale-belly" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#558890"/><stop offset=".45" stop-color="#a0bfc0"/><stop offset="1" stop-color="#426979"/></linearGradient>
-          <linearGradient id="whale-fin" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#325e70"/><stop offset=".58" stop-color="#254e64"/><stop offset="1" stop-color="#8dadb4"/></linearGradient>
-          <linearGradient id="whale-tail-color"><stop stop-color="#17384d"/><stop offset="1" stop-color="#3e727e"/></linearGradient>
+          <radialGradient id="whale-crown" cx="43%" cy="22%" r="78%"><stop stop-color="#608f98"/><stop offset=".38" stop-color="#315e73"/><stop offset=".8" stop-color="#15364d"/><stop offset="1" stop-color="#09263c"/></radialGradient>
+          <linearGradient id="whale-chest" x1="0" y1="0" x2=".1" y2="1"><stop stop-color="#718f98"/><stop offset=".25" stop-color="#a5babb"/><stop offset=".72" stop-color="#4a6f80"/><stop offset="1" stop-color="#173a53"/></linearGradient>
+          <linearGradient id="whale-wing" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#254d65"/><stop offset=".5" stop-color="#37667b"/><stop offset="1" stop-color="#91b1b8"/></linearGradient>
+          <linearGradient id="whale-depth" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0a253b"/><stop offset="1" stop-color="#30586c"/></linearGradient>
         </defs>
-        <g class="whale-far-flipper"><path fill="#173b50" d="M762 262Q866 311 951 415Q972 445 928 427Q824 393 731 291Z"/></g>
-        <g class="whale-tail">
-          <path fill="url(#whale-tail-color)" d="M276 227Q203 232 162 201Q102 137 25 128Q35 182 91 223Q115 243 148 248Q103 263 78 296Q49 333 25 355Q115 355 169 298Q201 270 278 278Z"/>
-          <path fill="none" stroke="#82bac3" stroke-opacity=".24" stroke-width="3" d="M30 133Q115 152 164 214Q204 242 263 241M33 349Q115 328 166 281"/>
+        <!-- The tail and narrow rear body sit behind the broad frontal head. -->
+        <g class="whale-tail" opacity=".65">
+          <path fill="url(#whale-depth)" d="M571 259Q580 197 558 159Q490 157 451 99Q528 98 584 134L600 144 618 133Q675 97 748 102Q705 160 641 160Q620 203 632 263Z"/>
+          <path fill="none" stroke="#5b8794" stroke-opacity=".2" stroke-width="2" d="M458 104Q531 113 598 151Q671 112 741 107"/>
         </g>
-        <path fill="url(#whale-back)" d="M198 239C305 212 367 164 488 144C530 137 563 134 583 122Q598 75 626 71Q617 112 661 131C766 123 846 133 928 159C1010 184 1081 215 1111 260Q1146 325 1056 350C957 388 820 378 696 365C473 354 332 280 197 271Z"/>
-        <path fill="url(#whale-belly)" opacity=".85" d="M469 291Q684 350 932 326Q1057 317 1117 288Q1122 325 1056 350C957 388 820 378 696 365Q558 354 469 291Z"/>
-        <path fill="none" stroke="#b4dddd" stroke-opacity=".28" stroke-width="3" d="M212 239C355 209 383 159 551 145M671 140Q870 126 1039 216"/>
-        <path fill="none" stroke="#092336" stroke-width="4" d="M786 291Q958 307 1119 276"/>
-        <g fill="none" stroke="#335c6c" stroke-width="2" opacity=".72">
-          <path d="M802 310Q898 355 1037 351"/><path d="M836 309Q929 350 1061 343"/>
-          <path d="M870 309Q965 343 1082 333"/><path d="M903 307Q1000 333 1098 321"/>
-          <path d="M937 304Q1036 322 1109 307"/><path d="M770 312Q858 358 1002 361"/>
-          <path d="M739 315Q821 358 961 367"/>
-        </g>
+        <path fill="url(#whale-depth)" d="M475 333Q493 235 569 210Q600 193 632 213Q708 241 729 334Z"/>
         <g class="whale-flipper">
-          <path fill="url(#whale-fin)" d="M692 278C674 281 652 315 624 340C574 387 508 438 441 451Q412 458 431 467C499 481 601 439 660 391Q720 347 722 315Q720 292 692 278Z"/>
-          <path fill="none" stroke="#a7cace" stroke-opacity=".38" stroke-width="3" d="M693 298Q634 392 449 458"/>
-          <path fill="none" stroke="#0b293e" stroke-opacity=".55" stroke-width="4" d="M693 309Q651 384 551 432"/>
+          <path fill="url(#whale-wing)" d="M388 401C310 418 283 456 227 490C164 527 106 560 57 614Q33 646 60 650C144 641 203 610 271 572Q362 526 418 474Z"/>
+          <path fill="none" stroke="#a2c4cb" stroke-opacity=".44" stroke-width="4" d="M377 431Q249 536 67 636"/>
+          <path fill="none" stroke="#082a42" stroke-opacity=".5" stroke-width="3" d="M349 473Q230 563 107 618"/>
         </g>
-        <ellipse cx="999" cy="251" rx="8" ry="6" fill="#061520"/><circle cx="1001" cy="249" r="2" fill="#d3efea"/>
-        <path d="M907 159q16-10 30 3" fill="none" stroke="#102e41" stroke-width="5" stroke-linecap="round"/>
-        <g fill="#74a4ac" opacity=".35"><ellipse cx="1062" cy="227" rx="6" ry="3"/><ellipse cx="1078" cy="239" rx="5" ry="3"/><ellipse cx="1039" cy="214" rx="6" ry="3"/><ellipse cx="1024" cy="206" rx="4" ry="2"/><ellipse cx="1090" cy="254" rx="5" ry="3"/></g>
-        <g fill="#aad0d2" opacity=".17"><circle cx="833" cy="190" r="3"/><circle cx="852" cy="198" r="2"/><circle cx="793" cy="178" r="2"/><circle cx="719" cy="190" r="3"/><circle cx="659" cy="206" r="2"/><circle cx="691" cy="181" r="2"/><circle cx="926" cy="224" r="3"/><circle cx="884" cy="248" r="2"/></g>
+        <g class="whale-far-flipper">
+          <path fill="url(#whale-wing)" d="M811 401C889 418 919 459 975 494C1040 533 1096 568 1145 620Q1167 650 1142 654C1061 646 1000 614 931 575Q842 527 784 472Z"/>
+          <path fill="none" stroke="#a2c4cb" stroke-opacity=".4" stroke-width="4" d="M824 432Q949 539 1136 642"/>
+          <path fill="none" stroke="#082a42" stroke-opacity=".5" stroke-width="3" d="M851 477Q970 567 1095 624"/>
+        </g>
+        <path fill="url(#whale-crown)" d="M326 414C334 336 420 266 505 248Q600 224 697 249C788 270 867 336 875 414C891 499 852 596 787 658Q702 748 599 773Q492 747 410 658C344 589 309 496 326 414Z"/>
+        <path fill="url(#whale-chest)" d="M341 489Q423 526 599 521Q778 526 860 489C840 585 791 652 716 705Q656 749 599 771Q536 748 481 705C408 651 361 581 341 489Z"/>
+        <!-- Ventral pleats converge down the throat, not into a cartoon smile. -->
+        <g fill="none" stroke="#2b5066" stroke-width="3" opacity=".62">
+          <path d="M373 510Q403 616 548 739"/><path d="M414 521Q444 641 564 750"/>
+          <path d="M456 526Q480 659 577 756"/><path d="M499 531Q520 679 588 762"/>
+          <path d="M546 534Q556 689 596 764"/><path d="M594 535L600 767"/>
+          <path d="M641 534Q637 694 606 764"/><path d="M688 532Q675 679 616 759"/>
+          <path d="M734 525Q716 655 630 751"/><path d="M780 518Q757 630 647 744"/>
+          <path d="M824 506Q803 598 666 734"/>
+        </g>
+        <path fill="url(#whale-crown)" d="M338 417Q369 337 470 314Q600 281 732 316Q835 343 863 420L860 480Q773 506 600 502Q428 506 340 480Z"/>
+        <path fill="none" stroke="#082136" stroke-width="5" stroke-linecap="round" d="M340 480Q454 495 600 488Q749 495 860 480"/>
+        <path fill="none" stroke="#8baeb5" stroke-opacity=".28" stroke-width="3" d="M374 355Q476 270 600 282Q737 272 828 356"/>
+        <path fill="none" stroke="#7498a4" stroke-opacity=".2" stroke-width="5" d="M597 303Q589 365 597 438"/>
+        <ellipse cx="349" cy="438" rx="12" ry="8" fill="#051925"/><ellipse cx="850" cy="438" rx="12" ry="8" fill="#051925"/>
+        <circle cx="352" cy="436" r="2.5" fill="#cee1d9"/><circle cx="847" cy="436" r="2.5" fill="#cee1d9"/>
+        <g fill="#789ba5" opacity=".52">
+          <ellipse cx="598" cy="333" rx="10" ry="6"/><ellipse cx="592" cy="375" rx="9" ry="5"/><ellipse cx="600" cy="416" rx="11" ry="6"/>
+          <ellipse cx="519" cy="336" rx="8" ry="5"/><ellipse cx="463" cy="353" rx="7" ry="5"/><ellipse cx="413" cy="380" rx="8" ry="4"/>
+          <ellipse cx="676" cy="337" rx="8" ry="5"/><ellipse cx="735" cy="358" rx="8" ry="4"/><ellipse cx="786" cy="383" rx="7" ry="5"/>
+        </g>
+        <g fill="#b7cbd0" opacity=".23"><circle cx="432" cy="420" r="3"/><circle cx="447" cy="426" r="2"/><circle cx="741" cy="410" r="3"/><circle cx="728" cy="421" r="2"/><circle cx="625" cy="455" r="3"/><circle cx="608" cy="451" r="2"/></g>
       </svg>
     </div>
 </div>
