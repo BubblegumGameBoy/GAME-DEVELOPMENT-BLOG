@@ -4,6 +4,8 @@
   const encounter = document.getElementById('whale-encounter');
   if (!encounter) return;
   const whale = encounter.querySelector('.whale-traveller');
+  const water = encounter.querySelector('.encounter-particles');
+  const waterContext = water ? water.getContext('2d') : null;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const scenes = Array.from(document.querySelectorAll('.ocean-current')).map((el, index) => ({
     el, canvas: el.querySelector('canvas'), index, visible: false, width: 0, height: 0
@@ -13,6 +15,12 @@
   const mod = (n, d) => ((n % d) + d) % d;
   const clamp = n => Math.max(0, Math.min(1, n));
   function size() {
+    if (waterContext) {
+      const ratio = Math.min(devicePixelRatio || 1, 1.5);
+      water.width = Math.round(encounter.clientWidth * ratio);
+      water.height = Math.round(innerHeight * ratio);
+      waterContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
     scenes.forEach(scene => {
       scene.width = scene.el.clientWidth;
       scene.height = innerHeight;
@@ -70,20 +78,51 @@
     if (!encounterVisible) return;
     const rect = encounter.getBoundingClientRect();
     // Use the pinned part of the scene as a camera approach, then a close pass.
-    const p = clamp((innerHeight * .12 - rect.top - (scrollY - smoothY)) / Math.max(1, rect.height - innerHeight * .76));
+    const p = clamp((innerHeight * .12 - rect.top - (scrollY - smoothY)) / Math.max(1, rect.height - innerHeight * .8));
     const width = encounter.clientWidth;
+    // Perspective grows rapidly at close range; the body passes above the viewer.
     const approach = p * p * (3 - 2 * p);
-    const pass = clamp((p - .72) / .28);
-    const scale = .14 + 2.46 * Math.pow(approach, 1.45);
-    const travel = width * (.03 * (1 - approach) + .65 * pass * pass);
-    const drift = Math.sin(time * .32) * (3 + approach * 10);
-    const lift = innerHeight * (-.08 * (1 - approach) - .14 * pass) + drift;
-    // A frontal approach with slight banking, followed by a close pass to the right.
-    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${lift.toFixed(1)}px,0) perspective(1400px) rotateY(${(Math.sin(time * .2) * 3).toFixed(2)}deg) rotate(${(-3 + approach * 6).toFixed(2)}deg) scale(${scale.toFixed(4)})`;
-    whale.style.opacity = (.2 + .8 * Math.min(1, approach * 1.8)).toFixed(3);
-    whale.style.filter = `blur(${(2.8 * Math.pow(1 - approach, 3)).toFixed(2)}px) brightness(${(.55 + approach * .62).toFixed(3)})`;
+    const pass = clamp((p - .78) / .22);
+    const scale = .34 / (1 - .953 * p);
+    const travel = width * (-.04 + .09 * approach);
+    const drift = Math.sin(time * .3) * (2 + approach * 3);
+    const lift = innerHeight * (.04 - .4 * pass * pass) + drift;
+    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${lift.toFixed(1)}px,0) perspective(1800px) rotateY(${(-4 + approach * 6).toFixed(2)}deg) rotate(${(-6 + approach * 8 + Math.sin(time * .23) * .4).toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+    whale.style.opacity = (.08 + .92 * clamp(p * 2.6)).toFixed(3);
+    whale.style.filter = `blur(${(3 * Math.pow(1 - approach, 4)).toFixed(2)}px) brightness(${(.3 + .7 * clamp(p * 1.65) - pass * .45).toFixed(3)})`;
     encounter.style.setProperty('--encounter-progress', p.toFixed(3));
     encounter.style.setProperty('--whale-proximity', approach.toFixed(3));
+    encounter.style.setProperty('--whale-occlusion', clamp((p - .5) * 2).toFixed(3));
+    if (waterContext) encounterWater(p);
+  }
+  function encounterWater(p) {
+    const ctx = waterContext, w = encounter.clientWidth, h = innerHeight;
+    ctx.clearRect(0, 0, w, h);
+    // Small silhouettes cross in front of the animal and scatter as it approaches.
+    const scatter = clamp((p - .44) / .38);
+    for (let i = 0; i < 17; i++) {
+      const side = i % 2 ? 1 : -1;
+      const x = w * (.5 + side * (.04 + (i % 7) * .025 + scatter * .66)) + Math.sin(time * .6 + i) * 12;
+      const y = h * (.46 + (i % 5) * .022 - scatter * .12) + Math.sin(i * 2.3) * h * .045;
+      fish(ctx, x, y, 9 + i % 4 * 3, side > 0 ? -.16 : Math.PI + .16, time * 8 + i, .46, false);
+    }
+    // Perspective marine snow passes the camera at several depths, without flashes.
+    const count = w < 700 ? 42 : 72;
+    ctx.strokeStyle = '#7ca6b6';
+    ctx.fillStyle = '#93b5bd';
+    for (let i = 0; i < count; i++) {
+      const depth = .22 + mod(i * .618 + time * .023 + p * .31, 1) * .78;
+      const x = w * .5 + Math.sin(i * 127.1) * w * .58 / depth;
+      const y = h * .48 + Math.cos(i * 73.7) * h * .6 / depth;
+      const radius = Math.min(3, .42 / depth);
+      ctx.globalAlpha = .08 + (1 - depth) * .24;
+      ctx.beginPath();ctx.ellipse(x, y, radius, radius, 0, 0, Math.PI * 2);ctx.fill();
+      if (p > .7 && depth < .5) {
+        ctx.globalAlpha *= .4;ctx.beginPath();ctx.moveTo(x, y);
+        ctx.lineTo(x + (x - w * .5) * .018 * p, y + (y - h * .48) * .018 * p);ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
   }
   function active() { return !paused && !reduced.matches && !document.hidden && (encounterVisible || scenes.some(s => s.visible)); }
   function tick(now) {

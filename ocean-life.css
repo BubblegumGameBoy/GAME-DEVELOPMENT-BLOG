@@ -8,24 +8,19 @@ html.motion-paused{scroll-behavior:auto}
 body.motion-paused .rv,body.motion-paused .rv-fade{opacity:1!important;transform:none!important;transition:none!important}
 .ocean-current{position:absolute;inset:0;pointer-events:none;overflow:clip}
 .ocean-current canvas{position:sticky;top:0;display:block;width:100%;height:100vh}
-.whale-encounter{height:230svh;min-height:1200px;position:relative;background:#031233;--encounter-progress:0;--whale-proximity:0}
-.encounter-stage{position:sticky;top:0;height:100svh;min-height:580px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 64% 0%,#1b66777a,transparent 63%),linear-gradient(#031233,#06263d 46%,#031233);mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 82%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 82%,transparent)}
-.encounter-stage::before{content:'';position:absolute;inset:-20%;background:repeating-linear-gradient(110deg,transparent 0 13%,#96e5e60a 15%,transparent 18% 30%);transform:translateX(calc(var(--encounter-progress) * -6%));pointer-events:none}
-.whale-traveller{position:absolute;left:50%;top:52%;width:min(90vw,1100px);margin-left:calc(min(90vw,1100px) * -.5);margin-top:calc(min(90vw,1100px) * -.3375);transform-origin:50% 45%;will-change:transform;pointer-events:none}
-.whale-art{display:block;width:100%;height:auto;overflow:visible}
-.whale-tail{transform-origin:600px 230px;animation:whale-stroke 5.6s ease-in-out infinite}
-.whale-flipper{transform-origin:380px 425px;animation:whale-fin 6.8s ease-in-out infinite}
-.whale-far-flipper{transform-origin:820px 425px;animation:whale-fin 6.8s ease-in-out -2s infinite}
-@keyframes whale-stroke{0%,100%{transform:rotate(-5deg) scaleY(.9)}50%{transform:rotate(6deg) scaleY(1.08)}}
-@keyframes whale-fin{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(9deg)}}
-.sea-life-stopped .whale-art *{animation-play-state:paused!important}
-@media(max-width:700px){
- .whale-encounter{height:215svh;min-height:1200px}
-}
+
+/* A camera encounter: the creature occludes the light as it passes overhead. */
+.whale-encounter{height:300svh;min-height:1800px;position:relative;background:#031233;--encounter-progress:0;--whale-proximity:0;--whale-occlusion:0}
+.encounter-stage{position:sticky;top:0;height:100svh;min-height:480px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 48% 26%,#0a3040 0%,#041827 46%,#020a16 85%);mask-image:linear-gradient(to bottom,transparent,#000 15%,#000 86%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 15%,#000 86%,transparent)}
+.encounter-light{position:absolute;inset:-15%;background:conic-gradient(from 151deg at 48% -12%,transparent 0deg,#83c0c014 9deg,transparent 17deg,#91cfce09 26deg,transparent 37deg);opacity:calc(1 - var(--whale-occlusion) * .9);transform:rotate(-8deg);filter:blur(12px);pointer-events:none}
+.whale-traveller{position:absolute;left:50%;top:51%;width:max(110vw,115vh);margin-left:calc(max(110vw,115vh) * -.5);margin-top:calc(max(110vw,115vh) * -.33333);transform-origin:50% 47%;will-change:transform,opacity;pointer-events:none;opacity:.08}
+.whale-art{display:block;width:100%;height:auto;filter:brightness(.65) saturate(.75);pointer-events:none}
+.encounter-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.encounter-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 47% 42%,transparent 18%,#01091480 65%,#010610df 100%);box-shadow:inset 0 0 18vw #01081199;opacity:calc(.6 + var(--whale-occlusion) * .4)}
+@media(max-width:700px){.whale-encounter{height:285svh;min-height:1800px}.whale-traveller{width:145vw;margin-left:-72.5vw;margin-top:-48.333vw}}
 @media(prefers-reduced-motion:reduce){
- .ocean-current{display:none}
+ .ocean-current,.encounter-particles{display:none}
  .whale-encounter{height:90svh;min-height:650px}
  .encounter-stage{position:relative;height:100%;min-height:650px}
- .whale-art *{animation:none!important}
- .whale-traveller{transform:none!important}
+ .whale-traveller{transform:scale(.85)!important;opacity:1}
 }
