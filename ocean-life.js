@@ -3,7 +3,6 @@
   'use strict';
   const encounter = document.getElementById('whale-encounter');
   if (!encounter) return;
-  const whale = encounter.querySelector('.whale-traveller');
   const water = encounter.querySelector('.encounter-particles');
   const waterContext = water ? water.getContext('2d') : null;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -74,31 +73,18 @@
       ctx.beginPath(); ctx.arc(x, y, i % 4 ? 1 : 2, 0, Math.PI * 2); ctx.fill();
     }
   }
-  function moveWhale() {
+  function moveEncounter() {
     if (!encounterVisible) return;
     const rect = encounter.getBoundingClientRect();
     // Use the pinned part of the scene as a camera approach, then a close pass.
     const p = clamp((innerHeight * .12 - rect.top - (scrollY - smoothY)) / Math.max(1, rect.height - innerHeight * .8));
-    const width = encounter.clientWidth;
-    // Perspective grows rapidly at close range; the body passes above the viewer.
-    const approach = p * p * (3 - 2 * p);
-    const pass = clamp((p - .78) / .22);
-    const scale = .34 / (1 - .953 * p);
-    const travel = width * (-.04 + .09 * approach);
-    const drift = Math.sin(time * .3) * (2 + approach * 3);
-    const lift = innerHeight * (.04 - .4 * pass * pass) + drift;
-    whale.style.transform = `translate3d(${travel.toFixed(1)}px,${lift.toFixed(1)}px,0) perspective(1800px) rotateY(${(-4 + approach * 6).toFixed(2)}deg) rotate(${(-6 + approach * 8 + Math.sin(time * .23) * .4).toFixed(2)}deg) scale(${scale.toFixed(4)})`;
-    whale.style.opacity = (.08 + .92 * clamp(p * 2.6)).toFixed(3);
-    whale.style.filter = `blur(${(3 * Math.pow(1 - approach, 4)).toFixed(2)}px) brightness(${(.3 + .7 * clamp(p * 1.65) - pass * .45).toFixed(3)})`;
     encounter.style.setProperty('--encounter-progress', p.toFixed(3));
-    encounter.style.setProperty('--whale-proximity', approach.toFixed(3));
-    encounter.style.setProperty('--whale-occlusion', clamp((p - .5) * 2).toFixed(3));
     if (waterContext) encounterWater(p);
   }
   function encounterWater(p) {
     const ctx = waterContext, w = encounter.clientWidth, h = innerHeight;
     ctx.clearRect(0, 0, w, h);
-    // Small silhouettes cross in front of the animal and scatter as it approaches.
+    // Small silhouettes drift apart as the reader descends.
     const scatter = clamp((p - .44) / .38);
     for (let i = 0; i < 17; i++) {
       const side = i % 2 ? 1 : -1;
@@ -136,7 +122,7 @@
     velocity += ((smoothY - previousY) / dt - velocity) * .12;
     previousY = smoothY;
     scenes.forEach(scene => { if (scene.visible) school(scene); });
-    moveWhale();
+    moveEncounter();
     frame = requestAnimationFrame(tick);
   }
   function sync() {
@@ -144,11 +130,6 @@
     encounter.classList.toggle('sea-life-stopped', stopped || !encounterVisible);
     if (active() && !frame) frame = requestAnimationFrame(tick);
     if (!active() && frame) { cancelAnimationFrame(frame); frame = 0; last = 0; }
-    if (reduced.matches) {
-      whale.style.transform = 'none';
-      whale.style.opacity = '1';
-      whale.style.filter = 'none';
-    }
   }
   size();
   if ('IntersectionObserver' in window) {
