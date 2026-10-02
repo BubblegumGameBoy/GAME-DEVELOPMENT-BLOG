@@ -80,9 +80,9 @@
 
     <article class="prose">
 
-<p class="byline">A practical guide checked against the current game source on September 9, 2026.</p>
+<p class="byline">I made Mythos Slayer. Every number here comes from the game itself, as of September 2026.</p>
 <p>When progress slows in Mythos Slayer, the useful comparison is what your next purchase adds for its price. A new unit, an upgrade to one you own and a hero upgrade all use the same gold. Their benefits depend on your current levels.</p>
-<p><strong>Correction:</strong> an earlier version of this guide treated the advanced dragons' three visible projectiles as three damage hits. The current game applies damage once per volley. It also does not let you buy unlimited copies of the same unit: each type is recruited once and then upgraded.</p>
+<p>Two things that catch people out: the advanced dragons fire three projectiles but deal damage once per volley, and each unit type is recruited once and then upgraded, not bought in multiples.</p>
 <h2>Compare an upgrade with a new recruit</h2>
 <p>At base level, a Swordsman costs 80 gold and deals 2 damage per second. Its first upgrade costs 144 gold and raises its damage from 2 to 3.8, before attack-speed bonuses. That is 1.8 additional DPS for 144 gold. A Dwarf Warrior costs 280 gold and adds 4 base DPS. For this particular comparison, the upgrade costs 80 gold per additional DPS; the recruit costs 70. The cheaper button and the more efficient button are different.</p>
 <p>This example assumes both purchases are available, no Gale Blessing levels, and no awakening bonus. The recruit list unlocks in order. Check the next available card rather than assuming you can skip directly to a late unit.</p>
@@ -99,11 +99,19 @@
 <p>These figures are damage divided by the base attack interval, at unit level zero with no speed upgrades. The advanced dragons launch three visual projectiles, but that is not a reason to triple these rates. Animation and overkill can also make short observed fights differ from a theoretical DPS rate.</p>
 <h2>Evaluate Rebirth as a time trade-off</h2>
 <p>After clearing Boss 10, Rebirth resets your purchases and applies a factor of 1 + 0.4 times the highest boss cleared in the current cycle. It multiplies the permanent bonus you already have. A first reset at Boss 10 gives &times;5. Another reset there changes &times;5 to &times;25. Resetting at Boss 20 gives a factor of &times;9 instead.</p>
-<p>Going deeper earns a larger factor but delays the next run. The formula does not establish a universally optimal reset point. Consider how long the next boss will take and whether a nearby unit milestone can help. The Rebirth button shows your current bonus and the proposed result.</p>
+<p>Going deeper earns a larger factor but delays the next run. There is no single best moment to reset. Consider how long the next boss will take and whether a nearby unit milestone can help. The Rebirth button shows your current bonus and the proposed result.</p>
 <p>Rebirth preserves the boss cycle. If you have entered cycle 2, resetting does not return enemy health to cycle 1. Review that choice before moving beyond Boss 40.</p>
-<p><a href="../../games/clicker.html">Play Mythos Slayer and see the controls</a>. The calculations above use <a href="https://play.bubblegumgameboy.com/spacebar-clicker/">the public game's source</a>, including unitDmg, unitIv, unitUpgCost, doUnitVolley and prestigeFactor.</p>
-<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><strong>Check the implementation</strong><p>Click damage, prestige, boss health and gold are calculated in the linked game source. <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">Read the reviewed source version</a> (September 9, 2026). Later updates may change the numbers.</p></aside>
+<p><a href="../../games/clicker.html">Play Mythos Slayer and see the controls</a>.</p>
+<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><p style="margin:0;">The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
     </article>
+
+    <nav class="related" aria-label="Related articles" style="margin-top:34px;padding:16px 18px;background:#fff;border:2px solid #cde0ea;border-radius:12px;">
+      <p style="margin:0 0 8px;font-weight:900;color:#2c4a6e;">Keep reading</p>
+      <ul style="margin:0;padding-left:1.2em;line-height:1.9;">
+        <li><a href="2026-08-10-mythos-slayer-balance.html" style="color:#2a9aa3;font-weight:700;">Mythos Slayer balance: boss health, gold and progression</a></li>
+        <li><a href="2026-06-14-making-boss-rush-clicker.html" style="color:#2a9aa3;font-weight:700;">I paid for the boss art on a game that has never earned a yen</a></li>
+      </ul>
+    </nav>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
       <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>

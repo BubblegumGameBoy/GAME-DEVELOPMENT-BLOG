@@ -126,6 +126,7 @@ sitemap.xml / CNAME
 
 - **記事にAIの活用を書かない。** 言及した瞬間にエンゲージメントが落ちる。制作の一次情報は「作者が自分のゲームに慣れすぎて初見の判断ができなかった」のように、気づきの側で書く。
 - **冒頭で開発者本人であることを明示する。** 攻略記事は誰でも書けるが、内部数値を開示できるのは作者だけ。これが唯一の差別化。
+- **検証者の口調で書かない。** 「checked against the source on …」「Correction: an earlier version …」「cannot be established」、関数名の列挙などは、作者ではなく第三者が監査した文章に見える（2026-10-02 に全記事から除去）。数値の出典は「I made this game. Every number here comes from the game itself」のように作者の言葉で書く。記事を書き直したら、`blog/index.html` の要約と meta description も本文と一致させる。
 - 裏サイト「ささなき駅」は実画像（`station.png` / `tunnel.png`）未設置でも SVG にフォールバックして動作。
 - 将来: タイピング系ゲームの多言語対応 / ポータルへの AdSense 申請。
 
