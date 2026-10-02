@@ -82,9 +82,8 @@
 
     <article class="prose">
 
-<p class="byline">A source-based walkthrough, checked September 9, 2026.</p>
+<p class="byline">I made Mythos Slayer. These are the formulas the game actually runs, as of September 2026.</p>
 <p>Mythos Slayer uses different growth factors for boss health and gold rewards. Health rises faster, so the same attack setup takes longer to beat later bosses. Purchases, repeat-kill rewards and Rebirth change how quickly you can overcome that gap.</p>
-<p><strong>Correction:</strong> the previous table rounded some values incorrectly and described Crit Chance as gaining five percentage points per level. It starts at 5% and gains two points per level. This revision also removes development-history claims that cannot be established from the current build.</p>
 <h2>Version one scaled by digits, and it broke immediately</h2>
 
       <p>My first approach was the obvious one. Give each boss an HP value one digit longer than the last. Hundreds, then thousands, then tens of thousands. Clean to implement, easy to reason about.</p>
@@ -150,9 +149,17 @@
 <h2>Progression continues beyond a full clear</h2>
 <p>The first defeat of Boss 40 opens the credits. Pressing Next Boss there starts a new cycle with 50 times the health factor and six times the gold factor. Those factors compound on later cycles. Rebirth retains the current cycle, resets purchases and multiplies the existing permanent gold bonus by 1 + 0.4 times the highest boss cleared in that cycle.</p>
 <p>There is no calculation awarding income for time spent with the page closed. The attack loop uses animation frames, so a hidden browser tab can also stop or slow progress. Keep the game visible when comparing farming rates.</p>
-<p><a href="2026-06-22-clicker-strategy.html">Use these figures to compare purchases</a>, or <a href="../../games/clicker.html">play Mythos Slayer</a>. Source: <a href="https://play.bubblegumgameboy.com/spacebar-clicker/">the public game build</a>, functions bossMaxHp, goldReward, hitGold, clickBaseDmg and prestigeFactor.</p>
-<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><strong>Check the implementation</strong><p>Click damage, prestige, boss health and gold are calculated in the linked game source. <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">Read the reviewed source version</a> (September 9, 2026). Later updates may change the numbers.</p></aside>
+<p><a href="2026-06-22-clicker-strategy.html">Use these figures to compare purchases</a>, or <a href="../../games/clicker.html">play Mythos Slayer</a>.</p>
+<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><p style="margin:0;">The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
     </article>
+
+    <nav class="related" aria-label="Related articles" style="margin-top:34px;padding:16px 18px;background:#fff;border:2px solid #cde0ea;border-radius:12px;">
+      <p style="margin:0 0 8px;font-weight:900;color:#2c4a6e;">Keep reading</p>
+      <ul style="margin:0;padding-left:1.2em;line-height:1.9;">
+        <li><a href="2026-06-22-clicker-strategy.html" style="color:#2a9aa3;font-weight:700;">Mythos Slayer: choosing upgrades and timing Rebirth</a></li>
+        <li><a href="2026-06-14-making-boss-rush-clicker.html" style="color:#2a9aa3;font-weight:700;">I paid for the boss art on a game that has never earned a yen</a></li>
+      </ul>
+    </nav>
 
     <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
       <a href="../" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Blog</a>
