@@ -8,6 +8,7 @@
   const close = document.getElementById('game-close');
   const status = document.getElementById('game-status');
   if (!frame || !start || !launch || !full || !close || !status) return;
+  const japanese = document.documentElement.lang.toLowerCase().startsWith('ja');
   let started = false;
   function load() {
     if (started) return;
@@ -19,7 +20,9 @@
     }
     frame.src = frame.dataset.gameSrc;
     launch.hidden = true;
-    status.textContent = 'The game is loading. Large 3D games can take longer. If the screen stays blank, use “Open in a new tab” below.';
+    status.textContent = japanese
+      ? 'ゲームを読み込んでいます。3Dゲームは少し時間がかかる場合があります。画面が表示されない場合は、下の「別タブで遊ぶ」をお試しください。'
+      : 'The game is loading. Large 3D games can take longer. If the screen stays blank, use “Open in a new tab” below.';
   }
   function leave() {
     frame.classList.remove('fs-on');
@@ -50,6 +53,8 @@
     if (event.key === 'Escape' && frame.classList.contains('fs-on')) close.click();
   });
   frame.addEventListener('load', function () {
-    if (started) status.textContent = 'The game page has opened; it may still be loading its assets. Click inside it before using the keyboard. Use “Exit fullscreen” to return to this guide.';
+    if (started) status.textContent = japanese
+      ? 'ゲームページが開きました。データの読み込みが続く場合があります。キーボードを使う前にゲーム画面をクリックしてください。「全画面を閉じる」で説明に戻れます。'
+      : 'The game page has opened; it may still be loading its assets. Click inside it before using the keyboard. Use “Exit fullscreen” to return to this guide.';
   });
 })();
