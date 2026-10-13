@@ -3,6 +3,7 @@
   const videos=Array.from(document.querySelectorAll('video[data-land-webm]'));
   const button=document.getElementById('motion-toggle');
   if(!button)return;
+  const isJapanese=document.documentElement.lang==='ja';
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const landscape=window.matchMedia('(orientation: landscape) and (min-width: 700px)').matches;
   let paused=reduced.matches || !!(navigator.connection && navigator.connection.saveData);
@@ -18,7 +19,9 @@
     video.play().catch(function(){});
   }
   function sync(){
-    button.textContent=paused?'Play background animation':'Pause background animation';
+    button.textContent=isJapanese
+      ? (paused?'背景の動きを再開する':'背景の動きを止める')
+      : (paused?'Play background animation':'Pause background animation');
     button.setAttribute('aria-pressed',String(paused));
     document.body.classList.toggle('motion-paused',paused);
     document.documentElement.classList.toggle('motion-paused',paused);
