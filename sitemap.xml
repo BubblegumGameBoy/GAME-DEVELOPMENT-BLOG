@@ -175,4 +175,17 @@
     <priority>0.6</priority>
   </url>
   <url><loc>https://bubblegumgameboy.com/play-guide.html</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://bubblegumgameboy.com/ja/about.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/contact.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/play-guide.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/privacy.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/updates.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/clicker.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/soldier-typing-2.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/creature-fishing.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/creature-raising-kit.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/cthulhu-typing.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/piano-typing.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/popcorn-typing.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://bubblegumgameboy.com/ja/games/soldier-typing.html</loc><lastmod>2026-10-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
