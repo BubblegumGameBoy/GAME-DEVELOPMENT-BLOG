@@ -12,6 +12,8 @@
   const hasFullscreen = !!(full && close);
   const japanese = document.documentElement.lang.toLowerCase().startsWith('ja');
   let started = false;
+  // data-autoload: load the game as soon as the page opens, with no extra button.
+  const autoload = frame.hasAttribute('data-autoload');
   function load() {
     if (started) return;
     started = true;
@@ -20,6 +22,7 @@
     if (stage) stage.classList.add('game-started');
     frame.src = frame.dataset.gameSrc;
     launch.hidden = true;
+    if (autoload) return;
     status.textContent = japanese
       ? (hasFullscreen ? 'ゲームを読み込んでいます。3Dゲームは少し時間がかかる場合があります。画面が表示されない場合は、下の「別タブで遊ぶ」をお試しください。' : 'ゲームを読み込んでいます。少し時間がかかる場合があります。')
       : 'The game is loading. Large 3D games can take longer. If the screen stays blank, use “Open in a new tab” below.';
@@ -32,6 +35,7 @@
   }
   start.disabled = false;
   start.addEventListener('click', load);
+  if (autoload) load();
   if (hasFullscreen) full.addEventListener('click', function () {
     load();
     if (frame.classList.contains('fs-on')) return;
@@ -53,6 +57,7 @@
     if (hasFullscreen && event.key === 'Escape' && frame.classList.contains('fs-on')) close.click();
   });
   frame.addEventListener('load', function () {
+    if (started && autoload) return;
     if (started && !hasFullscreen) { status.textContent = japanese ? 'キーボードで遊ぶときは、先にゲーム画面をクリックしてください。' : 'Click inside the game before using the keyboard.'; return; }
     if (started) status.textContent = japanese
       ? 'ゲームページが開きました。データの読み込みが続く場合があります。キーボードを使う前にゲーム画面をクリックしてください。「全画面を閉じる」で説明に戻れます。'

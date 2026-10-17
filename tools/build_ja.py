@@ -46,7 +46,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
                  f'<link rel="alternate" hreflang="en" href="{BASE}/{english}">\n'
                  f'<link rel="alternate" hreflang="x-default" href="{BASE}/{english}">') if english else ""
     switch = f'<a class="lang" href="/{english}" lang="en" hreflang="en">English</a>' if english else '<a class="lang" href="/" lang="en">English</a>'
-    scripts = '<script src="/game-page.js?v=20261017" defer></script><script src="/imobile-ads.js?v=20261017" defer></script>' if game else ""
+    scripts = '<script src="/game-page.js?v=20261017b" defer></script><script src="/imobile-ads.js?v=20261017" defer></script>' if game else ""
     game_css = '<link rel="stylesheet" href="/game-page.css">' if game else ""
     full_title = full_title or f"{title}｜Bubblegum Game"
     html = f'''<!doctype html>
@@ -69,7 +69,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/site.css?v=20261017">
+  <link rel="stylesheet" href="/site.css?v=20261017b">
   {game_css}
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
@@ -136,9 +136,9 @@ monster = f'''<h1>モンスタータイピング</h1>
     <p class="game-subtitle">Monster Typing — {escape(MONSTER_DESC)}</p>
     {AD_TOP}
     <div class="game-shell">
-      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
+      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" data-autoload title="モンスタータイピングのゲーム画面" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
     </div>
-    <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{MONSTER_BLOG}">はてなブログの紹介記事 →</a></div>
+    <p id="game-status" role="status" class="sr-only"></p>
     {AD_BELOW}
     <article class="article"><h2>どんなゲーム？</h2><p>ひらがなをローマ字で打つと、モンスターが攻撃するタイピングゲームです。ほかのプレイヤーとオンラインで対戦できます。対戦相手がいないあいだはCPUと練習でき、人が来ると乱入してきます。</p>
     <h2>遊び方</h2><ul><li>画面のひらがなをローマ字で打つと攻撃します。</li><li>ゲージが満タンになったらSpaceキーで必殺技を出せます。</li><li>魔晶を使って仲間のモンスターを召喚し、育てられます。</li><li>ストーリーモードとトレーニングモードもあります。</li></ul>

@@ -181,7 +181,7 @@ def build(lang):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=20261017">
+<link rel="stylesheet" href="/site.css?v=20261017b">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 <script src="/privacy-controls.js" defer></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
