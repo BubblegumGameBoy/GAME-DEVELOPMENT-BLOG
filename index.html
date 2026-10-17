@@ -8,620 +8,146 @@
 <link rel="alternate" hreflang="en" href="https://bubblegumgameboy.com/">
 <link rel="alternate" hreflang="ja" href="https://bubblegumgameboy.com/ja/">
 <link rel="alternate" hreflang="x-default" href="https://bubblegumgameboy.com/">
-<title>Bubblegum Game | Free Browser Games by an Indie Developer</title>
-<meta name="description" content="A cozy collection of free browser games handmade by indie developer Bubblegum. Play English-supported clicker and mining games, or practice Japanese romaji on a PC keyboard. No downloads or sign-up.">
+<title>Bubblegum Game | Monster Typing and free browser games</title>
+<meta name="description" content="Monster Typing is a free online typing battle game: type Japanese in romaji to make your monsters attack, summon and raise new ones, and fight other players in real time. Plus more free browser games by the same solo developer.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bubblegumgameboy.com/">
-<meta property="og:title" content="Bubblegum Game | Free Browser Games by an Indie Developer">
-<meta property="og:description" content="Free handmade browser games you can play instantly. No downloads, no sign-up — just open and play.">
-<meta property="og:image" content="https://bubblegumgameboy.com/images/mythos-slayer-2026-09-10.png">
+<meta property="og:title" content="Monster Typing | Bubblegum Game">
+<meta property="og:description" content="A free online typing battle game: type Japanese in romaji to make your monsters attack.">
+<meta property="og:image" content="https://bubblegumgameboy.com/images/monster-typing.png">
 <meta property="og:site_name" content="Bubblegum Game">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bubblegum Game | Free Browser Games by an Indie Developer">
-<meta name="twitter:description" content="Free handmade browser games you can play instantly. No downloads, no sign-up.">
-<meta name="twitter:image" content="https://bubblegumgameboy.com/images/mythos-slayer-2026-09-10.png">
+<meta name="twitter:site" content="@monster_typing">
+<meta name="twitter:image" content="https://bubblegumgameboy.com/images/monster-typing.png">
+<link rel="preload" as="image" href="/images/monster-typing-banner.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    margin:0; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif;
-    -webkit-font-smoothing:antialiased;
-    background:#020b18;
-  }
-  img { max-width:100%; }
-
-  /* ---------- the dive: one continuous gradient from surface to abyss ---------- */
-  .ocean {
-    background:linear-gradient(to bottom,
-      #1173b8 0%,      /* just under the surface */
-      #0d5a9e 12%,
-      #0a4486 28%,
-      #073268 46%,
-      #052350 60%,
-      #041a40 78%,
-      #031233 100%);
-    position:relative;
-    overflow:hidden;
-  }
-
-  /* ---------- video sections ---------- */
-  .vid-wrap { position:relative; overflow:hidden; }
-  .vid-wrap video, .game-water-view img {
-    position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; object-position:center;
-    image-rendering:pixelated;
-  }
-
-  /* ---------- floating bubbles ---------- */
-  @keyframes rise {
-    0%   { transform:translateY(0) translateX(0); opacity:0; }
-    10%  { opacity:.55; }
-    90%  { opacity:.4; }
-    100% { transform:translateY(-110vh) translateX(18px); opacity:0; }
-  }
-  .bubble {
-    position:absolute; bottom:-40px; border-radius:50%;
-    border:2px solid rgba(190,230,255,.5);
-    background:rgba(190,230,255,.08);
-    animation:rise linear infinite; pointer-events:none;
-  }
-
-  /* ---------- gentle bobbing for sea objects ---------- */
-  @keyframes bob   { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-10px) rotate(var(--r,0deg));} }
-  @keyframes bob2  { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(8px) rotate(var(--r,0deg));} }
-  @keyframes glowp { 0%,100%{box-shadow:0 0 18px rgba(120,220,255,.25),0 0 0 3px rgba(120,220,255,.18);} 50%{box-shadow:0 0 34px rgba(120,220,255,.55),0 0 0 3px rgba(120,220,255,.35);} }
-  @keyframes blink { 0%,70%{opacity:1;} 71%,100%{opacity:0;} }
-  @keyframes hpulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.16);} }
-
-  /* ---------- deep-sea game objects ---------- */
-  .sea-object {
-    display:block; text-decoration:none; position:relative;
-    background:rgba(3,12,30,.72);
-    border:3px solid rgba(120,210,255,.35);
-    border-radius:16px; overflow:hidden;
-    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
-    transition:transform .15s, border-color .15s;
-    animation:bob 5.5s ease-in-out infinite, glowp 4s ease-in-out infinite;
-  }
-  .sea-object:nth-child(even) { animation-name:bob2, glowp; animation-duration:6.5s, 4.6s; }
-  .sea-object:hover { transform:translateY(-6px) scale(1.02); border-color:#ffd766; animation-play-state:paused, running; }
-  .sea-object:hover .sea-cta { background:#ffd766; color:#14283f; }
-
-  .panel {
-    background:rgba(4,16,38,.66);
-    border:2px solid rgba(120,200,255,.22);
-    border-radius:16px;
-    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
-  }
-  .news-item:hover, .article-item:hover { background:rgba(120,200,255,.10) !important; }
-
-  /* ---------- treasure chest (pixel art drawn by JS into box-shadow) ---------- */
-  .chest { position:relative; flex:none; width:80px; height:50px; }
-  .chest i { position:absolute; top:0; left:0; width:5px; height:5px; background:transparent; }
-  .chest i.open { display:none; }
-  .sea-object:hover .chest i.closed { display:none; }
-  .sea-object:hover .chest i.open { display:block; }
-  .sea-object:hover .chest::before {
-    content:''; position:absolute; inset:-16px;
-    background:radial-gradient(circle, rgba(255,215,102,.5), transparent 68%);
-    pointer-events:none;
-  }
-  .chest .coin { position:absolute; top:-4px; width:7px; height:7px; background:#ffd766; border:1px solid #b8860b; border-radius:2px; opacity:0; pointer-events:none; }
-  .sea-object:hover .coin { animation:coinup 1s ease-out infinite; }
-  @keyframes coinup {
-    0%   { opacity:0; transform:translateY(4px); }
-    25%  { opacity:1; }
-    100% { opacity:0; transform:translateY(-30px) rotate(180deg); }
-  }
-
-  /* ---------- contact form ---------- */
-  .c-label { display:block; margin:14px 0 6px; font-family:'DotGothic16',monospace; font-size:13px; letter-spacing:1px; color:#9fdcff; }
-  .c-input {
-    width:100%; background:rgba(2,10,26,.6); color:#eaf6ff;
-    border:2px solid rgba(120,200,255,.3); border-radius:10px;
-    padding:11px 13px; font-family:inherit; font-size:15px; font-weight:500;
-    transition:border-color .12s;
-  }
-  .c-input:focus { outline:none; border-color:#7fe3ec; }
-  .c-input::placeholder { color:#6f93b0; }
-  textarea.c-input { resize:vertical; line-height:1.7; }
-  .btn-teal:hover  { background:#2fb3bd !important; }
-  .btn-glass:hover { background:rgba(255,255,255,.16) !important; }
-  nav a { white-space:nowrap; }
-
-  .depth {
-    font-family:'DotGothic16',monospace; font-size:12px; letter-spacing:3px;
-    color:rgba(150,210,245,.55); text-align:right;
-    max-width:900px; margin:0 auto; padding:0 22px 6px;
-    user-select:none;
-  }
-
-  @media (orientation: portrait) {
-    .games-dim { background:rgba(2,10,28,.45); }
-  }
-
-  /* ---------- scroll reveal (classes are added by JS, so no-JS users see everything) ---------- */
-  .rv { opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1); }
-  .rv.rv-in { opacity:1; transform:translateY(0); }
-  .rv-fade { opacity:0; transition:opacity 1.1s ease; }   /* for elements with their own transform animations */
-  .rv-fade.rv-in { opacity:1; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .bubble, .sea-object { animation:none !important; }
-    .rv, .rv-fade { opacity:1 !important; transform:none !important; transition:none !important; }
-  }
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/","description":"Free handmade browser games by indie developer Bubblegum — an idle boss-rush clicker and Japanese typing games. No downloads, no sign-up.","inLanguage":"en"},{"@type":"ItemList","name":"Games You Can Play","itemListElement":[{"@type":"ListItem","position":1,"name":"Soldier Typing 2","description":"The sequel to Soldier Typing. Type to summon soldiers across six waves, with a hidden boss and a route that only opens on a later run."},{"@type":"ListItem","position":2,"name":"Mythos Slayer","description":"An idle boss-rush game where you recruit soldiers and automate the fight. Works on desktop and mobile."},{"@type":"ListItem","position":3,"name":"Cthulhu Typing","description":"A typing-meets-summoning battle: every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos. Desktop only."},{"@type":"ListItem","position":4,"name":"Popcorn Typing","description":"A snappy typing game with a popping, popcorn-like rhythm. Japanese typing practice — type hiragana words in romaji."},{"@type":"ListItem","position":5,"name":"Soldier Typing","description":"A military-themed typing game where you type to fight."},{"@type":"ListItem","position":6,"name":"Piano Typing","description":"A rhythm-meets-typing game: press the highlighted keys to play classic melodies. Great home-row practice too."}]}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=20261017">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Bubblegum Game", "url": "https://bubblegumgameboy.com/", "inLanguage": "en", "description": "Free browser games by a solo developer, led by the online typing battle game Monster Typing", "publisher": {"@type": "Person", "name": "バブルガム", "alternateName": "Bubblegum", "url": "https://bubblegumgameboy.com/ja/about.html", "sameAs": ["https://babblegum.hatenablog.com/"]}}</script>
 <script src="/privacy-controls.js" defer></script>
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
-     crossorigin="anonymous"></script>
-<script src="/home-motion.js" defer></script>
-<link rel="stylesheet" href="/ocean-life.css">
-<script src="/ocean-life.js" defer></script>
-<style>body.motion-paused *,body.motion-paused *::before,body.motion-paused *::after{animation-play-state:paused!important}</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
+<script src="/imobile-ads.js?v=20261017" defer></script>
 </head>
 <body>
-<div style="overflow-x:clip;">
-
-<!-- ================= NAV ================= -->
-<nav id="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,20,44,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px solid rgba(120,200,255,.25);">
-  <div style="max-width:1040px;margin:0 auto;padding:12px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;gap:12px;">
-    <div style="display:flex;align-items:center;gap:clamp(10px,3vw,22px);font-weight:700;font-size:14px;">
-      <a href="#updates" style="color:#cfe6ee;text-decoration:none;">Updates</a>
-      <a href="#articles" style="color:#cfe6ee;text-decoration:none;">Articles</a>
-      <a href="#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
-      <a href="blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
-      <a href="about.html" style="color:#cfe6ee;text-decoration:none;">About</a>
-      <a href="/ja/" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;border:1px solid #7edbe8;border-radius:7px;padding:3px 8px;">日本語</a>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/">BUBBLEGUM <span>GAME</span></a>
+    <nav aria-label="Site menu" class="menu">
+      <a href="#how">How to play</a>
+      <a href="#updates">Updates</a>
+      <a href="#games">More games</a>
+      <a href="https://babblegum.hatenablog.com/">Blog (JP)</a>
+      <a class="lang" href="/ja/" lang="ja" hreflang="ja">日本語</a>
+    </nav>
   </div>
-</nav>
-
-<!-- ================= HERO : sky & ocean surface ================= -->
-<header id="top" class="vid-wrap" style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 60px;">
-  <video muted loop playsinline preload="none" poster="videos/sky-sea-poster.jpg" aria-hidden="true" data-land-webm="videos/sky-land.webm" data-land-mp4="videos/sky-land.mp4" data-land-poster="videos/sky-land-poster.jpg">
-    <source data-src="videos/sky-sea.webm" type="video/webm">
-    <source data-src="videos/sky-sea.mp4" type="video/mp4">
-  </video>
-  <!-- readability veil + fade into the water at the bottom -->
-  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,20,45,.28) 0%,rgba(5,20,45,.05) 35%,rgba(8,40,90,.0) 60%,#1173b8 99%);"></div>
-
-  <div style="position:relative;max-width:720px;">
-    <!-- soul mark (pixel heart) -->
-    <div style="width:42px;height:36px;margin:0 auto 18px;position:relative;animation:hpulse 2.4s ease-in-out infinite;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));"><i style="position:absolute;top:0;left:0;width:6px;height:6px;background:transparent;box-shadow:6px 0 0 0 #ef4d52,12px 0 0 0 #ef4d52,24px 0 0 0 #ef4d52,30px 0 0 0 #ef4d52,0 6px 0 0 #ef4d52,6px 6px 0 0 #ef4d52,12px 6px 0 0 #ef4d52,18px 6px 0 0 #ef4d52,24px 6px 0 0 #ef4d52,30px 6px 0 0 #ef4d52,36px 6px 0 0 #ef4d52,0 12px 0 0 #ef4d52,6px 12px 0 0 #ef4d52,12px 12px 0 0 #ef4d52,18px 12px 0 0 #ef4d52,24px 12px 0 0 #ef4d52,30px 12px 0 0 #ef4d52,36px 12px 0 0 #ef4d52,6px 18px 0 0 #ef4d52,12px 18px 0 0 #ef4d52,18px 18px 0 0 #ef4d52,24px 18px 0 0 #ef4d52,30px 18px 0 0 #ef4d52,12px 24px 0 0 #ef4d52,18px 24px 0 0 #ef4d52,24px 24px 0 0 #ef4d52,18px 30px 0 0 #ef4d52;"></i></div>
-
-    <h1 style="margin:0;font-weight:900;font-size:clamp(36px,9vw,70px);line-height:1.04;letter-spacing:-.5px;color:#fff;text-shadow:0 3px 0 rgba(10,40,80,.45),0 6px 24px rgba(0,20,50,.5);">Bubblegum <span style="color:#ffe27a;">Game</span></h1>
-    <p style="margin:10px 0 0;font-family:'DotGothic16',monospace;font-size:clamp(12px,3.4vw,17px);color:#fff;letter-spacing:2px;text-shadow:0 1px 3px rgba(0,20,50,.9),0 2px 14px rgba(0,20,50,.7);">- Bubblegum's little game corner -</p>
-
-    <!-- RPG dialogue box -->
-    <div style="position:relative;max-width:540px;margin:26px auto 0;background:rgba(6,22,48,.78);border:3px solid #bfe4ff;border-radius:14px;padding:16px 20px 18px;text-align:left;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);">
-      <span style="position:absolute;top:6px;left:6px;width:7px;height:7px;background:#bfe4ff;"></span>
-      <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
-      <span style="position:absolute;bottom:6px;left:6px;width:7px;height:7px;background:#bfe4ff;"></span>
-      <span style="position:absolute;bottom:6px;right:6px;width:7px;height:7px;background:#bfe4ff;"></span>
-      <p style="margin:0;font-family:'DotGothic16',monospace;font-size:clamp(14px,3.8vw,17px);line-height:1.8;color:#eaf6ff;">Free browser games, made by one developer.<br>Play a game, learn its mechanics, or explore how it was built.<span style="animation:blink 1.1s step-end infinite;">▼</span></p>
-    </div>
-
-    <div style="display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
-      <a href="#games" class="btn-teal" style="display:inline-flex;align-items:center;gap:7px;background:#2a9aa3;color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,4vw,17px);padding:13px 30px;border-radius:10px;border:2px solid rgba(255,255,255,.35);transition:background .12s;">Dive to the Games ↓</a>
-      <a href="play-guide.html" class="btn-glass" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-weight:700;font-size:clamp(15px,4vw,17px);padding:13px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.45);transition:background .12s;">Find Your First Game →</a>
-    </div><p><button id="motion-toggle" type="button" hidden aria-pressed="false" style="font:inherit;font-size:13px;border:1px solid #c9eaff;color:#fff;background:#173851;padding:8px 14px;border-radius:6px;cursor:pointer;">Pause background animation</button></p>
-  </div>
-
-  <!-- scroll hint pinned to the bottom of the hero -->
-  <div style="position:absolute;bottom:16px;left:0;right:0;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#f2fbff;text-shadow:0 2px 6px rgba(0,20,50,.7);">SCROLL TO DIVE ▼</div>
 </header>
 
-<!-- ================= UNDERWATER DESCENT ================= -->
-<div class="ocean">
-<div class="ocean-current" aria-hidden="true"><canvas></canvas></div>
-  <!-- ambient bubbles for the whole descent -->
-  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
-    <span class="bubble" style="left:6%;  width:14px;height:14px;animation-duration:11s;animation-delay:0s;"></span>
-    <span class="bubble" style="left:16%; width:8px; height:8px; animation-duration:14s;animation-delay:3s;"></span>
-    <span class="bubble" style="left:28%; width:18px;height:18px;animation-duration:12s;animation-delay:6s;"></span>
-    <span class="bubble" style="left:47%; width:10px;height:10px;animation-duration:15s;animation-delay:1.5s;"></span>
-    <span class="bubble" style="left:62%; width:13px;height:13px;animation-duration:10s;animation-delay:4.5s;"></span>
-    <span class="bubble" style="left:76%; width:9px; height:9px; animation-duration:13s;animation-delay:8s;"></span>
-    <span class="bubble" style="left:88%; width:16px;height:16px;animation-duration:12.5s;animation-delay:2s;"></span>
-  </div>
-
-<main style="position:relative;">
-
-<!-- ================= UPDATES ================= -->
-<!-- ▼▼▼ Updates: to add an entry, copy one <a>…</a> block below and paste it at the top ▼▼▼
-     Suggested tags: "New Game" (#2a9aa3) / "Update" (#e08a1e) / "News" (#7a93ad). -->
-<section id="updates" style="padding:clamp(48px,8vw,84px) 20px clamp(26px,4vw,40px);">
-  <p class="depth">DEPTH -20m</p>
-  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
-    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;border-bottom:2px solid rgba(120,200,255,.35);padding-bottom:10px;">
-      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#fff;">Updates</h2>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;letter-spacing:2px;">WHAT'S NEW</span>
+<main id="main">
+<section class="hero" aria-labelledby="mt-title">
+  <div class="hero-inner">
+    <p class="eyebrow">ONLINE TYPING BATTLE</p>
+    <h1 id="mt-title">Monster Typing</h1>
+    
+    <div class="divider" aria-hidden="true"><span></span></div>
+    <p class="hero-sub">Type Japanese hiragana in romaji and your monsters strike. Battle other players in real time in this free browser game.</p>
+    <div class="cta-row">
+      <a class="btn-blood" href="/games/monster-typing.html">Play free now</a>
+      <a class="btn-ghost" href="#how">How to play</a>
     </div>
-
-    <a href="play-guide.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">September 10, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#17656d;border-radius:5px;padding:3px 9px;">Player Guide</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Choose your first game: compare all ten, try a typing warm-up, and find the controls before you play.</span>
-    </a>
-    <a href="games/soldier-typing-2.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">September 2, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Soldier Typing 2 is playable here now: six waves, a boss that is not on the map, and a route that only opens once you have already won.</span>
-    </a>
-    <a href="games/dig-planet.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 20, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Dig Planet is playable here now: one planet, dug in real time by everyone who opens the page, with something buried at the core.</span>
-    </a>
-    <a href="games/creature-fishing.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 11, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Three more games are playable here now: Creature Fishing with its 172-species index, Creature Raising Kit with its bottled letters, and 500 Million Years.</span>
-    </a>
-    <a href="blog/posts/2026-08-10-mythos-slayer-balance.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 10, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Devlog</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Mythos Slayer balance: why the first curve failed, with worked examples of boss health, gold rewards and Rebirth.</span>
-    </a>
-    <a href="games/cthulhu-typing.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">July 4, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Cthulhu Typing is out! Every word you type summons a soldier to auto-attack a daily boss from the Cthulhu Mythos.</span>
-    </a>
-    <a href="games/piano-typing.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 26, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Piano Typing is out! Press the highlighted keys to play classic melodies — part rhythm game, part typing practice.</span>
-    </a>
-    <a href="games/clicker.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 21, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Mythos Slayer is out!</span>
-    </a>
-    <a href="blog/posts/2026-06-01-site-renewal.html" class="news-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">June 1, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#7a93ad;border-radius:5px;padding:3px 9px;">News</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">The site got a full redesign.</span>
-    </a>
-    <!-- ▲▲▲ end of updates (newest on top) ▲▲▲ -->
-
-    <div style="margin-top:16px;text-align:right;">
-      <a href="updates.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">View all updates →</a>
-    </div>
+    <a class="hero-art" href="/games/monster-typing.html"><img src="/images/monster-typing-banner.webp" width="720" height="240" alt="Monster Typing key art" fetchpriority="high"></a>
+    <ul class="chips"><li>Online battles</li><li>Summon and raise monsters</li><li>Japanese typing practice</li></ul>
   </div>
 </section>
 
-<!-- ================= NEW ARTICLES ================= -->
-<section id="articles" style="padding:clamp(26px,4vw,40px) 20px;">
-  <p class="depth">DEPTH -200m</p>
-  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
-    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;border-bottom:2px solid rgba(120,200,255,.35);padding-bottom:10px;">
-      <h2 style="margin:0;font-weight:900;font-size:clamp(22px,5vw,30px);color:#fff;">New Articles</h2>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;letter-spacing:2px;">FROM THE BLOG</span>
+<section id="how" class="block" aria-labelledby="how-title">
+  <div class="wrap">
+    <h2 id="how-title" class="center">How to play</h2>
+    <div class="features">
+      <article class="feature"><p class="num" aria-hidden="true">I</p><h3>Type to attack</h3><p>Type the hiragana on screen in romaji and your monster attacks.</p></article>
+      <article class="feature"><p class="num" aria-hidden="true">II</p><h3>Special move</h3><p>When the gauge is full, press Space for a special move.</p></article>
+      <article class="feature"><p class="num" aria-hidden="true">III</p><h3>Drop-in battles</h3><p>Practice against the CPU until another player joins your fight.</p></article>
+      <article class="feature"><p class="num" aria-hidden="true">IV</p><h3>Summon and raise</h3><p>Summon companion monsters and raise them. Story and training modes too.</p></article>
     </div>
-
-    <a href="blog/posts/2026-08-11-thirteen-to-172-fish.html" class="article-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 11, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#17656d;border-radius:5px;padding:3px 9px;">Dev Note</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">From 13 fish to 172: the rendering problem behind Creature Fishing.</span>
-    </a>
-    <a href="blog/posts/2026-08-11-unity-webgl-build-crash.html" class="article-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 11, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#17656d;border-radius:5px;padding:3px 9px;">Dev Note</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">When Unity crashed without an error: building Creature Raising Kit for the browser.</span>
-    </a>
-    <a href="blog/posts/2026-08-10-mythos-slayer-balance.html" class="article-item" style="display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;padding:13px 8px;border-bottom:1px solid rgba(120,200,255,.16);text-decoration:none;border-radius:8px;transition:background .12s;">
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:13px;color:#8fc9e8;letter-spacing:1px;">August 10, 2026</span>
-      <span style="flex:none;font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#17656d;border-radius:5px;padding:3px 9px;">Balance</span>
-      <span style="flex:1 1 240px;min-width:0;font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#dff0fa;line-height:1.55;">Mythos Slayer: boss health, gold and progression, with worked calculations.</span>
-    </a>
-
-
-    <div style="margin-top:16px;text-align:right;">
-      <a href="blog/" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">Browse all articles →</a>
-    </div>
+    <p class="center"><a class="btn-blood" href="/games/monster-typing.html">Play Monster Typing</a></p>
   </div>
 </section>
 
-</main>
-</div><!-- /.ocean descent -->
+<aside class="ad-top" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="top"></div></aside>
 
-
-<!-- A quiet encounter between the reading room and the game trench. -->
-<section id="whale-encounter" class="whale-encounter" aria-hidden="true">
-  <div class="encounter-stage">
-    <div class="encounter-light"></div>
-  <canvas class="encounter-particles"></canvas>
-  <div class="encounter-vignette"></div>
-</div>
-</section>
-
-<!-- ================= DEEP SEA : the games sleep here ================= -->
-<section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
-  <!-- the background still sticks to the viewport instead of being stretched across the
-       whole (very tall) section — no more zoom blur, and it doubles as parallax -->
-  <div class="game-water" aria-hidden="true">
-    <div class="game-water-view">
-      <picture>
-        <source media="(orientation: landscape) and (min-width: 700px)" srcset="videos/deep-land-poster.jpg">
-        <img src="videos/deep-sea-poster.jpg" alt="" loading="lazy" decoding="async">
-      </picture>
-    </div>
-  </div>
-  <!-- blend the descent gradient into the video top & bottom -->
-  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,#031233 0%,rgba(3,18,51,0) 14%,rgba(3,18,51,0) 86%,#020b18 100%);"></div>
-  <!-- on phones the bright light column fights the content; dim it (landscape stays untouched) -->
-  <div aria-hidden="true" class="games-dim" style="position:absolute;inset:0;"></div>
-
-<div class="ocean-current" aria-hidden="true"><canvas></canvas></div>
-  <div class="dive-content" style="position:relative;max-width:900px;margin:0 auto;">
-    <p style="margin:0 0 4px;text-align:center;font-family:'DotGothic16',monospace;font-size:12px;letter-spacing:3px;color:#9fdcff;text-shadow:0 2px 8px rgba(0,10,30,.9);">DEPTH -3994m · THE GAME TRENCH</p>
-    <h2 style="margin:0 0 10px;text-align:center;font-weight:900;font-size:clamp(26px,6vw,44px);color:#fff;text-shadow:0 3px 0 rgba(0,10,30,.6),0 8px 30px rgba(0,10,30,.8);">Relics of the Deep</h2>
-    <p style="margin:0 auto 8px;max-width:560px;text-align:center;font-size:clamp(14px,3.7vw,16px);font-weight:600;line-height:1.75;color:#cfeaff;text-shadow:0 2px 10px rgba(0,10,30,.9);">Ten handmade games rest on the sea floor. Click one to play it — right here in your browser, no downloads, no sign-up.</p>
-    <p style="margin:0 auto 34px;max-width:560px;text-align:center;font-size:clamp(12px,3.2vw,14px);font-weight:500;line-height:1.7;color:#9cc4e4;text-shadow:0 2px 10px rgba(0,10,30,.9);">Piano Typing teaches single-letter keys. The other typing games use Japanese words with Latin-letter prompts. Choose by controls and language in the <a href="play-guide.html" style="color:#90e8ee;">first-game guide</a>.</p>
-
-    <div style="margin:0 0 26px;padding:18px 20px;border:1px solid #72c6d5;border-radius:12px;background:rgba(4,16,38,.85);color:#dff0fa;line-height:1.8;">
-      <h3 style="margin:0 0 8px;color:#fff;">Start here</h3><p><a href="play-guide.html" style="color:#90e8ee;">Compare all ten games and try a typing warm-up →</a></p>
-      <p style="margin:0 0 8px;"><strong>Play in English:</strong> <a href="games/clicker.html" style="color:#7fe3ec;">Mythos Slayer</a> offers a clicker with an English language option. <a href="games/dig-planet.html" style="color:#7fe3ec;">Dig Planet</a> opens in English here and supports mouse or touch controls.</p>
-      <p style="margin:0;"><strong>Practice romaji on a PC:</strong> <a href="games/popcorn-typing.html" style="color:#7fe3ec;">Popcorn Typing</a> and <a href="games/soldier-typing.html" style="color:#7fe3ec;">Soldier Typing</a> have English menus and instructions. The words you type are Japanese, but each one is shown in Latin letters, so you can play without knowing any Japanese.</p>
-    </div>
-
-    <!-- featured relic -->
-    <a href="games/clicker.html" class="sea-object" style="max-width:460px;margin:0 auto 30px;--r:0deg;">
-      <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;">
-        <img src="images/thumbs/mythos-slayer-2026-09-10.webp" width="960" height="555" loading="lazy" decoding="async" alt="Mythos Slayer redesigned interface: Nocturne boss battle, soldiers and the Summon panel" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <span style="position:absolute;top:10px;left:10px;font-family:'DotGothic16',monospace;font-size:11px;letter-spacing:2px;background:rgba(255,215,102,.95);color:#14283f;border-radius:6px;padding:4px 10px;">★ FEATURED RELIC</span>
-      </div>
-      <div style="padding:12px 14px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-        <div style="min-width:0;flex:1 1 220px;">
-          <h3 style="margin:0 0 4px;font-weight:900;font-size:clamp(17px,4vw,21px);color:#fff;">Mythos Slayer</h3>
-          <p style="margin:0;font-size:clamp(12px,3.2vw,13px);font-weight:500;line-height:1.6;color:#b8d9f2;">40 bosses block your way. Upgrade weapons, recruit soldiers, and let your army grind on autopilot. Desktop &amp; mobile.</p>
-        </div>
-        <span class="chest" aria-hidden="true"><i class="closed"></i><i class="open"></i><span class="coin" style="left:22%;animation-delay:0s;"></span><span class="coin" style="left:46%;animation-delay:.3s;"></span><span class="coin" style="left:66%;animation-delay:.6s;"></span></span>
-        <span class="sea-cta" style="flex:none;display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;font-weight:800;font-size:14px;padding:9px 18px;border-radius:9px;transition:background .12s,color .12s;">▶ Play</span>
-      </div>
-    </a>
-
-    <!-- the other relics -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:16px;">
-      <a href="games/soldier-typing-2.html" class="sea-object" style="--r:1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/soldier-typing-2.webp" width="480" height="372" loading="lazy" decoding="async" alt="Soldier Typing 2" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Soldier Typing 2</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Type to summon soldiers who fight on their own. Six waves, a hidden boss, and a door that opens only after you win. Desktop only.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">&#9654; Play</span>
-        </div>
-      </a>
-      <a href="games/dig-planet.html" class="sea-object" style="--r:-1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/dig-planet.webp" width="480" height="384" loading="lazy" decoding="async" alt="Dig Planet" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Dig Planet</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Everyone digs the same planet at once. Over 26 million rock voxels, seven skills, and something buried at the core. English and Japanese controls.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">&#9654; Play</span>
-        </div>
-      </a>
-      <a href="games/creature-fishing.html" class="sea-object" style="--r:1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/creature-fishing.webp" width="480" height="261" loading="lazy" decoding="async" alt="Creature Fishing" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Creature Fishing</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">172 fish to catch, from real species to Cthulhu Mythos creatures. Online islands hold up to 12 players.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/creature-raising-kit.html" class="sea-object" style="--r:-1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/creature-raising-kit.webp" width="480" height="270" loading="lazy" decoding="async" alt="Creature Raising Kit" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Creature Raising Kit</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Feed a creature on an island in a box and trade anonymous letters in bottles with strangers.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/five-hundred-million-years.html" class="sea-object" style="--r:1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/five-hundred-million-years.webp" width="480" height="270" loading="lazy" decoding="async" alt="500 Million Years" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">500 Million Years</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Press the button, then watch a mind fill 500 million years of nothing. Japanese only.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/cthulhu-typing.html" class="sea-object" style="--r:-1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/thumbs/cthulhu-typing.webp" width="480" height="302" loading="lazy" decoding="async" alt="Cthulhu Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Cthulhu Typing</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Type words to summon soldiers against a daily Mythos boss. One successful clear per day. Desktop only.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/piano-typing.html" class="sea-object" style="--r:1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/thumbs/piano-typing.webp" width="480" height="262" loading="lazy" decoding="async" alt="Piano Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Piano Typing</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Press the highlighted keys and classic melodies play themselves. Part rhythm game, part typing practice.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/popcorn-typing.html" class="sea-object" style="--r:-1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/thumbs/popcorn-typing.webp" width="480" height="258" loading="lazy" decoding="async" alt="Popcorn Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Popcorn Typing</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Every keystroke pops like popcorn. Type hiragana words using romaji.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-      <a href="games/soldier-typing.html" class="sea-object" style="--r:1deg;">
-        <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/thumbs/soldier-typing.webp" width="480" height="337" loading="lazy" decoding="async" alt="Soldier Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div style="padding:11px 12px 12px;">
-          <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Soldier Typing</h3>
-          <p style="margin:0 0 7px;font-size:12px;font-weight:500;line-height:1.55;color:#b8d9f2;">Type to take down enemies in this military-themed typing game.</p>
-          <span class="sea-cta" style="display:inline-flex;align-items:center;gap:5px;background:#2a9aa3;color:#fff;font-weight:800;font-size:12px;padding:6px 14px;border-radius:8px;transition:background .12s,color .12s;">▶ Play</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SEA FLOOR : profile & contact ================= -->
-<div style="background:linear-gradient(to bottom,#020b18 0%,#02091a 100%);position:relative;">
-
-<section id="about" style="padding:clamp(44px,7vw,72px) 20px clamp(24px,4vw,36px);">
-  <p class="depth">DEPTH -8000m · THE SEA FLOOR</p>
-  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
-    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(21px,4.8vw,30px);color:#fff;">About This Site</h2>
-    <p style="margin:0 0 14px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#c7e2f5;font-weight:500;">Bubblegum Game is a collection of free browser games handmade by "Bubblegum", a solo indie developer in Japan.</p>
-    <p style="margin:0 0 16px;font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#c7e2f5;font-weight:500;">I'm a lifelong gamer who loves making games as much as playing them. These browser games include small JavaScript projects and larger Unity and 3D games; loading time depends on the game and your connection — if you like what you find, bookmark the site! I aim to update it about twice a month.</p>
-    <a href="about.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;text-decoration:none;font-weight:800;font-size:15px;">Meet the developer →</a>
-  </div>
-</section>
-
-<section id="privacy" style="padding:clamp(20px,3vw,30px) 20px;">
-  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
-    <h2 style="margin:0 0 6px;font-weight:900;font-size:clamp(19px,4.4vw,26px);color:#fff;">Privacy Policy</h2>
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fc9e8;">Last updated: September 9, 2026</p>
-    <p style="margin:0 0 14px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">This site uses Google advertising code and Google Analytics for traffic measurement. Google’s privacy messages provide applicable advertising choices, and Analytics waits for consent settings before loading. See the full policy for cookies, device identifiers, contact data and online game features.</p>
-    <p style="margin:0 0 16px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">The full privacy policy explains how cookies are used, how to opt out of personalized ads, how contact form data is handled, and our disclaimer and copyright notice.</p>
-    <a href="privacy.html" style="display:inline-flex;align-items:center;gap:6px;color:#7fe3ec;text-decoration:none;font-weight:800;font-size:15px;">Read the full Privacy Policy →</a>
-  </div>
-</section>
-
-<section id="contact" style="padding:clamp(20px,3vw,30px) 20px clamp(44px,7vw,72px);">
-  <div class="panel" style="max-width:680px;margin:0 auto;padding:clamp(20px,4vw,32px);">
-    <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(19px,4.4vw,26px);color:#fff;">Contact</h2>
-    <p style="margin:0 0 18px;font-size:14px;line-height:1.8;color:#c7e2f5;font-weight:500;">Bug reports, feedback, and business inquiries are all welcome. Common questions and typical response times are covered on the <a href="contact.html" style="color:#7fe3ec;font-weight:700;">contact page</a>.</p>
-
-    <p style="color:#c7e2f5;line-height:1.8;">Tell me which game you played, what happened and which device you used. English messages are welcome.</p><a class="btn-teal" href="contact.html" style="display:inline-block;padding:12px 24px;background:#17656d;color:#fff;border:2px solid #7fe3ec;border-radius:10px;font-weight:800;">Open the contact form →</a>
-  </div>
-</section>
-
-</div>
-
-<!-- ================= FOOTER : bottom of the trench ================= -->
-<footer style="background:#01060f;color:#cfe1ec;padding:clamp(32px,5vw,48px) 20px 26px;border-top:2px solid rgba(120,200,255,.15);">
-  <div style="max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;justify-content:flex-start;align-items:flex-start;">
+<section id="updates" class="block">
+  <div class="wrap two-col">
     <div>
-      <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#5f88a8;letter-spacing:1px;">MENU</p>
-      <div style="display:flex;flex-direction:column;gap:10px;font-weight:700;font-size:14px;">
-        <a href="#updates" style="color:#cfe1ec;text-decoration:none;">Updates</a>
-        <a href="updates.html" style="color:#cfe1ec;text-decoration:none;">All Updates</a>
-        <a href="#games" style="color:#cfe1ec;text-decoration:none;">Games</a>
-        <a href="blog/" style="color:#cfe1ec;text-decoration:none;">Blog</a>
-        <a href="about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="/ja/" lang="ja" hreflang="ja" style="color:#cfe1ec;text-decoration:none;">日本語版</a>
-        <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="color:#6f93b0;text-decoration:none;">Sister Blog (Japanese) ↗</a>
-      </div>
+      <h2>Battle log</h2>
+      <ol class="timeline">
+      <li><time datetime="2026-10-16">10.16</time><span>Added training mode and a practice mode for kanji and Japanese history</span></li>
+      <li><time datetime="2026-10-12">10.12</time><span>Fixed an attack effect on a final evolution</span></li>
+      <li><time datetime="2026-10-10">10.10</time><span>Added combo attacks</span></li>
+      <li><time datetime="2026-10-08">10.08</time><span>Battles now work with phone flick input</span></li>
+      <li><time datetime="2026-10-05">10.05</time><span>Added story mode</span></li>
+      </ol>
+      <p class="follow">News on <a href="https://x.com/monster_typing" rel="noopener">X (@monster_typing)</a> and <a href="https://www.tiktok.com/@monster_typing" rel="noopener">TikTok</a>.</p>
+    </div>
+    <div>
+      <h2>About</h2>
+      <p class="lead">Bubblegum makes free browser games solo. Bug reports and feedback are welcome on the <a href="/contact.html">contact page</a>.</p>
+      <a class="more" href="/about.html">About the developer →</a>
     </div>
   </div>
-  <div style="max-width:1040px;margin:28px auto 0;padding-top:17px;border-top:2px solid #12233a;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span style="font-size:13px;color:#5f88a8;">© 2026 Bubblegum Game</span>
-    <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#5f88a8;">bubblegumgameboy.com</span>
+</section>
+
+<section id="games" class="block" aria-labelledby="gm-title">
+  <div class="wrap">
+    <h2 id="gm-title">More games to play</h2>
+    <p class="lead">All free, all made by one developer, all playable in your browser.</p>
+    <div class="mini-grid">
+      <a class="mini" href="/games/clicker.html"><img src="/images/thumbs/mythos-slayer-2026-09-10.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Mythos Slayer</span></a>
+      <a class="mini" href="/games/soldier-typing-2.html"><img src="/images/thumbs/soldier-typing-2.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Soldier Typing 2</span></a>
+      <a class="mini" href="/games/dig-planet.html"><img src="/images/thumbs/dig-planet.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Dig Planet</span></a>
+      <a class="mini" href="/games/creature-fishing.html"><img src="/images/thumbs/creature-fishing.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Creature Fishing</span></a>
+      <a class="mini" href="/games/creature-raising-kit.html"><img src="/images/thumbs/creature-raising-kit.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Creature Raising Kit</span></a>
+      <a class="mini" href="/games/five-hundred-million-years.html"><img src="/images/thumbs/five-hundred-million-years.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>500 Million Years</span></a>
+      <a class="mini" href="/games/cthulhu-typing.html"><img src="/images/thumbs/cthulhu-typing.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Cthulhu Typing</span></a>
+      <a class="mini" href="/games/piano-typing.html"><img src="/images/thumbs/piano-typing.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Piano Typing</span></a>
+      <a class="mini" href="/games/popcorn-typing.html"><img src="/images/thumbs/popcorn-typing.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Popcorn Typing</span></a>
+      <a class="mini" href="/games/soldier-typing.html"><img src="/images/thumbs/soldier-typing.webp" alt="" loading="lazy" decoding="async" width="160" height="96"><span>Soldier Typing</span></a>
+    </div>
+    <p class="center"><a class="more" href="/play-guide.html">Help choosing a game →</a></p>
   </div>
-<div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
+</section>
+
+<aside class="ad-slot" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="page"></div></aside>
+
+<section class="block" aria-labelledby="news-title">
+  <div class="wrap two-col">
+    <div><h2 id="news-title">Site news</h2>
+      <ul class="news">
+        <li><time datetime="2026-10-17">Oct 17, 2026</time> The site now puts Monster Typing first.</li>
+        <li><time datetime="2026-09-02">Sep 2, 2026</time> Soldier Typing 2 is out.</li>
+      </ul>
+      <a class="more" href="/updates.html">All updates →</a></div>
+    <div><h2>About</h2><p>Bubblegum makes free browser games solo. Bug reports and feedback are welcome on the <a href="/contact.html">contact page</a>.</p><a class="more" href="/about.html">About the developer →</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <nav aria-label="Footer menu">
+      <a href="/games/monster-typing.html">Monster Typing</a>
+      <a href="#games">All games</a>
+      <a href="/updates.html">Updates</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/ja/" lang="ja" hreflang="ja">日本語</a>
+    </nav>
+    <p class="latin" style="margin:0;letter-spacing:.1em">© 2026 BUBBLEGUM GAME</p>
+    <button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button>
+  </div>
 </footer>
-
-</div>
-
-<script>
-
-
-// Scroll reveal: sections surface from the dark as you dive down.
-// The bobbing cards can't transition transform (their keyframe animation
-// owns it), so they fade only; panels slide up as well.
-(function(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) return;
-  var slide = document.querySelectorAll('.panel, .depth, #games > div > p, #games > div > h2, #contact h2');
-  var fade  = document.querySelectorAll('.sea-object');
-  slide.forEach(function(el){ el.classList.add('rv'); });
-  fade.forEach(function(el, i){
-    el.classList.add('rv-fade');
-    el.style.transitionDelay = (i % 5) * 110 + 'ms';
-  });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (!e.isIntersecting) return;
-      e.target.classList.add('rv-in');
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.rv, .rv-fade').forEach(function(el){ io.observe(el); });
-})();
-
-// Treasure chest pixel art: two frames (closed / open) rendered as
-// box-shadow grids from ASCII maps, same trick as the pixel heart.
-(function(){
-  var PX = 5;
-  var COLORS = { '#':'#0d1a2e', 'A':'#8a5a2b', 'a':'#a8763d', 'G':'#ffd766', 'y':'#fff3c4', 'd':'#1a0f06' };
-  var CLOSED = [
-    '..############..',
-    '.#aaaaaaaaaaaa#.',
-    '#aAAAAAAAAAAAAa#',
-    '#AAAAAAAAAAAAAA#',
-    '################',
-    '#GGGGGGGGGGGGGG#',
-    '#AAAAAAGGAAAAAA#',
-    '#AAAAAAGGAAAAAA#',
-    '#AAAAAAAAAAAAAA#',
-    '################'
-  ];
-  var OPEN = [
-    '..############..',
-    '.#aaaaaaaaaaaa#.',
-    '#aAAAAAAAAAAAAa#',
-    '................',
-    '.#yyyyyyyyyyyy#.',
-    '#GGGGGGGGGGGGGG#',
-    '#AAAAAAGGAAAAAA#',
-    '#AAAAAAGGAAAAAA#',
-    '#AAAAAAAAAAAAAA#',
-    '################'
-  ];
-  function shadows(map){
-    var s = [];
-    map.forEach(function(row, y){
-      row.split('').forEach(function(ch, x){
-        if (COLORS[ch]) s.push((x*PX)+'px '+(y*PX)+'px 0 0 '+COLORS[ch]);
-      });
-    });
-    return s.join(',');
-  }
-  var st = document.createElement('style');
-  st.textContent = '.chest i.closed{box-shadow:'+shadows(CLOSED)+';}.chest i.open{box-shadow:'+shadows(OPEN)+';}';
-  document.head.appendChild(st);
-})();
-
-
-</script>
-
+<aside class="ad-anchor" aria-label="Advertisement"><button type="button" class="ad-anchor-close" aria-label="Close ad">×</button><div data-imobile="anchor"></div></aside>
 </body>
 </html>

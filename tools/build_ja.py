@@ -20,8 +20,12 @@ AUTHOR_BOX = (f'<aside class="author-box" aria-label="作った人"><p class="au
 
 # Filled by /imobile-ads.js; sits below the article, outside the play area.
 AD_SLOT = '<aside class="ad-slot" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="page"></div></aside>'
-# Beside the game on PC, under it on phones; stays visible in full screen.
-RAIL = '<aside class="ad-rail" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="rail"></div></aside>'
+# Ads around the game, like a blog: a banner above it, rectangles below it
+# (two on PC, one on phones) and, on phones, an anchor that hides itself while
+# the game is on screen. imobile-ads.js fills them.
+AD_TOP = '<aside class="ad-top" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="top"></div></aside>'
+AD_BELOW = '<aside class="ad-below" aria-label="広告"><p class="ad-label">広告</p><div class="ad-row"><div data-imobile="belowA"></div><div data-imobile="belowB"></div></div></aside>'
+ANCHOR = '<aside class="ad-anchor" aria-label="広告"><button type="button" class="ad-anchor-close" aria-label="広告を閉じる">×</button><div data-imobile="anchor"></div></aside>'
 
 
 def ld(data):
@@ -42,7 +46,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
                  f'<link rel="alternate" hreflang="en" href="{BASE}/{english}">\n'
                  f'<link rel="alternate" hreflang="x-default" href="{BASE}/{english}">') if english else ""
     switch = f'<a class="lang" href="/{english}" lang="en" hreflang="en">English</a>' if english else '<a class="lang" href="/" lang="en">English</a>'
-    scripts = '<script src="/game-page.js" defer></script><script src="/imobile-ads.js" defer></script>' if game else ""
+    scripts = '<script src="/game-page.js?v=20261017" defer></script><script src="/imobile-ads.js?v=20261017" defer></script>' if game else ""
     game_css = '<link rel="stylesheet" href="/game-page.css">' if game else ""
     full_title = full_title or f"{title}｜Bubblegum Game"
     html = f'''<!doctype html>
@@ -64,8 +68,8 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/ja/ja.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css?v=20261017">
   {game_css}
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
@@ -73,12 +77,13 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
 </head>
 <body>
   <a class="skip" href="#main">本文へ</a>
-  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/ja/#games">ゲーム一覧</a><a href="/ja/updates.html">更新履歴</a><a href="https://babblegum.hatenablog.com/">ブログ</a>{switch}</div></div></nav>
+  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/ja/games/monster-typing.html">モンスタータイピング</a><a href="/ja/#games">ほかのゲーム</a><a href="https://babblegum.hatenablog.com/">ブログ</a>{switch}</div></div></nav>
   <main id="main" class="game-main">
     <p class="crumb"><a href="/ja/">ホーム</a> / {escape(title)}</p>
     {body}
   </main>
-  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/ja/">ホーム</a> · <a href="/ja/about.html">運営者</a> · <a href="/ja/privacy.html">プライバシーポリシー</a> · <a href="/ja/contact.html">お問い合わせ</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices style="border:0;background:none;color:#c5e9f4;text-decoration:underline;font:inherit;cursor:pointer;padding:0">広告とCookieの設定</button></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/ja/">ホーム</a> · <a href="/ja/about.html">運営者</a> · <a href="/ja/privacy.html">プライバシーポリシー</a> · <a href="/ja/contact.html">お問い合わせ</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">広告とCookieの設定</button></div></footer>
+  {ANCHOR if game else ""}
 </body>
 </html>
 '''
@@ -109,11 +114,12 @@ for slug, (name, desc, image, how, more, controls, blog) in GAMES.items():
     ime_note = '<p class="note">日本語入力（IME）はオフにして、画面に表示されるローマ字を入力してください。</p>' if slug in ("soldier-typing-2", "cthulhu-typing", "popcorn-typing", "soldier-typing") else ""
     article = f'''<h1>{name}</h1>
     <p class="game-subtitle">{escape(desc)}</p>
-    <div class="play-area"><div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
-      <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="{image}" alt="{name}のゲーム画面" width="320" height="180"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>{name}を遊ぶ</button><noscript><p><a href="{safe_url}">ゲームを直接開く</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{safe_url}" title="{name}のゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
-    </div>{RAIL}</div>
-    <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
+    {AD_TOP}
+    <div class="game-shell">
+      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="{image}" alt="{name}のゲーム画面" width="320" height="180"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>{name}を遊ぶ</button><noscript><p><a href="{safe_url}">ゲームを直接開く</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{safe_url}" title="{name}のゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
+    </div>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{safe_url}" target="_blank" rel="noopener">別タブで遊ぶ ↗</a></div>
+    {AD_BELOW}
     <article class="article"><h2>どんなゲーム？</h2><p>{escape(desc)}</p><h2>遊び方</h2><p>{escape(how)}</p><h2>遊ぶときのヒント</h2><p>{escape(more)}</p><h2>操作</h2><p>{escape(controls)}</p>{ime_note}{blog_line}<h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。登録やインストールは不要です。</p><h3>ゲームが表示されないときは？</h3><p>上の「別タブで遊ぶ」からゲームを開いてください。</p></article>
     {AD_SLOT}
     {AUTHOR_BOX}'''
@@ -128,11 +134,12 @@ MONSTER_BLOG = BLOG + "entry/2026/10/01/143320"
 MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。"
 monster = f'''<h1>モンスタータイピング</h1>
     <p class="game-subtitle">Monster Typing — {escape(MONSTER_DESC)}</p>
-    <div class="play-area"><div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
-      <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
-    </div>{RAIL}</div>
-    <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
+    {AD_TOP}
+    <div class="game-shell">
+      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
+    </div>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{MONSTER_BLOG}">はてなブログの紹介記事 →</a></div>
+    {AD_BELOW}
     <article class="article"><h2>どんなゲーム？</h2><p>ひらがなをローマ字で打つと、モンスターが攻撃するタイピングゲームです。ほかのプレイヤーとオンラインで対戦できます。対戦相手がいないあいだはCPUと練習でき、人が来ると乱入してきます。</p>
     <h2>遊び方</h2><ul><li>画面のひらがなをローマ字で打つと攻撃します。</li><li>ゲージが満タンになったらSpaceキーで必殺技を出せます。</li><li>魔晶を使って仲間のモンスターを召喚し、育てられます。</li><li>ストーリーモードとトレーニングモードもあります。</li></ul>
     <h2>操作</h2><p>PCではキーボードでローマ字を入力します。スマホではフリック入力で対戦できます。</p>
@@ -143,7 +150,7 @@ monster = f'''<h1>モンスタータイピング</h1>
     <h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。ブラウザで無料で遊べます。</p><h3>スマホでも遊べますか？</h3><p>はい。フリック入力に対応しています。</p><h3>ゲームが表示されないときは？</h3><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事</a>からも遊べます。</p></article>
     {AD_SLOT}
     {AUTHOR_BOX}'''
-page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", None, "/images/monster-typing.png", game=True,
+page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", "games/monster-typing.html", "/images/monster-typing.png", game=True,
      full_title="モンスタータイピング｜無料で遊べるオンライン対戦タイピングゲーム",
      head_extra=video_game("モンスタータイピング", "games/monster-typing.html", MONSTER_DESC, "/images/monster-typing.png",
                            {"alternateName": "Monster Typing", "playMode": ["SinglePlayer", "MultiPlayer"],
