@@ -1,14 +1,36 @@
 """Build the Japanese companion pages for the English game site."""
 from html import escape
 from pathlib import Path
+import json
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
 JA = ROOT / "ja"
 BASE = "https://bubblegumgameboy.com"
+BLOG = "https://babblegum.hatenablog.com/"
+
+# The same person runs this site and the Hatena blog; say so to readers and to search engines.
+PERSON = {"@type": "Person", "name": "バブルガム", "alternateName": "Bubblegum",
+          "url": BASE + "/ja/about.html", "sameAs": [BLOG]}
+AUTHOR_BOX = (f'<aside class="author-box" aria-label="作った人"><p class="author-name">作った人：バブルガム</p>'
+              f'<p>個人でブラウザゲームを作っています。攻略記事やゲームレビューは'
+              f'<a href="{BLOG}">はてなブログ「バブルガムのゲームブログ」</a>で書いています。</p>'
+              f'<p><a href="/ja/about.html">運営者について</a> · <a href="/ja/#games">ほかのゲームを見る</a></p></aside>')
 
 
-def page(title, description, body, path, english=None, image="/images/mythos-slayer-2026-09-10.png", game=False):
+def ld(data):
+    return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", **data}, ensure_ascii=False) + '</script>'
+
+
+def video_game(name, path, desc, image, extra=None):
+    data = {"@type": "VideoGame", "name": name, "url": BASE + "/ja/" + path, "image": BASE + image,
+            "description": desc, "applicationCategory": "Game", "operatingSystem": "Web browser",
+            "inLanguage": "ja", "author": PERSON, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}
+    data.update(extra or {})
+    return ld(data)
+
+
+def page(title, description, body, path, english=None, image="/images/mythos-slayer-2026-09-10.png", game=False, head_extra="", full_title=None):
     canonical = BASE + "/ja/" + path
     alternate = (f'<link rel="alternate" hreflang="ja" href="{canonical}">\n'
                  f'<link rel="alternate" hreflang="en" href="{BASE}/{english}">\n'
@@ -16,19 +38,20 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
     switch = f'<a class="lang" href="/{english}" lang="en" hreflang="en">English</a>' if english else '<a class="lang" href="/" lang="en">English</a>'
     scripts = '<script src="/game-page.js" defer></script>' if game else ""
     game_css = '<link rel="stylesheet" href="/game-page.css">' if game else ""
+    full_title = full_title or f"{title}｜Bubblegum Game"
     html = f'''<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="google-adsense-account" content="ca-pub-2203567155161909">
-  <title>{escape(title)}｜Bubblegum Game</title>
+  <title>{escape(full_title)}</title>
   <meta name="description" content="{escape(description, quote=True)}">
   <link rel="canonical" href="{canonical}">
   {alternate}
   <meta property="og:type" content="website">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:title" content="{escape(title, quote=True)}｜Bubblegum Game">
+  <meta property="og:title" content="{escape(full_title, quote=True)}">
   <meta property="og:description" content="{escape(description, quote=True)}">
   <meta property="og:image" content="{BASE}{image}">
   <meta property="og:locale" content="ja_JP">
@@ -40,7 +63,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
   {game_css}
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
-  {scripts}
+  {scripts}{head_extra}
 </head>
 <body>
   <a class="skip" href="#main">本文へ</a>
@@ -85,32 +108,62 @@ for slug, (name, desc, image, how, more, controls, blog) in GAMES.items():
     </div>
     <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{safe_url}" target="_blank" rel="noopener">別タブで遊ぶ ↗</a></div>
-    <article class="article"><h2>どんなゲーム？</h2><p>{escape(desc)}</p><h2>遊び方</h2><p>{escape(how)}</p><h2>遊ぶときのヒント</h2><p>{escape(more)}</p><h2>操作</h2><p>{escape(controls)}</p>{ime_note}{blog_line}<h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。登録やインストールは不要です。</p><h3>ゲームが表示されないときは？</h3><p>上の「別タブで遊ぶ」からゲームを開いてください。</p></article>'''
-    page(name, desc, article, f"games/{slug}.html", f"games/{slug}.html", image, game=True)
+    <article class="article"><h2>どんなゲーム？</h2><p>{escape(desc)}</p><h2>遊び方</h2><p>{escape(how)}</p><h2>遊ぶときのヒント</h2><p>{escape(more)}</p><h2>操作</h2><p>{escape(controls)}</p>{ime_note}{blog_line}<h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。登録やインストールは不要です。</p><h3>ゲームが表示されないときは？</h3><p>上の「別タブで遊ぶ」からゲームを開いてください。</p></article>
+    {AUTHOR_BOX}'''
+    page(name, desc, article, f"games/{slug}.html", f"games/{slug}.html", image, game=True,
+         head_extra=video_game(name, f"games/{slug}.html", desc, image))
 
 
-def info_page(path, title, desc, content, english):
-    page(title, desc, f'<h1>{escape(title)}</h1><article class="article">{content}</article>', path, english)
+# Monster Typing has no English page and lives on Cloudflare Workers. Opened as a page,
+# the game sends players to the Hatena article, so the fallback link points there too.
+MONSTER_URL = "https://rune-typers.bubblegum-island.workers.dev/"
+MONSTER_BLOG = BLOG + "entry/2026/10/01/143320"
+MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。"
+monster = f'''<h1>モンスタータイピング</h1>
+    <p class="game-subtitle">Monster Typing — {escape(MONSTER_DESC)}</p>
+    <div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
+      <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="/images/monster-typing.png" alt="モンスタータイピングのタイトル" width="320" height="180"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
+    </div>
+    <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
+    <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{MONSTER_BLOG}">はてなブログの紹介記事 →</a></div>
+    <article class="article"><h2>どんなゲーム？</h2><p>ひらがなをローマ字で打つと、モンスターが攻撃するタイピングゲームです。ほかのプレイヤーとオンラインで対戦できます。対戦相手がいないあいだはCPUと練習でき、人が来ると乱入してきます。</p>
+    <h2>遊び方</h2><ul><li>画面のひらがなをローマ字で打つと攻撃します。</li><li>ゲージが満タンになったらSpaceキーで必殺技を出せます。</li><li>魔晶を使って仲間のモンスターを召喚し、育てられます。</li><li>ストーリーモードとトレーニングモードもあります。</li></ul>
+    <h2>操作</h2><p>PCではキーボードでローマ字を入力します。スマホではフリック入力で対戦できます。</p>
+    <p class="note">PCで遊ぶときは、日本語入力（IME）をオフにしてください。</p>
+    <h2>アップデート履歴</h2><ul><li>10月16日：トレーニングモードと、魚の漢字や日本史を打ちながら覚える練習モードを追加。</li><li>10月12日：深淵の星核の最終進化の攻撃演出を修正。</li><li>10月10日：コンボ攻撃を追加。攻撃回数に応じてモーションが変わります。</li><li>10月8日：フリック入力での対戦に対応。</li><li>10月5日：ストーリーモードを追加。</li><li>それ以前：ガチャ、鍛冶屋、色違いモンスター、オンライン対戦を追加。名前をルーンタイピングからモンスタータイピングに変更。</li></ul>
+    <h2>攻略・制作の話</h2><ul><li><a href="{MONSTER_BLOG}">モンスタータイピングの紹介とアップデート情報</a></li><li><a href="{BLOG}entry/2026/10/05/142948">制作記：タイピングゲームでオンライン対戦を作りたかった理由</a></li><li><a href="{BLOG}entry/2026/10/08/154310">フリック入力で遊べるようになった話</a></li><li><a href="{BLOG}entry/2026/10/16/093455">漢字や日本史を学べる練習モードを追加した話</a></li></ul>
+    <h2>公式アカウント</h2><p>最新情報は<a href="https://x.com/monster_typing" rel="noopener">X（@monster_typing）</a>と<a href="https://www.tiktok.com/@monster_typing" rel="noopener">TikTok</a>で発信しています。</p>
+    <h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。ブラウザで無料で遊べます。</p><h3>スマホでも遊べますか？</h3><p>はい。フリック入力に対応しています。</p><h3>ゲームが表示されないときは？</h3><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事</a>からも遊べます。</p></article>
+    {AUTHOR_BOX}'''
+page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", None, "/images/monster-typing.png", game=True,
+     full_title="モンスタータイピング｜無料で遊べるオンライン対戦タイピングゲーム",
+     head_extra=video_game("モンスタータイピング", "games/monster-typing.html", MONSTER_DESC, "/images/monster-typing.png",
+                           {"alternateName": "Monster Typing", "playMode": ["SinglePlayer", "MultiPlayer"],
+                            "sameAs": ["https://x.com/monster_typing", "https://www.tiktok.com/@monster_typing"]}))
+
+
+def info_page(path, title, desc, content, english, head_extra=""):
+    page(title, desc, f'<h1>{escape(title)}</h1><article class="article">{content}</article>', path, english, head_extra=head_extra)
 
 
 info_page("play-guide.html", "はじめての方へ", "操作方法と対応端末を目安に、最初のゲームを選べます。", '''
-<p>このサイトには10本の無料ブラウザゲームがあります。どれも登録やインストールは不要です。</p>
+<p>このサイトには11本の無料ブラウザゲームがあります。どれも登録やインストールは不要です。</p>
 <h2>スマホで遊ぶなら</h2><p><a href="/ja/games/clicker.html">Mythos Slayer</a>は、タップで戦いながら兵士や装備を強くするゲームです。<a href="/ja/games/dig-planet.html">Dig Planet</a>は、ほかの人と同じ惑星を掘るゲームです。</p>
-<h2>キーボードで遊ぶなら</h2><p>ローマ字入力に慣れたいなら<a href="/ja/games/popcorn-typing.html">Popcorn Typing</a>。タイピングしながら戦いたいなら<a href="/ja/games/soldier-typing.html">Soldier Typing</a>か<a href="/ja/games/soldier-typing-2.html">Soldier Typing 2</a>をどうぞ。<a href="/ja/games/piano-typing.html">Piano Typing</a>は光ったキーを一つずつ押す方式です。</p>
+<h2>キーボードで遊ぶなら</h2><p>ローマ字入力に慣れたいなら<a href="/ja/games/popcorn-typing.html">Popcorn Typing</a>。タイピングしながら戦いたいなら<a href="/ja/games/soldier-typing.html">Soldier Typing</a>か<a href="/ja/games/soldier-typing-2.html">Soldier Typing 2</a>をどうぞ。<a href="/ja/games/piano-typing.html">Piano Typing</a>は光ったキーを一つずつ押す方式です。ほかの人と対戦したいなら<a href="/ja/games/monster-typing.html">モンスタータイピング</a>。スマホのフリック入力でも遊べます。</p>
 <h2>集めたり、眺めたりするなら</h2><p><a href="/ja/games/creature-fishing.html">Creature Fishing</a>では魚の図鑑を埋められます。<a href="/ja/games/creature-raising-kit.html">Creature Raising Kit</a>では島で生きものを育てます。<a href="/ja/games/five-hundred-million-years.html">500 Million Years</a>は物語をたどるゲームです。</p>
-<p><a href="/ja/#games">10本のゲーム一覧を見る →</a></p>
+<p><a href="/ja/#games">11本のゲーム一覧を見る →</a></p>
 ''', "play-guide.html")
 
 info_page("updates.html", "更新履歴", "Bubblegum Gameの新作と主な更新をまとめています。", '''
-<ul><li>2026年10月13日：「はじめての方へ」の日本語版を公開しました。</li><li>2026年9月2日：Soldier Typing 2を公開しました。</li><li>2026年8月20日：Dig Planetを公開しました。</li><li>2026年8月11日：Creature Fishing、Creature Raising Kit、500 Million Yearsを追加しました。</li><li>2026年7月4日：Cthulhu Typingを公開しました。</li><li>2026年6月26日：Piano Typingを公開しました。</li><li>2026年6月21日：Mythos Slayerを公開しました。</li><li>2026年6月1日：サイトのデザインを更新しました。</li></ul>
+<ul><li>2026年10月17日：モンスタータイピングの公式ページを公開しました。</li><li>2026年10月13日：「はじめての方へ」の日本語版を公開しました。</li><li>2026年9月2日：Soldier Typing 2を公開しました。</li><li>2026年8月20日：Dig Planetを公開しました。</li><li>2026年8月11日：Creature Fishing、Creature Raising Kit、500 Million Yearsを追加しました。</li><li>2026年7月4日：Cthulhu Typingを公開しました。</li><li>2026年6月26日：Piano Typingを公開しました。</li><li>2026年6月21日：Mythos Slayerを公開しました。</li><li>2026年6月1日：サイトのデザインを更新しました。</li></ul>
 <p>制作の詳しい話は<a href="https://babblegum.hatenablog.com/">はてなブログ</a>に書いています。</p>
 ''', "updates.html")
 
 info_page("about.html", "運営者について", "Bubblegum Gameを作っている個人制作者の紹介です。", '''
-<p>こんにちは、Bubblegumです。ゲームで遊ぶのも作るのも好きで、このサイトでは自作のブラウザゲームを公開しています。</p>
+<p>こんにちは、バブルガム（Bubblegum）です。ゲームで遊ぶのも作るのも好きで、このサイトでは自作のブラウザゲームを公開しています。</p>
 <p>タイピングゲーム、クリッカー、オンラインで同じ世界を共有するゲームなど、思いついたものを少しずつ作っています。JavaScriptで作った作品も、Unityを使った作品もあります。</p>
-<p>ゲームの制作過程や更新の話は、<a href="https://babblegum.hatenablog.com/">はてなブログ</a>に書いています。遊んだ感想や不具合は<a href="/ja/contact.html">お問い合わせページ</a>から送れます。</p>
-''', "about.html")
+<p>ゲームの制作過程や更新の話、ほかのゲームの攻略やレビューは、同じ運営者のはてなブログ<a href="https://babblegum.hatenablog.com/">「バブルガムのゲームブログ」</a>に書いています。遊んだ感想や不具合は<a href="/ja/contact.html">お問い合わせページ</a>から送れます。</p>
+''', "about.html", ld({"@type": "ProfilePage", "mainEntity": PERSON, "inLanguage": "ja"}))
 
 FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfaDrcmZZaiC0JEf8ExZ_e1D4ZiTB4FIuP_uEOmXC7nQvuQdw/viewform"
 info_page("contact.html", "お問い合わせ", "ゲームの不具合や感想、仕事の相談はこちらから送れます。", f'''

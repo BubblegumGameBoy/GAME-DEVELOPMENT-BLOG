@@ -62,3 +62,6 @@ h1{font-size:clamp(32px,7vw,56px);line-height:1.25;margin:12px 0 16px;color:#fff
 .game-stage #game-frame.fs-on{position:fixed!important;inset:48px 0 0!important;width:100vw!important;height:calc(100dvh - 48px)!important;z-index:99999!important;border-radius:0!important}
 body.fs-lock{overflow:hidden}
 @media(max-width:600px){.nav-inner{justify-content:center}.hero{min-height:340px;padding:56px 16px}.article th{width:36%}}
+.author-box{max-width:760px;margin:20px auto 0;background:#0a2a4a;border:2px solid #31b3bc;border-radius:16px;padding:16px clamp(18px,4vw,28px)}
+.author-box p{margin:6px 0;color:#d0e5f4}
+.author-box .author-name{font-weight:800;color:#fff}
