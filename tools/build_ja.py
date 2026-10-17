@@ -19,7 +19,9 @@ AUTHOR_BOX = (f'<aside class="author-box" aria-label="作った人"><p class="au
 
 
 # Filled by /imobile-ads.js; sits below the article, outside the play area.
-AD_SLOT = '<aside class="ad-slot" aria-label="広告"><p class="ad-label">広告</p><div class="imobile-slot"></div></aside>'
+AD_SLOT = '<aside class="ad-slot" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="page"></div></aside>'
+# Beside the game on PC, under it on phones; stays visible in full screen.
+RAIL = '<aside class="ad-rail" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="rail"></div></aside>'
 
 
 def ld(data):
@@ -107,9 +109,9 @@ for slug, (name, desc, image, how, more, controls, blog) in GAMES.items():
     ime_note = '<p class="note">日本語入力（IME）はオフにして、画面に表示されるローマ字を入力してください。</p>' if slug in ("soldier-typing-2", "cthulhu-typing", "popcorn-typing", "soldier-typing") else ""
     article = f'''<h1>{name}</h1>
     <p class="game-subtitle">{escape(desc)}</p>
-    <div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
+    <div class="play-area"><div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
       <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="{image}" alt="{name}のゲーム画面" width="320" height="180"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>{name}を遊ぶ</button><noscript><p><a href="{safe_url}">ゲームを直接開く</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{safe_url}" title="{name}のゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
-    </div>
+    </div>{RAIL}</div>
     <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{safe_url}" target="_blank" rel="noopener">別タブで遊ぶ ↗</a></div>
     <article class="article"><h2>どんなゲーム？</h2><p>{escape(desc)}</p><h2>遊び方</h2><p>{escape(how)}</p><h2>遊ぶときのヒント</h2><p>{escape(more)}</p><h2>操作</h2><p>{escape(controls)}</p>{ime_note}{blog_line}<h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。登録やインストールは不要です。</p><h3>ゲームが表示されないときは？</h3><p>上の「別タブで遊ぶ」からゲームを開いてください。</p></article>
@@ -126,9 +128,9 @@ MONSTER_BLOG = BLOG + "entry/2026/10/01/143320"
 MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。"
 monster = f'''<h1>モンスタータイピング</h1>
     <p class="game-subtitle">Monster Typing — {escape(MONSTER_DESC)}</p>
-    <div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
-      <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="/images/monster-typing.png" alt="モンスタータイピングのタイトル" width="320" height="180"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
-    </div>
+    <div class="play-area"><div class="game-shell"><div class="game-actions"><button type="button" id="fs-btn">⛶ 全画面で遊ぶ</button></div>
+      <div class="game-stage" data-play-height="clamp(560px,84vh,960px)"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="{MONSTER_URL}" title="モンスタータイピングのゲーム画面" loading="lazy" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
+    </div>{RAIL}</div>
     <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{MONSTER_BLOG}">はてなブログの紹介記事 →</a></div>
     <article class="article"><h2>どんなゲーム？</h2><p>ひらがなをローマ字で打つと、モンスターが攻撃するタイピングゲームです。ほかのプレイヤーとオンラインで対戦できます。対戦相手がいないあいだはCPUと練習でき、人が来ると乱入してきます。</p>
