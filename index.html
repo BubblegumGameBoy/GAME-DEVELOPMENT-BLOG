@@ -50,7 +50,7 @@
 
   /* ---------- video sections ---------- */
   .vid-wrap { position:relative; overflow:hidden; }
-  .vid-wrap video {
+  .vid-wrap video, .game-water-view img {
     position:absolute; inset:0; width:100%; height:100%;
     object-fit:cover; object-position:center;
     image-rendering:pixelated;
@@ -344,14 +344,14 @@
 
 <!-- ================= DEEP SEA : the games sleep here ================= -->
 <section id="games" class="vid-wrap" style="padding:clamp(56px,9vw,110px) 20px;background:#031233;">
-  <!-- the video sticks to the viewport instead of being stretched across the
+  <!-- the background still sticks to the viewport instead of being stretched across the
        whole (very tall) section — no more zoom blur, and it doubles as parallax -->
   <div class="game-water" aria-hidden="true">
     <div class="game-water-view">
-      <video muted loop playsinline preload="none" poster="videos/deep-sea-poster.jpg" data-land-webm="videos/deep-land.webm" data-land-mp4="videos/deep-land.mp4" data-land-poster="videos/deep-land-poster.jpg">
-        <source data-src="videos/deep-sea.webm" type="video/webm">
-        <source data-src="videos/deep-sea.mp4" type="video/mp4">
-      </video>
+      <picture>
+        <source media="(orientation: landscape) and (min-width: 700px)" srcset="videos/deep-land-poster.jpg">
+        <img src="videos/deep-sea-poster.jpg" alt="" loading="lazy" decoding="async">
+      </picture>
     </div>
   </div>
   <!-- blend the descent gradient into the video top & bottom -->
@@ -375,7 +375,7 @@
     <!-- featured relic -->
     <a href="games/clicker.html" class="sea-object" style="max-width:460px;margin:0 auto 30px;--r:0deg;">
       <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;">
-        <img src="images/mythos-slayer-2026-09-10.png" alt="Mythos Slayer redesigned interface: Nocturne boss battle, soldiers and the Summon panel" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <img src="images/thumbs/mythos-slayer-2026-09-10.webp" width="960" height="555" loading="lazy" decoding="async" alt="Mythos Slayer redesigned interface: Nocturne boss battle, soldiers and the Summon panel" style="width:100%;height:100%;object-fit:cover;display:block;">
         <span style="position:absolute;top:10px;left:10px;font-family:'DotGothic16',monospace;font-size:11px;letter-spacing:2px;background:rgba(255,215,102,.95);color:#14283f;border-radius:6px;padding:4px 10px;">★ FEATURED RELIC</span>
       </div>
       <div style="padding:12px 14px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
@@ -392,7 +392,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:16px;">
       <a href="games/soldier-typing-2.html" class="sea-object" style="--r:1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/soldier-typing-2.png" alt="Soldier Typing 2" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
+          <img src="images/thumbs/soldier-typing-2.webp" width="480" height="372" loading="lazy" decoding="async" alt="Soldier Typing 2" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -403,7 +403,7 @@
       </a>
       <a href="games/dig-planet.html" class="sea-object" style="--r:-1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/dig-planet.png" alt="Dig Planet" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
+          <img src="images/thumbs/dig-planet.webp" width="480" height="384" loading="lazy" decoding="async" alt="Dig Planet" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -414,7 +414,7 @@
       </a>
       <a href="games/creature-fishing.html" class="sea-object" style="--r:1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/creature-fishing.png" alt="Creature Fishing" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
+          <img src="images/thumbs/creature-fishing.webp" width="480" height="261" loading="lazy" decoding="async" alt="Creature Fishing" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -425,7 +425,7 @@
       </a>
       <a href="games/creature-raising-kit.html" class="sea-object" style="--r:-1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/creature-raising-kit.png" alt="Creature Raising Kit" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
+          <img src="images/thumbs/creature-raising-kit.webp" width="480" height="270" loading="lazy" decoding="async" alt="Creature Raising Kit" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -436,7 +436,7 @@
       </a>
       <a href="games/five-hundred-million-years.html" class="sea-object" style="--r:1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/five-hundred-million-years.png" alt="500 Million Years" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
+          <img src="images/thumbs/five-hundred-million-years.webp" width="480" height="270" loading="lazy" decoding="async" alt="500 Million Years" style="width:100%;height:100%;object-fit:cover;display:block;background:#0b1320;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -447,7 +447,7 @@
       </a>
       <a href="games/cthulhu-typing.html" class="sea-object" style="--r:-1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;">
-          <img src="images/cthulhu-typing.png" alt="Cthulhu Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/thumbs/cthulhu-typing.webp" width="480" height="302" loading="lazy" decoding="async" alt="Cthulhu Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span style="position:absolute;top:8px;left:8px;font-family:'DotGothic16',monospace;font-size:10px;background:rgba(255,215,102,.95);color:#14283f;border-radius:5px;padding:3px 8px;">NEW</span>
         </div>
         <div style="padding:11px 12px 12px;">
@@ -458,7 +458,7 @@
       </a>
       <a href="games/piano-typing.html" class="sea-object" style="--r:1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/piano-typing.png" alt="Piano Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/thumbs/piano-typing.webp" width="480" height="262" loading="lazy" decoding="async" alt="Piano Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div style="padding:11px 12px 12px;">
           <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Piano Typing</h3>
@@ -468,7 +468,7 @@
       </a>
       <a href="games/popcorn-typing.html" class="sea-object" style="--r:-1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/popcorn-typing.png" alt="Popcorn Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/thumbs/popcorn-typing.webp" width="480" height="258" loading="lazy" decoding="async" alt="Popcorn Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div style="padding:11px 12px 12px;">
           <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Popcorn Typing</h3>
@@ -478,7 +478,7 @@
       </a>
       <a href="games/soldier-typing.html" class="sea-object" style="--r:1deg;">
         <div style="width:100%;aspect-ratio:4/3;overflow:hidden;">
-          <img src="images/soldier-typing.png" alt="Soldier Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/thumbs/soldier-typing.webp" width="480" height="337" loading="lazy" decoding="async" alt="Soldier Typing" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div style="padding:11px 12px 12px;">
           <h3 style="margin:0 0 3px;font-weight:800;font-size:16px;color:#fff;">Soldier Typing</h3>
