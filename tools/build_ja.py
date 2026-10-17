@@ -129,7 +129,7 @@ for slug, (name, desc, image, how, more, controls, blog) in GAMES.items():
 
 # Monster Typing has no English page and lives on Cloudflare Workers. Opened as a page,
 # the game sends players to the Hatena article, so the fallback link points there too.
-MONSTER_URL = "https://rune-typers.bubblegum-island.workers.dev/"
+MONSTER_URL = "https://monster.bubblegumgameboy.com/"
 MONSTER_BLOG = BLOG + "entry/2026/10/01/143320"
 MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。"
 monster = f'''<h1>モンスタータイピング</h1>
