@@ -18,6 +18,10 @@ AUTHOR_BOX = (f'<aside class="author-box" aria-label="作った人"><p class="au
               f'<p><a href="/ja/about.html">運営者について</a> · <a href="/ja/#games">ほかのゲームを見る</a></p></aside>')
 
 
+# Filled by /imobile-ads.js; sits below the article, outside the play area.
+AD_SLOT = '<aside class="ad-slot" aria-label="広告"><p class="ad-label">広告</p><div class="imobile-slot"></div></aside>'
+
+
 def ld(data):
     return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", **data}, ensure_ascii=False) + '</script>'
 
@@ -36,7 +40,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
                  f'<link rel="alternate" hreflang="en" href="{BASE}/{english}">\n'
                  f'<link rel="alternate" hreflang="x-default" href="{BASE}/{english}">') if english else ""
     switch = f'<a class="lang" href="/{english}" lang="en" hreflang="en">English</a>' if english else '<a class="lang" href="/" lang="en">English</a>'
-    scripts = '<script src="/game-page.js" defer></script>' if game else ""
+    scripts = '<script src="/game-page.js" defer></script><script src="/imobile-ads.js" defer></script>' if game else ""
     game_css = '<link rel="stylesheet" href="/game-page.css">' if game else ""
     full_title = full_title or f"{title}｜Bubblegum Game"
     html = f'''<!doctype html>
@@ -109,6 +113,7 @@ for slug, (name, desc, image, how, more, controls, blog) in GAMES.items():
     <button id="game-close" class="game-close" type="button" hidden>全画面を閉じる ×</button>
     <div class="game-links"><p id="game-status" role="status">「遊ぶ」を押すとゲームを読み込みます。</p><a href="{safe_url}" target="_blank" rel="noopener">別タブで遊ぶ ↗</a></div>
     <article class="article"><h2>どんなゲーム？</h2><p>{escape(desc)}</p><h2>遊び方</h2><p>{escape(how)}</p><h2>遊ぶときのヒント</h2><p>{escape(more)}</p><h2>操作</h2><p>{escape(controls)}</p>{ime_note}{blog_line}<h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。登録やインストールは不要です。</p><h3>ゲームが表示されないときは？</h3><p>上の「別タブで遊ぶ」からゲームを開いてください。</p></article>
+    {AD_SLOT}
     {AUTHOR_BOX}'''
     page(name, desc, article, f"games/{slug}.html", f"games/{slug}.html", image, game=True,
          head_extra=video_game(name, f"games/{slug}.html", desc, image))
@@ -134,6 +139,7 @@ monster = f'''<h1>モンスタータイピング</h1>
     <h2>攻略・制作の話</h2><ul><li><a href="{MONSTER_BLOG}">モンスタータイピングの紹介とアップデート情報</a></li><li><a href="{BLOG}entry/2026/10/05/142948">制作記：タイピングゲームでオンライン対戦を作りたかった理由</a></li><li><a href="{BLOG}entry/2026/10/08/154310">フリック入力で遊べるようになった話</a></li><li><a href="{BLOG}entry/2026/10/16/093455">漢字や日本史を学べる練習モードを追加した話</a></li></ul>
     <h2>公式アカウント</h2><p>最新情報は<a href="https://x.com/monster_typing" rel="noopener">X（@monster_typing）</a>と<a href="https://www.tiktok.com/@monster_typing" rel="noopener">TikTok</a>で発信しています。</p>
     <h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。ブラウザで無料で遊べます。</p><h3>スマホでも遊べますか？</h3><p>はい。フリック入力に対応しています。</p><h3>ゲームが表示されないときは？</h3><p><a href="{MONSTER_BLOG}">はてなブログの紹介記事</a>からも遊べます。</p></article>
+    {AD_SLOT}
     {AUTHOR_BOX}'''
 page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", None, "/images/monster-typing.png", game=True,
      full_title="モンスタータイピング｜無料で遊べるオンライン対戦タイピングゲーム",
@@ -178,6 +184,7 @@ info_page("privacy.html", "プライバシーポリシー", "広告、アクセ�
 <h2>サイト情報</h2><p>サイト名：Bubblegum Game<br>運営者：Bubblegum（個人）<br>お問い合わせ：<a href="/ja/contact.html">お問い合わせフォーム</a></p>
 <h2>広告</h2><p>当サイトにはGoogle AdSenseのコードを設置しており、広告掲載を申請しています。広告が配信される場合、Googleとそのパートナーが広告の配信や効果測定のためにデータを処理することがあります。</p>
 <p>Googleなどの第三者配信事業者は、当サイトや他のサイトへの過去のアクセス情報に基づき、Cookieを使って広告を表示することがあります。Cookie、端末識別子、IPアドレス、閲覧情報などが処理される場合があります。氏名を入力していなくても、ブラウザや端末を識別できる情報です。</p>
+<p>当サイトは、株式会社アイモバイルの広告配信サービス「i-mobile Ad Network」を利用しています。アイモバイルは広告の配信や効果測定のために、Cookieなどを使って閲覧情報を取得することがあります。取り扱いは<a href="https://www.i-mobile.co.jp/privacy.html" target="_blank" rel="noopener">アイモバイルのプライバシーポリシー</a>をご覧ください。配信の停止は<a href="https://www.i-mobile.co.jp/optout.html" target="_blank" rel="noopener">アイモバイルのオプトアウトページ</a>から行えます。</p>
 <p>パーソナライズ広告は<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Googleの広告設定</a>で無効にできます。詳しくは<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Googleのサービスを利用するサイトやアプリから収集した情報の利用</a>をご覧ください。</p>
 <h2>アクセス解析</h2><p>利用状況を調べるため、Google Analyticsを使用しています。閲覧ページ、端末情報、ブラウザの識別子などがCookieを通じて収集されることがあります。これらの情報を完全に匿名のものとしては扱いません。同意が必要な地域では、必要な選択がなされていない場合や拒否された場合、Analyticsを読み込みません。</p>
 <p>収集を避けたい場合はブラウザでCookieを無効にするか、<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analyticsオプトアウトアドオン</a>をご利用ください。</p>

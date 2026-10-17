@@ -65,3 +65,6 @@ body.fs-lock{overflow:hidden}
 .author-box{max-width:760px;margin:20px auto 0;background:#0a2a4a;border:2px solid #31b3bc;border-radius:16px;padding:16px clamp(18px,4vw,28px)}
 .author-box p{margin:6px 0;color:#d0e5f4}
 .author-box .author-name{font-weight:800;color:#fff}
+.ad-slot{max-width:760px;margin:20px auto 0;text-align:center}
+.ad-slot .ad-label{margin:0 0 6px;font-size:11px;letter-spacing:.1em;color:#9fc3dc}
+.imobile-slot{min-height:250px;display:flex;justify-content:center}
