@@ -23,87 +23,45 @@
 <meta name="twitter:image" content="https://bubblegumgameboy.com/images/cthulhu-typing.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
-  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
-  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
-  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
-  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
-  .detail td{color:#cbe4f7;font-weight:500;}
-  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
-  .detail li{margin:6px 0;}
-  .detail li strong{color:#dff0fa;font-weight:800;}
-  .detail a{color:#7fe3ec;font-weight:700;}
-  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
-  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
-  .faq dt::before{content:"Q. ";color:#7fe3ec;}
-  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
-  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
-  /* deep-sea backdrop: the video's poster frame, heavily dimmed */
-  body::before { content:''; position:fixed; inset:0; z-index:-1;
-    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
-               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
-  /* CSS fullscreen (fills the screen without changing the URL) */
-  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
-  body.fs-lock{overflow:hidden;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Cthulhu Typing","url":"https://bubblegumgameboy.com/games/cthulhu-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":["ja","en"],"description":"A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your soldiers keep attacking the boss automatically. 43 Cthulhu Mythos gods and creatures appear as bosses, one per day, shared by all players worldwide. There is no time limit, so even slow typists always win. Score is typing speed x accuracy x boss strength, with a daily leaderboard that resets every day plus an all-time total-kills leaderboard. Free, PC only. English controls and help are available; the practice text and story are Japanese - great practice for Japanese learners.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Once I beat today's boss, is that it for the day?","acceptedAnswer":{"@type":"Answer","text":"Yes. The current normal game allows one clear per day on a saved profile. A new boss is selected at midnight Japan time; reload the game after midnight to load the next day."}},{"@type":"Question","name":"I'm a slow typist. Can I still win?","acceptedAnswer":{"@type":"Answer","text":"Yes. There's no time limit and no game over. Your summoned soldiers keep attacking even while you rest, so as long as you keep typing at your own pace, the boss will always fall."}},{"@type":"Question","name":"Do I need Japanese input software (an IME)?","acceptedAnswer":{"@type":"Answer","text":"No. You type plain romaji with a regular keyboard. Turn Japanese IME off so the game can read the Latin-letter keystrokes. The displayed romaji tells you what to type."}},{"@type":"Question","name":"Can I play on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"No. It's built around typing romaji on a physical keyboard, so it's PC only."}},{"@type":"Question","name":"Do I need an account for the leaderboard?","acceptedAnswer":{"@type":"Answer","text":"No registration needed. Enter a name, play, and your best score of the day is posted automatically. The daily ranking resets each day, and there's a separate all-time ranking for total kills."}},{"@type":"Question","name":"Does my progress carry over to another computer?","acceptedAnswer":{"@type":"Answer","text":"No. Your local profile and daily-clear state use browser storage. Submitted names and scores are also sent to the online leaderboard. Clearing site data can lose access to your local profile; there is no account-based transfer."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/site.css?v=20261017b">
 <link rel="stylesheet" href="/game-page.css">
-<script src="/game-page.js" defer></script>
+<script src="/game-page.js?v=20261017b" defer></script>
+<script src="/imobile-ads.js?v=20261017b" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Site menu"><div class="nav-inner"><a class="brand" href="/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/games/monster-typing.html">Monster Typing</a><a href="/#games">More games</a><a href="/blog/">Blog</a><a class="lang" href="/ja/games/cthulhu-typing.html" lang="ja" hreflang="ja">日本語</a></div></div></nav>
+  <main id="main" class="game-main">
+    <p><a href="../">Home</a> / <a href="../#games">Games</a> / <span>Cthulhu Typing</span></p>
 
-<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
-
-  <!-- nav -->
-  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
-    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Play</a>
-      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
-        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
-        <a href="/ja/games/cthulhu-typing.html" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;">日本語</a>
-      </div>
+    <h1>Cthulhu Typing</h1>
+    <div>
+      <span>Japanese Typing</span>
+      <span>Summon Battle</span>
+      <span>PC Only</span>
     </div>
-  </nav>
-
-  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
-    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Cthulhu Typing</span></p>
-
-    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);">Cthulhu Typing</h1>
-    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Japanese Typing</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Summon Battle</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">PC Only</span>
-    </div>
-    <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#cbe4f7;">A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your growing army keeps attacking the boss on its own. Bosses are gods from the Cthulhu Mythos, one new one every day. Played with a physical keyboard - PC only.</p>
+    <p>A typing-meets-summoning battle: every hiragana word you finish typing in romaji summons one soldier, and your growing army keeps attacking the boss on its own. Bosses are gods from the Cthulhu Mythos, one new one every day. Played with a physical keyboard - PC only.</p>
 
 <aside class="game-entry"><p><strong>Physical keyboard</strong> · English controls; Japanese words with Latin-letter prompts</p><p>Enter a nickname and start today’s challenge. Complete the displayed Latin letters to summon soldiers. Defeating the boss submits the score; there is one successful clear per day.</p><p class="keyboard-notice">On a phone? These controls need a physical keyboard. <a href="../play-guide.html#touch">See games with touch controls</a>.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
-    <!-- game embed -->
-    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
-      <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-        <a href="https://play.bubblegumgameboy.com/Typingsoldier2/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#3d5b7c;color:#fff;text-decoration:none;border-radius:8px;padding:8px 16px;font-weight:700;font-size:14px;">↗ Open in New Tab</a>
-        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
-      </div>
-
-<div class="game-stage" data-play-height="680px" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/cthulhu-typing.png" alt="Cthulhu Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Cthulhu Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
+    
+    <aside class="ad-top" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="top"></div></aside>
+    <div class="game-shell">
+      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="../images/cthulhu-typing.png" alt="Cthulhu Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Cthulhu Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" title="Cthulhu Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
     </div>
-    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <aside class="ad-below" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div class="ad-row"><div data-imobile="belowA"></div><div data-imobile="belowB"></div></div></aside>
 
-    <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a physical keyboard (not available on phones). Heads-up: English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), which makes it great practice if you're learning Japanese.</p>
+    <p>Best played on a PC with a physical keyboard (not available on phones). Heads-up: English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), which makes it great practice if you're learning Japanese.</p>
 
     <!-- details (how to play, tips, and FAQ written for this site) -->
-    <section class="detail">
+    <section class="detail article">
       <p>In this game, your keystrokes don't produce attacks - they produce <strong>soldiers</strong>. Finish typing a hiragana word in romaji and a soldier appears; every soldier you've summoned keeps pounding on the boss even while your hands are resting. The more you type, the bigger your army grows and the faster the damage snowballs - it feels like a typing game crossed with an idle clicker. Standing in your way are 43 gods and creatures from the Cthulhu Mythos. One boss appears per day, and every player in the world faces the same one. Run length depends on your typing speed, and there's no time limit on the kill, so you don't need to be a fast typist. The game is in Japanese, so it doubles nicely as Japanese typing practice: the words appear in hiragana and you type them in romaji.</p>
 
       <h2>At a Glance</h2>
@@ -137,10 +95,10 @@
 
       <h2>All-Time Kill Leaderboard</h2>
       <p>Besides the daily best-score ranking (which resets every day), there's an all-time leaderboard tracking how many bosses you've defeated in total. Just enter a name and play - you're listed automatically, no registration required.</p>
-      <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
+      <div>
         <iframe src="https://play.bubblegumgameboy.com/Typingsoldier2/leaderboard.html" title="Cthulhu Typing all-time kill leaderboard" loading="lazy" style="width:100%;height:520px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe>
       </div>
-      <p style="margin-top:12px;"><a href="https://play.bubblegumgameboy.com/Typingsoldier2/leaderboard.html" target="_blank" rel="noopener">Open the leaderboard in a new tab ↗</a></p>
+      <p><a href="https://play.bubblegumgameboy.com/Typingsoldier2/leaderboard.html" target="_blank" rel="noopener">Open the leaderboard in a new tab ↗</a></p>
 
       <h2>Developer's Note</h2>
       <p>After finishing my previous game, <a href="soldier-typing.html">Soldier Typing</a>, something kept bugging me. When typing means attacking, the experience gap between fast and slow typists is just too wide. So this time I flipped the idea: your keystrokes don't attack, they <strong>summon</strong>. What you type stays on screen as an asset - soldiers who keep working even when your hands stop. Slow typists always win eventually if they put in the time, and fast typists get the rush of watching their army balloon. Grafting the idle-clicker feedback loop onto typing is the heart of this game.</p>
@@ -165,27 +123,16 @@
       <h2>Credits</h2>
       <p><strong>Design &amp; development</strong>: Bubblegum (Bubblegum Game)<br>
       <strong>Theme</strong>: based on the gods and creatures of the Cthulhu Mythos (Cthulhu, Nyarlathotep, Hastur, and more - 43 in total)<br>
-      <span style="font-size:13px;color:#8fb6d4;">This game is the successor to <a href="soldier-typing.html">Soldier Typing</a>. The story behind its development is covered in <a href="../blog/posts/2026-07-04-cthulhu-typing.html">this blog post</a>.</span></p>
-<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><p style="margin:0;">The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/Typingsoldier2/blob/82b5ded35a90a32dea8930dbba266f84f9ad82bb/index.html#L786">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
+      <span>This game is the successor to <a href="soldier-typing.html">Soldier Typing</a>. The story behind its development is covered in <a href="../blog/posts/2026-07-04-cthulhu-typing.html">this blog post</a>.</span></p>
+<aside class="source-note"><p>The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/Typingsoldier2/blob/82b5ded35a90a32dea8930dbba266f84f9ad82bb/index.html#L786">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
     </section>
 
-    <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>
+    <p><a href="../#games">← Browse More Games</a></p>
+  
+    <aside class="ad-slot" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="page"></div></aside>
+    <aside class="author-box" aria-label="Made by"><p class="author-name">Made by Bubblegum</p><p>A solo developer making free browser games. Strategy notes and game reviews are on the <a href="https://babblegum.hatenablog.com/">Bubblegum game blog</a> (Japanese).</p><p><a href="/about.html">About the developer</a> · <a href="/games/monster-typing.html">Play Monster Typing</a> · <a href="/#games">More games</a></p></aside>
   </main>
-
-  <!-- footer -->
-  <footer style="background:#01060f;color:#7fa3bd;padding:22px 20px;">
-    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
-      <span>© 2026 Bubblegum Game</span>
-      <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
-      </span>
-    </div>
-  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
-</footer>
-
-</div>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy policy</a> · <a href="/contact.html">Contact</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button></div></footer>
+  <aside class="ad-anchor" aria-label="Advertisement"><button type="button" class="ad-anchor-close" aria-label="Close ad">×</button><div data-imobile="anchor"></div></aside>
 </body>
 </html>

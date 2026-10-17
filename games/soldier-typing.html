@@ -23,106 +23,57 @@
 <meta name="twitter:image" content="https://bubblegumgameboy.com/images/soldier-typing.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
-  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
-  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
-  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
-  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
-  .detail td{color:#cbe4f7;font-weight:500;}
-  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
-  .detail li{margin:6px 0;}
-  .detail li strong{color:#dff0fa;font-weight:800;}
-  .detail a{color:#7fe3ec;font-weight:700;}
-  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
-  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
-  .faq dt::before{content:"Q. ";color:#7fe3ec;}
-  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
-  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
-  /* deep-sea backdrop: the video's poster frame, heavily dimmed */
-  body::before { content:''; position:fixed; inset:0; z-index:-1;
-    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
-               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
-  /* CSS fullscreen (fills the screen without changing the URL) */
-  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
-  body.fs-lock{overflow:hidden;}
-  /* spoiler block: shut by default, so the surprise survives a casual read */
-  .spoiler{border:2px solid rgba(239,140,51,.45);background:rgba(52,26,10,.5);border-radius:12px;padding:4px 18px;margin:8px 0 18px;}
-  .spoiler summary{cursor:pointer;font-weight:800;color:#ffbd73;padding:12px 0;font-size:clamp(14px,3.7vw,16px);list-style:none;}
-  .spoiler summary::-webkit-details-marker{display:none;}
-  .spoiler summary::before{content:"\25B6  ";font-size:12px;}
-  .spoiler[open] summary::before{content:"\25BC  ";}
-  .spoiler h3{color:#ffbd73;margin-top:18px;}
-  .spoiler p,.spoiler li{color:#e6d3c2;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Soldier Typing","url":"https://bubblegumgameboy.com/games/soldier-typing.html","applicationCategory":"Game","operatingSystem":"Web browser (PC)","inLanguage":["ja","en"],"description":"A typing lane-defense game: type romaji to summon soldiers who fight on their own, hold the castle across 5 waves and 5 bosses, drawing on 150 Japanese words shown in hiragana. Free, plays in the browser, PC recommended.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"It's a keyboard game, so we recommend playing on a PC."}},{"@type":"Question","name":"My keystrokes aren't registering correctly.","acceptedAnswer":{"@type":"Answer","text":"You summon soldiers by typing romaji (Latin letters). If you use Japanese input software, turn the IME off before you start."}},{"@type":"Question","name":"Do I need to read Japanese?","acceptedAnswer":{"@type":"Answer","text":"No. The words are shown in hiragana with the romaji spelled out, and you type the romaji. You do not need to know what any of them mean, though it is decent practice if you are learning."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Clear all five waves to finish. In waves 1–4, defeating the boss or destroying the enemy castle after it appears can clear the wave; the final boss must be defeated. If enemies reduce your castle’s HP to zero, it’s game over."}},{"@type":"Question","name":"Nothing is happening and there's no boss.","acceptedAnswer":{"@type":"Answer","text":"After 90 seconds of active wave time, the boss appears if it has not spawned. If the wave-clear message is showing, wait for the continue prompt and press Enter."}},{"@type":"Question","name":"Does my score go anywhere?","acceptedAnswer":{"@type":"Answer","text":"Enter a name when you start and your score reaches the online ranking board above, which everyone playing shares. Soldier Typing 2 keeps a separate table, so scores from the two games never mix."}},{"@type":"Question","name":"Do I need to play this before the sequel?","acceptedAnswer":{"@type":"Answer","text":"No. Soldier Typing 2 stands on its own, though it does assume your hands already know the loop."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/site.css?v=20261017b">
 <link rel="stylesheet" href="/game-page.css">
-<script src="/game-page.js" defer></script>
+<script src="/game-page.js?v=20261017b" defer></script>
+<script src="/imobile-ads.js?v=20261017b" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Site menu"><div class="nav-inner"><a class="brand" href="/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/games/monster-typing.html">Monster Typing</a><a href="/#games">More games</a><a href="/blog/">Blog</a><a class="lang" href="/ja/games/soldier-typing.html" lang="ja" hreflang="ja">日本語</a></div></div></nav>
+  <main id="main" class="game-main">
+    <p><a href="../">Home</a> / <a href="../#games">Games</a> / <span>Soldier Typing</span></p>
 
-<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
-
-  <!-- nav -->
-  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
-    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Play</a>
-      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
-        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
-        <a href="/ja/games/soldier-typing.html" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;">日本語</a>
-      </div>
+    <h1>Soldier Typing</h1>
+    <div>
+      <span>Japanese Typing</span>
+      <span>PC</span>
     </div>
-  </nav>
-
-  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
-    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Soldier Typing</span></p>
-
-    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);">Soldier Typing</h1>
-    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Japanese Typing</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">PC</span>
-    </div>
-    <p style="margin:0 0 22px;max-width:620px;font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.7;color:#cbe4f7;">A military-style typing game where you type to summon soldiers and fight off a monster army. The keystroke rhythm is deeply satisfying. Played with a keyboard, for PC.</p>
+    <p>A military-style typing game where you type to summon soldiers and fight off a monster army. The keystroke rhythm is deeply satisfying. Played with a keyboard, for PC.</p>
 
 <aside class="game-entry"><p><strong>Physical keyboard</strong> · English controls; Japanese words with Latin-letter prompts</p><p>Press Start and copy the displayed Latin letters with IME off. Completed words summon soldiers. After a wave, wait for the result and press Enter to continue.</p><p class="keyboard-notice">On a phone? These controls need a physical keyboard. <a href="../play-guide.html#touch">See games with touch controls</a>.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
-    <!-- game embed -->
-    <div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
-        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
-      </div>
-
-<div class="game-stage" data-play-height="680px" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/soldier-typing.png" alt="Soldier Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Soldier Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" title="Soldier Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
+    
+    <aside class="ad-top" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="top"></div></aside>
+    <div class="game-shell">
+      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="../images/soldier-typing.png" alt="Soldier Typing preview" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Soldier Typing</button><noscript><p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" title="Soldier Typing" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="width:100%;height:680px;border:0;display:block;border-radius:11px;background:#0b1320;"></iframe></div>
     </div>
-    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/Bubble-Wars/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <aside class="ad-below" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div class="ad-row"><div data-imobile="belowA"></div><div data-imobile="belowB"></div></div></aside>
 
-    <p style="margin:14px 0 0;font-size:13px;color:#8fb6d4;">Best played on a PC with a keyboard. English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), so it's great practice if you're learning Japanese. If you use Japanese input software, turn the IME off before you start.</p>
+    <p>Best played on a PC with a keyboard. English controls and help are available; the practice text and story are Japanese - you type hiragana words using romaji (Latin letters), so it's great practice if you're learning Japanese. If you use Japanese input software, turn the IME off before you start.</p>
 
     <!-- ranking board (served by the game app; the game submits scores to it) -->
-    <section class="detail" style="margin-top:30px;">
-      <h2 style="margin-top:0;">Ranking</h2>
+    <section class="detail article">
+      <h2>Ranking</h2>
       <p>Scores from players who cleared the game — see how you stack up. Enter a name when you finish a run, or your score won't appear on the board.</p>
-      <div style="border:2px solid rgba(255,215,102,.3);border-radius:10px;overflow:hidden;background:#0a0a1a;">
+      <div>
         <iframe src="https://play.bubblegumgameboy.com/Bubble-Wars/ranking.html" title="Soldier Typing score ranking" loading="lazy" style="display:block;width:100%;height:min(540px,72vh);border:0;"></iframe>
       </div>
-<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><p style="margin:0;">The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/Bubble-Wars/blob/76dfc71a7e108780145c491de6d1cf112273d82a/docs/index.html#L1172">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
+<aside class="source-note"><p>The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/Bubble-Wars/blob/76dfc71a7e108780145c491de6d1cf112273d82a/docs/index.html#L1172">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
     </section>
 
     <!-- details (how to play, characters, and FAQ written for this site) -->
-    <section class="detail">
+    <section class="detail article">
       <p>Type romaji to summon soldiers and hold the line against a horde of monsters. The more you type, the more soldiers march out &mdash; they advance and fight on their own. Keep enemies away from your castle and take down the boss of each wave. A keyboard game for PC, and since the words are Japanese (shown in hiragana, typed in romaji), it doubles as Japanese typing practice.</p>
 
-      <p style="font-weight:700;color:#dff0fa;">Before you play: this is a keyboard game, so PC is recommended. If you have a Japanese IME installed, switch it off first.</p>
+      <p>Before you play: this is a keyboard game, so PC is recommended. If you have a Japanese IME installed, switch it off first.</p>
 
       <p>The word lists, boss stats and controls below come from the game itself, as of September 2026.</p>
 
@@ -196,35 +147,24 @@
     </section>
 
     <!-- sequel -->
-    <section class="detail">
-      <h2 style="margin-top:0;">There Is a Sequel</h2>
+    <section class="detail article">
+      <h2>There Is a Sequel</h2>
       <p>Soldier Typing 2 runs on the same keystrokes, goes six waves instead of five, and hides a boss that is not on the map. It is free and it plays in the browser the same way this one does.</p>
-      <a href="soldier-typing-2.html" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:rgba(10,30,62,.6);border:2px solid rgba(120,200,255,.25);border-radius:12px;padding:12px 14px;">
-        <img src="../images/soldier-typing-2.png" alt="Soldier Typing 2" width="112" height="84" loading="lazy" style="width:112px;height:84px;object-fit:cover;border-radius:8px;display:block;flex:none;">
-        <span style="min-width:0;">
-          <span style="display:block;font-weight:900;font-size:17px;color:#fff;">Soldier Typing 2</span>
-          <span style="display:block;font-size:13px;font-weight:500;line-height:1.6;color:#b8d9f2;">Six waves, a hidden boss, and a door that opens only after you win.</span>
+      <a href="soldier-typing-2.html">
+        <img src="../images/soldier-typing-2.png" alt="Soldier Typing 2" width="112" height="84" loading="lazy">
+        <span>
+          <span>Soldier Typing 2</span>
+          <span>Six waves, a hidden boss, and a door that opens only after you win.</span>
         </span>
       </a>
     </section>
 
-    <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>
+    <p><a href="../#games">← Browse More Games</a></p>
+  
+    <aside class="ad-slot" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="page"></div></aside>
+    <aside class="author-box" aria-label="Made by"><p class="author-name">Made by Bubblegum</p><p>A solo developer making free browser games. Strategy notes and game reviews are on the <a href="https://babblegum.hatenablog.com/">Bubblegum game blog</a> (Japanese).</p><p><a href="/about.html">About the developer</a> · <a href="/games/monster-typing.html">Play Monster Typing</a> · <a href="/#games">More games</a></p></aside>
   </main>
-
-  <!-- footer -->
-  <footer style="background:#01060f;color:#7fa3bd;padding:22px 20px;">
-    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
-      <span>© 2026 Bubblegum Game</span>
-      <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
-      </span>
-    </div>
-  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
-</footer>
-
-</div>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy policy</a> · <a href="/contact.html">Contact</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button></div></footer>
+  <aside class="ad-anchor" aria-label="Advertisement"><button type="button" class="ad-anchor-close" aria-label="Close ad">×</button><div data-imobile="anchor"></div></aside>
 </body>
 </html>

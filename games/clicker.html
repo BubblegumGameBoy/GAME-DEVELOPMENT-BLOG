@@ -23,83 +23,43 @@
 <meta name="twitter:image" content="https://bubblegumgameboy.com/images/mythos-slayer-2026-09-10.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:#041a40; color:#dff0fa; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  .detail{margin-top:42px;max-width:760px;background:rgba(4,16,38,.72);border:2px solid rgba(120,200,255,.22);border-radius:16px;padding:clamp(18px,4vw,30px);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-  .detail h2{margin:32px 0 12px;font-weight:900;font-size:clamp(20px,4.6vw,26px);color:#dff0fa;border-left:6px solid #2a9aa3;padding-left:12px;line-height:1.35;}
-  .detail p{font-size:clamp(14px,3.7vw,17px);font-weight:500;line-height:1.85;color:#cbe4f7;margin:0 0 18px;}
-  .detail table{width:100%;border-collapse:collapse;margin:0 0 8px;font-size:clamp(13px,3.5vw,15px);}
-  .detail th,.detail td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(120,200,255,.16);vertical-align:top;}
-  .detail th{white-space:nowrap;width:32%;color:#dff0fa;font-weight:800;background:rgba(6,24,52,.85);}
-  .detail td{color:#cbe4f7;font-weight:500;}
-  .detail ol,.detail ul{margin:0 0 18px;padding-left:1.3em;font-size:clamp(14px,3.7vw,16px);line-height:1.85;color:#cbe4f7;font-weight:500;}
-  .detail li{margin:6px 0;}
-  .detail li strong{color:#dff0fa;font-weight:800;}
-  .detail a{color:#7fe3ec;font-weight:700;}
-  .faq{border:2px solid rgba(120,200,255,.18);border-radius:12px;padding:6px 16px 10px;margin-top:8px;background:rgba(10,30,62,.5);}
-  .faq dt{font-weight:800;color:#dff0fa;margin:14px 0 4px;font-size:clamp(14px,3.7vw,16px);}
-  .faq dt::before{content:"Q. ";color:#7fe3ec;}
-  .faq dd{margin:0 0 12px;color:#cbe4f7;font-weight:500;line-height:1.75;font-size:clamp(13px,3.6vw,15px);}
-  .faq dd::before{content:"A. ";color:#ef8c33;font-weight:800;}
-  /* deep-sea backdrop: the video's poster frame, heavily dimmed */
-  body::before { content:''; position:fixed; inset:0; z-index:-1;
-    background:linear-gradient(to bottom, rgba(3,14,34,.66), rgba(2,8,22,.94) 72%),
-               url(../videos/deep-land-poster.jpg) center top / cover no-repeat #041a40; }
-  /* CSS fullscreen (fills the screen without changing the URL) */
-  #game-frame.fs-on{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:99999!important;border-radius:0!important;}
-  body.fs-lock{overflow:hidden;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Mythos Slayer","url":"https://bubblegumgameboy.com/games/clicker.html","applicationCategory":"Game","operatingSystem":"Web browser","inLanguage":["en","ja","zh"],"description":"An idle boss-rush clicker against 40 Cthulhu Mythos bosses. Upgrade your click, recruit 24 units to automate the fight, evolve through 10 weapon tiers, and prestige for a permanent gold multiplier that scales with how deep you got. Includes a ten-second speed test and an online leaderboard. Free, desktop and mobile.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. You tap the screen instead of pressing the spacebar, and the unit layout switches to a portrait arrangement on narrow screens."}},{"@type":"Question","name":"Is it in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, and in Japanese and Chinese, including the leaderboard. The game remembers which one you picked."}},{"@type":"Question","name":"Can my save data be lost?","acceptedAnswer":{"@type":"Answer","text":"Progress is saved in your browser. Clearing site data can erase it; it does not automatically transfer to another device."}},{"@type":"Question","name":"Does progress from the embedded version on this page carry over to the fullscreen version?","acceptedAnswer":{"@type":"Answer","text":"The Play Fullscreen button expands this same running game without reloading it. Opening a separate tab is different: browser privacy settings may keep embedded and direct-tab saves separate."}},{"@type":"Question","name":"When should I prestige?","acceptedAnswer":{"@type":"Answer","text":"Compare the time needed for another boss with the benefit of restarting. Each prestige multiplies your existing gold bonus by 1 + 0.4 times the highest boss cleared in the current cycle: 5x at Boss 10 or 9x at Boss 20."}},{"@type":"Question","name":"Does the game keep earning while the tab is closed?","acceptedAnswer":{"@type":"Answer","text":"Units earn while the game is running, but background tabs can pause or throttle its animation loop. There is no offline earnings calculation for time spent with the page closed. Keep the game visible for dependable progress."}},{"@type":"Question","name":"What happens when I beat all 40 bosses?","acceptedAnswer":{"@type":"Answer","text":"The first full clear opens the credits. Next Boss from Boss 40 starts another cycle with a 50x health factor and a 6x gold factor."}},{"@type":"Question","name":"Do I have to take the speed test?","acceptedAnswer":{"@type":"Answer","text":"It only appears on your first visit and you can skip naming yourself. You can re-take it later from the player menu."}}]}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/site.css?v=20261017b">
 <link rel="stylesheet" href="/game-page.css">
-<script src="/game-page.js" defer></script>
+<script src="/game-page.js?v=20261017b" defer></script>
+<script src="/imobile-ads.js?v=20261017b" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Site menu"><div class="nav-inner"><a class="brand" href="/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/games/monster-typing.html">Monster Typing</a><a href="/#games">More games</a><a href="/blog/">Blog</a><a class="lang" href="/ja/games/clicker.html" lang="ja" hreflang="ja">日本語</a></div></div></nav>
+  <main id="main" class="game-main">
+    <p><a href="../">Home</a> / <a href="../#games">Games</a> / <span>Mythos Slayer</span></p>
 
-<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
-
-  <!-- nav -->
-  <nav style="position:sticky;top:0;z-index:50;background:rgba(6,20,44,.92);border-bottom:2px solid rgba(120,200,255,.25);">
-    <div style="max-width:900px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <a href="../" style="display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;">◀ Back to Play</a>
-      <div style="display:flex;align-items:center;gap:16px;font-weight:700;font-size:14px;">
-        <a href="../#games" style="color:#cfe6ee;text-decoration:none;">Games</a>
-        <a href="../blog/" style="color:#ffd766;text-decoration:none;font-weight:800;">Blog</a>
-        <a href="/ja/games/clicker.html" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;">日本語</a>
-      </div>
-    </div>
-  </nav>
-
-  <main style="flex:1 1 auto;width:100%;max-width:900px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(36px,6vw,56px);">
-    <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#8fb6d4;letter-spacing:1px;"><a href="../" style="color:#8fb6d4;text-decoration:none;">Home</a> / <a href="../#games" style="color:#8fb6d4;text-decoration:none;">Games</a> / <span style="color:#dff0fa;">Mythos Slayer</span></p>
-
-    <h1 style="margin:0 0 6px;font-weight:900;font-size:clamp(26px,6vw,40px);line-height:1.12;color:#fff;text-shadow:0 2px 12px rgba(0,10,30,.8);"><span style="display:block;font-size:clamp(14px,3.6vw,18px);font-weight:800;color:#7fe3ec;margin-bottom:5px;">Recruit soldiers and automate the grind</span>Mythos Slayer</h1>
-    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(255,215,102,.12);color:#ffd766;border:1px solid rgba(255,215,102,.4);border-radius:7px;padding:5px 12px;">Idle Game</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(127,227,236,.12);color:#7fe3ec;border:1px solid rgba(127,227,236,.4);border-radius:7px;padding:5px 12px;">Clicker</span>
-      <span style="font-family:'DotGothic16',monospace;font-size:12px;background:rgba(159,220,255,.1);color:#a9cde8;border:1px solid rgba(159,220,255,.35);border-radius:7px;padding:5px 12px;">Desktop &amp; Mobile</span>
+    <h1><span>Recruit soldiers and automate the grind</span>Mythos Slayer</h1>
+    <div>
+      <span>Idle Game</span>
+      <span>Clicker</span>
+      <span>Desktop &amp; Mobile</span>
     </div>
     <!-- game embed (shown at 16:10; use the fullscreen button top-right for a longer session) -->
     <aside class="game-entry"><p><strong>Mouse, touch or Spacebar</strong> · English, Japanese and Chinese</p><p>Tap the boss to earn gold, then buy a Farmer or Swordsman in Summon. English opens automatically from this page.</p><p><a href="../play-guide.html">First visit? Find your game and try the typing warm-up →</a></p></aside>
-<div style="background:rgba(6,20,44,.85);border:2px solid rgba(120,200,255,.25);border-radius:18px;padding:clamp(8px,2vw,14px);box-shadow:0 0 34px rgba(60,150,255,.16);width:min(96vw,1200px);margin-left:calc((100% - min(96vw,1200px))/2);">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
-        <button type="button" id="fs-btn" style="display:inline-flex;align-items:center;gap:6px;background:#2a9aa3;color:#fff;border:0;border-radius:8px;padding:8px 16px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">⛶ Play Fullscreen</button>
-      </div>
-      <div style="position:relative;width:100%;background:#0b1320;border-radius:11px;overflow:hidden;">
-        <div class="game-stage" data-play-height="clamp(560px,84vh,960px)" style="position:relative;height:360px;"><div id="game-launch" class="game-launch"><img src="../images/mythos-slayer-2026-09-10.png" alt="Mythos Slayer redesigned interface: Nocturne boss battle, soldiers and the Summon panel" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Mythos Slayer</button><noscript><p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" style="color:#90e8ee;">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" title="Mythos Slayer" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
+<div>
+      <aside class="ad-top" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="top"></div></aside>
+    <div class="game-shell">
+        <div class="game-stage"><div id="game-launch" class="game-launch"><img src="../images/mythos-slayer-2026-09-10.png" alt="Mythos Slayer redesigned interface: Nocturne boss battle, soldiers and the Summon panel" width="320" height="180" loading="lazy"><p>Read the guide below, or load the game when you are ready.</p><button type="button" id="game-start" disabled>Play Mythos Slayer</button><noscript><p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en">Open the game directly</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" title="Mythos Slayer" loading="lazy" allow="fullscreen; autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;"></iframe></div>
       </div>
     </div>
-    <button id="game-close" class="game-close" type="button" hidden>Exit fullscreen ×</button><div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <div class="game-links"><p id="game-status" role="status">The game downloads only after you press Play.</p><a href="https://play.bubblegumgameboy.com/spacebar-clicker/?lang=en" target="_blank" rel="noopener">Open in a new tab ↗</a> · <a href="../play-guide.html#troubleshooting">Loading, keyboard or save help</a></div>
+    <aside class="ad-below" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div class="ad-row"><div data-imobile="belowA"></div><div data-imobile="belowB"></div></div></aside>
 
     <!-- details (how to play, tips, and FAQ written for this site) -->
-    <section class="detail">
+    <section class="detail article">
       <p>These are the formulas the game runs, as of September 2026. Where rounding or an exception changes how it plays, I say so.</p>
 
       <p>You open with a single click that does 2 damage, against a boss with 300 hit points. That is the whole game at the start. Gold from every hit goes into two piles: upgrades that make your own click hurt more, and units that fight for you whether or not you are at the keyboard. Forty bosses are stacked ahead of you and each one has roughly two and a half times the health of the one before, which is far faster than clicking alone can ever grow. The game is the argument between those two curves.</p>
@@ -161,7 +121,7 @@
 
       <h2>The Leaderboard</h2>
       <p>The trophy button opens two online leaderboards, each showing the top 100: cumulative damage and POWER, the score from the ten-second tapping test. If the online damage board cannot be reached, the game shows the damage records saved on your device and labels them as local records. The POWER board requires an online connection; if it cannot load, it shows an error with no scores so that damage records are never mistaken for POWER scores.</p>
-      <div style="border:2px solid rgba(255,215,102,.3);border-radius:10px;overflow:hidden;background:#0a0a1a;margin:14px 0 4px;">
+      <div>
         <iframe src="https://play.bubblegumgameboy.com/spacebar-clicker/ranking.html?lang=en" title="Mythos Slayer online ranking" loading="lazy" style="display:block;width:100%;height:min(560px,74vh);border:0;"></iframe>
       </div>
 
@@ -203,26 +163,15 @@
       <p>Boss art and design by:<br>
       &middot; <a href="https://x.com/Kome_to_Matsuri" target="_blank" rel="noopener">@Kome_to_Matsuri</a><br>
       &middot; Ankimo (Innsmouth Project)</p>
-<aside class="source-note" style="margin:24px 0;padding:16px;border:1px solid #7d9aab;border-radius:10px;line-height:1.75;"><p style="margin:0;">The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
+<aside class="source-note"><p>The game's code is public if you want to check a number yourself: <a href="https://github.com/BubblegumGameBoy/spacebar-clicker/blob/a7105c8935ae79204c8de58cc088a54a7fa961a5/index.html#L1263">the version these figures come from</a> (September 2026). Later updates can change them.</p></aside>
     </section>
 
-    <p style="margin:34px 0 0;"><a href="../#games" style="color:#7fe3ec;font-weight:800;text-decoration:none;font-size:15px;">← Browse More Games</a></p>
+    <p><a href="../#games">← Browse More Games</a></p>
+  
+    <aside class="ad-slot" aria-label="Advertisement"><p class="ad-label">Advertisement</p><div data-imobile="page"></div></aside>
+    <aside class="author-box" aria-label="Made by"><p class="author-name">Made by Bubblegum</p><p>A solo developer making free browser games. Strategy notes and game reviews are on the <a href="https://babblegum.hatenablog.com/">Bubblegum game blog</a> (Japanese).</p><p><a href="/about.html">About the developer</a> · <a href="/games/monster-typing.html">Play Monster Typing</a> · <a href="/#games">More games</a></p></aside>
   </main>
-
-  <!-- footer -->
-  <footer style="background:#01060f;color:#7fa3bd;padding:22px 20px;">
-    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
-      <span>© 2026 Bubblegum Game</span>
-      <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="../privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="../contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="../about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="../" style="color:#cfe1ec;text-decoration:none;">Home</a>
-      </span>
-    </div>
-  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
-</footer>
-
-</div>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy policy</a> · <a href="/contact.html">Contact</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button></div></footer>
+  <aside class="ad-anchor" aria-label="Advertisement"><button type="button" class="ad-anchor-close" aria-label="Close ad">×</button><div data-imobile="anchor"></div></aside>
 </body>
 </html>

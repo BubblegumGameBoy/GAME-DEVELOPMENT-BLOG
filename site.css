@@ -159,3 +159,18 @@ html.is-pc .ad-anchor{display:none}
 }
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* English game pages: the longer guide copy (tags, tables, FAQ, notes) */
+.game-main>div:not([class]):has(>span){display:flex;flex-wrap:wrap;gap:7px;margin:0 0 10px}
+.game-main>div:not([class])>span{font-size:12px;padding:4px 12px;border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.game-main>p{color:var(--muted)}
+.game-entry{border:1px solid var(--line)!important;background:var(--panel);color:var(--bone)!important;border-radius:0!important}
+.detail{max-width:760px}
+.detail strong{color:var(--bone-hi)}
+.faq{border:1px solid var(--line);background:var(--panel);padding:6px 16px 10px;margin:8px 0 0}
+.faq dt{font-weight:700;color:var(--bone-hi);margin:14px 0 4px}
+.faq dt::before{content:"Q. ";color:var(--gold)}
+.faq dd{margin:0 0 12px;color:#c8bba0}
+.faq dd::before{content:"A. ";color:var(--blood-hi);font-weight:700}
+.source-note{border:1px solid var(--line);padding:16px;margin:24px 0}
+@media (max-width:767px){.game-main>p,.game-main>div:not([class]),.game-main>.game-entry{margin-left:16px;margin-right:16px}}
