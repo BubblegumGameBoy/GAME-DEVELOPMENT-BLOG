@@ -136,14 +136,6 @@ html.is-phone .ad-row [data-imobile="belowB"]{display:none}
 .ad-anchor [data-imobile]{min-height:50px}
 .ad-anchor-close{position:absolute;right:4px;top:-30px;width:44px;height:30px;border:1px solid var(--line);border-bottom:0;background:rgba(14,11,9,.97);color:var(--bone);font-size:16px;cursor:pointer}
 html.is-pc .ad-anchor{display:none}
-/* phone-only strip shown while the game's result screen is up (imobile-ads.js listens to the game) */
-.ad-result{position:fixed;left:0;right:0;bottom:0;z-index:61;background:rgba(14,11,9,.97);border-top:1px solid var(--line);padding:4px 0 calc(4px + env(safe-area-inset-bottom));display:none;flex-direction:column;align-items:center}
-.ad-result.show{display:flex}
-.ad-result [data-imobile]{min-height:100px}
-html.is-pc .ad-result{display:none!important}
-@media (max-width:767px){
-  html.result-ad .game-stage{height:calc(100svh - 128px)}
-}
 
 /* footer */
 .site-footer,.foot{border-top:1px solid var(--line);padding:30px 20px 40px;color:var(--faint);font-size:13px}

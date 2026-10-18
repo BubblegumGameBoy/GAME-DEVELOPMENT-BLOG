@@ -8,13 +8,9 @@
      anchor  phone-only bar fixed to the bottom of the screen; it slides away
              while the game is on screen, so it never sits next to the
              on-screen keyboard.
-     result  phone-only strip (320x100) fixed to the bottom while the game's
-             result screen is up. The game posts {type:'mythling-state', state}
-             to this page (docs/host-messages.md in the game); the strip shows
-             on 'result' and hides when the next battle starts, and the game
-             stage shrinks by the strip's height so nothing is covered. The
-             spot is requested the first time a result comes, not at page load
-             (data-imobile-lazy), so i-mobile only counts views that happen. */
+   (2026-10-18) The phone-only result strip is gone: phones do not play in
+   this page's frame, the game sends them to its own full-screen page, so the
+   strip never had a result screen to follow. */
 (function () {
   'use strict';
   var SPOTS = {
@@ -22,8 +18,7 @@
     belowA: { pc: [597223, 1948718, 'im-71934835fc9d4b69a03bec640dbb7c8d'], sp: [597224, 1948721, 'im-0e27280239d24db5b51b46429731c4dd'] },
     belowB: { pc: [597223, 1948719, 'im-89f14a87b8544f459d3047b7d0ae3948'] },
     page:   { pc: [597223, 1948714, 'im-5e2acee539ad4a0fa55efd6b6f842987'], sp: [597224, 1948713, 'im-e0f199493741455b8c5fb5f9652908bd'] },
-    anchor: { sp: [597224, 1948716, 'im-5338625e9ffa4e84be7417f8ec4b6d68'] },
-    result: { sp: [597224, 1948725, 'im-1c6945c725a84212924f2e58d9e83dcf'] }
+    anchor: { sp: [597224, 1948716, 'im-5338625e9ffa4e84be7417f8ec4b6d68'] }
   };
   var ua = navigator.userAgent;
   var phone = (navigator.userAgentData && navigator.userAgentData.mobile) ||
@@ -63,8 +58,6 @@
 
   var stage = document.querySelector('.game-stage');
   var anchor = document.querySelector('.ad-anchor');
-  var result = document.querySelector('.ad-result');
-  var resultShown = false;
   var closed = false;
   if (anchor) {
     var close = anchor.querySelector('.ad-anchor-close');
@@ -78,29 +71,10 @@
       var r = stage.getBoundingClientRect();
       gameVisible = r.top < h * 0.9 && r.bottom > h * 0.1;
     }
-    anchor.classList.toggle('show', !closed && !resultShown && window.scrollY > 400 && !gameVisible);
+    anchor.classList.toggle('show', !closed && window.scrollY > 400 && !gameVisible);
   }
   window.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
   sync();
 
-  var frame = document.getElementById('game-frame');
-  if (!frame || !result) return;
-  var gameOrigin = '';
-  try { gameOrigin = new URL(frame.getAttribute('data-game-src') || frame.src, location.href).origin; } catch (e) { return; }
-  var resultLoaded = false;
-  window.addEventListener('message', function (e) {
-    if (e.source !== frame.contentWindow || e.origin !== gameOrigin) return;
-    if (!e.data || e.data.type !== 'mythling-state') return;
-    var show = e.data.state === 'result';
-    if (show === resultShown) return;
-    resultShown = show;
-    if (show && !resultLoaded) {
-      resultLoaded = true;
-      if (fill(result.querySelector('[data-imobile]'))) load();
-    }
-    result.classList.toggle('show', show);
-    document.documentElement.classList.toggle('result-ad', show);
-    sync();
-  });
 })();
