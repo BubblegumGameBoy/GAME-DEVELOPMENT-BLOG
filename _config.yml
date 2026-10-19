@@ -4,4 +4,3 @@ exclude:
   - _ja-archive
   - blog/_template.html
   - ura
-  - admin
