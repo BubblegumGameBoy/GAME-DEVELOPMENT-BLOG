@@ -124,6 +124,7 @@ h1,h2,h3{font-family:var(--serif);line-height:1.35;color:var(--bone-hi)}
 
 .live-stats{margin:-6px 0 12px;font-size:14px;color:var(--gold-hi)}
 .game-main>.live-stats{padding:0 16px}
+.hero .live-stats{margin:0 0 14px;font-size:15px}
 
 /* ads */
 .ad-label{margin:0 0 4px;font-size:11px;letter-spacing:.12em;color:var(--faint);text-align:center}
