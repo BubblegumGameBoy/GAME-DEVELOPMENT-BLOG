@@ -47,7 +47,7 @@ sitemap.xml / CNAME
 | ソルジャータイピング２ | タイピング／隠しボス・周回 | PCのみ | `games/soldier-typing-2.html` | https://soldier-typing-2.pages.dev/ |
 | ピアノタイピング | 音ゲー／タイピング | PC推奨（スマホはタップ可） | `games/piano-typing.html` | https://play.bubblegumgameboy.com/BeatTyping/ |
 | クトゥルフタイピング | タイピング／デイリーボス | PCのみ | `games/cthulhu-typing.html` | https://play.bubblegumgameboy.com/Typingsoldier2/ |
-| クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://fishing.bubblegumgameboy.com/ |
+| クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://bubblegum-fishing-realtime.spacebar-clicker.workers.dev/ |
 | クリーチャー育成キット | 放置育成／手紙交換（Unity WebGL） | PC・スマホ | `games/creature-raising-kit.html` | https://play.bubblegumgameboy.com/Creature-raisingkit/ |
 | 5億年観測記録 | クリッカー／思考実験（**日本語のみ**） | PC推奨 | `games/five-hundred-million-years.html` | https://5okunen-game.pages.dev/ |
 | Dig Planet（みんなで掘る、巨大な謎） | 共同発掘クリッカー／オンライン（three.js、**日本語UIのみ**） | PC・スマホ | `games/dig-planet.html` | https://bubblegum-dig.spacebar-clicker.workers.dev/ |
