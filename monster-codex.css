@@ -1,0 +1,20 @@
+/* Monster Typing codex and world pages (/ja/monster-typing/). Layout only: every colour is a site.css token. */
+.codex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:12px 0 24px}
+.codex-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;background:var(--panel);border:1px solid var(--line);color:var(--bone);text-decoration:none;text-align:center}
+.codex-card:hover{border-color:var(--line-gold);color:var(--bone-hi)}
+.codex-card img{width:96px;height:96px;object-fit:contain}
+.codex-card span{font-weight:700;font-size:14px}
+.codex-card small{font-size:12px;color:var(--faint);line-height:1.5}
+.codex-form{margin:8px 0 36px}
+.codex-head{display:flex;gap:18px;align-items:center;margin:0 0 14px}
+.codex-head img{flex:none;width:160px;height:160px;object-fit:contain;background:var(--panel);border:1px solid var(--line);padding:8px}
+.codex-quote{margin:0;padding:0 0 0 14px;border-left:2px solid var(--line-gold)}
+.codex-quote p{margin:0 0 6px;font-family:var(--serif);color:var(--bone-hi)}
+.codex-quote cite{font-size:12px;font-style:normal;color:var(--faint)}
+.codex-sub{font-size:12px;color:var(--faint)}
+.codex-article table{margin:0 0 16px}
+.codex-pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:32px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+@media (max-width:560px){
+  .codex-head{flex-direction:column;align-items:flex-start}
+  .codex-head img{width:128px;height:128px}
+}

@@ -1,0 +1,1453 @@
+{
+ "read": "2026-10-23",
+ "RATES": {
+  "3": 0.88,
+  "4": 0.1,
+  "5": 0.02
+ },
+ "EVOLVE_LEVEL": 15,
+ "EVOLVE_BONDS": 10,
+ "LULU_LEVEL": 3,
+ "out": [
+  {
+   "no": "001",
+   "id": "lulu-starter",
+   "line": "lulu",
+   "rarity": 0,
+   "cls": "神話生物",
+   "name": "ルル",
+   "title": "潮影の幼体",
+   "desc": "深海の割れ目から拾われた小さな守り手。怖いものを見ると隠れるが、友達の前では背中の星をいちばん明るくする。",
+   "height": 55,
+   "style": "万能型",
+   "styleLine": "撃ち、癒やし、護る。いずれにも通じる",
+   "skill": "星潮バースト",
+   "skillText": "敵に160の痛手を与え、己の命を40癒やし、60を防ぐ帳をまとう",
+   "trait": "小さな潮盾",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/abyss-guardian-starter-idle.webp",
+   "forms": [
+    "lulu-starter",
+    "lulu-final"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 5,
+    "dex": 2,
+    "mystic": 2
+   },
+   "attackNote": "背の星から青緑の泡を三つ放ち、最後の泡を星形に破裂させる。"
+  },
+  {
+   "no": "002",
+   "id": "lulu-final",
+   "line": "lulu",
+   "rarity": 0,
+   "cls": "神話生物",
+   "name": "守り手ルル",
+   "title": "潮星の守り手",
+   "desc": "潮の記憶を胸に抱えた海の守護獣。守る相手の名を呼ばなくても、その人のための波だけを選べる。",
+   "height": 220,
+   "style": "万能型",
+   "styleLine": "撃ち、癒やし、護る。いずれにも通じる",
+   "skill": "星潮バースト",
+   "skillText": "敵に160の痛手を与え、己の命を40癒やし、60を防ぐ帳をまとう",
+   "trait": "潮星の庇護",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/abyss-guardian-final-idle.webp",
+   "forms": [
+    "lulu-starter",
+    "lulu-final"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 5,
+    "dex": 1,
+    "mystic": 2
+   },
+   "attackNote": "腕を伸ばし、細い潮流を三筋に分けて相手へ放つ。水流は蛇行しながら収束し、水しぶきと星の光を残す。"
+  },
+  {
+   "no": "003",
+   "id": "marsh-alchemist",
+   "line": "marsh-alchemist",
+   "rarity": 4,
+   "cls": "契約者",
+   "name": "沼地の錬金術師",
+   "title": "契約者",
+   "desc": "沼の水を瓶に詰めると、忘れられた声が少しだけ聞こえる。笑うときも実験中も、次の一滴を逃さない。",
+   "height": 154,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "沼火のランタン",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "薬草の仕込み",
+   "traitText": "6語を唱えるごとに、薬を一つ使う。癒やし（25）・力（23）・守り（23）の順に巡る",
+   "speed": 2,
+   "human": true,
+   "thumb": "./assets/thumbs/marsh-alchemist-idle.webp",
+   "forms": [
+    "marsh-alchemist"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 2,
+    "dex": 5,
+    "mystic": 2
+   },
+   "attackNote": "瓶の緑光が三つの滴に分かれ、蛍のように相手を囲む。"
+  },
+  {
+   "no": "004",
+   "id": "moon-medium",
+   "line": "moon-medium",
+   "rarity": 4,
+   "cls": "契約者",
+   "name": "月潮の巫女",
+   "title": "契約者",
+   "desc": "月が欠ける日にも海の満ち引きを聞き取る巫女。言葉を急がず、波の間に落ちた願いを丁寧に拾う。",
+   "height": 152,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "三日月の潮文",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "月読の祈り",
+   "traitText": "命が半分を切ったとき一度だけ、命が79癒え、次に受ける痛手を34和らげる",
+   "speed": 3,
+   "human": true,
+   "thumb": "./assets/thumbs/moon-medium-idle.webp",
+   "forms": [
+    "moon-medium"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 2,
+    "dex": 2,
+    "mystic": 5
+   },
+   "attackNote": "星飾りに銀白色の水を集め、水面と反射が変化する水刃を放つ。必殺技は低い潮が舞台を走ったあと、大きな二筋の波が相手を挟み、飛沫に崩れる。風切り音を主に、水音と刃の音を重ねる。"
+  },
+  {
+   "no": "005",
+   "id": "foxfire-envoy",
+   "line": "foxfire-envoy",
+   "rarity": 4,
+   "cls": "契約者",
+   "name": "狐火の使い",
+   "title": "契約者",
+   "desc": "白い狐面の奥で、金の瞳は嘘より先に寂しさを見抜く。袖からこぼす火は熱くなく、帰り道だけを照らす。",
+   "height": 149,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "狐火の千灯",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "狐灯の歩み",
+   "traitText": "唱え終えるたびに、灯が一つ（ミスなく唱えれば二つ）ともる。6つそろうと、次の通常攻撃の威力が15増す",
+   "speed": 4,
+   "human": true,
+   "thumb": "./assets/thumbs/foxfire-envoy-idle.webp",
+   "forms": [
+    "foxfire-envoy"
+   ],
+   "stats": {
+    "attack": 4,
+    "guard": 0,
+    "dex": 2,
+    "mystic": 4
+   },
+   "attackNote": "袖から朱の小火を三つ出し、狐面の輪郭を描いてから一点に集める。"
+  },
+  {
+   "no": "006",
+   "id": "vampire-scout",
+   "line": "vampire-scout",
+   "rarity": 4,
+   "cls": "契約者",
+   "name": "宵月の吸血鬼",
+   "title": "契約者",
+   "desc": "夜を怖がる子のために、あえて先頭を歩く偵察者。黒い外套の内側には、星を数えた小さな地図が縫い込まれている。",
+   "height": 167,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "紅の月影",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "夜渡り",
+   "traitText": "通常攻撃のたびに、与えた痛手の5%を啜り、命に変える",
+   "speed": 4,
+   "human": true,
+   "thumb": "./assets/thumbs/vampire-scout-idle.webp",
+   "forms": [
+    "vampire-scout"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 3,
+    "dex": 2,
+    "mystic": 0
+   },
+   "attackNote": "紫の月弧と赤い細線を重ね、着弾後に小さな蝙蝠影をほどく。"
+  },
+  {
+   "no": "007",
+   "id": "riftclock-juvenile",
+   "line": "riftclock",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "時裂きの幼獣",
+   "title": "時裂き系 / 幼体",
+   "desc": "硝子の眼を三つ持つ煙の子。昨日の足跡を嗅ぎつけると、まだ誰も通っていない曲がり角に先回りする。",
+   "height": 42,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "時空の欠片",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "早時計",
+   "traitText": "開戦のとき、最初の通常攻撃10回の威力が11増す",
+   "speed": 5,
+   "human": false,
+   "thumb": "./assets/thumbs/riftclock-juvenile-idle.webp",
+   "forms": [
+    "riftclock-juvenile",
+    "riftclock-adult"
+   ],
+   "stats": {
+    "attack": 4,
+    "guard": 0,
+    "dex": 5,
+    "mystic": 1
+   },
+   "attackNote": "三角の硝子片を短い尾に残して飛ばす。命中時に赤い時計線が一瞬だけ逆回転する。"
+  },
+  {
+   "no": "008",
+   "id": "riftclock-adult",
+   "line": "riftclock",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "時裂きの猟獣",
+   "title": "時裂き系 / 成体",
+   "desc": "三つの眼は同じ獲物の過去・現在・未来を見ている。硝子の鎧を鳴らすたび、逃げ道だった場所が道ではなくなる。",
+   "height": 210,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "時空裂き",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "先刻の爪",
+   "traitText": "開戦のとき、最初の通常攻撃10回の威力が11増す",
+   "speed": 5,
+   "human": false,
+   "thumb": "./assets/thumbs/riftclock-adult-idle.webp",
+   "forms": [
+    "riftclock-juvenile",
+    "riftclock-adult"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 0,
+    "dex": 2,
+    "mystic": 3
+   },
+   "attackNote": "前脚の軌跡を三本の硝子裂線として残し、少し遅れて赤い亀裂が閉じる。"
+  },
+  {
+   "no": "009",
+   "id": "lanternroot-juvenile",
+   "line": "lanternroot",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "胞灯の若芽",
+   "title": "胞灯系 / 幼体",
+   "desc": "一粒の灯りを提げた歩く種。迷った子を見つけると、道を教える代わりにその子の夢をひとつ聞く。",
+   "height": 48,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "胞子の灯",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "芽吹きの息",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/lanternroot-juvenile-idle.webp",
+   "forms": [
+    "lanternroot-juvenile",
+    "lanternroot-adult"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 5,
+    "dex": 1,
+    "mystic": 4
+   },
+   "attackNote": "淡い緑の胞子が三拍で輪を描き、最後に小さな灯が弾ける。"
+  },
+  {
+   "no": "010",
+   "id": "lanternroot-adult",
+   "line": "lanternroot",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "胞灯の根王",
+   "title": "胞灯系 / 成体",
+   "desc": "森の底で眠った手紙を根から読み上げる巨獣。三つの胞灯が同時に明るくなる夜、忘れられた帰り道が開く。",
+   "height": 320,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "根の王冠",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "古根の庇護",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/lanternroot-adult-idle.webp",
+   "forms": [
+    "lanternroot-juvenile",
+    "lanternroot-adult"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 6,
+    "dex": 0,
+    "mystic": 2
+   },
+   "attackNote": "三つの胞灯から根の円環が伸び、相手の足元で胞子の冠を結ぶ。"
+  },
+  {
+   "no": "011",
+   "id": "needlechoir-juvenile",
+   "line": "needlechoir",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "紅瞳の繭蟲",
+   "title": "紅瞳系 / 幼体",
+   "desc": "まだ翅を知らない繭の中で、一つの赤眼だけが外を見ている。雨粒の音を針の長さで測る、不思議な幼虫。",
+   "height": 32,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "繭針",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "針音の予告",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/needlechoir-juvenile-idle.webp",
+   "forms": [
+    "needlechoir-juvenile",
+    "needlechoir-adult"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 1,
+    "dex": 5,
+    "mystic": 1
+   },
+   "attackNote": "赤い一点から細い針光が直線に走り、接触点に小さな円音波を出す。"
+  },
+  {
+   "no": "012",
+   "id": "needlechoir-adult",
+   "line": "needlechoir",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "紅瞳の針奏蟲",
+   "title": "紅瞳系 / 成体",
+   "desc": "羽ばたきは歌ではなく、幾千の針を擦る弦楽だ。紅い眼が瞬いた瞬間、音の終わりだけが先に届く。",
+   "height": 190,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "針の合唱",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "不協和",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/needlechoir-adult-idle.webp",
+   "forms": [
+    "needlechoir-juvenile",
+    "needlechoir-adult"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 0,
+    "dex": 5,
+    "mystic": 0
+   },
+   "attackNote": "左右の鎌を交差させ、赤紫の細い針束を五線譜のように重ねる。"
+  },
+  {
+   "no": "013",
+   "id": "tidebell-juvenile",
+   "line": "tidebell",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "潮鐘の稚魚",
+   "title": "潮鐘系 / 幼体",
+   "desc": "胸の真珠を抱えて泳ぐ、鐘の音をまだ知らない稚魚。満ち潮の夜には貝殻の内側で小さく歌う。",
+   "height": 28,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "潮鐘の歌",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "小さな満ち潮",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/tidebell-juvenile-idle.webp",
+   "forms": [
+    "tidebell-juvenile",
+    "tidebell-adult"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 5,
+    "dex": 2,
+    "mystic": 2
+   },
+   "attackNote": "透明な泡が三つ上がり、真珠色の輪が水面のように広がる。"
+  },
+  {
+   "no": "014",
+   "id": "tidebell-adult",
+   "line": "tidebell",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "潮鐘の守り手",
+   "title": "潮鐘系 / 成体",
+   "desc": "その甲羅には海が引いても消えない潮目がある。胸の鐘が鳴ると、遠い浜の石まで帰るべき場所を思い出す。",
+   "height": 240,
+   "style": "万能型",
+   "styleLine": "撃ち、癒やし、護る。いずれにも通じる",
+   "skill": "潮鐘の響き",
+   "skillText": "敵に160の痛手を与え、己の命を40癒やし、60を防ぐ帳をまとう",
+   "trait": "潮守の殻",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/tidebell-adult-idle.webp",
+   "forms": [
+    "tidebell-juvenile",
+    "tidebell-adult"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 6,
+    "dex": 0,
+    "mystic": 2
+   },
+   "attackNote": "胸の真珠を中心に同心円の水輪を三回広げ、最後の輪だけ金色にする。"
+  },
+  {
+   "no": "015",
+   "id": "pyrecoil-juvenile",
+   "line": "pyrecoil",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "燼環の火種",
+   "title": "燼環系 / 幼体",
+   "desc": "炉の底から転がり出た小さな炭獣。三つの火眼のうち一つだけが、まだ見ぬ星を映している。",
+   "height": 38,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "炎の環",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "火の粉歩き",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/pyrecoil-juvenile-idle.webp",
+   "forms": [
+    "pyrecoil-juvenile",
+    "pyrecoil-adult"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 0,
+    "dex": 2,
+    "mystic": 3
+   },
+   "attackNote": "三眼が順に点き、足元から小さな火輪が前方へ転がる。"
+  },
+  {
+   "no": "016",
+   "id": "pyrecoil-adult",
+   "line": "pyrecoil",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "燼環の灼蛇",
+   "title": "燼環系 / 成体",
+   "desc": "長い黒曜の身に、消えることのない火脈が巡る。燃やすのは木や石ではなく、敵が胸に隠したためらいだ。",
+   "height": 260,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "灼蛇のうねり",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "熾火の連なり",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/pyrecoil-adult-idle.webp",
+   "forms": [
+    "pyrecoil-juvenile",
+    "pyrecoil-adult"
+   ],
+   "stats": {
+    "attack": 7,
+    "guard": 0,
+    "dex": 1,
+    "mystic": 2
+   },
+   "attackNote": "蛇行する溶岩の帯を一筆で描き、着弾後に炭のひび割れを残す。"
+  },
+  {
+   "no": "017",
+   "id": "moonveil-juvenile",
+   "line": "moonveil",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "月帷の卵子",
+   "title": "月帷系 / 幼体",
+   "desc": "月石の殻から紫の眼がひとつ覗く。眠っている間だけ、影は小さな翼の形になる。",
+   "height": 36,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "月の帳",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "半月の庇",
+   "traitText": "命が半分を切ったとき一度だけ、次に受ける6回の痛手を、それぞれ19和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/moonveil-juvenile-idle.webp",
+   "forms": [
+    "moonveil-juvenile",
+    "moonveil-adult"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 5,
+    "dex": 0,
+    "mystic": 5
+   },
+   "attackNote": "薄い三日月を縦に立てて飛ばし、帰り道に紫の薄幕を残す。"
+  },
+  {
+   "no": "018",
+   "id": "moonveil-adult",
+   "line": "moonveil",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "月帷の浮翼",
+   "title": "月帷系 / 成体",
+   "desc": "三日月を外套にまとい、地面に触れずに旅をする。近づくと潮の匂いがするのは、月が海を引く力を借りたからだ。",
+   "height": 220,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "三日月の舞",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "夜帳の守り",
+   "traitText": "命が半分を切ったとき一度だけ、次に受ける6回の痛手を、それぞれ19和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/moonveil-adult-idle.webp",
+   "forms": [
+    "moonveil-juvenile",
+    "moonveil-adult"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 4,
+    "dex": 0,
+    "mystic": 5
+   },
+   "attackNote": "大小二枚の月刃が交差し、最後に紫の薄幕が味方を包む。"
+  },
+  {
+   "no": "019",
+   "id": "stormquill-juvenile",
+   "line": "stormquill",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "雷羽の幼鳥",
+   "title": "雷羽系 / 幼体",
+   "desc": "まだ飛べない銀羽の子は、雷が落ちる前に羽針を立てる。二本の脚で地を駆ける速さだけは、空の親にも負けない。",
+   "height": 45,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "羽搏きの火花",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "予鳴り",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/stormquill-juvenile-idle.webp",
+   "forms": [
+    "stormquill-juvenile",
+    "stormquill-adult"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 1,
+    "dex": 5,
+    "mystic": 1
+   },
+   "attackNote": "銀の羽針から紫の小さな稲妻を直線に伸ばす。"
+  },
+  {
+   "no": "020",
+   "id": "stormquill-adult",
+   "line": "stormquill",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "雷羽の四翼",
+   "title": "雷羽系 / 成体",
+   "desc": "四枚の翼は嵐を呼ぶためではなく、嵐の中に道を切るためにある。羽の縁に灯る紫電が、その飛行跡を夜空へ刻む。",
+   "height": 240,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "雷鳴の裂羽",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "四翼の残響",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/stormquill-adult-idle.webp",
+   "forms": [
+    "stormquill-juvenile",
+    "stormquill-adult"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 1,
+    "dex": 4,
+    "mystic": 0
+   },
+   "attackNote": "四翼の順に紫電を走らせ、斜め四本の光跡を一点で重ねる。"
+  },
+  {
+   "no": "021",
+   "id": "inkcrown-juvenile",
+   "line": "inkcrown",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "墨環のしずく",
+   "title": "墨環系 / 幼体",
+   "desc": "一つの赤眼を持つ墨のしずく。三本の足で机の端を歩き、落ちる寸前にだけ世界を裏返して渡る。",
+   "height": 30,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "墨の撥ね",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "こぼれ墨",
+   "traitText": "6語を唱えるごとに、命が23癒える",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/inkcrown-juvenile-idle.webp",
+   "forms": [
+    "inkcrown-juvenile",
+    "inkcrown-adult"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 2,
+    "dex": 2,
+    "mystic": 4
+   },
+   "attackNote": "赤眼が点り、墨滴が弾けて青い縁の飛沫になる。"
+  },
+  {
+   "no": "022",
+   "id": "inkcrown-adult",
+   "line": "inkcrown",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "墨環の冠主",
+   "title": "墨環系 / 成体",
+   "desc": "身体の中心には何もなく、その空白こそ王座だという。三つの紅眼が巡ると、影に落ちた言葉が黒い波となって戻る。",
+   "height": 230,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "虚ろの墨環",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "空白の冠",
+   "traitText": "6語を唱えるごとに、命が23癒える",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/inkcrown-adult-idle.webp",
+   "forms": [
+    "inkcrown-juvenile",
+    "inkcrown-adult"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 1,
+    "dex": 1,
+    "mystic": 5
+   },
+   "attackNote": "中央の空洞から黒青の輪を放ち、外縁に赤い眼光を三点残す。"
+  },
+  {
+   "no": "023",
+   "id": "dusk-archive-moth-juvenile",
+   "line": "dusk-archive-moth",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "宵綴りの繭",
+   "title": "宵綴り系 / 幼体",
+   "desc": "閉じた羽の眼紋には、まだ一夜ぶんの月しかない。古い手紙の上で眠ると、読まれなかった言葉を夢に見る。",
+   "height": 28,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "繭の月影",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "月の寝息",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/dusk-archive-moth-juvenile-idle.webp",
+   "forms": [
+    "dusk-archive-moth-juvenile",
+    "dusk-archive-moth"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 2,
+    "dex": 2,
+    "mystic": 5
+   },
+   "attackNote": "丸い眼紋が一度瞬き、薄紫の小さな月片が前へ飛ぶ。"
+  },
+  {
+   "no": "024",
+   "id": "dusk-archive-moth",
+   "line": "dusk-archive-moth",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "宵綴りの蛾",
+   "title": "宵綴り系 / 成体",
+   "desc": "羽の四つの眼は、閉ざされた物語の続きを読んでいる。宵を渡るたび、忘れられた頁に星屑が一行ずつ増える。",
+   "height": 190,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "星眼の舞",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "夜頁の余韻",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/dusk-archive-moth.webp",
+   "forms": [
+    "dusk-archive-moth-juvenile",
+    "dusk-archive-moth"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 1,
+    "dex": 1,
+    "mystic": 5
+   },
+   "attackNote": "羽の眼紋が順に灯り、四枚の月片が渦を描く。"
+  },
+  {
+   "no": "025",
+   "id": "seal-eater-archive-juvenile",
+   "line": "seal-eater-archive",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "封印の一頁",
+   "title": "封印喰らい系 / 幼体",
+   "desc": "鍵穴の眼を持つ一枚の紙。誰かが読む前に自分で折り目をつけ、昨日の秘密を持ち歩き始めた。",
+   "height": 24,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "鍵穴の紙刃",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "余白の守り",
+   "traitText": "6語を唱えるごとに、次に受ける痛手を23和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/seal-eater-archive-juvenile-idle.webp",
+   "forms": [
+    "seal-eater-archive-juvenile",
+    "seal-eater-archive"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 4,
+    "dex": 5,
+    "mystic": 0
+   },
+   "attackNote": "頁の端が金の線になって飛び、着弾点に鍵穴の印を残す。"
+  },
+  {
+   "no": "026",
+   "id": "seal-eater-archive",
+   "line": "seal-eater-archive",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "封印喰らい",
+   "title": "封印喰らい系 / 成体",
+   "desc": "食べた封印を頁にしまい、錠前の数だけ脚を増やす書物。閉じたまま囁く声は、まだ開かれていない章のものだ。",
+   "height": 180,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "禁書の開門",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "閉ざす余白",
+   "traitText": "6語を唱えるごとに、次に受ける痛手を23和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/seal-eater-archive.webp",
+   "forms": [
+    "seal-eater-archive-juvenile",
+    "seal-eater-archive"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 5,
+    "dex": 0,
+    "mystic": 2
+   },
+   "attackNote": "表紙の眼が開き、金色の鍵穴が敵の前に三つ重なる。"
+  },
+  {
+   "no": "027",
+   "id": "cinderhorn-juvenile",
+   "line": "cinderhorn",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "燼角の火子",
+   "title": "燼角系 / 幼体",
+   "desc": "灰の下に残った最後の火が、四つの足を得て歩き出した。片角が熱くなると、まだ見ぬ噴火の夢を見る。",
+   "height": 42,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "小角の火花",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "火種の鼓動",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/cinderhorn-juvenile-idle.webp",
+   "forms": [
+    "cinderhorn-juvenile",
+    "cinderhorn"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 2,
+    "dex": 1,
+    "mystic": 2
+   },
+   "attackNote": "小角から火花が跳ね、短い溶岩線が地面を滑る。"
+  },
+  {
+   "no": "028",
+   "id": "cinderhorn",
+   "line": "cinderhorn",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "燼角の獣",
+   "title": "燼角系 / 成体",
+   "desc": "渦巻く角には眠った火山の年輪が刻まれている。黒煙のたてがみを震わせると、山の奥で古い炉がひとつ目を覚ます。",
+   "height": 250,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "双角の噴流",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "炉心の怒り",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/cinderhorn.webp",
+   "forms": [
+    "cinderhorn-juvenile",
+    "cinderhorn"
+   ],
+   "stats": {
+    "attack": 6,
+    "guard": 3,
+    "dex": 0,
+    "mystic": 1
+   },
+   "attackNote": "両角に橙の火脈を集め、二本の螺旋火柱を前方で交差させる。"
+  },
+  {
+   "no": "029",
+   "id": "moonspore-idol-juvenile",
+   "line": "moonspore-idol",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "月胞の芽石",
+   "title": "月胞系 / 幼体",
+   "desc": "月石の仮面の下で、三つの青い目が雨を数える。ひと晩に一歩しか進まないが、朝には必ず迷子のそばにいる。",
+   "height": 40,
+   "style": "持久型",
+   "styleLine": "敵の命を啜り、長く戦い抜く",
+   "skill": "月茸の光",
+   "skillText": "敵に190の痛手を与え、己の命を70癒やす",
+   "trait": "夜露の胞子",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/moonspore-idol-juvenile-idle.webp",
+   "forms": [
+    "moonspore-idol-juvenile",
+    "moonspore-idol"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 5,
+    "dex": 1,
+    "mystic": 4
+   },
+   "attackNote": "茸の裏から青緑の胞子が一列にこぼれ、小さな月形に結ぶ。"
+  },
+  {
+   "no": "030",
+   "id": "moonspore-idol",
+   "line": "moonspore-idol",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "月胞の石偶",
+   "title": "月胞系 / 成体",
+   "desc": "根は石を抱き、石は月の欠片を抱く。三つの眼が同時に閉じる夜だけ、森の菌類がひそかに道を開く。",
+   "height": 290,
+   "style": "万能型",
+   "styleLine": "撃ち、癒やし、護る。いずれにも通じる",
+   "skill": "三眼の月森",
+   "skillText": "敵に160の痛手を与え、己の命を40癒やし、60を防ぐ帳をまとう",
+   "trait": "胞子の庇護",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/moonspore-idol.webp",
+   "forms": [
+    "moonspore-idol-juvenile",
+    "moonspore-idol"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 6,
+    "dex": 0,
+    "mystic": 3
+   },
+   "attackNote": "巨大な茸の縁が月輪に光り、胞子の雨と根の円陣が重なる。"
+  },
+  {
+   "no": "031",
+   "id": "tideglass-juvenile",
+   "line": "tideglass",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "星潮のしずく",
+   "title": "星潮系 / 幼体",
+   "desc": "海の底で生まれたのに、体の中には空がある。まだ一つの星座しか持たず、波に揺れるたび形を描き直す。",
+   "height": 32,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "星雫の跳ね",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "こぼれ星",
+   "traitText": "会心の一撃のたびに、次の通常攻撃2回の威力が50増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/tideglass-juvenile-idle.webp",
+   "forms": [
+    "tideglass-juvenile",
+    "tideglass"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 0,
+    "dex": 3,
+    "mystic": 4
+   },
+   "attackNote": "体内の星が一点に集まり、青いしずく弾が尾を引く。"
+  },
+  {
+   "no": "032",
+   "id": "tideglass",
+   "line": "tideglass",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "星潮の漂影",
+   "title": "星潮系 / 成体",
+   "desc": "翼を広げるたび、体内の夜空に新しい星が増える。星座を結び終えた海流は、岸から見えない道を教えてくれる。",
+   "height": 170,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "星潮のうねり",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "流星の尾",
+   "traitText": "会心の一撃のたびに、次の通常攻撃2回の威力が50増す",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/tideglass.webp",
+   "forms": [
+    "tideglass-juvenile",
+    "tideglass"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 0,
+    "dex": 2,
+    "mystic": 3
+   },
+   "attackNote": "左右の翼から星屑を放ち、青い水流と重ねて流星帯にする。"
+  },
+  {
+   "no": "033",
+   "id": "vesper-oracle-juvenile",
+   "line": "vesper-oracle",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "宵の予言卵",
+   "title": "宵の預言系 / 幼体",
+   "desc": "殻の割れ目から覗く四つの眼は、明日の夜を見ている。羽はまだ小さく、予言は寝言のように短い。",
+   "height": 38,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "卵殻の星印",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "小夜のささやき",
+   "traitText": "開戦のとき、最初に受ける6回の痛手を、それぞれ19和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/vesper-oracle-juvenile-idle.webp",
+   "forms": [
+    "vesper-oracle-juvenile",
+    "vesper-oracle"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 4,
+    "dex": 1,
+    "mystic": 5
+   },
+   "attackNote": "殻の紋章から細い紫の線を一筆描き、星形の結び目を前に飛ばす。"
+  },
+  {
+   "no": "034",
+   "id": "vesper-oracle",
+   "line": "vesper-oracle",
+   "rarity": 4,
+   "cls": "神格級",
+   "name": "宵の預言鳥",
+   "title": "宵の預言系 / 成体",
+   "desc": "四つの眼がそれぞれ違う夜を見つめる。胸の印が開くとき、まだ起きていない出来事が羽音として聞こえる。",
+   "height": 230,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "四眼の夜告げ",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "先見の羽衣",
+   "traitText": "開戦のとき、最初に受ける6回の痛手を、それぞれ19和らげる",
+   "speed": 2,
+   "human": false,
+   "thumb": "./assets/thumbs/vesper-oracle.webp",
+   "forms": [
+    "vesper-oracle-juvenile",
+    "vesper-oracle"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 4,
+    "dex": 0,
+    "mystic": 5
+   },
+   "attackNote": "胸の紋章から四本の紫光が扇状に伸び、羽の影が円形に閉じる。"
+  },
+  {
+   "no": "035",
+   "id": "nullfin-angler-juvenile",
+   "line": "nullfin-angler",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "無鰭の小灯",
+   "title": "無鰭系 / 幼体",
+   "desc": "小さな星灯りを先に泳がせ、自分はその後ろをついていく。暗闇で道を失うと、灯りのほうが先に振り返る。",
+   "height": 34,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "小灯の一噛み",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "誘いのきらめき",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/nullfin-angler-juvenile-idle.webp",
+   "forms": [
+    "nullfin-angler-juvenile",
+    "nullfin-angler"
+   ],
+   "stats": {
+    "attack": 3,
+    "guard": 1,
+    "dex": 3,
+    "mystic": 3
+   },
+   "attackNote": "星型の灯を一瞬だけ二重にしてから、白いひげの光跡を走らせる。"
+  },
+  {
+   "no": "036",
+   "id": "nullfin-angler",
+   "line": "nullfin-angler",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "無鰭の灯魚",
+   "title": "無鰭系 / 成体",
+   "desc": "釣り上げるのは獲物ではなく、暗い海で消えかけた願いだ。黄金の星を掲げて泳ぐたび、深淵に細い道が灯る。",
+   "height": 260,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "深淵の誘い星",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "星灯の誘導",
+   "traitText": "必殺技の後、次の通常攻撃5回の威力が13増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/nullfin-angler.webp",
+   "forms": [
+    "nullfin-angler-juvenile",
+    "nullfin-angler"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 1,
+    "dex": 1,
+    "mystic": 3
+   },
+   "attackNote": "誘い灯を高く持ち上げ、金の星弾を青緑の渦で包んで放つ。"
+  },
+  {
+   "no": "037",
+   "id": "duskwood-strider-juvenile",
+   "line": "duskwood-strider",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "暮森の灯仔",
+   "title": "暮森系 / 幼体",
+   "desc": "枝はまだ一本、灯りも一粒。森で泣く声を聞くと、短い足で息を切らして迎えに行く。",
+   "height": 45,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "枝灯の跳ね",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "灯仔の道標",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/duskwood-strider-juvenile-idle.webp",
+   "forms": [
+    "duskwood-strider-juvenile",
+    "duskwood-strider"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 3,
+    "dex": 5,
+    "mystic": 0
+   },
+   "attackNote": "頭の一灯が脈打ち、琥珀の小球が青緑の蔓を引いて飛ぶ。"
+  },
+  {
+   "no": "038",
+   "id": "duskwood-strider",
+   "line": "duskwood-strider",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "暮森の駆け手",
+   "title": "暮森系 / 成体",
+   "desc": "枝角に下がる灯は、森へ帰れなかった者の道しるべ。骨の仮面を見た旅人は恐れるが、朝には必ず道へ出る。",
+   "height": 270,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "灯森の疾走",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "森影の導き",
+   "traitText": "必殺技の後、命が57癒える",
+   "speed": 4,
+   "human": false,
+   "thumb": "./assets/thumbs/duskwood-strider.webp",
+   "forms": [
+    "duskwood-strider-juvenile",
+    "duskwood-strider"
+   ],
+   "stats": {
+    "attack": 4,
+    "guard": 1,
+    "dex": 5,
+    "mystic": 0
+   },
+   "attackNote": "枝角の灯を順に点け、地面を青緑の蔓光が駆け抜ける。"
+  },
+  {
+   "no": "039",
+   "id": "moss-reliquary-juvenile",
+   "line": "moss-reliquary",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "苔甲の若虫",
+   "title": "苔甲系 / 幼体",
+   "desc": "柔らかな節の上に、森が最初の紋章を描いた。小さな茸を背負い、古木の根元で眠る。",
+   "height": 24,
+   "style": "万能型",
+   "styleLine": "撃ち、癒やし、護る。いずれにも通じる",
+   "skill": "若茸の胞子",
+   "skillText": "敵に160の痛手を与え、己の命を40癒やし、60を防ぐ帳をまとう",
+   "trait": "苔の寝床",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/moss-reliquary-juvenile-idle.webp",
+   "forms": [
+    "moss-reliquary-juvenile",
+    "moss-reliquary"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 7,
+    "dex": 1,
+    "mystic": 2
+   },
+   "attackNote": "背の茸から緑の胞子が噴き、足元に小さな紋章が浮く。"
+  },
+  {
+   "no": "040",
+   "id": "moss-reliquary",
+   "line": "moss-reliquary",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "苔の聖甲",
+   "title": "苔甲系 / 成体",
+   "desc": "甲羅を覆う苔は森の古い地図だという。枝角の冠を上げると、踏み荒らされた小道にも若草が戻る。",
+   "height": 190,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "古森の王紋",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "聖甲の覆い",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/moss-reliquary.webp",
+   "forms": [
+    "moss-reliquary-juvenile",
+    "moss-reliquary"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 7,
+    "dex": 0,
+    "mystic": 2
+   },
+   "attackNote": "角の輪郭に緑光を走らせ、地面から六角の樹根盾を立ち上げる。"
+  },
+  {
+   "no": "041",
+   "id": "abyssal-shellback-juvenile",
+   "line": "abyssal-shellback",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "沈殿の小殻",
+   "title": "沈殿系 / 幼体",
+   "desc": "甲羅の門はまだ小さいが、その向こうにはもう海底の夜がある。真珠の窓に顔を寄せて、波の昔話を聞く。",
+   "height": 46,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "真珠の泡",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "小さな石門",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/abyssal-shellback-juvenile-idle.webp",
+   "forms": [
+    "abyssal-shellback-juvenile",
+    "abyssal-shellback"
+   ],
+   "stats": {
+    "attack": 0,
+    "guard": 7,
+    "dex": 0,
+    "mystic": 3
+   },
+   "attackNote": "甲羅の二つの窓を点灯し、口元から真珠の泡を吹き飛ばす。"
+  },
+  {
+   "no": "042",
+   "id": "abyssal-shellback",
+   "line": "abyssal-shellback",
+   "rarity": 3,
+   "cls": "魔物級",
+   "name": "沈殿の大殻",
+   "title": "沈殿系 / 成体",
+   "desc": "背中の遺跡には地図にない港の名が残る。長く海底を歩いた甲羅は、沈んだ祈りを真珠の灯に変えてきた。",
+   "height": 330,
+   "style": "守り型",
+   "styleLine": "帳をまとい、崩れずに攻める",
+   "skill": "海底の城門",
+   "skillText": "敵に150の痛手を与え、110を防ぐ帳をまとう",
+   "trait": "遺跡の重み",
+   "traitText": "必殺技の後、次に受ける2回の痛手を、それぞれ29和らげる",
+   "speed": 1,
+   "human": false,
+   "thumb": "./assets/thumbs/abyssal-shellback.webp",
+   "forms": [
+    "abyssal-shellback-juvenile",
+    "abyssal-shellback"
+   ],
+   "stats": {
+    "attack": 1,
+    "guard": 8,
+    "dex": 0,
+    "mystic": 1
+   },
+   "attackNote": "甲羅の窓が順に開き、真珠色の城門が敵の前で閉じる。"
+  },
+  {
+   "no": "043",
+   "id": "unwritten-sovereign-juvenile",
+   "line": "unwritten-sovereign",
+   "rarity": 5,
+   "cls": "神格級",
+   "name": "深淵の星核",
+   "title": "名なき深淵系 / 幼体",
+   "desc": "王冠より先に生まれた小さな星。白い仮面はまだ名前を知らず、触腕で夜の形を探している。",
+   "height": 55,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "星核のさざ波",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "名を待つ光",
+   "traitText": "開戦のとき、最初の5語は短い言葉となり、その通常攻撃の威力が5増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/unwritten-sovereign-juvenile-idle.webp",
+   "forms": [
+    "unwritten-sovereign-juvenile",
+    "unwritten-sovereign"
+   ],
+   "stats": {
+    "attack": 2,
+    "guard": 1,
+    "dex": 2,
+    "mystic": 5
+   },
+   "attackNote": "身体の前に集めた黒炎を1・2・3連で相手へ放つ。必殺では三つの炎を頭上へ送り、黒い火柱に繋げる。"
+  },
+  {
+   "no": "044",
+   "id": "unwritten-sovereign",
+   "line": "unwritten-sovereign",
+   "rarity": 5,
+   "cls": "神格級",
+   "name": "名なき深淵の王",
+   "title": "名なき深淵系 / 成体",
+   "desc": "その王には古い記録にも名前がない。胸の星核が鳴ると、忘れたはずの言葉が夜の底から戻ってくる。",
+   "height": 360,
+   "style": "攻め型",
+   "styleLine": "一撃の重さに秀でる",
+   "skill": "王座なき星夜",
+   "skillText": "敵に260の痛手を与える",
+   "trait": "無名の威光",
+   "traitText": "開戦のとき、最初の5語は短い言葉となり、その通常攻撃の威力が5増す",
+   "speed": 3,
+   "human": false,
+   "thumb": "./assets/thumbs/unwritten-sovereign.webp",
+   "forms": [
+    "unwritten-sovereign-juvenile",
+    "unwritten-sovereign"
+   ],
+   "stats": {
+    "attack": 5,
+    "guard": 1,
+    "dex": 0,
+    "mystic": 4
+   },
+   "attackNote": "入力中に星核から専用の竜頭を召喚。1段目は正面への一射、2段目は上下の交差射撃、3段目は二門の支援砲と巨大な主砲。通常攻撃は竜の口から放つビーム。必殺技は相手の着弾点から画面全体にひびが広がり、舞台のガラスを砕く。"
+  }
+ ],
+ "others": [
+  {
+   "no": "045",
+   "id": "story-godon",
+   "line": "story-godon",
+   "name": "岩喰らいのゴドン"
+  },
+  {
+   "no": "046",
+   "id": "story-migi-hidari",
+   "line": "story-migi-hidari",
+   "name": "霜炎の双蛇"
+  },
+  {
+   "no": "047",
+   "id": "story-beni",
+   "line": "story-beni",
+   "name": "鬼のベニ"
+  },
+  {
+   "no": "048",
+   "id": "story-garmund",
+   "line": "story-garmund",
+   "name": "牙王ガルムンド"
+  },
+  {
+   "no": "049",
+   "id": "story-sera",
+   "line": "story-sera",
+   "name": "騎士セラ"
+  },
+  {
+   "no": "050",
+   "id": "story-eda",
+   "line": "story-eda",
+   "name": "宮廷術師長エダ"
+  },
+  {
+   "no": "051",
+   "id": "rune-warden-human",
+   "line": "rune-warden",
+   "name": "白竜姫リュカ"
+  },
+  {
+   "no": "052",
+   "id": "white-wing-sovereign",
+   "line": "white-wing-sovereign",
+   "name": "白翼の君主"
+  },
+  {
+   "no": "053",
+   "id": "nobunaga-maou",
+   "line": "nobunaga-maou",
+   "name": "第六天魔王・織田信長"
+  },
+  {
+   "no": "054",
+   "id": "hideyoshi-saruou",
+   "line": "hideyoshi-saruou",
+   "name": "黄金の猿王・豊臣秀吉"
+  },
+  {
+   "no": "055",
+   "id": "ieyasu-kouju",
+   "line": "ieyasu-kouju",
+   "name": "忍耐の甲獣・徳川家康"
+  },
+  {
+   "no": "056",
+   "id": "shingen-gunba",
+   "line": "shingen-gunba",
+   "name": "山嵐の軍馬・武田信玄"
+  },
+  {
+   "no": "057",
+   "id": "warfox",
+   "line": "warfox",
+   "name": "九尾の戦狐・紅銀"
+  }
+ ]
+}
