@@ -1,7 +1,7 @@
 // Builds the Monster Typing codex and world pages (/ja/monster-typing/) from data.json (the game's own numbers,
 // read by read-game.mjs) and lore.mjs (the site's writing). Pictures: thumbs.py. Run: node tools/monster_codex/build.mjs
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { LORE, CONTRACTORS } from './lore.mjs';
+import { LORE } from './lore.mjs';
 import { WORLD } from './world.mjs';
 
 const ROOT = new URL('../../', import.meta.url);
@@ -143,21 +143,18 @@ function linePage(l) {
   ].filter(Boolean).join('\n');
 }
 
-// One page per line (and one for the contractors), in the game's bestiary order.
-const pages = [...LORE.map(l => ({ ...l, title: `${l.line}系`, ids: l.forms })), { ...CONTRACTORS, line: 'contractors', ids: Object.keys(CONTRACTORS.forms) }]
+// One page per line, in the game's bestiary order. The contractors' page was taken down on 2026-10-23 (the maker:
+// 一旦契約者消そうか; they appear in the story, and their lore waits for it).
+const pages = LORE.map(l => ({ ...l, title: `${l.line}系`, ids: l.forms }))
   .sort((a, b) => FORM[a.ids[0]].no.localeCompare(FORM[b.ids[0]].no));
 mkdirSync(new URL(`.${CODEX}`, ROOT), { recursive: true });
 pages.forEach((p, i) => {
   const forms = p.ids.map(id => FORM[id]), prev = pages[i - 1], next = pages[i + 1];
   const names = forms.map(f => f.name).join('・');
   const pager = `      <nav class="codex-pager" aria-label="図鑑のページ送り">${prev ? `<a href="${CODEX}${prev.slug}.html">← ${esc(prev.title)}</a>` : '<span></span>'}<a href="${CODEX}">図鑑の一覧</a>${next ? `<a href="${CODEX}${next.slug}.html">${esc(next.title)} →</a>` : '<span></span>'}</nav>`;
-  const body = p.line === 'contractors'
-    ? [`      <p>${esc(p.intro)}</p>`, NOTE, ...forms.map(f => formSection(f, p.forms[f.id])), pager].join('\n')
-    : `${linePage(p)}\n${pager}`;
+  const body = `${linePage(p)}\n${pager}`;
   const title = `${p.title}（${names}）｜モンスタータイピング図鑑`;
-  const description = p.line === 'contractors'
-    ? `モンスタータイピングの契約者4人。${names}の必殺技・特性と人物の紹介。`
-    : `モンスタータイピングの${p.title}、${names}。${p.region}にすむ。${p.head}。`;
+  const description = `モンスタータイピングの${p.title}、${names}。${p.region}にすむ。${p.head}。`;
   writeFileSync(new URL(`.${CODEX}${p.slug}.html`, ROOT), page({
     path: `${CODEX}${p.slug}.html`, title, description, h1: p.title,
     subtitle: `モンスタータイピング図鑑　${names}`,
@@ -182,9 +179,6 @@ const listBody = `      <p>モンスタータイピングで仲間になる神�
       <div class="codex-grid">${group(4)}</div>
       <h2>名なき王（★★★★★）</h2>
       <div class="codex-grid">${group(5)}</div>
-      <h2>契約者（★★★★）</h2>
-      <p>神話生物と並んで戦う、人の仲間です。</p>
-      <div class="codex-grid">${Object.keys(CONTRACTORS.forms).map(id => card(`${CODEX}${CONTRACTORS.slug}.html#${id}`, id, FORM[id].name, '契約者')).join('')}</div>
       <h2>召喚で出会える割合</h2>
       <table><tbody>
         <tr><th scope="row">★★★★★</th><td>${Math.round(DATA.RATES[5] * 100)}%</td></tr>
