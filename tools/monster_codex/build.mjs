@@ -38,7 +38,7 @@ function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/site.css?v=20261023a">
   <link rel="stylesheet" href="/game-page.css">
-  <link rel="stylesheet" href="/monster-codex.css?v=20261023d">
+  <link rel="stylesheet" href="/monster-codex.css?v=20261023f">
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
   <script src="/imobile-ads.js?v=20261023a" defer></script><script type="application/ld+json">${JSON.stringify(ld)}</script>
@@ -110,8 +110,16 @@ const evoShort = (young, grown) => young.line === 'lulu' ? `Lv.${DATA.LULU_LEVEL
 // numbers after. Both forms on one page.
 function linePage(l) {
   const [young, grown] = l.forms.map(id => FORM[id]);
-  const top = Math.max(grown.height, 170);
-  const bar = (h, label, me) => `<div class="codex-bar${me ? ' me' : ''}"><i style="height:${Math.round(h / top * 110)}px"></i><b>${esc(label)}</b>${h}cm</div>`;
+  // Size comparison (2026-10-23, the maker: 大きさ比べも、モンスターの画像調整して入れてほしい): the cropped pictures and Shio
+  // standing on one line, heights in proportion to cm. A form too small to see is drawn larger and says
+  // so (×2, ×3).
+  const SIZE_PX = 150, MIN_PX = 34, top = Math.max(grown.height, 160);
+  const figure = (f, label) => {
+    const px = f.height / top * SIZE_PX, zoom = px < MIN_PX ? Math.ceil(MIN_PX / px) : 1;
+    return `<figure class="codex-scale"><img src="${img(f.id)}" alt="" style="height:${Math.round(px * zoom)}px"><figcaption><b>${esc(label)}</b>${f.height}cm${zoom > 1 ? `<em>（×${zoom}で表示）</em>` : ''}</figcaption></figure>`;
+  };
+  // Shio's height is not set in the story; 160cm stands in until the maker decides (2026-10-23).
+  const SHIO_CM = 160, shio = `<figure class="codex-scale"><img src="/images/monster-typing/shio.webp" alt="" style="height:${Math.round(SHIO_CM / top * SIZE_PX)}px"><figcaption><b>シオ</b>${SHIO_CM}cm</figcaption></figure>`;
   const pair = (a, b) => a === b ? esc(a) : `${esc(a)}<br>${esc(b)}`;
   const rows = [
     ['図鑑番号', `No.${young.no}（${esc(young.name)}）<br>No.${grown.no}（${esc(grown.name)}）`],
@@ -127,7 +135,7 @@ function linePage(l) {
   return [
     `      <div class="codex-hero"><figure><img src="${img(young.id)}" alt="${esc(young.name)}" width="192" height="192"><figcaption>${esc(young.name)}（幼体）</figcaption></figure><figure><img src="${img(grown.id)}" alt="${esc(grown.name)}" width="192" height="192"><figcaption>${esc(grown.name)}（成体）</figcaption></figure></div>`,
     `      <dl class="codex-quick"><dt>分類</dt><dd>${esc(l.line)}系　${stars(young.rarity)} ${young.cls}</dd><dt>生息地</dt><dd>${esc(l.region)}。${esc(l.place)}</dd><dt>体高</dt><dd>${esc(young.name)} ${young.height}cm　${esc(grown.name)} ${grown.height}cm</dd></dl>`,
-    `      <div class="codex-size" aria-label="大きさくらべ">${bar(young.height, '幼体', true)}${bar(170, '大人の背', false)}${bar(grown.height, '成体', true)}</div>`,
+    `      <div class="codex-size" aria-label="大きさくらべ">${figure(young, young.name)}${shio}${figure(grown, grown.name)}</div>`,
     l.map ? `      <figure class="codex-range"><img src="/images/monster-typing/map-${l.slug}.webp" alt="世界地図。${esc(l.region)}に赤い丸" width="600" height="400" loading="lazy"><figcaption>すむ場所：${esc(l.region)}</figcaption></figure>` : '',
     `      <h2>${esc(l.head)}</h2>`,
     `      <p>${esc(l.body)}</p>`,

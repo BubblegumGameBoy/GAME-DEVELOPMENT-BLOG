@@ -32,3 +32,9 @@ for entry in lore:
         draw.ellipse((x - 30, y - 30, x + 30, y + 30), outline=colour, width=width)
     image.save(OUT / f"map-{entry['slug']}.webp", 'WEBP', quality=78, method=6)
 print(f"{sum(1 for e in lore if e['map'])} range maps")
+
+# Shio stands beside each line in the size comparison (2026-10-23, the maker: 人間はシオとか使えば？).
+shio = Image.open(GAME / 'assets/story/shio-guard.png').convert('RGBA')
+shio = shio.crop(shio.getchannel('A').point(lambda a: 255 if a > 24 else 0).getbbox())
+shio.thumbnail((192, 192), Image.LANCZOS)
+shio.save(OUT / 'shio.webp', 'WEBP', quality=84, method=6)
