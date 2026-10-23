@@ -27,15 +27,46 @@
 
   var slots = document.querySelectorAll('[data-imobile]');
   if (!slots.length) return;
+  function holder(slot) { return slot.closest('.ad-top,.ad-below,.ad-slot,.ad-anchor'); }
+  // (2026-10-23) No i-mobile on PC: in 28 days its PC spots paid ¥1 (no view-paid ads, clicks only) and the one PC
+  // advertiser left, games.dmm.com, is filtered out for this audience. The slots go instead of standing empty.
+  if (!phone) {
+    Array.prototype.forEach.call(slots, function (slot) { var h = holder(slot); if (h) h.classList.add('ad-off'); });
+    return;
+  }
+  // An ad is in when the spot's box holds a picture or frame with height. The holder then shows its label (.ad-on);
+  // a spot still empty after WAIT_MS goes (.ad-off), and the holder with it once none of its spots has an ad.
+  var WAIT_MS = 10000;
+  function hasAd(box) {
+    var els = box.querySelectorAll('iframe,img,ins,video,a');
+    for (var i = 0; i < els.length; i++) if (els[i].offsetHeight > 10) return true;
+    return false;
+  }
+  function watch(slot, box) {
+    var h = holder(slot), done = false, started = Date.now();
+    function check() {
+      if (done) return;
+      if (hasAd(box)) { done = true; if (h) { h.classList.add('ad-on'); h.classList.remove('ad-off'); } if (h && h.classList.contains('ad-anchor')) sync(); return; }
+      if (Date.now() - started > WAIT_MS) {
+        done = true; slot.classList.add('ad-off');
+        if (h && !h.classList.contains('ad-on') && !h.querySelector('[data-imobile]:not(.ad-off)')) h.classList.add('ad-off');
+        return;
+      }
+      setTimeout(check, 500);
+    }
+    check();
+  }
   var queue = window.adsbyimobile = window.adsbyimobile || [];
   // Queues one slot's spot. Returns true when something new was queued.
   function fill(slot) {
     var kind = slot.getAttribute('data-imobile');
     var spot = SPOTS[kind] && SPOTS[kind][phone ? 'sp' : 'pc'];
-    if (!spot || document.getElementById(spot[2])) return false;
+    if (!spot) { slot.classList.add('ad-off'); return false; }
+    if (document.getElementById(spot[2])) return false;
     var box = document.createElement('div');
     box.id = spot[2];
     slot.appendChild(box);
+    watch(slot, box);
     queue.push({ pid: 85517, mid: spot[0], asid: spot[1], type: 'banner', display: 'inline', elementid: spot[2] });
     return true;
   }
@@ -54,8 +85,6 @@
     if (fill(slot)) queued = true;
   });
   if (queued) load();
-  if (!phone) return;
-
   var stage = document.querySelector('.game-stage');
   var anchor = document.querySelector('.ad-anchor');
   var closed = false;

@@ -127,8 +127,14 @@ h1,h2,h3{font-family:var(--serif);line-height:1.35;color:var(--bone-hi)}
 .hero .live-stats{margin:0 0 14px;font-size:15px}
 
 /* ads */
-.ad-label{margin:0 0 4px;font-size:11px;letter-spacing:.12em;color:var(--faint);text-align:center}
+/* (2026-10-23) A slot never stands empty with only its label: the label shows once an ad is in, a slot with no ad
+   after a while goes (.ad-off), and on PC the slots are not used at all (i-mobile's PC side paid nothing and its one
+   PC advertiser is filtered out). Wide screens hide the slots until an ad is in, so a PC never sees a gap. */
+.ad-label{margin:0 0 4px;font-size:11px;letter-spacing:.12em;color:var(--faint);text-align:center;visibility:hidden}
+.ad-on>.ad-label{visibility:visible}
 .ad-top,.ad-below,.ad-slot{display:flex;flex-direction:column;align-items:center;margin:16px auto}
+.ad-top.ad-off,.ad-below.ad-off,.ad-slot.ad-off,[data-imobile].ad-off{display:none}
+@media (min-width:601px){.ad-top:not(.ad-on),.ad-below:not(.ad-on),.ad-slot:not(.ad-on){display:none}}
 .ad-top [data-imobile]{min-height:90px}
 html.is-phone .ad-top [data-imobile]{min-height:100px}
 .ad-below .ad-row{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
@@ -139,7 +145,7 @@ html.is-phone .ad-row [data-imobile="belowB"]{display:none}
 .ad-anchor.show{transform:none}
 .ad-anchor [data-imobile]{min-height:50px}
 .ad-anchor-close{position:absolute;right:4px;top:-30px;width:44px;height:30px;border:1px solid var(--line);border-bottom:0;background:rgba(14,11,9,.97);color:var(--bone);font-size:16px;cursor:pointer}
-html.is-pc .ad-anchor{display:none}
+html.is-pc .ad-anchor,.ad-anchor:not(.ad-on){display:none}
 
 /* footer */
 .site-footer,.foot{border-top:1px solid var(--line);padding:30px 20px 40px;color:var(--faint);font-size:13px}
