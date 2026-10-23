@@ -213,7 +213,7 @@ writeFileSync(new URL(`.${CODEX}index.html`, ROOT), page({
 mkdirSync(new URL(`.${WORLD_URL}`, ROOT), { recursive: true });
 writeFileSync(new URL(`.${WORLD_URL}index.html`, ROOT), page({
   path: WORLD_URL, title: '設定資料｜モンスタータイピング',
-  description: 'モンスタータイピングの設定資料。王国と魔物、仲間の迎え方、魔晶、鍛冶屋、位階の碑、レイドのしくみと用語集をまとめています。',
+  description: 'モンスタータイピングの設定資料。勇者一行と魔王の物語の始まり、仲間の迎え方、魔晶、鍛冶屋、位階の碑、レイドのしくみと用語集をまとめています。',
   h1: '設定資料', subtitle: 'モンスタータイピングの世界と言葉',
   crumbs: [['ホーム', '/ja/'], ['モンスタータイピング', GAME_PAGE], ['設定資料']],
   body: WORLD({ CODEX, FORM, DATA, esc }),
