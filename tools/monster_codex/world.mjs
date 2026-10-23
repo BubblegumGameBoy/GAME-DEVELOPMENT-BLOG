@@ -1,58 +1,67 @@
-// The world page's writing (2026-10-23, rewritten the same day in です・ます after the maker's review). The story's
-// facts come from docs/story-mode/script-v6.md only (story.md is the old v1 plan); the rest is how the game works, and
-// its numbers are the game's (src/summon.mjs, src/evolution.mjs, src/rating.mjs, docs/raid.md). No story spoilers.
-export function WORLD({ CODEX, DATA }) {
-  const terms = [
-    ['勇者一行', '魔王を討つために王国が北へ送り出した、シオ・レイ・ミナの三人です。'],
-    ['魔物', '物語の中での呼び名です。言葉を話し、祭りや掟を持って暮らしています。'],
-    ['神話生物', 'ゲームの中で、仲間になる生き物の呼び名です。幼体から育ち、成体に進化します。'],
-    ['契約者', '人の仲間です。姿は一つで、進化はしません。'],
-    ['契約の儀', 'はじめて遊ぶときに一度だけ行う、最初の仲間選びです。'],
-    ['召喚', '魔晶を払って、新しい仲間を迎えることです。'],
-    ['魔晶', 'ゲームのお金です。召喚・商店・鍛冶に使います。'],
-    ['幼体・成体', '神話生物の二つの姿です。召喚で来るのは幼体です。'],
-    ['共闘', 'その仲間といっしょに戦った回数で、進化の条件の一つです。'],
-    ['階級', '魔物級（★3）・神格級（★4）・名なき王（★5）。めずらしさの印です。'],
-    ['型', '攻め型・守り型・持久型・万能型の四つで、必殺技の中身で決まります。'],
-    ['必殺技', 'ゲージがたまると撃てる大技です。'],
-    ['特性', '仲間ごとに決まった場面で働く力です。'],
-    ['唱える', '画面の言葉を最後まで打ち切ることです。特性の多くは、唱えた数で働きます。'],
-    ['痛手', 'ダメージのことです。'],
-    ['帳', '身を守る幕です。通常攻撃も必殺技も、決まった量まで受け止めます。'],
-    ['会心', 'ときどき出る、威力の大きい一撃です。'],
-    ['コンボ', 'ミスせずに続けて打った数です。続くほど攻撃の動きが変わります。'],
-    ['はじめの能力', '攻撃・まもり・器用さ・神秘の配分で、仲間ごとに違います。合計は全員同じです。'],
-    ['ルーン', '仲間に付ける装備で、鍛冶屋で鍛えます。'],
-    ['色違い', '召喚でまれに来る、色の違う仲間です。'],
-    ['位階', 'オンライン対戦のレートで決まる段位です。'],
-    ['鉄の首輪', '王国が魔物を従わせるために使う首輪です。'],
-    ['牙の島', '首輪から逃げてきた魔物と人間が暮らす島です。']
-  ];
-  return `      <p>モンスタータイピングの世界のしくみと、ゲームの中でよく出てくる言葉をまとめました。物語の筋には触れていません。</p>
-      <h2>勇者一行と魔王</h2>
+// The world page (2026-10-23, the maker: 画像や世界地図を紹介するだけでそれっぽくなる。ゲームの設定画面じゃない).
+// A picture book of the world: the map, each region with the game's own art and who lives there, and the people of
+// the story. No game rules here (raid, forge, rank): those are the game's to show. Story facts come from
+// docs/story-mode/script-v6.md only, and stop before its turns. Pictures: tools/monster_codex/world_images.py.
+const PIC = name => `/images/monster-typing/world/${name}.webp`;
+
+// The regions, numbered as on the map. lines: codex slugs of the creatures that live there (tools/monster_codex/lore.mjs).
+const REGIONS = [
+  { name: '海霧の離島', pic: 'harbor-town', caption: '港町の市場', lines: ['lanternroot', 'inkcrown'],
+    text: '一年の半分以上、海霧がかかる島です。港町の石畳には朝から屋台が並び、町の外に広がる首輪の森では、木々のあいだに緑の灯がともります。' },
+  { name: '牙の島', pic: 'fang-island', caption: '牙の闘技場', lines: [],
+    text: '港町の南の沖に、牙のような岩山がそびえる島があります。首輪から逃げてきた魔物と人間がいっしょに暮らす島で、すり鉢の形の闘技場では牙闘祭が開かれます。勝ち残った者は、島の主に願いを一つ出せます。' },
+  { name: '大陸西部の森林', pic: 'west-forest', caption: '巨樹の神殿', lines: ['moonspore-idol', 'duskwood-strider'],
+    text: '巨樹が何重にも枝を広げる森です。奥には巨樹の神殿があり、霧の深い谷では、骨の仮面をつけた獣が灯をともして駆けていきます。' },
+  { name: '大陸中央の平原', pic: 'central-plain', caption: '古代の城塞', lines: ['stormquill', 'nullfin-angler', 'moss-reliquary'],
+    text: '川がいく筋も流れる広い平原で、真ん中に古代の城塞が残っています。夏には一日に何百回も雷が落ち、深い湖の底には金色の灯が沈んでいます。' },
+  { name: '南の砂漠', pic: null, caption: '', lines: ['needlechoir'],
+    text: '赤い岩の谷が続く砂漠です。雨は年に3回ほどしか降らず、雨の夜にだけ、砂の下で眠っていた虫たちがいっせいに顔を出します。' },
+  { name: '南海の群島', pic: 'south-sea', caption: '海上要塞', lines: ['tidebell', 'tideglass', 'abyssal-shellback'],
+    text: '小さな島が散らばる南の海で、沖には海上要塞が建っています。浅い干潟と、陸の見えない外海と、沈んだ港の眠る海の底とでは、すんでいるものがまるで違います。' },
+  { name: '北東の雪山', pic: 'snow-mountains', caption: '氷峰の塔', lines: ['riftclock', 'pyrecoil'],
+    text: '氷の峰が連なる雪山で、尾根には氷峰の塔が立っています。山の中ほどには赤い火口があり、雪と溶岩がすぐ隣り合っています。' },
+  { name: '北の浮島', pic: 'floating-isles', caption: '雲の上の島', lines: ['moonveil', 'dusk-archive-moth', 'vesper-oracle'],
+    text: '雲の上に浮かぶ島々です。冬は夜がとても長く、崩れかけた崖の縁には、新月の夜になると雲の下から強い風が吹き上がります。' },
+  { name: '南東の島国', pic: 'southeast-isles', caption: '海を望む岬', lines: ['cinderhorn', 'unwritten-sovereign'],
+    text: '大陸の南東に浮かぶ島国です。年に一度、50日続く大雨の季節があり、沖には光の届かない深い海が口を開けています。' }
+];
+
+// The people of the story, as the script first shows them.
+const PEOPLE = [
+  ['volk', '魔王ヴォルク', '北の城の玉座で、勇者たちを待っていた魔王です。'],
+  ['garo', '渡し守ガロ', '霧の海を小舟で渡る渡し守です。舟の底にはいつも水がたまっていて、片手で櫂をこぎながら、足で桶を寄せてかき出します。'],
+  ['garmund', '牙王ガルムンド', '牙の島の主です。片目の大猪で、折れた牙の根もとに金の輪がはまっています。'],
+  ['beni', '鬼のベニ', '鉄の棍棒を担ぐ鬼の闘士です。勝ちたい気持ちは本物で、試合でも手を抜きません。'],
+  ['godon', '岩喰らいのゴドン', '牙闘祭に出る、岩の獣の闘士です。口数は少なく、言うことはまっすぐです。'],
+  ['migi-hidari', '霜炎の双蛇', '氷と炎、二つの頭を持つ蛇です。左右の頭は、百年同じ喧嘩を続けています。'],
+  ['sera', '騎士セラ', '王国に仕える騎士です。命令には短く、敬語で答えます。'],
+  ['eda', '宮廷術師長エダ', '王国の宮廷術師長です。部下にも丁寧な言葉で話します。']
+];
+
+export function WORLD({ CODEX, LORE }) {
+  const lineName = slug => LORE.find(l => l.slug === slug).line;
+  const region = (r, i) => `      <section class="world-region" id="region-${i + 1}">
+        <h3><span class="world-no">${i + 1}</span>${r.name}</h3>
+${r.pic ? `        <figure class="world-scene"><img src="${PIC(r.pic)}" alt="${r.caption}" width="560" height="315" loading="lazy"><figcaption>${r.caption}</figcaption></figure>\n` : ''}        <p>${r.text}</p>
+${r.lines.length ? `        <p class="world-lives">ここにすむ仲間：${r.lines.map(slug => `<a href="${CODEX}${slug}.html">${lineName(slug)}系</a>`).join('・')}</p>\n` : ''}      </section>`;
+  return `      <figure class="world-scene world-key"><img src="${PIC('key-visual')}" alt="月夜の浜辺で子を抱く勇者シオ" width="560" height="315"><figcaption>勇者シオ</figcaption></figure>
       <p>物語は、王国が勇者シオ・レイ・ミナの三人を北へ送り出すところから始まります。人の王国と魔物の地は百年にわたって争っていて、北の城にいる魔王ヴォルクを討てばその戦が終わる、と三人は告げられていました。</p>
-      <p>敵として描かれる魔物も、言葉を話し、祭りをして、掟を守って暮らしています。</p>
-      <p>王国は鉄の首輪で魔物を従わせます。首輪には術が刻まれていて、はめられた魔物は痛みで命令に逆らえません。港町の南の沖には、牙のような岩山がそびえる牙の島があり、首輪から逃げてきた魔物と人間がいっしょに暮らしています。王国は島の住民をまとめて罪人と呼んでいます。その先は、物語モードで確かめてください。</p>
-      <h2>仲間の迎え方</h2>
-      <p>はじめて遊ぶときは、契約の儀で最初の仲間を選びます。現れた3体の中から1体と契約し、気に入らなければ一度だけ引き直せます。そこからは、魔晶を使う召喚で仲間を増やしていきます。召喚は1回◆600です。</p>
-      <p>ゲームの中では、仲間になる生き物を神話生物と呼んでいます。階級は魔物級（★3）、神格級（★4）、名なき王（★5）の3つで、★はめずらしさの印です。★が多いほど強いわけではありません。</p>
-      <p>神話生物は幼体で仲間になり、その仲間でLv.${DATA.EVOLVE_LEVEL}に届いて、いっしょに${DATA.EVOLVE_BONDS}回戦うと、次の対戦のあとで成体に進化します。どこにすんで何を食べているのかは、<a href="${CODEX}">モンスター図鑑</a>に書いています。</p>
-      <h2>魔晶</h2>
-      <p>魔晶はゲームのお金で、対戦のあとにもらえます。額は、正しく打った文字の数と勝ち負け、連勝の数で決まり、位階が上がると勝ち負けでもらえる分も増えます。使い道は、召喚と、商店での買い物と、鍛冶屋でのルーン強化の3つです。</p>
-      <h2>鍛冶屋</h2>
-      <p>鍛冶屋では、仲間に付けるルーンを強化石で叩いて鍛えます。ルーンは剛力・守護・会心・痛打・叡智・幸運・富の7種類で、通常攻撃の威力、受ける痛手、会心の出やすさ、手に入る経験や魔晶を少しずつ上げてくれます。</p>
-      <p>叩くと1段上がりますが、失敗することもあります。祝福の強化石なら一度に何段か上がることがあり、守護の強化石なら失敗しても段は下がりません。ルーンの枠は仲間1体に4つで、レベルが上がると順に開いていきます。</p>
-      <h2>位階の碑</h2>
-      <p>位階の碑は、プレイヤーの名前とレートが並ぶランキングです。レートが動くのはほかのプレイヤーとのオンライン対戦だけで、CPUとの練習では変わりません。位階は見習い・探索者・秘儀者・祭司・大祭司・深淵の使徒・旧支配者の7段階で、上がるたびに紋章の色が変わります。</p>
-      <h2>レイド</h2>
-      <p>レイドは、週替わりの大きな敵にプレイヤー全員の打鍵で挑む戦いです。同じ時間に集まる必要はなく、正しく打った1文字がそのまま1ダメージになります。対戦やトレーニングで打った分も、まとめて届きます。</p>
-      <p>2026年10月20日に始まったシーズン1「戦国」では、織田信長・豊臣秀吉・徳川家康・武田信玄が1週ずつ現れます。週が明けると全員のダメージと自分の貢献が発表されて報酬を受け取れ、とくにたくさん打った人には褒賞の仲間がついてきます。</p>
-      <h2>契約者</h2>
-      <p>召喚で出会える人の仲間で、沼地の錬金術師・月潮の巫女・狐火の使い・宵月の吸血鬼の4人がいます。どの契約者も、ほかの仲間にはない特性を持っています。くわしくは<a href="${CODEX}contractors.html">契約者のページ</a>にあります。</p>
-      <h2 id="terms">用語集</h2>
-      <table><tbody>
-${terms.map(([k, v]) => `        <tr><th scope="row">${k}</th><td>${v}</td></tr>`).join('\n')}
-      </tbody></table>
+      <p>このページでは、その世界の地図と、地方ごとの景色、そこにすむ仲間、物語に出てくる人たちを紹介します。物語の筋には触れていません。</p>
+      <h2>世界地図</h2>
+      <figure class="world-scene"><img src="${PIC('world-map')}" alt="世界地図。9つの地方に番号" width="900" height="600"><figcaption>番号は下の地方の紹介と同じです</figcaption></figure>
+      <h2>地方とそこにすむもの</h2>
+${REGIONS.map(region).join('\n')}
+      <h2>物語の舞台</h2>
+      <figure class="world-scene"><img src="${PIC('hero-monument')}" alt="港町の広場に立つ三人の勇者の石像" width="560" height="315" loading="lazy"><figcaption>港町の広場の、三勇士の像</figcaption></figure>
+      <p>港町の広場には、魔王を討ちに出た三人の勇者の像が建てられています。旅立ちのころから作られていた像で、帰ってきたら式が開かれるはずでした。</p>
+      <figure class="world-scene"><img src="${PIC('demon-castle')}" alt="黒い柱が並ぶ魔王の城の玉座の間" width="560" height="315" loading="lazy"><figcaption>魔王の城、玉座の間</figcaption></figure>
+      <p>魔王の城は北の海辺に建っています。外では氷まじりの雨が降っていても、最奥の玉座の間だけはなぜか暖かいのだそうです。</p>
+      <p>王国は、鉄の首輪で魔物を従わせています。首輪には術が刻まれていて、はめられた魔物は痛みで命令に逆らえません。けれど物語に出てくる魔物たちは言葉を話し、祭りをして、掟を守って暮らしています。</p>
+      <h2>物語に出てくる人たち</h2>
+      <div class="world-people">
+${PEOPLE.map(([pic, name, text]) => `        <div class="world-person"><img src="${PIC(pic)}" alt="${name}" width="160" height="160" loading="lazy"><b>${name}</b><p>${text}</p></div>`).join('\n')}
+      </div>
+      <p>この先、勇者たちがどうなるのかは、ゲームの物語モードで確かめてください。仲間になる生き物は<a href="${CODEX}">モンスター図鑑</a>に、ゲームの遊び方は<a href="/ja/games/monster-typing.html">ゲームの紹介ページ</a>にまとめています。</p>
       <h2>制作の話</h2>
       <p>このゲームを作ったきっかけや、オンライン対戦を入れた理由は、ブログの<a href="https://babblegum.hatenablog.com/entry/2026/10/05/142948">制作記</a>に書きました。</p>`;
 }

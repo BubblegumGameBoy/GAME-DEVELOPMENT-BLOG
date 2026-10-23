@@ -34,3 +34,17 @@
 .codex-range{margin:0 0 8px}
 .codex-range img{width:100%;height:auto;border:1px solid var(--line)}
 .codex-range figcaption{font-size:13px;color:var(--muted)}
+/* The world page (2026-10-23): the map, the regions and the people, with the game's own art. */
+.world-scene{margin:0 0 14px}
+.world-scene img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.world-scene figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+.world-key{margin-bottom:18px}
+.world-region{margin:0 0 30px}
+.world-region h3{display:flex;align-items:center;gap:10px}
+.world-no{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:2px solid var(--gold-hi);border-radius:50%;font-family:var(--latin);font-size:15px;color:var(--bone-hi)}
+.world-lives{font-size:14px;color:var(--muted)}
+.world-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:0 0 20px}
+.world-person{background:var(--panel);border:1px solid var(--line);padding:12px;text-align:center}
+.world-person img{width:120px;height:120px;object-fit:contain}
+.world-person b{display:block;color:var(--gold-hi);margin:6px 0 2px}
+.world-person p{margin:0;font-size:13px;text-align:left;color:var(--bone)}

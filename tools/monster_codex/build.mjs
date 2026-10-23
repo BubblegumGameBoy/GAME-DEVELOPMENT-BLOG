@@ -38,7 +38,7 @@ function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/site.css?v=20261018b">
   <link rel="stylesheet" href="/game-page.css">
-  <link rel="stylesheet" href="/monster-codex.css?v=20261023b">
+  <link rel="stylesheet" href="/monster-codex.css?v=20261023d">
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
   <script src="/imobile-ads.js?v=20261018b" defer></script><script type="application/ld+json">${JSON.stringify(ld)}</script>
@@ -213,10 +213,10 @@ writeFileSync(new URL(`.${CODEX}index.html`, ROOT), page({
 mkdirSync(new URL(`.${WORLD_URL}`, ROOT), { recursive: true });
 writeFileSync(new URL(`.${WORLD_URL}index.html`, ROOT), page({
   path: WORLD_URL, title: '設定資料｜モンスタータイピング',
-  description: 'モンスタータイピングの設定資料。勇者一行と魔王の物語の始まり、仲間の迎え方、魔晶、鍛冶屋、位階の碑、レイドのしくみと用語集をまとめています。',
-  h1: '設定資料', subtitle: 'モンスタータイピングの世界と言葉',
+  description: 'モンスタータイピングの設定資料。世界地図と9つの地方の景色、そこにすむ仲間、勇者一行の物語に出てくる人たちを、ゲームの絵で紹介します。',
+  h1: '設定資料', subtitle: 'モンスタータイピングの世界と、そこに生きるもの',
   crumbs: [['ホーム', '/ja/'], ['モンスタータイピング', GAME_PAGE], ['設定資料']],
-  body: WORLD({ CODEX, FORM, DATA, esc }),
+  body: WORLD({ CODEX, LORE }),
   ld: { '@context': 'https://schema.org', '@type': 'WebPage', name: '設定資料｜モンスタータイピング', url: SITE + WORLD_URL, inLanguage: 'ja', about: GAME_LD }
 }));
 console.log(`${pages.length} codex pages, the list and the world page`);
