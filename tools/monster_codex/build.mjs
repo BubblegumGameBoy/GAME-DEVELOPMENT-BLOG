@@ -36,7 +36,7 @@ function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/site.css?v=20261023a">
+  <link rel="stylesheet" href="/site.css?v=20261024a">
   <link rel="stylesheet" href="/game-page.css">
   <link rel="stylesheet" href="/monster-codex.css?v=20261023f">
   <script src="/privacy-controls.js" defer></script>

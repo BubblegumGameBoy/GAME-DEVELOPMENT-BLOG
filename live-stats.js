@@ -12,12 +12,20 @@
   if (!el || !window.fetch) return;
   var ja = (document.documentElement.lang || '').toLowerCase().indexOf('ja') === 0;
   var KEY = 'mt-live-stats';
+  // (2026-10-23, the maker: "ちゃんとホームページとしてカウンター？見た目もうちょいuiから") A board of three counts
+  // with a LIVE mark, in place of a sentence.
+  function tile(label, n, unit) {
+    return '<span class="ls-item"><small>' + label + '</small><b>' + n + (unit ? '<em>' + unit + '</em>' : '') + '</b></span>';
+  }
   function render(d) {
     var here = d.here, playing = d.playing || 0, total = d.total || 0;
     if (typeof here !== 'number' || (here < 2 && total < 10)) return;
-    el.textContent = ja
-      ? ('いま ' + here + ' 人がオンライン' + (playing ? '、' + playing + ' 人が対戦中' : '') + (total ? '。ランキング登録 ' + total + ' 人' : ''))
-      : (here + ' online now' + (playing ? ', ' + playing + ' in a battle' : '') + (total ? '. ' + total + ' players on the ranking' : ''));
+    el.innerHTML = '<span class="ls-live" aria-hidden="true"><i></i>LIVE</span>' + (ja
+      ? tile('オンライン', here, '人') + tile('対戦中', playing, '人') + (total ? tile('ランキング登録', total, '人') : '')
+      : tile('Online', here) + tile('In a battle', playing) + (total ? tile('On the ranking', total) : ''));
+    el.setAttribute('aria-label', ja
+      ? ('いま ' + here + ' 人がオンライン、' + playing + ' 人が対戦中。ランキング登録 ' + total + ' 人')
+      : (here + ' online now, ' + playing + ' in a battle, ' + total + ' on the ranking'));
     el.hidden = false;
   }
   var cached = null;
