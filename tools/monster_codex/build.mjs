@@ -103,7 +103,7 @@ ${paragraphs.map(p => `        <p>${esc(p)}</p>`).join('\n')}
       </section>`;
 }
 
-const NOTE = `      <p class="note">数値は${DATA.read.replace(/^(\d+)-0?(\d+)-0?(\d+)$/, '$1年$2月$3日')}時点のゲームと同じです。育成でふった能力やルーンで、対戦での数値は変わります。言葉の意味は<a href="${WORLD_URL}#terms">用語集</a>にあります。</p>`;
+const NOTE = `      <p class="note">数値は${DATA.read.replace(/^(\d+)-0?(\d+)-0?(\d+)$/, '$1年$2月$3日')}時点のゲームのものです。対戦では、育成で振った能力やルーンの分だけ変わります。</p>`;
 const evoShort = (young, grown) => young.line === 'lulu' ? `Lv.${DATA.LULU_LEVEL}` : `Lv.${DATA.EVOLVE_LEVEL}・共闘${DATA.EVOLVE_BONDS}回`;
 
 // A creature line's page: the lore first (its range, how it lives, its place among people), the game's own words and
