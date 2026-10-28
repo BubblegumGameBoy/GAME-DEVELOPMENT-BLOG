@@ -21,10 +21,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/site.css?v=20261024a">
-  <link rel="stylesheet" href="/game-page.css">
+  <style>.mt-moved{max-width:560px;margin:28px auto 56px;padding:32px 24px;text-align:center;background:var(--panel);border:1px solid var(--line-gold)}.mt-moved img{width:min(360px,90%);display:block;margin:0 auto 20px}.mt-moved-lead{margin:0 0 24px;color:var(--bone)}.mt-moved-go{width:min(320px,100%)}.mt-moved-sub{margin:20px 0 0;font-size:14px}.mt-moved-sub a{color:var(--muted)}@media (max-width:600px){.mt-moved{margin:24px 12px 48px;padding:24px 16px}}</style>
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
-  <script src="/game-page.js?v=20261017b" defer></script><script src="/imobile-ads.js?v=20261023a" defer></script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoGame", "name": "モンスタータイピング", "url": "https://bubblegumgameboy.com/ja/games/monster-typing.html", "image": "https://bubblegumgameboy.com/images/monster-typing.png", "description": "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。", "applicationCategory": "Game", "operatingSystem": "Web browser", "inLanguage": "ja", "author": {"@type": "Person", "name": "バブルガム", "alternateName": "Bubblegum", "url": "https://bubblegumgameboy.com/ja/about.html", "sameAs": ["https://babblegum.hatenablog.com/"]}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "alternateName": "Monster Typing", "playMode": ["SinglePlayer", "MultiPlayer"], "sameAs": ["https://x.com/monster_typing", "https://www.tiktok.com/@monster_typing"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoGame", "name": "モンスタータイピング", "url": "https://bubblegumgameboy.com/ja/games/monster-typing.html", "image": "https://bubblegumgameboy.com/images/monster-typing.png", "description": "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。", "applicationCategory": "Game", "operatingSystem": "Web browser", "inLanguage": "ja", "author": {"@type": "Person", "name": "バブルガム", "alternateName": "Bubblegum", "url": "https://bubblegumgameboy.com/ja/about.html", "sameAs": ["https://babblegum.hatenablog.com/"]}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "alternateName": "Monster Typing", "playMode": ["SinglePlayer", "MultiPlayer"], "sameAs": ["https://x.com/monster_typing", "https://www.tiktok.com/@monster_typing"]}</script>
 </head>
 <body>
   <a class="skip" href="#main">本文へ</a>
@@ -32,30 +32,13 @@
   <main id="main" class="game-main">
     <p class="crumb"><a href="/ja/">ホーム</a> / モンスタータイピング</p>
     <h1>モンスタータイピング</h1>
-    <p class="game-subtitle">Monster Typing — ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。</p>
-    <aside class="ad-top" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="top"></div></aside>
-    <div class="game-shell">
-      <div class="game-stage"><div id="game-launch" class="game-launch"><img src="/images/monster-typing-banner.webp" alt="モンスタータイピング" width="360" height="120"><p>ボタンを押すとゲームを読み込みます。</p><button type="button" id="game-start" disabled>モンスタータイピングを遊ぶ</button><noscript><p><a href="https://babblegum.hatenablog.com/entry/2026/10/01/143320">はてなブログの紹介記事で遊ぶ</a></p></noscript></div><iframe id="game-frame" src="about:blank" data-game-src="https://monster.bubblegumgameboy.com/" data-autoload title="モンスタータイピングのゲーム画面" allow="fullscreen; autoplay" allowfullscreen></iframe></div>
-    </div>
-    <p id="game-status" role="status" class="sr-only"></p>
-    <nav class="mt-explore game-explore" aria-label="図鑑と設定資料">
-      <a class="mt-card" href="/ja/monster-typing/codex/"><span class="mt-art"><img src="/images/monster-typing/riftclock-adult.webp" alt="" width="192" height="192" loading="lazy"><img src="/images/monster-typing/unwritten-sovereign.webp" alt="" width="192" height="192" loading="lazy"><img src="/images/monster-typing/pyrecoil-adult.webp" alt="" width="192" height="192" loading="lazy"></span><div class="mt-body"><h3>モンスター図鑑</h3><p>19系統のモンスターの、すむ場所、体のしくみ、暮らし。シオと並べた大きさくらべつき。</p><span class="mt-go">図鑑をひらく →</span></div></a>
-      <a class="mt-card" href="/ja/monster-typing/world/"><span class="mt-art map"><img src="/images/monster-typing/world/world-map.webp" alt="" width="900" height="600" loading="lazy"></span><div class="mt-body"><h3>設定資料</h3><p>世界地図と、物語の舞台になる地方。勇者一行と、その旅で出会う人たち。</p><span class="mt-go">設定資料を読む →</span></div></a>
-    </nav>
-    <aside class="ad-below" aria-label="広告"><p class="ad-label">広告</p><div class="ad-row"><div data-imobile="belowA"></div><div data-imobile="belowB"></div></div></aside>
-    <article class="article"><h2>どんなゲーム？</h2><p>ひらがなをローマ字で打つと、モンスターが攻撃するタイピングゲームです。ほかのプレイヤーとオンラインで対戦できます。対戦相手がいないあいだはCPUと練習でき、人が来ると乱入してきます。</p>
-    <h2>遊び方</h2><ul><li>画面のひらがなをローマ字で打つと攻撃します。</li><li>ゲージが満タンになったらSpaceキーで必殺技を出せます。</li><li>魔晶を使って仲間のモンスターを召喚し、育てられます。</li><li>ストーリーモードとトレーニングモードもあります。</li></ul>
-    <p>仲間になるモンスターの必殺技や特性は<a href="/ja/monster-typing/codex/">モンスター図鑑</a>に、魔晶・鍛冶屋・レイドなど世界のしくみと言葉は<a href="/ja/monster-typing/world/">設定資料</a>にまとめています。</p>
-    <h2>操作</h2><p>PCではキーボードでローマ字を入力します。スマホではフリック入力で対戦できます。</p>
-    <p class="note">PCで遊ぶときは、日本語入力（IME）をオフにしてください。</p>
-    <h2>アップデート履歴</h2><ul><li>10月16日：トレーニングモードと、魚の漢字や日本史を打ちながら覚える練習モードを追加。</li><li>10月12日：深淵の星核の最終進化の攻撃演出を修正。</li><li>10月10日：コンボ攻撃を追加。攻撃回数に応じてモーションが変わります。</li><li>10月8日：フリック入力での対戦に対応。</li><li>10月5日：ストーリーモードを追加。</li><li>それ以前：ガチャ、鍛冶屋、色違いモンスター、オンライン対戦を追加。名前をルーンタイピングからモンスタータイピングに変更。</li></ul>
-    <h2>攻略・制作の話</h2><ul><li><a href="https://babblegum.hatenablog.com/entry/2026/10/01/143320">モンスタータイピングの紹介とアップデート情報</a></li><li><a href="https://babblegum.hatenablog.com/entry/2026/10/05/142948">制作記：タイピングゲームでオンライン対戦を作りたかった理由</a></li><li><a href="https://babblegum.hatenablog.com/entry/2026/10/08/154310">フリック入力で遊べるようになった話</a></li><li><a href="https://babblegum.hatenablog.com/entry/2026/10/16/093455">漢字や日本史を学べる練習モードを追加した話</a></li></ul>
-    <h2>公式アカウント</h2><p>最新情報は<a href="https://x.com/monster_typing" rel="noopener">X（@monster_typing）</a>と<a href="https://www.tiktok.com/@monster_typing" rel="noopener">TikTok</a>で発信しています。</p>
-    <h2>よくある質問</h2><h3>無料で遊べますか？</h3><p>はい。ブラウザで無料で遊べます。</p><h3>スマホでも遊べますか？</h3><p>はい。フリック入力に対応しています。</p><h3>ゲームが表示されないときは？</h3><p><a href="https://babblegum.hatenablog.com/entry/2026/10/01/143320">はてなブログの紹介記事</a>からも遊べます。</p></article>
-    <aside class="ad-slot" aria-label="広告"><p class="ad-label">広告</p><div data-imobile="page"></div></aside>
-    <aside class="author-box" aria-label="作った人"><p class="author-name">作った人：バブルガム</p><p>個人でブラウザゲームを作っています。攻略記事やゲームレビューは<a href="https://babblegum.hatenablog.com/">はてなブログ「バブルガムのゲームブログ」</a>で書いています。</p><p><a href="/ja/about.html">運営者について</a> · <a href="/ja/#games">ほかのゲームを見る</a></p></aside>
+    <section class="mt-moved" aria-label="遊ぶ場所のご案内">
+      <a href="https://babblegum.hatenablog.com/entry/2026/10/01/143320" tabindex="-1" aria-hidden="true"><img src="/images/monster-typing-banner.webp" alt="" width="360" height="120"></a>
+      <p class="mt-moved-lead">ゲームはブログの記事に移りました。前にこのページで遊んでいた方は、下のリンクで続きから遊べます。</p>
+      <a class="btn-blood mt-moved-go" href="https://babblegum.hatenablog.com/entry/2026/10/01/143320">ブログの記事で遊ぶ</a>
+      <p class="mt-moved-sub"><a href="https://monster.bubblegumgameboy.com/">これまでの記録で遊ぶ（全画面）</a></p>
+    </section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/ja/">ホーム</a> · <a href="/ja/about.html">運営者</a> · <a href="/ja/privacy.html">プライバシーポリシー</a> · <a href="/ja/contact.html">お問い合わせ</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">広告とCookieの設定</button></div></footer>
-  <aside class="ad-anchor" aria-label="広告"><button type="button" class="ad-anchor-close" aria-label="広告を閉じる">×</button><div data-imobile="anchor"></div></aside>
 </body>
 </html>
