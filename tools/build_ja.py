@@ -133,15 +133,14 @@ MONSTER_URL = "https://monster.bubblegumgameboy.com/"
 MONSTER_BLOG = BLOG + "entry/2026/10/01/143320"
 MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料のオンライン対戦タイピングゲーム。モンスターを召喚・育成でき、スマホのフリック入力にも対応しています。"
 # 2026-10-28: the game moved to the Hatena article (this site's AdSense was not approved). The page keeps only a way
-# there and, for whoever played here before (their save is shared with the full-screen game, not with the article),
-# a link to the full-screen game. No game frame, no ads. ja/games/monster-typing.html was edited by hand the same way.
+# there: no game frame, no ads. 2026-11-03: the link to the full-screen game is gone too (the maker: 入口ははてなで統一;
+# whoever lands here has no save of their own to continue). ja/games/monster-typing.html was edited by hand the same way.
 monster = f'''<h1>モンスタータイピング</h1>
-    <style>.mt-moved{{max-width:560px;margin:28px auto 56px;padding:32px 24px;text-align:center;background:var(--panel);border:1px solid var(--line-gold)}}.mt-moved img{{width:min(360px,90%);display:block;margin:0 auto 20px}}.mt-moved-lead{{margin:0 0 24px;color:var(--bone)}}.mt-moved-go{{width:min(320px,100%)}}.mt-moved-sub{{margin:20px 0 0;font-size:14px}}.mt-moved-sub a{{color:var(--muted)}}@media (max-width:600px){{.mt-moved{{margin:24px 12px 48px;padding:24px 16px}}}}</style>
+    <style>.mt-moved{{max-width:560px;margin:28px auto 56px;padding:32px 24px;text-align:center;background:var(--panel);border:1px solid var(--line-gold)}}.mt-moved img{{width:min(360px,90%);display:block;margin:0 auto 20px}}.mt-moved-lead{{margin:0 0 24px;color:var(--bone)}}.mt-moved-go{{width:min(320px,100%)}}@media (max-width:600px){{.mt-moved{{margin:24px 12px 48px;padding:24px 16px}}}}</style>
     <section class="mt-moved" aria-label="遊ぶ場所のご案内">
       <a href="{MONSTER_BLOG}" tabindex="-1" aria-hidden="true"><img src="/images/monster-typing-banner.webp" alt="" width="360" height="120"></a>
-      <p class="mt-moved-lead">ゲームはブログの記事に移りました。前にこのページで遊んでいた方は、下のリンクで続きから遊べます。</p>
+      <p class="mt-moved-lead">ゲームはブログの記事の中で遊べます。</p>
       <a class="btn-blood mt-moved-go" href="{MONSTER_BLOG}">ブログの記事で遊ぶ</a>
-      <p class="mt-moved-sub"><a href="{MONSTER_URL}">これまでの記録で遊ぶ（全画面）</a></p>
     </section>'''
 page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", "games/monster-typing.html", "/images/monster-typing.png", game=False,
      full_title="モンスタータイピング｜無料で遊べるオンライン対戦タイピングゲーム",
