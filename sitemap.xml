@@ -265,12 +265,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://bubblegumgameboy.com/blog/</loc>
-    <lastmod>2026-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://bubblegumgameboy.com/blog/posts/2026-07-04-cthulhu-typing.html</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
