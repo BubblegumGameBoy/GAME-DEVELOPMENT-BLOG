@@ -17,6 +17,10 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-story-theory.html", "date": "2026-11-10", "game": "pokopia", "type": "theory", "spoiler": true,
+     "title": "Where Is Pokopia Set? A Story Theory (Spoilers)",
+     "summary": "Story spoilers. What the towns, a note left by a trainer and one gym leader's name say about Pokopia's world.",
+     "image": "/images/guides/pokopia/20260319103351.webp"},
     {"file": "2026-11-10-pokopia-zoo.html", "date": "2026-11-10", "game": "pokopia", "type": "diary",
      "title": "I Built a Pokémon Zoo in Pokopia: Glass Tanks, Habitats and a Gyarados",
      "summary": "After the prison, a zoo: glass enclosures themed to each Pokémon, a Gyarados tank, and a pixel-art Pikachu built by a young relative.",

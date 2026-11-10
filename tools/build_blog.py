@@ -10,6 +10,7 @@ Site shape (like a Hatena blog):
 
 What it writes:
   blog/index.html, blog/<category>/index.html   (owned by this script)
+  posts.json "spoiler": true keeps a post out of other posts' related lists and the top page
   blog/posts/*.html  only between <!-- related:start --> and <!-- related:end -->
   index.html         only between <!-- blog:start --> and <!-- blog:end -->
   sitemap.xml        adds posts and category pages that are missing
@@ -23,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
 CSS = "/blog/blog.css?v=20261110c"
 LIST_PAGE_MIN = 3
-TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "dev": "Behind the game"}
+TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "theory": "Story theory", "dev": "Behind the game"}
 NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/blog/">Blog</a>'
        '<a href="/#games">Games</a><a href="/about.html">About</a></nav>')
 
@@ -168,9 +169,10 @@ for p in POSTS:
     html = path.read_text(encoding="utf-8")
     if "<!-- related:start -->" not in html:
         continue
-    same = [q for q in in_cat(p["cat"]) if q is not p][:3]
+    # posts marked "spoiler": true never show up under other posts, and never on the top page
+    same = [q for q in in_cat(p["cat"]) if q is not p and not q.get("spoiler")][:3]
     head = f'More in {CATS[p["cat"]]["name"]}' if same else "More from the blog"
-    items = same or [q for q in POSTS if q is not p][:3]
+    items = same or [q for q in POSTS if q is not p and not q.get("spoiler")][:3]
     more_url = f'/blog/{p["cat"]}/' if same and has_page(p["cat"]) else "/blog/"
     block = ('<!-- related:start -->\n<aside class="related" aria-label="Related posts">\n'
              f'  <h2>{escape(head)}</h2>\n  <ul class="entries">\n' + "\n".join(entry(q) for q in items) +
@@ -188,7 +190,7 @@ TOP = re.compile(r"<!-- blog:start -->.*?<!-- blog:end -->", re.S)
 top = ROOT / "index.html"
 html = top.read_text(encoding="utf-8")
 if "<!-- blog:start -->" in html:
-    links = "\n".join(f'        <a href="{p["url"]}">{escape(p["title"])}</a>' for p in POSTS[:3])
+    links = "\n".join(f'        <a href="{p["url"]}">{escape(p["title"])}</a>' for p in [q for q in POSTS if not q.get("spoiler")][:3])
     block = ('<!-- blog:start --><div><h2>From the blog</h2>\n      <div class="post-list">\n' + links +
              '\n      </div>\n      <a class="more" href="/blog/">All posts →</a></div><!-- blog:end -->')
     write(top, TOP.sub(lambda m: block, html))
