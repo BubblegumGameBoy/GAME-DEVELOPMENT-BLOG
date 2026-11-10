@@ -75,6 +75,27 @@ code{font:600 15px/1 ui-monospace,Consolas,monospace;background:var(--accent-sof
 .rows a:hover .t{color:var(--accent)}
 .rows .m{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-top:4px}
 
+.catnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0 0 18px;border-bottom:2px solid var(--ink)}
+.catnav a{font-size:14px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.catnav a span{color:var(--sub);font-size:12px}
+.catnav a[aria-current]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.catnav a[aria-current] span{color:#cfc8bb}
+.entries{list-style:none;margin:0;padding:0}
+.entry{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+.entry .thumb{flex:0 0 160px}
+.entry .thumb img{display:block;width:160px;height:90px;object-fit:cover;border-radius:4px;background:#eee}
+.entry .m{margin:0 0 4px;font-size:12.5px;color:var(--sub)}
+.entry .chip{font-weight:700;color:var(--accent);text-decoration:none}
+.entry .t{font:700 19px/1.4 var(--serif);margin:0}
+.entry .t a{color:var(--ink);text-decoration:none}
+.entry .t a:hover{color:var(--accent)}
+.entry .s{margin:6px 0 0;font-size:14.5px;line-height:1.6;color:var(--sub)}
+.related{margin:56px 0 0;padding-top:20px;border-top:2px solid var(--ink)}
+.related>h2{font:800 22px/1.3 var(--serif);margin:0 0 4px}
+.related .entry .t{font-size:17px}
+.more-link{margin:14px 0 18px;font-weight:700}
+.more-link a{text-decoration:none}
+
 .foot{background:var(--bar);color:#b3a68c;border-top:1px solid var(--bar-line);padding:24px 20px;font-size:13px}
 .foot .in{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
 .foot nav{display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:center}
@@ -83,6 +104,11 @@ code{font:600 15px/1 ui-monospace,Consolas,monospace;background:var(--accent-sof
 .foot .linkish{padding:4px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer}
 
 @media (max-width:560px){
+  .entry{gap:12px}
+  .entry .thumb{flex-basis:104px}
+  .entry .thumb img{width:104px;height:59px}
+  .entry .t{font-size:16.5px}
+  .entry .s{display:none}
   body{font-size:16px}
   .dek{font-size:17px}
   article h2{font-size:23px}
