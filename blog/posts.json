@@ -17,6 +17,11 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-sableye-gem-hunt.html", "date": "2026-11-10", "game": "pokopia", "type": "event", "title": "Pokopia Sableye's Gem Hunt Guide: The Fastest Dream Island for Red Crystals", "summary": "Every reward and its cost, the fastest Dream Island for red crystal fragments, and how to keep Sableye after the event.", "image": "/images/guides/pokopia/20260429180450.webp"},
+    {"file": "2026-11-10-pokopia-jirachi-event.html", "date": "2026-11-10", "game": "pokopia", "type": "event", "title": "Pokopia Jirachi Event Guide: Fireworks That Change Shape, and a Habitat That Needs Power", "summary": "How to collect sparkling wish notes, and six things I only found by using the rewards.", "image": "/images/guides/pokopia/20260702223402.webp"},
+    {"file": "2026-11-10-pokopia-most-useful-pokemon.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "The Most Useful Pokémon in Pokopia: Tinkaton Changes How You Build", "summary": "Tinkaton, Haxorus, Volcarona, Blissey and Vespiquen: what each does on a Cloud Island and how to make their habitats.", "image": "/images/guides/pokopia/20260505155656.webp"},
+    {"file": "2026-11-10-pokopia-mysterious-goggles.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "Pokopia Mysterious Goggles: How to Get Them, and the Official Islands to Visit", "summary": "How to get and use the goggles, what Virtual Mode can and can't do, and the official islands to start with.", "image": "/images/guides/pokopia/20260328163829.webp"},
+    {"file": "2026-11-10-pokopia-palette-town-vs-cloud-island.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "Palette Town vs Cloud Island in Pokopia: Which One to Use With Friends", "summary": "What each needs, how to reach Palette Town past the broken highway, and what you can take home from a Cloud Island.", "image": "/images/guides/pokopia/20260319095314.webp"},
     {"file": "2026-11-10-pokopia-only-up-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
      "title": "Someone Rebuilt Only Up Inside Pokopia, and I Climbed It",
      "summary": "PokonlyUP! (NDFQ8XN5): twenty stages of furniture footholds, move rules on signs, and how long the climb took me.",
