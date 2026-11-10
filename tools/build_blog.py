@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
 CSS = "/blog/blog.css?v=20261110d"
 LIST_PAGE_MIN = 3
+NL = chr(10)
 TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "theory": "Story theory", "visit": "Island visit", "event": "Event guide", "dev": "Behind the game"}
 NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/games/">Games</a>'
        '<a href="/blog/" aria-current="true">Blog</a><a href="/about.html">About</a></nav>')
@@ -191,9 +192,26 @@ TOP = re.compile(r"<!-- blog:start -->.*?<!-- blog:end -->", re.S)
 top = ROOT / "index.html"
 html = top.read_text(encoding="utf-8")
 if "<!-- blog:start -->" in html:
-    links = "\n".join(f'        <a href="{p["url"]}">{escape(p["title"])}</a>' for p in [q for q in POSTS if not q.get("spoiler")][:3])
-    block = ('<!-- blog:start --><div><h2>From the blog</h2>\n      <div class="post-list">\n' + links +
-             '\n      </div>\n      <a class="more" href="/blog/">All posts →</a></div><!-- blog:end -->')
+    # One card per category (its newest post that is not a spoiler), so every shelf shows on the top page,
+    # then a link to each shelf. (2026-11-10: three text links, all from one game, sat at the foot of the page.)
+    cards, shelves = [], []
+    for c, meta in CATS.items():
+        ps = [q for q in in_cat(c) if not q.get("spoiler")]
+        if not ps:
+            continue
+        q = ps[0]
+        img = q.get("image", "/images/site-home.png")
+        small = "/images/thumbs/" + Path(img).stem + ".webp"   # the light copy, when the picture has one
+        if img.startswith("/images/") and img.count("/") == 2 and (ROOT / small[1:]).exists():
+            img = small
+        cards.append(f'      <a class="bc" href="{q["url"]}"><img src="{escape(img)}" alt="" '
+                     f'width="320" height="180" loading="lazy" decoding="async"><span>{escape(meta["name"])}</span><b>{escape(q["title"])}</b></a>')
+        if has_page(c):
+            shelves.append(f'<a href="/blog/{c}/">{escape(meta["name"])} <span>{len(in_cat(c))}</span></a>')
+    block = ('<!-- blog:start --><h2 id="blog-title">From the blog</h2>' + NL +
+             '    <p class="lead">Guides to games I play, strategy for the games I make, and notes from building them.</p>' + NL +
+             '    <div class="blog-cards">' + NL + NL.join(cards) + NL + '    </div>' + NL +
+             '    <p class="blog-shelves">' + "".join(shelves) + '<a class="more" href="/blog/">All posts →</a></p><!-- blog:end -->')
     write(top, TOP.sub(lambda m: block, html))
 
 # ---- sitemap -------------------------------------------------------------------

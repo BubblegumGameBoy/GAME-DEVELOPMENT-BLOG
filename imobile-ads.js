@@ -30,7 +30,10 @@
   function holder(slot) { return slot.closest('.ad-top,.ad-below,.ad-slot,.ad-anchor'); }
   // (2026-10-23) No i-mobile on PC: in 28 days its PC spots paid ¥1 (no view-paid ads, clicks only) and the one PC
   // advertiser left, games.dmm.com, is filtered out for this audience. The slots go instead of standing empty.
-  if (!phone) {
+  // (2026-11-10) Nor on the English pages: i-mobile's ads are Japanese (a Japanese gacha banner sat on the English
+  // top page), and its phone spots there earned nothing. The slots go, as on PC.
+  var japanese = (document.documentElement.lang || '').toLowerCase().indexOf('ja') === 0;
+  if (!phone || !japanese) {
     Array.prototype.forEach.call(slots, function (slot) { var h = holder(slot); if (h) h.classList.add('ad-off'); });
     return;
   }

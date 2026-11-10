@@ -11,9 +11,9 @@
 .game-close[hidden]{display:none}
 body.fs-lock::after{content:'';position:fixed;inset:0 0 auto;height:48px;background:#0b1c32;z-index:100000}
 #game-frame.fs-on{top:48px!important;inset:48px 0 0!important;height:calc(100vh - 48px)!important;height:calc(100dvh - 48px)!important}
-.game-entry{margin:18px 0;padding:16px;border:1px solid #50708b;border-radius:10px;color:#dff0fa;line-height:1.7}
+.game-entry{margin:18px 0;padding:16px;border:1px solid var(--line-gold,#6b5434);background:var(--panel,#15110e);color:var(--bone,#e6dcc6);line-height:1.7}
 .game-entry p{margin:6px 0}
-.game-entry a,.game-links a{color:#90e8ee}
-.game-links{font-size:14px;line-height:1.7;margin:12px 0 22px;color:#cbe4f7}
+.game-entry a,.game-links a{color:var(--gold-hi,#e3c37f)}
+.game-links{font-size:14px;line-height:1.7;margin:12px 0 22px;color:var(--muted,#b3a68c)}
 .keyboard-notice{display:none}
 @media (pointer:coarse){.keyboard-notice{display:block;padding:10px;border-left:4px solid #ffd766;color:#ffe8ab}}

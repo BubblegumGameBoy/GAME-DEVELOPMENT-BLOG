@@ -212,3 +212,16 @@ html.is-pc .ad-anchor,.ad-anchor:not(.ad-on){display:none}
 .faq dd::before{content:"A. ";color:var(--blood-hi);font-weight:700}
 .source-note{border:1px solid var(--line);padding:16px;margin:24px 0}
 @media (max-width:767px){.game-main>p,.game-main>div:not([class]),.game-main>.game-entry{margin-left:16px;margin-right:16px}}
+
+/* the blog on the top page (2026-11-10): one card per shelf */
+.blog-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 18px}
+.bc{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);color:var(--bone);text-decoration:none;transition:border-color .2s,transform .2s}
+.bc:hover{border-color:var(--gold);transform:translateY(-2px)}
+.bc img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.bc span{padding:10px 14px 0;font-size:12px;letter-spacing:.06em;color:var(--gold)}
+.bc b{padding:4px 14px 14px;font:700 16px/1.45 var(--serif);color:var(--bone-hi)}
+.blog-shelves{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0;font-size:14px}
+.blog-shelves a:not(.more){padding:5px 12px;border:1px solid var(--line);background:var(--panel);color:var(--bone);text-decoration:none}
+.blog-shelves a:not(.more):hover{border-color:var(--line-gold)}
+.blog-shelves a span{color:var(--faint);font-size:12px}
+.blog-shelves .more{margin-left:6px}
