@@ -17,6 +17,10 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-nenrin-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
+     "title": "I Visited a Japanese Shrine Island in Pokopia and Found a Rayquaza Overhead",
+     "summary": "Nenrin Island (GR3WBCC3): a shrine, tatami rooms, a pagoda-like tower, and a block Rayquaza floating in the sky.",
+     "image": "/images/guides/pokopia/20260617141028.webp"},
     {"file": "2026-11-10-pokopia-story-theory.html", "date": "2026-11-10", "game": "pokopia", "type": "theory", "spoiler": true,
      "title": "Where Is Pokopia Set? A Story Theory (Spoilers)",
      "summary": "Story spoilers. What the towns, a note left by a trainer and one gym leader's name say about Pokopia's world.",
