@@ -29,6 +29,7 @@ h1,h2,h3{font-family:var(--serif);line-height:1.35;color:var(--bone-hi)}
 .nav-links,.menu{display:flex;flex-wrap:wrap;gap:2px;font-size:14px}
 .nav-links a,.menu a{color:var(--bone);text-decoration:none;padding:10px 12px}
 .nav-links a:hover,.menu a:hover{color:var(--gold-hi)}
+.nav-links a[aria-current],.menu a[aria-current]{color:var(--gold-hi)}
 .nav-links .lang,.menu .lang{border:1px solid var(--line)}
 
 /* buttons */

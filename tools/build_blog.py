@@ -22,11 +22,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
-CSS = "/blog/blog.css?v=20261110c"
+CSS = "/blog/blog.css?v=20261110d"
 LIST_PAGE_MIN = 3
 TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "theory": "Story theory", "visit": "Island visit", "event": "Event guide", "dev": "Behind the game"}
-NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/blog/">Blog</a>'
-       '<a href="/#games">Games</a><a href="/about.html">About</a></nav>')
+NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/games/">Games</a>'
+       '<a href="/blog/" aria-current="true">Blog</a><a href="/about.html">About</a></nav>')
 
 data = json.loads((ROOT / "blog/posts.json").read_text(encoding="utf-8"))
 GAMES, CATS = data["games"], data["categories"]
@@ -128,7 +128,7 @@ def page(title, desc, canonical, body, og_image=None):
     <a href="/">Home</a>
     <a href="/blog/">Blog</a>
     <a href="/games/monster-typing.html">Monster Typing</a>
-    <a href="/#games">All games</a>
+    <a href="/games/">All games</a>
     <a href="/about.html">About</a>
     <a href="/privacy.html">Privacy policy</a>
     <a href="/contact.html">Contact</a>

@@ -23,6 +23,7 @@ img{max-width:100%;height:auto}
 .site-bar nav{display:flex;gap:16px;flex-wrap:wrap}
 .site-bar nav a{color:var(--bone);text-decoration:none;font-size:14px}
 .site-bar nav a:hover{color:var(--gold)}
+.site-bar nav a[aria-current]{color:var(--gold)}
 
 .crumbs{background:#fff;border-bottom:1px solid var(--line)}
 .crumbs .in{max-width:720px;margin:0 auto;padding:10px 20px;font-size:13px;color:var(--sub);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
