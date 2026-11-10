@@ -5,6 +5,10 @@
    "name": "Pokémon Pokopia",
    "lede": "Islands, codes and things worth knowing about Pokémon Pokopia, from my own save."
   },
+  "village-in-the-shade": {
+   "name": "Village in the Shade",
+   "lede": "Farming by day and spirits by night, from the Yomawari team. Written from my own playthrough of the Japanese release."
+  },
   "my-games": {
    "name": "Guides to my games",
    "lede": "Strategy for the games I made. The numbers come straight from the games, because I wrote them."
@@ -58,148 +62,163 @@
   "site": {
    "name": "Site news",
    "own_game": true
+  },
+  "village-in-the-shade": {
+   "name": "Village in the Shade",
+   "own_game": false
   }
  },
  "posts": [
   {
+   "file": "2026-09-25-village-in-the-shade-review.html",
+   "date": "2026-09-25",
+   "en": "2026-11-10",
+   "game": "village-in-the-shade",
+   "type": "review",
+   "title": "Village in the Shade Review: A Farming Sim You Can Slack Off In, and a Story You Can't Put Down",
+   "summary": "From the Yomawari team: how the farm automates itself, how scary the nights are, the no-romance story, and who it's for. After about 48 hours.",
+   "image": "/images/guides/village-in-the-shade/20260925151013.webp"
+  },
+  {
    "file": "2026-11-10-pokopia-sableye-gem-hunt.html",
-   "date": "2026-11-10",
+   "date": "2026-04-29",
    "game": "pokopia",
    "type": "event",
    "title": "Pokopia Sableye's Gem Hunt Guide: The Fastest Dream Island for Red Crystals",
    "summary": "Every reward and its cost, the fastest Dream Island for red crystal fragments, and how to keep Sableye after the event.",
    "image": "/images/guides/pokopia/20260429180450.webp",
-   "orig": "2026-04-29"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-jirachi-event.html",
-   "date": "2026-11-10",
+   "date": "2026-07-03",
    "game": "pokopia",
    "type": "event",
    "title": "Pokopia Jirachi Event Guide: Fireworks That Change Shape, and a Habitat That Needs Power",
    "summary": "How to collect sparkling wish notes, and six things I only found by using the rewards.",
    "image": "/images/guides/pokopia/20260702223402.webp",
-   "orig": "2026-07-03"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-most-useful-pokemon.html",
-   "date": "2026-11-10",
+   "date": "2026-05-05",
    "game": "pokopia",
    "type": "guide",
    "title": "The Most Useful Pokémon in Pokopia: Tinkaton Changes How You Build",
    "summary": "Tinkaton, Haxorus, Volcarona, Blissey and Vespiquen: what each does on a Cloud Island and how to make their habitats.",
    "image": "/images/guides/pokopia/20260505155656.webp",
-   "orig": "2026-05-05"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-mysterious-goggles.html",
-   "date": "2026-11-10",
+   "date": "2026-06-17",
    "game": "pokopia",
    "type": "guide",
    "title": "Pokopia Mysterious Goggles: How to Get Them, and the Official Islands to Visit",
    "summary": "How to get and use the goggles, what Virtual Mode can and can't do, and the official islands to start with.",
    "image": "/images/guides/pokopia/20260328163829.webp",
-   "orig": "2026-06-17"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-palette-town-vs-cloud-island.html",
-   "date": "2026-11-10",
+   "date": "2026-07-27",
    "game": "pokopia",
    "type": "guide",
    "title": "Palette Town vs Cloud Island in Pokopia: Which One to Use With Friends",
    "summary": "What each needs, how to reach Palette Town past the broken highway, and what you can take home from a Cloud Island.",
    "image": "/images/guides/pokopia/20260319095314.webp",
-   "orig": "2026-07-27"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-only-up-island.html",
-   "date": "2026-11-10",
+   "date": "2026-04-15",
    "game": "pokopia",
    "type": "visit",
    "title": "Someone Rebuilt Only Up Inside Pokopia, and I Climbed It",
    "summary": "PokonlyUP! (NDFQ8XN5): twenty stages of furniture footholds, move rules on signs, and how long the climb took me.",
    "image": "/images/guides/pokopia/20260415084129.webp",
-   "orig": "2026-04-15"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-aquarium-island.html",
-   "date": "2026-11-10",
+   "date": "2026-06-21",
    "game": "pokopia",
    "type": "visit",
    "title": "Someone Rebuilt an Entire Aquarium in Pokopia, and It Beat My Gyarados Tank",
    "summary": "HorseaAqua (56L1Y3NT): Horsea statues, a gift shop, tanks on three levels and a power station in the basement.",
    "image": "/images/guides/pokopia/20260620224632.webp",
-   "orig": "2026-06-21"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-nenrin-island.html",
-   "date": "2026-11-10",
+   "date": "2026-06-17",
    "game": "pokopia",
    "type": "visit",
    "title": "I Visited a Japanese Shrine Island in Pokopia and Found a Rayquaza Overhead",
    "summary": "Nenrin Island (GR3WBCC3): a shrine, tatami rooms, a pagoda-like tower, and a block Rayquaza floating in the sky.",
    "image": "/images/guides/pokopia/20260617141028.webp",
-   "orig": "2026-06-17"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-story-theory.html",
-   "date": "2026-11-10",
+   "date": "2025-11-12",
    "game": "pokopia",
    "type": "theory",
    "spoiler": true,
    "title": "Where Is Pokopia Set? A Story Theory (Spoilers)",
    "summary": "Story spoilers. What the towns, a note left by a trainer and one gym leader's name say about Pokopia's world.",
-   "image": "/images/guides/pokopia/20260319103351.webp"
+   "image": "/images/guides/pokopia/20260319103351.webp",
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-zoo.html",
-   "date": "2026-11-10",
+   "date": "2026-04-06",
    "game": "pokopia",
    "type": "diary",
    "title": "I Built a Pokémon Zoo in Pokopia: Glass Tanks, Habitats and a Gyarados",
    "summary": "After the prison, a zoo: glass enclosures themed to each Pokémon, a Gyarados tank, and a pixel-art Pikachu built by a young relative.",
    "image": "/images/guides/pokopia/20260406090432.webp",
-   "orig": "2026-04-06"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-pokemon-prison.html",
-   "date": "2026-11-10",
+   "date": "2026-03-19",
    "game": "pokopia",
    "type": "diary",
    "title": "I Built a Pokémon Prison in Pokopia: Pens, Birdcages and a Jail in the Sky",
    "summary": "A Pokémon in a fenced pen can't move. A hot spring staffed by a Squirtle, a basement prison, a double birdcage and a jail in the sky.",
    "image": "/images/guides/pokopia/20260314193445.webp",
-   "orig": "2026-03-19"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-review.html",
-   "date": "2026-11-10",
+   "date": "2026-03-07",
    "game": "pokopia",
    "type": "review",
    "title": "Is Pokémon Pokopia Boring? A Review After Six Months",
    "summary": "Why some people bounce off it, who it's really for, and how it compares with Animal Crossing and Dragon Quest Builders 2.",
    "image": "/images/guides/pokopia/20260315090324.webp",
-   "orig": "2026-03-07"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-10-pokopia-switch-1-gameshare.html",
-   "date": "2026-11-10",
+   "date": "2026-04-12",
    "game": "pokopia",
    "type": "guide",
    "title": "Pokopia on Switch 1: GameShare Works, but Only as the Guest",
    "summary": "I ran Pokopia on a Switch 2 and an original Switch side by side: the steps, what the guest can do, and where it fell apart.",
    "image": "/images/guides/pokopia/20260412103634.webp",
-   "orig": "2026-04-12"
+   "en": "2026-11-10"
   },
   {
    "file": "2026-11-09-pokopia-cloud-island-codes.html",
-   "date": "2026-11-09",
+   "date": "2026-03-28",
    "game": "pokopia",
    "type": "codes",
    "title": "Pokopia Cloud Island Codes: 10 Player-Made Islands Worth Visiting",
    "summary": "Ten addresses with screenshots: an Only Up climb, an aquarium, an island with almost every item to copy, and the prison I built.",
    "image": "/images/guides/pokopia/20260617141116.webp",
-   "orig": "2026-03-28"
+   "en": "2026-11-09"
   },
   {
    "file": "2026-08-11-unity-webgl-build-crash.html",
