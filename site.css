@@ -225,3 +225,4 @@ html.is-pc .ad-anchor,.ad-anchor:not(.ad-on){display:none}
 .blog-shelves a:not(.more):hover{border-color:var(--line-gold)}
 .blog-shelves a span{color:var(--faint);font-size:12px}
 .blog-shelves .more{margin-left:6px}
+.hero-also{margin:10px 0 0;max-width:640px;font-size:14px;color:var(--muted)}

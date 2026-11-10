@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
-CSS = "/blog/blog.css?v=20261110d"
+CSS = "/blog/blog.css?v=20261110f"
 LIST_PAGE_MIN = 3
 NL = chr(10)
 TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "theory": "Story theory", "visit": "Island visit", "event": "Event guide", "dev": "Behind the game"}
@@ -146,8 +146,22 @@ INTRO = ("Guides for games I play and games I make, and notes from building brow
          "Everything here comes from my own play or my own build logs.")
 
 # ---- blog home ---------------------------------------------------------------
-body = (f'<p class="kicker">Bubblegum Game</p>\n<h1>Blog</h1>\n<p class="dek">{INTRO}</p>\n{catnav("all")}\n'
-        '<ul class="entries">\n' + "\n".join(entry(p) for p in POSTS) + "\n</ul>")
+# (2026-11-10) A shelf per category, four posts each, instead of one list by date: the dates are the Japanese
+# originals', so seventeen posts on one game sat on top and the other game's fourteen were out of sight.
+SHELF = 4
+shelves = []
+for c, meta in CATS.items():
+    ps = in_cat(c)
+    if not ps:
+        continue
+    shown = [q for q in ps if not q.get("spoiler")][:SHELF]
+    head = (f'<a href="/blog/{c}/">{escape(meta["name"])}</a>' if has_page(c) else escape(meta["name"]))
+    more = (f'\n  <p class="more-link"><a href="/blog/{c}/">All {len(ps)} posts in {escape(meta["name"])} →</a></p>'
+            if has_page(c) and len(ps) > len(shown) else "")
+    rows = "\n".join(entry(q).replace('<h2 class="t">', '<h3 class="t">').replace('</a></h2>', '</a></h3>') for q in shown)
+    shelves.append(f'<section class="shelf" aria-labelledby="shelf-{c}">\n  <h2 class="shelf-h" id="shelf-{c}">{head}</h2>\n'
+                   f'  <p class="shelf-lede">{escape(meta["lede"])}</p>\n  <ul class="entries">\n' + rows + f'\n  </ul>{more}\n</section>')
+body = (f'<p class="kicker">Bubblegum Game</p>\n<h1>Blog</h1>\n<p class="dek">{INTRO}</p>\n{catnav("all")}\n' + "\n".join(shelves))
 write(ROOT / "blog/index.html", page(
     "Blog", "Guides for games I play and games I make, plus notes on building browser games alone. Written from my own play and my own build logs, with my own screenshots.",
     "/blog/", body, POSTS[0].get("image")))

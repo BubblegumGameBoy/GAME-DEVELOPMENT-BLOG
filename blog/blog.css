@@ -128,3 +128,13 @@ article details[open] summary{margin-bottom:10px}
   .dtable td[data-label]::before{content:attr(data-label);flex:0 0 76px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
   .dtable td:first-child::before{display:none}
 }
+
+/* the blog index: a shelf per category (2026-11-10) */
+.shelf{margin-top:38px}
+.shelf-h a{color:inherit;text-decoration:none}
+.shelf-h a:hover{color:var(--accent)}
+.shelf-lede{margin:0 0 2px;font-size:14.5px;line-height:1.6;color:var(--sub)}
+.shelf .entry:last-child{border-bottom:0}
+.shelf .more-link{margin:6px 0 0}
+.catnav+.shelf{margin-top:10px}
+.catnav+.shelf>h2{border-top:0;padding-top:8px}
