@@ -70,6 +70,36 @@
  },
  "posts": [
   {
+   "file": "2026-09-23-village-in-the-shade-hat-ghosts.html",
+   "date": "2026-09-23",
+   "en": "2026-11-10",
+   "game": "village-in-the-shade",
+   "type": "guide",
+   "title": "Village in the Shade: The Straw Hat Ghosts and the Jizo Statues (How Not to Run Out of Time)",
+   "summary": "On rainy nights, one-legged hats chase you. Where the jizo are, how to dodge and catch the hats, and the route that finishes before morning.",
+   "image": "/images/guides/village-in-the-shade/20260923092815.webp"
+  },
+  {
+   "file": "2026-09-22-village-in-the-shade-daruma.html",
+   "date": "2026-09-22",
+   "en": "2026-11-10",
+   "game": "village-in-the-shade",
+   "type": "guide",
+   "title": "Village in the Shade: How to Beat the Daruma (Find the Odd Stone)",
+   "summary": "It doesn't attack. Freeze after the chant, find the one odd stone, and break it in the five seconds it turns black.",
+   "image": "/images/guides/village-in-the-shade/20260922214905.webp"
+  },
+  {
+   "file": "2026-09-17-village-in-the-shade-hearts-and-stamina.html",
+   "date": "2026-09-17",
+   "en": "2026-11-10",
+   "game": "village-in-the-shade",
+   "type": "guide",
+   "title": "Village in the Shade: How to Get More Hearts and Stamina (The Pool Guardian and the Fox Shrine)",
+   "summary": "Cursed crops, the guardian of the pool, and where the fox shrine appears each season.",
+   "image": "/images/guides/village-in-the-shade/20260916091447.webp"
+  },
+  {
    "file": "2026-09-25-village-in-the-shade-review.html",
    "date": "2026-09-25",
    "en": "2026-11-10",
