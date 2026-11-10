@@ -1,94 +1,293 @@
 {
-  "_readme": "One entry per article. Run `python tools/build_blog.py` after editing. own_game=true for games I made; type is guide / codes / review / dev. show=false keeps a post out of every list.",
-  "categories": {
-    "pokopia": {"name": "Pokémon Pokopia", "lede": "Islands, codes and things worth knowing about Pokémon Pokopia, from my own save."},
-    "my-games": {"name": "Guides to my games", "lede": "Strategy for the games I made. The numbers come straight from the games, because I wrote them."},
-    "behind": {"name": "Behind the games", "lede": "What went wrong while making my browser games, and what I did about it."}
+ "_readme": "One entry per article. Run `python tools/build_blog.py` after editing. own_game=true for games I made; type is guide / codes / review / dev. show=false keeps a post out of every list.",
+ "categories": {
+  "pokopia": {
+   "name": "Pokémon Pokopia",
+   "lede": "Islands, codes and things worth knowing about Pokémon Pokopia, from my own save."
   },
-  "games": {
-    "pokopia": {"name": "Pokémon Pokopia", "lede": "Islands, codes and things worth knowing, from my own save.", "own_game": false},
-    "mythos-slayer": {"name": "Mythos Slayer", "own_game": true, "page": "/games/clicker.html"},
-    "popcorn-typing": {"name": "Popcorn Typing", "own_game": true, "page": "/games/popcorn-typing.html"},
-    "soldier-typing": {"name": "Soldier Typing", "own_game": true, "page": "/games/soldier-typing.html"},
-    "creature-raising-kit": {"name": "Creature Raising Kit", "own_game": true, "page": "/games/creature-raising-kit.html"},
-    "creature-fishing": {"name": "Creature Fishing", "own_game": true, "page": "/games/creature-fishing.html"},
-    "cthulhu-typing": {"name": "Cthulhu Typing", "own_game": true, "page": "/games/cthulhu-typing.html"},
-    "piano-typing": {"name": "Piano Typing", "own_game": true, "page": "/games/piano-typing.html"},
-    "site": {"name": "Site news", "own_game": true}
+  "my-games": {
+   "name": "Guides to my games",
+   "lede": "Strategy for the games I made. The numbers come straight from the games, because I wrote them."
   },
-  "posts": [
-    {"file": "2026-11-10-pokopia-sableye-gem-hunt.html", "date": "2026-11-10", "game": "pokopia", "type": "event", "title": "Pokopia Sableye's Gem Hunt Guide: The Fastest Dream Island for Red Crystals", "summary": "Every reward and its cost, the fastest Dream Island for red crystal fragments, and how to keep Sableye after the event.", "image": "/images/guides/pokopia/20260429180450.webp"},
-    {"file": "2026-11-10-pokopia-jirachi-event.html", "date": "2026-11-10", "game": "pokopia", "type": "event", "title": "Pokopia Jirachi Event Guide: Fireworks That Change Shape, and a Habitat That Needs Power", "summary": "How to collect sparkling wish notes, and six things I only found by using the rewards.", "image": "/images/guides/pokopia/20260702223402.webp"},
-    {"file": "2026-11-10-pokopia-most-useful-pokemon.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "The Most Useful Pokémon in Pokopia: Tinkaton Changes How You Build", "summary": "Tinkaton, Haxorus, Volcarona, Blissey and Vespiquen: what each does on a Cloud Island and how to make their habitats.", "image": "/images/guides/pokopia/20260505155656.webp"},
-    {"file": "2026-11-10-pokopia-mysterious-goggles.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "Pokopia Mysterious Goggles: How to Get Them, and the Official Islands to Visit", "summary": "How to get and use the goggles, what Virtual Mode can and can't do, and the official islands to start with.", "image": "/images/guides/pokopia/20260328163829.webp"},
-    {"file": "2026-11-10-pokopia-palette-town-vs-cloud-island.html", "date": "2026-11-10", "game": "pokopia", "type": "guide", "title": "Palette Town vs Cloud Island in Pokopia: Which One to Use With Friends", "summary": "What each needs, how to reach Palette Town past the broken highway, and what you can take home from a Cloud Island.", "image": "/images/guides/pokopia/20260319095314.webp"},
-    {"file": "2026-11-10-pokopia-only-up-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
-     "title": "Someone Rebuilt Only Up Inside Pokopia, and I Climbed It",
-     "summary": "PokonlyUP! (NDFQ8XN5): twenty stages of furniture footholds, move rules on signs, and how long the climb took me.",
-     "image": "/images/guides/pokopia/20260415084129.webp"},
-    {"file": "2026-11-10-pokopia-aquarium-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
-     "title": "Someone Rebuilt an Entire Aquarium in Pokopia, and It Beat My Gyarados Tank",
-     "summary": "HorseaAqua (56L1Y3NT): Horsea statues, a gift shop, tanks on three levels and a power station in the basement.",
-     "image": "/images/guides/pokopia/20260620224632.webp"},
-    {"file": "2026-11-10-pokopia-nenrin-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
-     "title": "I Visited a Japanese Shrine Island in Pokopia and Found a Rayquaza Overhead",
-     "summary": "Nenrin Island (GR3WBCC3): a shrine, tatami rooms, a pagoda-like tower, and a block Rayquaza floating in the sky.",
-     "image": "/images/guides/pokopia/20260617141028.webp"},
-    {"file": "2026-11-10-pokopia-story-theory.html", "date": "2026-11-10", "game": "pokopia", "type": "theory", "spoiler": true,
-     "title": "Where Is Pokopia Set? A Story Theory (Spoilers)",
-     "summary": "Story spoilers. What the towns, a note left by a trainer and one gym leader's name say about Pokopia's world.",
-     "image": "/images/guides/pokopia/20260319103351.webp"},
-    {"file": "2026-11-10-pokopia-zoo.html", "date": "2026-11-10", "game": "pokopia", "type": "diary",
-     "title": "I Built a Pokémon Zoo in Pokopia: Glass Tanks, Habitats and a Gyarados",
-     "summary": "After the prison, a zoo: glass enclosures themed to each Pokémon, a Gyarados tank, and a pixel-art Pikachu built by a young relative.",
-     "image": "/images/guides/pokopia/20260406090432.webp"},
-    {"file": "2026-11-10-pokopia-pokemon-prison.html", "date": "2026-11-10", "game": "pokopia", "type": "diary",
-     "title": "I Built a Pokémon Prison in Pokopia: Pens, Birdcages and a Jail in the Sky",
-     "summary": "A Pokémon in a fenced pen can't move. A hot spring staffed by a Squirtle, a basement prison, a double birdcage and a jail in the sky.",
-     "image": "/images/guides/pokopia/20260314193445.webp"},
-    {"file": "2026-11-10-pokopia-review.html", "date": "2026-11-10", "game": "pokopia", "type": "review",
-     "title": "Is Pokémon Pokopia Boring? A Review After Six Months",
-     "summary": "Why some people bounce off it, who it's really for, and how it compares with Animal Crossing and Dragon Quest Builders 2.",
-     "image": "/images/guides/pokopia/20260315090324.webp"},
-    {"file": "2026-11-10-pokopia-switch-1-gameshare.html", "date": "2026-11-10", "game": "pokopia", "type": "guide",
-     "title": "Pokopia on Switch 1: GameShare Works, but Only as the Guest",
-     "summary": "I ran Pokopia on a Switch 2 and an original Switch side by side: the steps, what the guest can do, and where it fell apart.",
-     "image": "/images/guides/pokopia/20260412103634.webp"},
-    {"file": "2026-11-09-pokopia-cloud-island-codes.html", "date": "2026-11-09", "game": "pokopia", "type": "codes",
-     "title": "Pokopia Cloud Island Codes: 10 Player-Made Islands Worth Visiting",
-     "summary": "Ten addresses with screenshots: an Only Up climb, an aquarium, an island with almost every item to copy, and the prison I built.",
-     "image": "/images/guides/pokopia/20260617141116.webp"},
-    {"file": "2026-08-11-unity-webgl-build-crash.html", "date": "2026-08-11", "game": "creature-raising-kit", "type": "dev",
-     "title": "Unity Editor crashed building my WebGL game, twice, without an error message",
-     "image": "/images/creature-raising-kit.png"},
-    {"file": "2026-08-11-thirteen-to-172-fish.html", "date": "2026-08-11", "game": "creature-fishing", "type": "dev",
-     "title": "Creature Fishing shipped with 13 fish. Getting to 172 was a rendering problem",
-     "image": "/images/creature-fishing.png"},
-    {"file": "2026-08-10-mythos-slayer-balance.html", "date": "2026-08-10", "game": "mythos-slayer", "type": "guide",
-     "title": "Mythos Slayer balance: boss health, gold and progression",
-     "image": "/images/mythos-slayer-2026-09-10.png"},
-    {"file": "2026-07-04-cthulhu-typing.html", "date": "2026-07-04", "game": "cthulhu-typing", "type": "dev",
-     "title": "Long words summon dragons: how Cthulhu Typing rewards you for not panicking",
-     "image": "/images/cthulhu-typing.png"},
-    {"file": "2026-06-26-piano-typing.html", "date": "2026-06-26", "game": "piano-typing", "type": "dev",
-     "title": "Typing practice is boring and piano practice is not, and the only difference is sound",
-     "image": "/images/piano-typing.png"},
-    {"file": "2026-06-22-clicker-strategy.html", "date": "2026-06-22", "game": "mythos-slayer", "type": "guide",
-     "title": "Mythos Slayer: choosing upgrades and timing Rebirth",
-     "image": "/images/mythos-slayer-2026-09-10.png"},
-    {"file": "2026-06-20-popcorn-typing-tips.html", "date": "2026-06-20", "game": "popcorn-typing", "type": "guide",
-     "title": "Popcorn Typing: combos, upgrades and offline earnings",
-     "image": "/images/popcorn-typing.png"},
-    {"file": "2026-06-18-making-html-games.html", "date": "2026-06-18", "game": "creature-fishing", "type": "dev",
-     "title": "I fixed a multiplayer bug in a game with no players",
-     "image": "/images/site-home.png"},
-    {"file": "2026-06-16-soldier-typing-strategy.html", "date": "2026-06-16", "game": "soldier-typing", "type": "guide",
-     "title": "Soldier Typing: wave triggers, boss stats and controls",
-     "image": "/images/soldier-typing.png"},
-    {"file": "2026-06-14-making-boss-rush-clicker.html", "date": "2026-06-14", "game": "mythos-slayer", "type": "dev",
-     "title": "I paid for the boss art on a game that has never earned a yen",
-     "image": "/images/mythos-slayer-2026-09-10.png"},
-    {"file": "2026-06-01-site-renewal.html", "date": "2026-06-01", "game": "site", "type": "dev", "show": false,
-     "title": "The Site Just Got a Full Redesign"}
-  ]
+  "behind": {
+   "name": "Behind the games",
+   "lede": "What went wrong while making my browser games, and what I did about it."
+  }
+ },
+ "games": {
+  "pokopia": {
+   "name": "Pokémon Pokopia",
+   "lede": "Islands, codes and things worth knowing, from my own save.",
+   "own_game": false
+  },
+  "mythos-slayer": {
+   "name": "Mythos Slayer",
+   "own_game": true,
+   "page": "/games/clicker.html"
+  },
+  "popcorn-typing": {
+   "name": "Popcorn Typing",
+   "own_game": true,
+   "page": "/games/popcorn-typing.html"
+  },
+  "soldier-typing": {
+   "name": "Soldier Typing",
+   "own_game": true,
+   "page": "/games/soldier-typing.html"
+  },
+  "creature-raising-kit": {
+   "name": "Creature Raising Kit",
+   "own_game": true,
+   "page": "/games/creature-raising-kit.html"
+  },
+  "creature-fishing": {
+   "name": "Creature Fishing",
+   "own_game": true,
+   "page": "/games/creature-fishing.html"
+  },
+  "cthulhu-typing": {
+   "name": "Cthulhu Typing",
+   "own_game": true,
+   "page": "/games/cthulhu-typing.html"
+  },
+  "piano-typing": {
+   "name": "Piano Typing",
+   "own_game": true,
+   "page": "/games/piano-typing.html"
+  },
+  "site": {
+   "name": "Site news",
+   "own_game": true
+  }
+ },
+ "posts": [
+  {
+   "file": "2026-11-10-pokopia-sableye-gem-hunt.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "event",
+   "title": "Pokopia Sableye's Gem Hunt Guide: The Fastest Dream Island for Red Crystals",
+   "summary": "Every reward and its cost, the fastest Dream Island for red crystal fragments, and how to keep Sableye after the event.",
+   "image": "/images/guides/pokopia/20260429180450.webp",
+   "orig": "2026-04-29"
+  },
+  {
+   "file": "2026-11-10-pokopia-jirachi-event.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "event",
+   "title": "Pokopia Jirachi Event Guide: Fireworks That Change Shape, and a Habitat That Needs Power",
+   "summary": "How to collect sparkling wish notes, and six things I only found by using the rewards.",
+   "image": "/images/guides/pokopia/20260702223402.webp",
+   "orig": "2026-07-03"
+  },
+  {
+   "file": "2026-11-10-pokopia-most-useful-pokemon.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "guide",
+   "title": "The Most Useful Pokémon in Pokopia: Tinkaton Changes How You Build",
+   "summary": "Tinkaton, Haxorus, Volcarona, Blissey and Vespiquen: what each does on a Cloud Island and how to make their habitats.",
+   "image": "/images/guides/pokopia/20260505155656.webp",
+   "orig": "2026-05-05"
+  },
+  {
+   "file": "2026-11-10-pokopia-mysterious-goggles.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "guide",
+   "title": "Pokopia Mysterious Goggles: How to Get Them, and the Official Islands to Visit",
+   "summary": "How to get and use the goggles, what Virtual Mode can and can't do, and the official islands to start with.",
+   "image": "/images/guides/pokopia/20260328163829.webp",
+   "orig": "2026-06-17"
+  },
+  {
+   "file": "2026-11-10-pokopia-palette-town-vs-cloud-island.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "guide",
+   "title": "Palette Town vs Cloud Island in Pokopia: Which One to Use With Friends",
+   "summary": "What each needs, how to reach Palette Town past the broken highway, and what you can take home from a Cloud Island.",
+   "image": "/images/guides/pokopia/20260319095314.webp",
+   "orig": "2026-07-27"
+  },
+  {
+   "file": "2026-11-10-pokopia-only-up-island.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "visit",
+   "title": "Someone Rebuilt Only Up Inside Pokopia, and I Climbed It",
+   "summary": "PokonlyUP! (NDFQ8XN5): twenty stages of furniture footholds, move rules on signs, and how long the climb took me.",
+   "image": "/images/guides/pokopia/20260415084129.webp",
+   "orig": "2026-04-15"
+  },
+  {
+   "file": "2026-11-10-pokopia-aquarium-island.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "visit",
+   "title": "Someone Rebuilt an Entire Aquarium in Pokopia, and It Beat My Gyarados Tank",
+   "summary": "HorseaAqua (56L1Y3NT): Horsea statues, a gift shop, tanks on three levels and a power station in the basement.",
+   "image": "/images/guides/pokopia/20260620224632.webp",
+   "orig": "2026-06-21"
+  },
+  {
+   "file": "2026-11-10-pokopia-nenrin-island.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "visit",
+   "title": "I Visited a Japanese Shrine Island in Pokopia and Found a Rayquaza Overhead",
+   "summary": "Nenrin Island (GR3WBCC3): a shrine, tatami rooms, a pagoda-like tower, and a block Rayquaza floating in the sky.",
+   "image": "/images/guides/pokopia/20260617141028.webp",
+   "orig": "2026-06-17"
+  },
+  {
+   "file": "2026-11-10-pokopia-story-theory.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "theory",
+   "spoiler": true,
+   "title": "Where Is Pokopia Set? A Story Theory (Spoilers)",
+   "summary": "Story spoilers. What the towns, a note left by a trainer and one gym leader's name say about Pokopia's world.",
+   "image": "/images/guides/pokopia/20260319103351.webp"
+  },
+  {
+   "file": "2026-11-10-pokopia-zoo.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "diary",
+   "title": "I Built a Pokémon Zoo in Pokopia: Glass Tanks, Habitats and a Gyarados",
+   "summary": "After the prison, a zoo: glass enclosures themed to each Pokémon, a Gyarados tank, and a pixel-art Pikachu built by a young relative.",
+   "image": "/images/guides/pokopia/20260406090432.webp",
+   "orig": "2026-04-06"
+  },
+  {
+   "file": "2026-11-10-pokopia-pokemon-prison.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "diary",
+   "title": "I Built a Pokémon Prison in Pokopia: Pens, Birdcages and a Jail in the Sky",
+   "summary": "A Pokémon in a fenced pen can't move. A hot spring staffed by a Squirtle, a basement prison, a double birdcage and a jail in the sky.",
+   "image": "/images/guides/pokopia/20260314193445.webp",
+   "orig": "2026-03-19"
+  },
+  {
+   "file": "2026-11-10-pokopia-review.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "review",
+   "title": "Is Pokémon Pokopia Boring? A Review After Six Months",
+   "summary": "Why some people bounce off it, who it's really for, and how it compares with Animal Crossing and Dragon Quest Builders 2.",
+   "image": "/images/guides/pokopia/20260315090324.webp",
+   "orig": "2026-03-07"
+  },
+  {
+   "file": "2026-11-10-pokopia-switch-1-gameshare.html",
+   "date": "2026-11-10",
+   "game": "pokopia",
+   "type": "guide",
+   "title": "Pokopia on Switch 1: GameShare Works, but Only as the Guest",
+   "summary": "I ran Pokopia on a Switch 2 and an original Switch side by side: the steps, what the guest can do, and where it fell apart.",
+   "image": "/images/guides/pokopia/20260412103634.webp",
+   "orig": "2026-04-12"
+  },
+  {
+   "file": "2026-11-09-pokopia-cloud-island-codes.html",
+   "date": "2026-11-09",
+   "game": "pokopia",
+   "type": "codes",
+   "title": "Pokopia Cloud Island Codes: 10 Player-Made Islands Worth Visiting",
+   "summary": "Ten addresses with screenshots: an Only Up climb, an aquarium, an island with almost every item to copy, and the prison I built.",
+   "image": "/images/guides/pokopia/20260617141116.webp",
+   "orig": "2026-03-28"
+  },
+  {
+   "file": "2026-08-11-unity-webgl-build-crash.html",
+   "date": "2026-08-11",
+   "game": "creature-raising-kit",
+   "type": "dev",
+   "title": "Unity Editor crashed building my WebGL game, twice, without an error message",
+   "image": "/images/creature-raising-kit.png"
+  },
+  {
+   "file": "2026-08-11-thirteen-to-172-fish.html",
+   "date": "2026-08-11",
+   "game": "creature-fishing",
+   "type": "dev",
+   "title": "Creature Fishing shipped with 13 fish. Getting to 172 was a rendering problem",
+   "image": "/images/creature-fishing.png"
+  },
+  {
+   "file": "2026-08-10-mythos-slayer-balance.html",
+   "date": "2026-08-10",
+   "game": "mythos-slayer",
+   "type": "guide",
+   "title": "Mythos Slayer balance: boss health, gold and progression",
+   "image": "/images/mythos-slayer-2026-09-10.png"
+  },
+  {
+   "file": "2026-07-04-cthulhu-typing.html",
+   "date": "2026-07-04",
+   "game": "cthulhu-typing",
+   "type": "dev",
+   "title": "Long words summon dragons: how Cthulhu Typing rewards you for not panicking",
+   "image": "/images/cthulhu-typing.png"
+  },
+  {
+   "file": "2026-06-26-piano-typing.html",
+   "date": "2026-06-26",
+   "game": "piano-typing",
+   "type": "dev",
+   "title": "Typing practice is boring and piano practice is not, and the only difference is sound",
+   "image": "/images/piano-typing.png"
+  },
+  {
+   "file": "2026-06-22-clicker-strategy.html",
+   "date": "2026-06-22",
+   "game": "mythos-slayer",
+   "type": "guide",
+   "title": "Mythos Slayer: choosing upgrades and timing Rebirth",
+   "image": "/images/mythos-slayer-2026-09-10.png"
+  },
+  {
+   "file": "2026-06-20-popcorn-typing-tips.html",
+   "date": "2026-06-20",
+   "game": "popcorn-typing",
+   "type": "guide",
+   "title": "Popcorn Typing: combos, upgrades and offline earnings",
+   "image": "/images/popcorn-typing.png"
+  },
+  {
+   "file": "2026-06-18-making-html-games.html",
+   "date": "2026-06-18",
+   "game": "creature-fishing",
+   "type": "dev",
+   "title": "I fixed a multiplayer bug in a game with no players",
+   "image": "/images/site-home.png"
+  },
+  {
+   "file": "2026-06-16-soldier-typing-strategy.html",
+   "date": "2026-06-16",
+   "game": "soldier-typing",
+   "type": "guide",
+   "title": "Soldier Typing: wave triggers, boss stats and controls",
+   "image": "/images/soldier-typing.png"
+  },
+  {
+   "file": "2026-06-14-making-boss-rush-clicker.html",
+   "date": "2026-06-14",
+   "game": "mythos-slayer",
+   "type": "dev",
+   "title": "I paid for the boss art on a game that has never earned a yen",
+   "image": "/images/mythos-slayer-2026-09-10.png"
+  },
+  {
+   "file": "2026-06-01-site-renewal.html",
+   "date": "2026-06-01",
+   "game": "site",
+   "type": "dev",
+   "show": false,
+   "title": "The Site Just Got a Full Redesign"
+  }
+ ]
 }

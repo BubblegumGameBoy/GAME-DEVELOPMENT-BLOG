@@ -67,11 +67,12 @@ def entry(p):
             else f'<span class="chip">{escape(cat)}</span>')
     game = GAMES[p["game"]]["name"]
     sub = "" if game == cat else f' · {escape(game)}'
+    orig = f' · first written in Japanese, {nice_date(p["orig"]).split(" ")[0]} {p["orig"][:4]}' if p.get("orig") else ""
     summary = f'\n      <p class="s">{escape(p["summary"])}</p>' if p.get("summary") else ""
     return f'''  <li class="entry">
     <a class="thumb" href="{p["url"]}" tabindex="-1" aria-hidden="true"><img src="{escape(p.get("image", "/images/site-home.png"))}" alt="" width="160" height="90" loading="lazy"></a>
     <div>
-      <p class="m">{chip}{sub} · <time datetime="{p["date"]}">{nice_date(p["date"])}</time></p>
+      <p class="m">{chip}{sub} · <time datetime="{p["date"]}">{nice_date(p["date"])}</time>{orig}</p>
       <h2 class="t"><a href="{p["url"]}">{escape(p["title"])}</a></h2>{summary}
     </div>
   </li>'''
