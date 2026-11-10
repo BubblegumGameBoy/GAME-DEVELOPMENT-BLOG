@@ -19,174 +19,114 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Updates | Bubblegum Game">
 <meta name="twitter:description" content="New bosses, punchier sound effects, balance tweaks, and UI improvements — all the changes that make the games more fun to play.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap"></noscript>
-<style>
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  .j-card { transition:transform .12s, box-shadow .12s; }
-  .j-card:hover { transform:translateY(-3px); box-shadow:0 11px 0 rgba(20,40,63,.10); }
-  nav a { white-space:nowrap; }
-  .back:hover { color:#23838b; }
-  .upd-list { margin:8px 0 0; padding-left:1.1em; }
-  .upd-list li { font-size:clamp(14px,3.6vw,15px); font-weight:500; line-height:1.8; color:#3d5b7c; }
-</style>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/site.css?v=20261110a">
+<style>
+.info-main{max-width:820px}
+.info-main .article{font-size:16px}
+.info-main .article ul{padding-left:1.3em}
+.info-main .article li{margin:6px 0}
+.info-form{margin:8px 0 0}
+@media (max-width:767px){.game-main>.info-form,.game-main>.j-list{padding:0 16px}}
+.info-form iframe{display:block;width:100%;max-width:680px;height:760px;border:0;background:#fff;border-radius:4px}
+.j-list{display:grid;gap:14px;margin:24px 0 0}
+.j-card{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+.j-card h2{margin:4px 0 8px!important;padding:0!important;border:0!important;font-size:clamp(18px,2.6vw,21px)!important}
+.j-card p{margin:0 0 8px;color:var(--bone)}
+.j-card p:last-child{margin-bottom:0}
+.j-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--faint)}
+.j-meta span:nth-child(2){color:var(--gold);border:1px solid var(--line-gold);padding:0 7px}
+.j-meta span:nth-child(3){color:var(--bone-hi);font-weight:700}
+</style>
+
 </head>
 <body>
-
-<div style="overflow-x:hidden;">
-
-<!-- ================= NAV ================= -->
-<nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
-    <div style="max-width:1040px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px clamp(12px,3.5vw,20px);font-weight:700;font-size:14px;">
-        <a href="/" style="color:#cfe6ee;text-decoration:none;">Home</a>
-        <a href="/games/" style="color:#cfe6ee;text-decoration:none;">Games</a>
-        <a href="/blog/" style="color:#cfe6ee;text-decoration:none;">Blog</a>
-        <a href="/about.html" style="color:#cfe6ee;text-decoration:none;">About</a>
-        <a href="/ja/updates.html" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;">日本語</a>
-      </div>
-    </div>
-  </nav>
-
-<!-- ================= HEADER ================= -->
-<header style="padding:clamp(34px,6vw,60px) 20px clamp(20px,4vw,32px);text-align:center;">
-  <p style="margin:0 0 8px;font-family:'DotGothic16',monospace;font-size:12px;color:#5b7796;letter-spacing:3px;">UPDATES</p>
-  <h1 style="margin:0;font-weight:900;font-size:clamp(28px,7vw,46px);line-height:1.1;color:#2c4a6e;">Updates</h1>
-  <p style="margin:12px auto 0;max-width:520px;font-size:clamp(14px,3.7vw,16px);font-weight:500;line-height:1.75;color:#3d5b7c;">I keep tweaking the games to make them more fun to play.<br>Here's a log of the updates so far — new bosses, sound effects, balance changes, UI improvements, and more.</p>
-  <p style="margin:16px auto 0;max-width:620px;padding:14px;background:#fff;border-left:4px solid #17656d;text-align:left;line-height:1.75;">Entries record changes on their original dates. Older balance values and language descriptions can differ from today's games. Use the <a href="play-guide.html" style="color:#17656d;font-weight:700;">current player guide</a> and each game's instructions for the version available now.</p>
-</header>
-
-<main>
-<section style="padding:0 20px clamp(40px,7vw,72px);">
-  <div style="max-width:680px;margin:0 auto;">
-
-    <!-- ▼▼▼ One update = the <article>…</article> block below; copy it whole and paste at the top ▼▼▼
-         Suggested tags: "New Game" (#2a9aa3) / "New Bosses" (#c0473e) / "Update" (#e08a1e) / "Balance" (#6b8e3a) / "News" (#7a93ad). -->
-
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <p style="margin:0 0 8px;color:#526d87;font-size:14px;"><time datetime="2026-09-10">September 10, 2026</time> · Player guide and site update</p>
-      <h2 style="margin:0 0 8px;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">A clearer first visit, from choosing a game to pressing Play</h2>
-      <p style="line-height:1.75;color:#3d5b7c;">The <a href="play-guide.html" style="color:#17656d;font-weight:700;">new player guide</a> compares all ten games by device, language and first goal, with a four-word typing warm-up. Game pages now explain the controls before loading the game and provide an Exit fullscreen button that returns to the guide without restarting your session.</p>
-      <p style="line-height:1.75;color:#3d5b7c;">Dig Planet opens in English from this site. The keyboard games have English controls or entry help; Japanese practice words and some story text remain. Reviewed strategy guides link to the game version used for their calculations. The <a href="games/clicker.html" style="color:#17656d;font-weight:700;">Mythos Slayer page</a> also shows the redesigned interface in a new September 10 screenshot.</p>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Site menu"><div class="nav-inner"><a class="brand" href="/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/">Home</a><a href="/games/">Games</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a class="lang" href="/ja/updates.html" lang="ja" hreflang="ja">日本語</a></div></div></nav>
+  <main id="main" class="game-main info-main">
+    <p class="crumb"><a href="/">Home</a> / Updates</p>
+    <h1>Updates</h1>
+    <article class="article"><p>I keep tweaking the games to make them more fun to play.<br>Here's a log of the updates so far — new bosses, sound effects, balance changes, UI improvements, and more.</p><p>Entries record changes on their original dates. Older balance values and language descriptions can differ from today's games. Use the <a href="/play-guide.html">current player guide</a> and each game's instructions for the version available now.</p></article>
+<!-- One update = one <article class="j-card"> below. Copy one, paste it at the top. -->
+<div class="j-list"><article class="j-card">
+      <p class="j-meta"><span><time datetime="2026-09-10">September 10, 2026</time></span><span>Update</span><span>Player guide and site update</span></p>
+      <h2>A clearer first visit, from choosing a game to pressing Play</h2>
+      <p>The <a href="/play-guide.html">new player guide</a> compares all ten games by device, language and first goal, with a four-word typing warm-up. Game pages now explain the controls before loading the game and provide an Exit fullscreen button that returns to the guide without restarting your session.</p>
+      <p>Dig Planet opens in English from this site. The keyboard games have English controls or entry help; Japanese practice words and some story text remain. Reviewed strategy guides link to the game version used for their calculations. The <a href="/games/clicker.html">Mythos Slayer page</a> also shows the redesigned interface in a new September 10 screenshot.</p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">September 2, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-        <span style="font-size:13px;color:#9aa;">Soldier Typing 2</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Soldier Typing 2 is out!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">The sequel to Soldier Typing. Same keystrokes, six waves instead of five, and some of those waves are won by surviving the clock rather than by clearing the field. There is also a boss that is not on the map, reachable two different ways, and a route that only opens after you have already won once. At launch, the interface was Japanese. English entry instructions and help were added in September; story and battle text still include Japanese. Copy the displayed romaji prompts to type. <a href="games/soldier-typing-2.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play &rarr;</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>September 2, 2026</span><span>New Game</span><span>Soldier Typing 2</span></p>
+      <h2>Soldier Typing 2 is out!</h2>
+      <p>The sequel to Soldier Typing. Same keystrokes, six waves instead of five, and some of those waves are won by surviving the clock rather than by clearing the field. There is also a boss that is not on the map, reachable two different ways, and a route that only opens after you have already won once. At launch, the interface was Japanese. English entry instructions and help were added in September; story and battle text still include Japanese. Copy the displayed romaji prompts to type. <a href="/games/soldier-typing-2.html">Play &rarr;</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">August 20, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-        <span style="font-size:13px;color:#9aa;">Dig Planet</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Dig Planet is out!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">One planet, and everyone who opens the page digs the same one in real time &mdash; your holes stay in their world and theirs are already there when you arrive. 26 million voxels, six layers of rock, ore veins worth up to 60x a swing, and something buried at the core that a pickaxe will not go through. The launch interface was Japanese. The current version offers English and Japanese, opens in English from this site, and supports mouse or touch controls. <a href="games/dig-planet.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play &rarr;</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>August 20, 2026</span><span>New Game</span><span>Dig Planet</span></p>
+      <h2>Dig Planet is out!</h2>
+      <p>One planet, and everyone who opens the page digs the same one in real time &mdash; your holes stay in their world and theirs are already there when you arrive. 26 million voxels, six layers of rock, ore veins worth up to 60x a swing, and something buried at the core that a pickaxe will not go through. The launch interface was Japanese. The current version offers English and Japanese, opens in English from this site, and supports mouse or touch controls. <a href="/games/dig-planet.html">Play &rarr;</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">July 4, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-        <span style="font-size:13px;color:#9aa;">Cthulhu Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Cthulhu Typing is out!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">A typing-meets-summoning battle: every word you finish typing summons a soldier that auto-attacks a daily boss from the Cthulhu Mythos (43 in all). It has a daily leaderboard. The current limit is one successful clear per day; a failed attempt can be retried. Run length depends on how the battle goes. <a href="games/cthulhu-typing.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>July 4, 2026</span><span>New Game</span><span>Cthulhu Typing</span></p>
+      <h2>Cthulhu Typing is out!</h2>
+      <p>A typing-meets-summoning battle: every word you finish typing summons a soldier that auto-attacks a daily boss from the Cthulhu Mythos (43 in all). It has a daily leaderboard. The current limit is one successful clear per day; a failed attempt can be retried. Run length depends on how the battle goes. <a href="/games/cthulhu-typing.html">Play →</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 26, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-        <span style="font-size:13px;color:#9aa;">Piano Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Piano Typing is out!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">A rhythm-meets-typing game: falling tiles show you the next key to press, and playing at your own pace lets you perform classic melodies. There's no timing judgment, so it also makes for great home-row practice. <a href="games/piano-typing.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 26, 2026</span><span>New Game</span><span>Piano Typing</span></p>
+      <h2>Piano Typing is out!</h2>
+      <p>A rhythm-meets-typing game: falling tiles show you the next key to press, and playing at your own pace lets you perform classic melodies. There's no timing judgment, so it also makes for great home-row practice. <a href="/games/piano-typing.html">Play →</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 24, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#c0473e;border-radius:5px;padding:3px 9px;">New Bosses</span>
-        <span style="font-size:13px;color:#9aa;">Mythos Slayer</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Added 30 new bosses — now 40 in all!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">Dropped in 30 more fearsome enemies at once, bringing the total number of bosses to beat up to 40. There's a lot more to sink your teeth into now — take down bosses you haven't seen yet and keep growing your army stronger. <a href="games/clicker.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 24, 2026</span><span>New Bosses</span><span>Mythos Slayer</span></p>
+      <h2>Added 30 new bosses — now 40 in all!</h2>
+      <p>Dropped in 30 more fearsome enemies at once, bringing the total number of bosses to beat up to 40. There's a lot more to sink your teeth into now — take down bosses you haven't seen yet and keep growing your army stronger. <a href="/games/clicker.html">Play →</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 23, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#6b8e3a;border-radius:5px;padding:3px 9px;">Balance</span>
-        <span style="font-size:13px;color:#9aa;">Mythos Slayer</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Prestige bonus bumped up to 5x</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">This June announcement summarized the bonus as 5x. <strong>Current rule, checked September 10:</strong> Rebirth uses <code>1 + 0.4 × highest boss cleared in the current cycle</code>. Clearing Boss 10 gives a factor of 5; Boss 20 gives 9. The factor multiplies your existing permanent bonus, so it is not a fixed 5x at every reset. See the <a href="blog/posts/2026-06-22-clicker-strategy.html" style="color:#17656d;font-weight:700;">current Rebirth guide</a> before deciding when to reset.</p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 23, 2026</span><span>Balance</span><span>Mythos Slayer</span></p>
+      <h2>Prestige bonus bumped up to 5x</h2>
+      <p>This June announcement summarized the bonus as 5x. <strong>Current rule, checked September 10:</strong> Rebirth uses <code>1 + 0.4 × highest boss cleared in the current cycle</code>. Clearing Boss 10 gives a factor of 5; Boss 20 gives 9. The factor multiplies your existing permanent bonus, so it is not a fixed 5x at every reset. See the <a href="/blog/posts/2026-06-22-clicker-strategy.html">current Rebirth guide</a> before deciding when to reset.</p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#e08a1e;border-radius:5px;padding:3px 9px;">Update</span>
-        <span style="font-size:13px;color:#9aa;">Mythos Slayer</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Made the HP bar easier to read</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">Reworked the boss HP bar interface so you can tell at a glance how much further you have to go before the boss goes down.</p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 22, 2026</span><span>Update</span><span>Mythos Slayer</span></p>
+      <h2>Made the HP bar easier to read</h2>
+      <p>Reworked the boss HP bar interface so you can tell at a glance how much further you have to go before the boss goes down.</p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 22, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#e08a1e;border-radius:5px;padding:3px 9px;">Update</span>
-        <span style="font-size:13px;color:#9aa;">Popcorn Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Added a completion sound for extra satisfaction</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">Added a sound effect for finishing a word all the way through. Nailing that final key feels even crisper now, making the whole thing more satisfying to play. <a href="games/popcorn-typing.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 22, 2026</span><span>Update</span><span>Popcorn Typing</span></p>
+      <h2>Added a completion sound for extra satisfaction</h2>
+      <p>Added a sound effect for finishing a word all the way through. Nailing that final key feels even crisper now, making the whole thing more satisfying to play. <a href="/games/popcorn-typing.html">Play →</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 21, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#2a9aa3;border-radius:5px;padding:3px 9px;">New Game</span>
-        <span style="font-size:13px;color:#9aa;">Mythos Slayer</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Mythos Slayer is out!</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">An idle boss-rush game where you take on fearsome enemies. Upgrade your weapons, recruit soldiers, and let your army keep hunting bosses automatically. <a href="games/clicker.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 21, 2026</span><span>New Game</span><span>Mythos Slayer</span></p>
+      <h2>Mythos Slayer is out!</h2>
+      <p>An idle boss-rush game where you take on fearsome enemies. Upgrade your weapons, recruit soldiers, and let your army keep hunting bosses automatically. <a href="/games/clicker.html">Play →</a></p>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 10, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#e08a1e;border-radius:5px;padding:3px 9px;">Update</span>
-        <span style="font-size:13px;color:#9aa;">Soldier Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Added hero animations and a combo system</h2>
+    <article class="j-card">
+      <p class="j-meta"><span>June 10, 2026</span><span>Update</span><span>Soldier Typing</span></p>
+      <h2>Added hero animations and a combo system</h2>
       <ul class="upd-list">
         <li>Added animations for the hero, making battles more fun to watch.</li>
         <li>Added a combo system — keep typing without any mistakes and you rack up bonus points.</li>
       </ul>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 8, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#e08a1e;border-radius:5px;padding:3px 9px;">Update</span>
-        <span style="font-size:13px;color:#9aa;">Soldier Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Added a leaderboard and music, plus boss tweaks</h2>
+    <article class="j-card">
+      <p class="j-meta"><span>June 8, 2026</span><span>Update</span><span>Soldier Typing</span></p>
+      <h2>Added a leaderboard and music, plus boss tweaks</h2>
       <ul class="upd-list">
         <li>Added a leaderboard so you can compete on score.</li>
         <li>Added background music to make play more immersive.</li>
@@ -194,50 +134,16 @@
       </ul>
     </article>
 
-    <article class="j-card" style="display:block;background:#fff;border:2px solid #e1edf4;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 6px 0 rgba(20,40,63,.06);">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-family:'DotGothic16',monospace;font-size:13px;color:#7e95ad;letter-spacing:1px;">June 7, 2026</span>
-        <span style="font-family:'DotGothic16',monospace;font-size:11px;color:#fff;background:#e08a1e;border-radius:5px;padding:3px 9px;">Update</span>
-        <span style="font-size:13px;color:#9aa;">Soldier Typing</span>
-      </div>
-      <h2 style="margin:0 0 5px;font-weight:800;font-size:clamp(17px,4.4vw,21px);color:#2c4a6e;">Added various in-game events</h2>
-      <p style="margin:0;font-size:clamp(14px,3.6vw,15px);font-weight:500;line-height:1.75;color:#3d5b7c;">Ran some tests in the live environment and added a variety of events that happen during play. <a href="games/soldier-typing.html" style="color:#2a9aa3;font-weight:700;text-decoration:none;">Play →</a></p>
+    <article class="j-card">
+      <p class="j-meta"><span>June 7, 2026</span><span>Update</span><span>Soldier Typing</span></p>
+      <h2>Added various in-game events</h2>
+      <p>Ran some tests in the live environment and added a variety of events that happen during play. <a href="/games/soldier-typing.html">Play →</a></p>
     </article>
 
-    <!-- ▲▲▲ end of updates (newest on top) ▲▲▲ -->
-
-    <p style="margin:30px 0 0;text-align:center;">
-      <a href="/" class="back" style="display:inline-flex;align-items:center;gap:6px;color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;transition:color .12s;">← Back to Home</a>
-    </p>
-  </div>
-</section>
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer style="background:#14283f;color:#cfe1ec;padding:clamp(32px,5vw,48px) 20px 26px;">
-  <div style="max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;gap:26px;justify-content:flex-start;align-items:flex-start;">
-    <div>
-      <p style="margin:0 0 12px;font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;letter-spacing:1px;">MENU</p>
-      <div style="display:flex;flex-direction:column;gap:10px;font-weight:700;font-size:14px;">
-        <a href="/#updates" style="color:#cfe1ec;text-decoration:none;">What's New</a>
-        <a href="updates.html" style="color:#cfe1ec;text-decoration:none;">Updates</a>
-        <a href="/games/" style="color:#cfe1ec;text-decoration:none;">Games</a>
-        <a href="blog/" style="color:#cfe1ec;text-decoration:none;">Blog</a>
-        <a href="about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener" style="color:#8fa6bd;text-decoration:none;">Sister Blog (Japanese) ↗</a>
-      </div>
-    </div>
-  </div>
-  <div style="max-width:1040px;margin:28px auto 0;padding-top:17px;border-top:2px solid #2a425c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-    <span style="font-size:13px;color:#7fa3bd;">© 2026 Bubblegum Game</span>
-    <span style="font-family:'DotGothic16',monospace;font-size:12px;color:#7fa3bd;">bubblegumgameboy.com</span>
-  </div>
-<button type="button" data-privacy-choices style="padding:8px;border:0;background:none;color:inherit;text-decoration:underline;cursor:pointer;">Privacy &amp; cookie choices</button>
-</footer>
-
-</div>
-
+    <p>
+      <a href="/" class="back">← Back to Home</a>
+    </p></div>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy policy</a> · <a href="/contact.html">Contact</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button></div></footer>
 </body>
 </html>

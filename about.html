@@ -20,105 +20,83 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About the Developer | Meet Bubblegum">
 <meta name="twitter:description" content="Meet Bubblegum, the solo indie developer behind Bubblegum Game.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=DotGothic16&display=swap"></noscript>
-<style>
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:#e4f2f8; color:#2c4a6e; font-family:'M PLUS Rounded 1c',sans-serif; -webkit-font-smoothing:antialiased; }
-  .prose { font-size:clamp(15px,3.8vw,17px); line-height:1.95; font-weight:500; color:#3d5b7c; }
-  .prose h2 { margin:34px 0 12px; font-weight:900; font-size:clamp(20px,4.6vw,26px); color:#2c4a6e; border-left:6px solid #2a9aa3; padding-left:12px; line-height:1.35; }
-  .prose p { margin:0 0 16px; }
-  .prose ul { margin:0 0 16px; padding-left:1.4em; }
-  .prose li { margin:4px 0; }
-  .prose a { color:#2a9aa3; font-weight:700; }
-</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Bubblegum","url":"https://bubblegumgameboy.com/about.html","description":"A solo indie developer from Japan who handmakes free browser games. Loves making games as much as playing them, has tinkered with tools like Unity, and is a fan of retro games and reading.","knowsAbout":["Game development","Browser games","Typing games","Clicker games","Reading"]},"about":{"@type":"WebSite","name":"Bubblegum Game","url":"https://bubblegumgameboy.com/"},"inLanguage":"en"}</script>
 <script src="/privacy-controls.js" defer></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909"
      crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/site.css?v=20261110a">
+<style>
+.info-main{max-width:820px}
+.info-main .article{font-size:16px}
+.info-main .article ul{padding-left:1.3em}
+.info-main .article li{margin:6px 0}
+.info-form{margin:8px 0 0}
+@media (max-width:767px){.game-main>.info-form,.game-main>.j-list{padding:0 16px}}
+.info-form iframe{display:block;width:100%;max-width:680px;height:760px;border:0;background:#fff;border-radius:4px}
+.j-list{display:grid;gap:14px;margin:24px 0 0}
+.j-card{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+.j-card h2{margin:4px 0 8px!important;padding:0!important;border:0!important;font-size:clamp(18px,2.6vw,21px)!important}
+.j-card p{margin:0 0 8px;color:var(--bone)}
+.j-card p:last-child{margin-bottom:0}
+.j-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--faint)}
+.j-meta span:nth-child(2){color:var(--gold);border:1px solid var(--line-gold);padding:0 7px}
+.j-meta span:nth-child(3){color:var(--bone-hi);font-weight:700}
+</style>
+
 </head>
 <body>
-
-<div style="overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;">
-
-  <nav style="position:sticky;top:0;z-index:50;background:#2c4a6e;border-bottom:3px solid #14283f;">
-    <div style="max-width:1040px;margin:0 auto;padding:11px clamp(13px,4vw,26px);display:flex;align-items:center;justify-content:center;">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px clamp(12px,3.5vw,20px);font-weight:700;font-size:14px;">
-        <a href="/" style="color:#cfe6ee;text-decoration:none;">Home</a>
-        <a href="/games/" style="color:#cfe6ee;text-decoration:none;">Games</a>
-        <a href="/blog/" style="color:#cfe6ee;text-decoration:none;">Blog</a>
-        <a href="/about.html" aria-current="page" style="color:#ffd766;text-decoration:none;font-weight:800;">About</a>
-        <a href="/ja/about.html" lang="ja" hreflang="ja" style="color:#9bedf2;text-decoration:none;">日本語</a>
-      </div>
-    </div>
-  </nav>
-
-  <main style="flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:clamp(20px,4vw,34px) 20px clamp(40px,6vw,64px);">
-    <p style="margin:0 0 14px;font-family:'DotGothic16',monospace;font-size:12px;color:#7e95ad;letter-spacing:1px;"><a href="./" style="color:#7e95ad;text-decoration:none;">Home</a> / <span style="color:#2c4a6e;">About the Developer</span></p>
-
-    <h1 style="margin:0 0 24px;font-weight:900;font-size:clamp(26px,6vw,38px);line-height:1.25;color:#2c4a6e;">About the Developer</h1>
-
-    <article class="prose">
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Site menu"><div class="nav-inner"><a class="brand" href="/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/">Home</a><a href="/games/">Games</a><a href="/blog/">Blog</a><a href="/about.html" aria-current="page">About</a><a class="lang" href="/ja/about.html" lang="ja" hreflang="ja">日本語</a></div></div></nav>
+  <main id="main" class="game-main info-main">
+    <p class="crumb"><a href="/">Home</a> / About the Developer</p>
+    <h1>About the Developer</h1>
+    <article class="article">
       <p>Hi, I'm Bubblegum, the person who builds and runs Bubblegum Game.</p>
 
-      <p>Most of my writing is in Japanese. I have kept a game blog in Japanese since 2021, and that is where I usually write. Lately, though, most of my time goes into making games, and someday I want to write in English as well. <a href="blog/">The English blog</a> on this site is where I am starting.</p>
+      <p>Most of my writing is in Japanese. I have kept a game blog in Japanese since 2021, and that is where I usually write. Lately, though, most of my time goes into making games, and someday I want to write in English as well. <a href="/blog/">The English blog</a> on this site is where I am starting.</p>
 
       <h2>What I'm making now: Monster Typing</h2>
-      <p>The game I put the most into is <a href="games/monster-typing.html">Monster Typing</a>, an online typing battle game. Japanese words appear in hiragana, you type them in romaji, and your monster attacks. You summon and raise companion monsters, and other players can drop into your fight in real time.</p>
+      <p>The game I put the most into is <a href="/games/monster-typing.html">Monster Typing</a>, an online typing battle game. Japanese words appear in hiragana, you type them in romaji, and your monster attacks. You summon and raise companion monsters, and other players can drop into your fight in real time.</p>
       <p>It was made for Japanese players, but I think it works as Japanese practice too. You read hiragana over and over, fast, because the fight depends on it. There is also a practice mode for kanji and Japanese history. If you are learning Japanese, give it a try.</p>
 
       <h2>I love making games</h2>
       <p>I've always loved playing games, and at some point I started wanting to make my own. After tinkering with tools like Unity, I now build small games you can play right in your browser and put them up here. Clickers and typing games, the kind of thing you can jump into just by opening a URL, no sign-up required. Whenever the mood strikes, I make a little more and drop it on the site.</p>
 
-      <h3 style="margin:26px 0 8px;font-weight:800;font-size:clamp(17px,4vw,20px);color:#2c4a6e;">What I have actually built</h3>
+      <h3>What I have actually built</h3>
       <p>Besides Monster Typing, ten smaller games are on this site. Six use HTML and JavaScript without a game engine; three are Unity WebGL builds; one is a three.js voxel world. All are free to play without an account. Save and online features differ by game: Dig Planet keeps shared-world and player progress on its server, with a browser identifier used to reconnect.</p>
       <ul>
-        <li><a href="games/dig-planet.html">Dig Planet</a>: a shared-world mining clicker where every player digs the same 384&sup3; voxel planet in real time. three.js, with a Cloudflare Durable Object holding the world. In English and Japanese</li>
-        <li><a href="games/clicker.html">Mythos Slayer</a>: an idle boss-rush against 40 Cthulhu Mythos bosses, with 24 recruitable units, ten weapon tiers and a prestige system. There is a ten-second speed test at the door and an online leaderboard behind it. In English, Japanese and Chinese</li>
-        <li><a href="games/creature-fishing.html">Creature Fishing</a>: a fishing game with a 172-species index and online islands holding up to 12 players. Unity WebGL</li>
-        <li><a href="games/creature-raising-kit.html">Creature Raising Kit</a>: a quiet idle pet game where players trade anonymous letters in bottles. Unity WebGL</li>
-        <li><a href="games/five-hundred-million-years.html">500 Million Years</a>: a narrative clicker built on a thought experiment, with voice acting. Japanese only. Unity WebGL</li>
-        <li><a href="games/soldier-typing-2.html">Soldier Typing 2</a>: the sequel to Soldier Typing: six waves instead of five, some of them won by surviving the clock, plus a boss that is not on the map</li>
-        <li><a href="games/soldier-typing.html">Soldier Typing</a>, <a href="games/cthulhu-typing.html">Cthulhu Typing</a>, <a href="games/popcorn-typing.html">Popcorn Typing</a> and <a href="games/piano-typing.html">Piano Typing</a>: four more typing games, each built around a different idea about why typing practice is usually boring. Soldier, Cthulhu and Popcorn use romaji prompts for Japanese words. Piano uses highlighted single letters to build keyboard familiarity</li>
+        <li><a href="/games/dig-planet.html">Dig Planet</a>: a shared-world mining clicker where every player digs the same 384&sup3; voxel planet in real time. three.js, with a Cloudflare Durable Object holding the world. In English and Japanese</li>
+        <li><a href="/games/clicker.html">Mythos Slayer</a>: an idle boss-rush against 40 Cthulhu Mythos bosses, with 24 recruitable units, ten weapon tiers and a prestige system. There is a ten-second speed test at the door and an online leaderboard behind it. In English, Japanese and Chinese</li>
+        <li><a href="/games/creature-fishing.html">Creature Fishing</a>: a fishing game with a 172-species index and online islands holding up to 12 players. Unity WebGL</li>
+        <li><a href="/games/creature-raising-kit.html">Creature Raising Kit</a>: a quiet idle pet game where players trade anonymous letters in bottles. Unity WebGL</li>
+        <li><a href="/games/five-hundred-million-years.html">500 Million Years</a>: a narrative clicker built on a thought experiment, with voice acting. Japanese only. Unity WebGL</li>
+        <li><a href="/games/soldier-typing-2.html">Soldier Typing 2</a>: the sequel to Soldier Typing: six waves instead of five, some of them won by surviving the clock, plus a boss that is not on the map</li>
+        <li><a href="/games/soldier-typing.html">Soldier Typing</a>, <a href="/games/cthulhu-typing.html">Cthulhu Typing</a>, <a href="/games/popcorn-typing.html">Popcorn Typing</a> and <a href="/games/piano-typing.html">Piano Typing</a>: four more typing games, each built around a different idea about why typing practice is usually boring. Soldier, Cthulhu and Popcorn use romaji prompts for Japanese words. Piano uses highlighted single letters to build keyboard familiarity</li>
       </ul>
-      <p>I also write up how they were made, including the parts that went badly. The <a href="blog/posts/2026-08-10-mythos-slayer-balance.html">balance curve behind Mythos Slayer</a>, the <a href="blog/posts/2026-08-11-unity-webgl-build-crash.html">WebGL build that crashed Unity Editor with no error</a>, and <a href="blog/posts/2026-08-11-thirteen-to-172-fish.html">why the fish index shipped with 13 entries instead of 172</a> are all on <a href="blog/">the blog</a>, with the real numbers from my own source files rather than from memory.</p>
+      <p>I also write up how they were made, including the parts that went badly. The <a href="/blog/posts/2026-08-10-mythos-slayer-balance.html">balance curve behind Mythos Slayer</a>, the <a href="/blog/posts/2026-08-11-unity-webgl-build-crash.html">WebGL build that crashed Unity Editor with no error</a>, and <a href="/blog/posts/2026-08-11-thirteen-to-172-fish.html">why the fish index shipped with 13 entries instead of 172</a> are all on <a href="/blog/">the blog</a>, with the real numbers from my own source files rather than from memory.</p>
 
       <h2>Games and books are pretty much my whole life</h2>
       <p>My hobbies are games and reading. Honestly, that's about it. I'm especially drawn to retro games and sandbox-style worlds, the kind you can sink into and lose track of the hours. That said, I get bored easily, so I'm forever sampling one genre and hopping to the next. The upside is that I never run out of ideas for things to build.</p>
 
-      <h2>How I maintain these guides</h2><p>I publish the games and write the guides on this site. Development notes describe my own design decisions and past builds; strategy pages describe current mechanics. When an article uses a numerical formula, I check both the data and the code that consumes it. Version links on the reviewed guides let readers inspect the same implementation. A game update can change these details: report a mismatch through the <a href="contact.html">contact form</a>.</p><p>New here? The <a href="play-guide.html">first-game guide</a> compares controls, languages and goals, with a short typing warm-up that needs no download.</p><h2>Where I usually write</h2>
-      <p>My main blog is "<a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener">Bubblegum's Game Blog</a>," in Japanese, which I have kept going since 2021. It started as a catch-all diary, and these days it is almost entirely game write-ups: reviews, guides, and whatever I am playing at the time. Some of those posts come over here in English, rewritten for readers outside Japan rather than translated line by line, starting with <a href="blog/posts/2026-11-09-pokopia-cloud-island-codes.html">Pokémon Pokopia</a>.</p>
+      <h2>How I maintain these guides</h2><p>I publish the games and write the guides on this site. Development notes describe my own design decisions and past builds; strategy pages describe current mechanics. When an article uses a numerical formula, I check both the data and the code that consumes it. Version links on the reviewed guides let readers inspect the same implementation. A game update can change these details: report a mismatch through the <a href="/contact.html">contact form</a>.</p><p>New here? The <a href="/play-guide.html">first-game guide</a> compares controls, languages and goals, with a short typing warm-up that needs no download.</p><h2>What's on the blog</h2>
+      <p>The <a href="/blog/">blog</a> has three kinds of posts. First, guides to games I've played myself, written from my own saves: <a href="/blog/pokopia/">Pokémon Pokopia</a>, and <a href="/blog/village-in-the-shade/">Village in the Shade</a>, which I finished in nearly fifty hours on the Japanese release. Second, <a href="/blog/my-games/">strategy notes for my own games</a>, where the numbers come straight from the source files. Third, <a href="/blog/behind/">stories from making them</a>, including the parts that went wrong.</p>
+
+      <h2>Where I usually write</h2>
+      <p>My main blog is "<a href="https://babblegum.hatenablog.com/" target="_blank" rel="noopener">Bubblegum's Game Blog</a>," in Japanese, which I have kept going since 2021. It started as a catch-all diary, and these days it is almost entirely game write-ups: reviews, guides, and whatever I am playing at the time. Some of those posts come over here in English, rewritten for readers outside Japan rather than translated line by line, starting with <a href="/blog/posts/2026-11-09-pokopia-cloud-island-codes.html">Pokémon Pokopia</a>.</p>
 
       <h2>On words and books</h2>
       <p>I picked up English almost by accident, with barely any sit-down study: just reading books in English and playing games in English until, somewhere along the way, I could read it. These days I work in a language-related field, so I read more than most people: around 100 books a year. I keep a record of them on a separate site, "<a href="https://www.bubble-books.com/" target="_blank" rel="noopener">Bubblegum's Reading Log</a>" (in Japanese, and heavy on foreign-language titles).</p>
 
       <h2>What I'm going for with this site</h2>
-      <p>I love that "old internet" feeling, the hard-to-explain excitement of the early web, and I make these browser games to bring a little of that atmosphere back. I wrote more about that in <a href="blog/posts/2026-06-18-making-html-games.html">this dev note</a>. I aim to add a game or an article roughly twice a month.</p>
+      <p>I love that "old internet" feeling, the hard-to-explain excitement of the early web, and I make these browser games to bring a little of that atmosphere back. I wrote more about that in <a href="/blog/posts/2026-06-18-making-html-games.html">this dev note</a>. I aim to add a game or an article roughly twice a month.</p>
 
-      <p>Hearing what you liked, even just a quick "this part was fun", genuinely keeps me going. Feel free to reach out through the <a href="contact.html">contact form</a>.</p>
+      <p>Hearing what you liked, even just a quick "this part was fun", genuinely keeps me going. Feel free to reach out through the <a href="/contact.html">contact form</a>.</p>
     </article>
-
-    <div style="margin-top:40px;padding-top:20px;border-top:2px solid #d4e6ef;">
-      <a href="./" style="color:#2a9aa3;font-weight:800;text-decoration:none;font-size:15px;">← Back to Home</a>
-    </div>
   </main>
-
-  <footer style="background:#14283f;color:#9fbdd4;padding:22px 20px;">
-    <div style="max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;">
-      <span>© 2026 Bubblegum Game</span>
-      <span style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="privacy.html" style="color:#cfe1ec;text-decoration:none;">Privacy Policy</a>
-        <a href="contact.html" style="color:#cfe1ec;text-decoration:none;">Contact</a>
-        <a href="about.html" style="color:#cfe1ec;text-decoration:none;">About</a>
-        <a href="./" style="color:#cfe1ec;text-decoration:none;">Home</a>
-      </span>
-    </div>
-  <div style="max-width:900px;margin:12px auto 0;"><button type="button" data-privacy-choices style="padding:6px 0;border:0;background:none;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;">Privacy &amp; cookie choices</button></div>
-</footer>
-
-</div>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 Bubblegum Game</span><div><a href="/">Home</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy policy</a> · <a href="/contact.html">Contact</a></div></div><div class="footer-inner" style="margin-top:12px"><button type="button" data-privacy-choices class="linkish">Ad and cookie settings</button></div></footer>
 </body>
 </html>

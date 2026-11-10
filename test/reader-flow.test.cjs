@@ -14,12 +14,12 @@ test('typing permits backspace and rejects IME input',()=>{
 });
 function fixture(){
  const listeners={},nodes={},writes=[];
- function node(){const events={},classes=new Set();return {hidden:true,disabled:true,dataset:{gameSrc:'https://example.com/game?lang=en'},classList:{add:c=>classes.add(c),remove:c=>classes.delete(c),contains:c=>classes.has(c)},addEventListener:(name,fn)=>events[name]=fn,click(){events.click?.()},focus(){this.focused=true},events,set src(value){writes.push(value)},get src(){return writes.at(-1)}};}
+ function node(){const events={},classes=new Set();return {hidden:true,disabled:true,hasAttribute:()=>false,dataset:{gameSrc:'https://example.com/game?lang=en'},classList:{add:c=>classes.add(c),remove:c=>classes.delete(c),contains:c=>classes.has(c)},addEventListener:(name,fn)=>events[name]=fn,click(){events.click?.()},focus(){this.focused=true},events,set src(value){writes.push(value)},get src(){return writes.at(-1)}};}
  for(const name of ['game-frame','game-launch','game-start','fs-btn','game-close','game-status'])nodes[name]=node();
  nodes['game-frame'].parentElement=node();nodes['game-frame'].parentElement.style={};nodes['game-frame'].parentElement.dataset.playHeight='680px';
  nodes['game-launch'].hidden=false;
  const body=node(),history={state:null,backs:0,pushState(state){this.state=state},back(){this.backs++;this.state=null;listeners.popstate?.()}};
- const document={body,getElementById:id=>nodes[id],addEventListener:(name,fn)=>listeners[name]=fn};
+ const document={body,documentElement:{lang:'en'},getElementById:id=>nodes[id],addEventListener:(name,fn)=>listeners[name]=fn};
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../game-page.js'),'utf8'),{document,history,window:{addEventListener:(name,fn)=>listeners[name]=fn}});
  return {nodes,writes,body,history,listeners};
 }
