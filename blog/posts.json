@@ -17,6 +17,10 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-review.html", "date": "2026-11-10", "game": "pokopia", "type": "review",
+     "title": "Is Pokémon Pokopia Boring? A Review After Six Months",
+     "summary": "Why some people bounce off it, who it's really for, and how it compares with Animal Crossing and Dragon Quest Builders 2.",
+     "image": "/images/guides/pokopia/20260315090324.webp"},
     {"file": "2026-11-10-pokopia-switch-1-gameshare.html", "date": "2026-11-10", "game": "pokopia", "type": "guide",
      "title": "Pokopia on Switch 1: GameShare Works, but Only as the Guest",
      "summary": "I ran Pokopia on a Switch 2 and an original Switch side by side: the steps, what the guest can do, and where it fell apart.",
