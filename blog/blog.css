@@ -33,7 +33,7 @@ main{max-width:720px;margin:0 auto;padding:36px 20px 64px}
 h1{font:800 clamp(28px,5vw,40px)/1.2 var(--serif);margin:0 0 14px;letter-spacing:-.01em}
 .dek{font-size:19px;color:var(--sub);margin:0 0 18px;line-height:1.6}
 .byline{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--sub);padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 28px}
-.byline .av{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#2b2118;color:var(--gold);display:grid;place-items:center;font:700 14px var(--serif)}
+.byline .av{flex:0 0 34px;width:34px;height:34px;border-radius:50%;object-fit:cover;display:block}
 .byline b{color:var(--ink)}
 
 figure{margin:26px 0}
