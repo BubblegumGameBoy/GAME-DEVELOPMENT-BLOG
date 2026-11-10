@@ -17,6 +17,10 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-zoo.html", "date": "2026-11-10", "game": "pokopia", "type": "diary",
+     "title": "I Built a Pokémon Zoo in Pokopia: Glass Tanks, Habitats and a Gyarados",
+     "summary": "After the prison, a zoo: glass enclosures themed to each Pokémon, a Gyarados tank, and a pixel-art Pikachu built by a young relative.",
+     "image": "/images/guides/pokopia/20260406090432.webp"},
     {"file": "2026-11-10-pokopia-pokemon-prison.html", "date": "2026-11-10", "game": "pokopia", "type": "diary",
      "title": "I Built a Pokémon Prison in Pokopia: Pens, Birdcages and a Jail in the Sky",
      "summary": "A Pokémon in a fenced pen can't move. A hot spring staffed by a Squirtle, a basement prison, a double birdcage and a jail in the sky.",
