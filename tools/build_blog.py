@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
 CSS = "/blog/blog.css?v=20261110c"
 LIST_PAGE_MIN = 3
-TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "dev": "Behind the game"}
+TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "dev": "Behind the game"}
 NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/blog/">Blog</a>'
        '<a href="/#games">Games</a><a href="/about.html">About</a></nav>')
 
