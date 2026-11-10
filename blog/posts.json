@@ -17,6 +17,14 @@
     "site": {"name": "Site news", "own_game": true}
   },
   "posts": [
+    {"file": "2026-11-10-pokopia-only-up-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
+     "title": "Someone Rebuilt Only Up Inside Pokopia, and I Climbed It",
+     "summary": "PokonlyUP! (NDFQ8XN5): twenty stages of furniture footholds, move rules on signs, and how long the climb took me.",
+     "image": "/images/guides/pokopia/20260415084129.webp"},
+    {"file": "2026-11-10-pokopia-aquarium-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
+     "title": "Someone Rebuilt an Entire Aquarium in Pokopia, and It Beat My Gyarados Tank",
+     "summary": "HorseaAqua (56L1Y3NT): Horsea statues, a gift shop, tanks on three levels and a power station in the basement.",
+     "image": "/images/guides/pokopia/20260620224632.webp"},
     {"file": "2026-11-10-pokopia-nenrin-island.html", "date": "2026-11-10", "game": "pokopia", "type": "visit",
      "title": "I Visited a Japanese Shrine Island in Pokopia and Found a Rayquaza Overhead",
      "summary": "Nenrin Island (GR3WBCC3): a shrine, tatami rooms, a pagoda-like tower, and a block Rayquaza floating in the sky.",
