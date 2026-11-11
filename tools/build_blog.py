@@ -22,12 +22,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://bubblegumgameboy.com"
-CSS = "/blog/blog.css?v=20261110f"
+CSS = "/blog/blog.css?v=20261111a"
 LIST_PAGE_MIN = 3
 NL = chr(10)
 TYPE_LABEL = {"guide": "Guide", "codes": "Codes", "review": "Review", "diary": "Play diary", "theory": "Story theory", "visit": "Island visit", "event": "Event guide", "dev": "Behind the game"}
 NAV = ('<nav aria-label="Site menu"><a href="/">Home</a><a href="/games/">Games</a>'
-       '<a href="/blog/" aria-current="true">Blog</a><a href="/about.html">About</a></nav>')
+       '<a href="/blog/" aria-current="true">Blog</a><a href="/about.html">About</a>'
+       # (2026-11-11) The blog has no Japanese pages, so the language button goes to the Japanese top page:
+       # a button that is on some pages and missing on others reads as broken.
+       '<a class="lang" href="/ja/" lang="ja" hreflang="ja">日本語</a></nav>')
 
 data = json.loads((ROOT / "blog/posts.json").read_text(encoding="utf-8"))
 GAMES, CATS = data["games"], data["categories"]
