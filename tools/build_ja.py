@@ -15,7 +15,7 @@ PERSON = {"@type": "Person", "name": "バブルガム", "alternateName": "Bubble
 AUTHOR_BOX = (f'<aside class="author-box" aria-label="作った人"><p class="author-name">作った人：バブルガム</p>'
               f'<p>個人でブラウザゲームを作っています。攻略記事やゲームレビューは'
               f'<a href="{BLOG}">はてなブログ「バブルガムのゲームブログ」</a>で書いています。</p>'
-              f'<p><a href="/ja/about.html">運営者について</a> · <a href="/ja/#games">ほかのゲームを見る</a></p></aside>')
+              f'<p><a href="/ja/about.html">運営者について</a> · <a href="/ja/games/">ほかのゲームを見る</a></p></aside>')
 
 
 # Filled by /imobile-ads.js; sits below the article, outside the play area.
@@ -40,14 +40,18 @@ def video_game(name, path, desc, image, extra=None):
     return ld(data)
 
 
-def page(title, description, body, path, english=None, image="/images/mythos-slayer-2026-09-10.png", game=False, head_extra="", full_title=None):
+def page(title, description, body, path, english=None, image="/images/mythos-slayer-2026-09-10.png", game=False, head_extra="", full_title=None, css_extra=""):
     canonical = BASE + "/ja/" + path
     alternate = (f'<link rel="alternate" hreflang="ja" href="{canonical}">\n'
                  f'<link rel="alternate" hreflang="en" href="{BASE}/{english}">\n'
                  f'<link rel="alternate" hreflang="x-default" href="{BASE}/{english}">') if english else ""
     switch = f'<a class="lang" href="/{english}" lang="en" hreflang="en">English</a>' if english else '<a class="lang" href="/" lang="en">English</a>'
-    scripts = '<script src="/game-page.js?v=20261017b" defer></script><script src="/imobile-ads.js?v=20261017" defer></script>' if game else ""
-    game_css = '<link rel="stylesheet" href="/game-page.css">' if game else ""
+    scripts = '<script src="/game-page.js?v=20261017b" defer></script><script src="/imobile-ads.js?v=20261023a" defer></script>' if game else ""
+    game_css = '<link rel="stylesheet" href="/game-page.css">' if game else css_extra
+    # (2026-11-11) The site's one menu, the same on every Japanese page. The section a page belongs to is marked.
+    here = "/ja/games/" if path.startswith("games/") else "/ja/about.html" if path == "about.html" else ""
+    menu = "".join(f'<a href="{u}"' + ((' aria-current="page"' if u == "/ja/" + path else ' aria-current="true"') if u == here else "") + f'>{t}</a>'
+                   for u, t in [("/ja/", "ホーム"), ("/ja/games/", "ゲーム"), ("/ja/monster-typing/codex/", "図鑑"), (BLOG, "ブログ"), ("/ja/about.html", "運営者")])
     full_title = full_title or f"{title}｜Bubblegum Game"
     html = f'''<!doctype html>
 <html lang="ja">
@@ -68,8 +72,8 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/site.css?v=20261017b">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/site.css?v=20261110c">
   {game_css}
   <script src="/privacy-controls.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203567155161909" crossorigin="anonymous"></script>
@@ -77,7 +81,7 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
 </head>
 <body>
   <a class="skip" href="#main">本文へ</a>
-  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/ja/games/monster-typing.html">モンスタータイピング</a><a href="/ja/#games">ほかのゲーム</a><a href="https://babblegum.hatenablog.com/">ブログ</a>{switch}</div></div></nav>
+  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links">{menu}{switch}</div></div></nav>
   <main id="main" class="game-main">
     <p class="crumb"><a href="/ja/">ホーム</a> / {escape(title)}</p>
     {body}
@@ -89,6 +93,14 @@ def page(title, description, body, path, english=None, image="/images/mythos-sla
 '''
     target = JA / path
     target.parent.mkdir(parents=True, exist_ok=True)
+    # (2026-11-11) The game pages' guide text is written on the pages by hand now (from 2026-11-10). Keep what is
+    # there: this script supplies the frame (head, menu, play area, ads, footer), never the article text.
+    if game and target.exists():
+        kept = re.search(r'<article class="article">.*?</article>', target.read_text(encoding="utf-8"), re.S)
+        if kept:
+            html = re.sub(r'<article class="article">.*?</article>', lambda m: kept.group(0), html, count=1, flags=re.S)
+    if css_extra:  # the Monster Typing page has no blank line before </body>
+        html = html.replace("</footer>\n  \n</body>", "</footer>\n</body>")
     target.write_text(html.replace("\n  \n", "\n\n"), encoding="utf-8")
 
 
@@ -135,18 +147,24 @@ MONSTER_DESC = "ひらがなをローマ字で打って攻撃する、無料の�
 # 2026-10-28: the game moved to the Hatena article (this site's AdSense was not approved). The page keeps only a way
 # there: no game frame, no ads. 2026-11-03: the link to the full-screen game is gone too (the maker: 入口ははてなで統一;
 # whoever lands here has no save of their own to continue). ja/games/monster-typing.html was edited by hand the same way.
+MT_STYLE = '''<style>.mt-moved{max-width:560px;margin:28px auto 56px;padding:32px 24px;text-align:center;background:var(--panel);border:1px solid var(--line-gold)}.mt-moved img{width:min(360px,90%);display:block;margin:0 auto 20px}.mt-moved-lead{margin:0 0 24px;color:var(--bone)}.mt-moved-go{width:min(320px,100%)}@media (max-width:600px){.mt-moved{margin:24px 12px 48px;padding:24px 16px}}</style>'''
+# (2026-11-11) The guide under the play box is written on the page by hand (2026-11-10): keep what is there.
+_mt = JA / 'games/monster-typing.html'
+_kept = re.search(r'\n    <article class="article mt-about">.*?</article>', _mt.read_text(encoding='utf-8'), re.S) if _mt.exists() else None
+MT_ABOUT = _kept.group(0) if _kept else ''
 monster = f'''<h1>モンスタータイピング</h1>
-    <style>.mt-moved{{max-width:560px;margin:28px auto 56px;padding:32px 24px;text-align:center;background:var(--panel);border:1px solid var(--line-gold)}}.mt-moved img{{width:min(360px,90%);display:block;margin:0 auto 20px}}.mt-moved-lead{{margin:0 0 24px;color:var(--bone)}}.mt-moved-go{{width:min(320px,100%)}}@media (max-width:600px){{.mt-moved{{margin:24px 12px 48px;padding:24px 16px}}}}</style>
     <section class="mt-moved" aria-label="遊ぶ場所のご案内">
       <a href="{MONSTER_BLOG}" tabindex="-1" aria-hidden="true"><img src="/images/monster-typing-banner.webp" alt="" width="360" height="120"></a>
       <p class="mt-moved-lead">ゲームはブログの記事の中で遊べます。</p>
       <a class="btn-blood mt-moved-go" href="{MONSTER_BLOG}">ブログの記事で遊ぶ</a>
-    </section>'''
+    </section>''' + MT_ABOUT
 page("モンスタータイピング", MONSTER_DESC, monster, "games/monster-typing.html", "games/monster-typing.html", "/images/monster-typing.png", game=False,
      full_title="モンスタータイピング｜無料で遊べるオンライン対戦タイピングゲーム",
      head_extra=video_game("モンスタータイピング", "games/monster-typing.html", MONSTER_DESC, "/images/monster-typing.png",
                            {"alternateName": "Monster Typing", "playMode": ["SinglePlayer", "MultiPlayer"],
-                            "sameAs": ["https://x.com/monster_typing", "https://www.tiktok.com/@monster_typing"]}))
+                            "sameAs": ["https://x.com/monster_typing", "https://www.tiktok.com/@monster_typing"]})
+     + '\n<style>.mt-about{max-width:760px;margin:28px auto 0}.mt-about ol,.mt-about ul{padding-left:1.4em}.mt-about li{margin:6px 0}</style>',
+     css_extra=MT_STYLE)
 
 
 def info_page(path, title, desc, content, english, head_extra=""):
@@ -158,7 +176,7 @@ info_page("play-guide.html", "はじめての方へ", "操作方法と対応端�
 <h2>スマホで遊ぶなら</h2><p><a href="/ja/games/clicker.html">Mythos Slayer</a>は、タップで戦いながら兵士や装備を強くするゲームです。<a href="/ja/games/dig-planet.html">Dig Planet</a>は、ほかの人と同じ惑星を掘るゲームです。</p>
 <h2>キーボードで遊ぶなら</h2><p>ローマ字入力に慣れたいなら<a href="/ja/games/popcorn-typing.html">Popcorn Typing</a>。タイピングしながら戦いたいなら<a href="/ja/games/soldier-typing.html">Soldier Typing</a>か<a href="/ja/games/soldier-typing-2.html">Soldier Typing 2</a>をどうぞ。<a href="/ja/games/piano-typing.html">Piano Typing</a>は光ったキーを一つずつ押す方式です。ほかの人と対戦したいなら<a href="/ja/games/monster-typing.html">モンスタータイピング</a>。スマホのフリック入力でも遊べます。</p>
 <h2>集めたり、眺めたりするなら</h2><p><a href="/ja/games/creature-fishing.html">Creature Fishing</a>では魚の図鑑を埋められます。<a href="/ja/games/creature-raising-kit.html">Creature Raising Kit</a>では島で生きものを育てます。<a href="/ja/games/five-hundred-million-years.html">500 Million Years</a>は物語をたどるゲームです。</p>
-<p><a href="/ja/#games">11本のゲーム一覧を見る →</a></p>
+<p><a href="/ja/games/">11本のゲーム一覧を見る →</a></p>
 ''', "play-guide.html")
 
 info_page("updates.html", "更新履歴", "Bubblegum Gameの新作と主な更新をまとめています。", '''

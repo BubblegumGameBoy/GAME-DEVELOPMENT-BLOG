@@ -16,6 +16,9 @@ const GAME_PAGE = '/ja/games/monster-typing.html';
 
 function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
   const url = SITE + path;
+  // (2026-11-11) The site's one menu: ホーム / ゲーム / 図鑑 / ブログ / 運営者 + English. These pages have no English
+  // version, so English goes to the English Monster Typing page. 図鑑 is marked as the current section.
+  const navCurrent = path === CODEX ? ' aria-current="page"' : path.startsWith(CODEX) ? ' aria-current="true"' : '';
   return `<!doctype html>
 <html lang="ja">
 <head>
@@ -36,7 +39,7 @@ function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/site.css?v=20261024a">
+  <link rel="stylesheet" href="/site.css?v=20261110c">
   <link rel="stylesheet" href="/game-page.css">
   <link rel="stylesheet" href="/monster-codex.css?v=20261023f">
   <script src="/privacy-controls.js" defer></script>
@@ -45,7 +48,7 @@ function page({ path, title, description, crumbs, h1, subtitle, body, ld }) {
 </head>
 <body>
   <a class="skip" href="#main">本文へ</a>
-  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="${GAME_PAGE}">モンスタータイピング</a><a href="/ja/#games">ほかのゲーム</a><a href="https://babblegum.hatenablog.com/">ブログ</a></div></div></nav>
+  <nav class="site-nav" aria-label="サイトメニュー"><div class="nav-inner"><a class="brand" href="/ja/">Bubblegum <span>Game</span></a><div class="nav-links"><a href="/ja/">ホーム</a><a href="/ja/games/">ゲーム</a><a href="${CODEX}"${navCurrent}>図鑑</a><a href="https://babblegum.hatenablog.com/">ブログ</a><a href="/ja/about.html">運営者</a><a class="lang" href="/games/monster-typing.html" lang="en" hreflang="en">English</a></div></div></nav>
   <main id="main" class="game-main">
     <p class="crumb">${crumbs.map(([text, href]) => href ? `<a href="${href}">${esc(text)}</a>` : esc(text)).join(' / ')}</p>
     <h1>${esc(h1)}</h1>
