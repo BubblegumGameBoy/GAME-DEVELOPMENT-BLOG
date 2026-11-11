@@ -1,5 +1,5 @@
 {
- "_readme": "One entry per article. Run `python tools/build_blog.py` after editing. own_game=true for games I made; type is guide / codes / review / dev. show=false keeps a post out of every list.",
+ "_readme": "One entry per article. Run `python tools/build_blog.py` after editing. own_game=true for games I made; type is guide / codes / review / dev. show=false keeps a post out of every list. pick=1,2,3 puts a post on the top page, in that order within its category.",
  "categories": {
   "pokopia": {
    "name": "Pokémon Pokopia",
@@ -77,7 +77,8 @@
    "type": "guide",
    "title": "Village in the Shade Beginner Tips: 30 Things I Wish I'd Known in My First Spring",
    "summary": "Early money, time-saving controls, what not to throw away, villagers, tools and the first nights.",
-   "image": "/images/guides/village-in-the-shade/20260925145151.webp"
+   "image": "/images/guides/village-in-the-shade/20260925145151.webp",
+   "pick": 2
   },
   {
    "file": "2026-09-28-village-in-the-shade-ghost-rats.html",
@@ -117,7 +118,8 @@
    "type": "review",
    "title": "Village in the Shade Review: A Farming Sim You Can Slack Off In, and a Story You Can't Put Down",
    "summary": "From the Yomawari team: how the farm automates itself, how scary the nights are, the no-romance story, and who it's for. After about 48 hours.",
-   "image": "/images/guides/village-in-the-shade/20260925151013.webp"
+   "image": "/images/guides/village-in-the-shade/20260925151013.webp",
+   "pick": 1
   },
   {
    "file": "2026-09-24-village-in-the-shade-who-is-ame.html",
@@ -188,7 +190,8 @@
    "type": "guide",
    "title": "Village in the Shade: How to Get More Hearts and Stamina (The Pool Guardian and the Fox Shrine)",
    "summary": "Cursed crops, the guardian of the pool, and where the fox shrine appears each season.",
-   "image": "/images/guides/village-in-the-shade/20260916091447.webp"
+   "image": "/images/guides/village-in-the-shade/20260916091447.webp",
+   "pick": 3
   },
   {
    "file": "2026-09-15-village-in-the-shade-red-phone.html",
@@ -387,7 +390,8 @@
    "title": "The Most Useful Pokémon in Pokopia: Tinkaton Changes How You Build",
    "summary": "Tinkaton, Haxorus, Volcarona, Blissey and Vespiquen: what each does on a Cloud Island and how to make their habitats.",
    "image": "/images/guides/pokopia/20260505155656.webp",
-   "en": "2026-11-10"
+   "en": "2026-11-10",
+   "pick": 3
   },
   {
    "file": "2026-11-10-pokopia-sableye-gem-hunt.html",
@@ -437,7 +441,8 @@
    "title": "Pokopia Cloud Island Codes: 10 Player-Made Islands Worth Visiting",
    "summary": "Ten addresses with screenshots: an Only Up climb, an aquarium, an island with almost every item to copy, and the prison I built.",
    "image": "/images/guides/pokopia/20260617141116.webp",
-   "en": "2026-11-09"
+   "en": "2026-11-09",
+   "pick": 2
   },
   {
    "file": "2026-11-10-pokopia-pokemon-prison.html",
@@ -457,7 +462,8 @@
    "title": "Is Pokémon Pokopia Boring? A Review After Six Months",
    "summary": "Why some people bounce off it, who it's really for, and how it compares with Animal Crossing and Dragon Quest Builders 2.",
    "image": "/images/guides/pokopia/20260315090324.webp",
-   "en": "2026-11-10"
+   "en": "2026-11-10",
+   "pick": 1
   },
   {
    "file": "2026-11-10-pokopia-story-theory.html",

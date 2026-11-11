@@ -3,7 +3,7 @@
 Run after adding or editing an entry:  python tools/build_blog.py
 
 Site shape (like a Hatena blog):
-  /                 Monster Typing first, then the newest posts and the other games
+  /                 the blog's front: picked posts per game, then Monster Typing and my other games
   /blog/            category links, then every post, newest first
   /blog/<category>/ one list per category, once it has LIST_PAGE_MIN posts
   each new-style post ends with more posts from the same category
@@ -12,7 +12,7 @@ What it writes:
   blog/index.html, blog/<category>/index.html   (owned by this script)
   posts.json "spoiler": true keeps a post out of other posts' related lists and the top page
   blog/posts/*.html  only between <!-- related:start --> and <!-- related:end -->
-  index.html         only between <!-- blog:start --> and <!-- blog:end -->
+  index.html         only between <!-- blog:start/end --> and <!-- myposts:start/end -->
   sitemap.xml        adds posts and category pages that are missing
 """
 import json
@@ -201,32 +201,48 @@ for p in POSTS:
     html = re.sub(r'/blog/blog\.css\?v=[0-9a-z]+', CSS, html)
     write(path, html)
 
-# ---- newest posts on the top page --------------------------------------------
-TOP = re.compile(r"<!-- blog:start -->.*?<!-- blog:end -->", re.S)
+# ---- the top page ---------------------------------------------------------------
+# (2026-11-11) The English top page is the blog's front: guides first, the games after. Two blocks are owned here:
+#   blog:start/end     a row of three cards per outside-game category (posts.json "pick": 1,2,3 first, then newest)
+#   myposts:start/end  the posts about my own games, as plain rows
+# Posts marked "spoiler" never appear in either.
 top = ROOT / "index.html"
 html = top.read_text(encoding="utf-8")
+
+
+def top_posts(c, n):
+    ps = [q for q in in_cat(c) if not q.get("spoiler")]
+    picked = sorted([q for q in ps if q.get("pick")], key=lambda q: q["pick"])
+    return (picked + [q for q in ps if not q.get("pick")])[:n]
+
+
 if "<!-- blog:start -->" in html:
-    # One card per category (its newest post that is not a spoiler), so every shelf shows on the top page,
-    # then a link to each shelf. (2026-11-10: three text links, all from one game, sat at the foot of the page.)
-    cards, shelves = [], []
+    secs, first = [], True
     for c, meta in CATS.items():
-        ps = [q for q in in_cat(c) if not q.get("spoiler")]
-        if not ps:
+        if GAMES.get(c, {}).get("own_game", True) or not in_cat(c):
             continue
-        q = ps[0]
-        img = q.get("image", "/images/site-home.png")
-        small = "/images/thumbs/" + Path(img).stem + ".webp"   # the light copy, when the picture has one
-        if img.startswith("/images/") and img.count("/") == 2 and (ROOT / small[1:]).exists():
-            img = small
-        cards.append(f'      <a class="bc" href="{q["url"]}"><img src="{escape(img)}" alt="" '
-                     f'width="320" height="180" loading="lazy" decoding="async"><span>{escape(meta["name"])}</span><b>{escape(q["title"])}</b></a>')
-        if has_page(c):
-            shelves.append(f'<a href="/blog/{c}/">{escape(meta["name"])} <span>{len(in_cat(c))}</span></a>')
-    block = ('<!-- blog:start --><h2 id="blog-title">From the blog</h2>' + NL +
-             '    <p class="lead">Guides to games I play, strategy for the games I make, and notes from building them.</p>' + NL +
-             '    <div class="blog-cards">' + NL + NL.join(cards) + NL + '    </div>' + NL +
-             '    <p class="blog-shelves">' + "".join(shelves) + '<a class="more" href="/blog/">All posts →</a></p><!-- blog:end -->')
-    write(top, TOP.sub(lambda m: block, html))
+        cards = []
+        for q in top_posts(c, 3):
+            lazy = "" if first else ' loading="lazy"'
+            cards.append(f'      <a class="hc" href="{q["url"]}"><img src="{escape(q.get("image", "/images/site-home.png"))}" alt="" '
+                         f'width="400" height="225"{lazy} decoding="async"><span>{TYPE_LABEL.get(q["type"], "Post")}</span>'
+                         f'<b>{escape(q["title"])}</b></a>')
+        first = False
+        secs.append(f'<section class="hs" aria-labelledby="hs-{c}">' + NL +
+                    f'    <h2 id="hs-{c}"><a href="/blog/{c}/">{escape(meta["name"])}</a></h2>' + NL +
+                    f'    <p class="hs-lede">{escape(meta["lede"])}</p>' + NL +
+                    '    <div class="hcards">' + NL + NL.join(cards) + NL + '    </div>' + NL +
+                    f'    <p class="more-link"><a href="/blog/{c}/">All {len(in_cat(c))} posts in {escape(meta["name"])} →</a></p>' + NL +
+                    '  </section>')
+    html = re.sub(r"<!-- blog:start -->.*?<!-- blog:end -->", lambda m: "<!-- blog:start -->" + (NL + "  ").join(secs) + "<!-- blog:end -->", html, flags=re.S)
+if "<!-- myposts:start -->" in html:
+    cols = []
+    for c in ("my-games", "behind"):
+        rows = "".join(f'<li><a href="{q["url"]}">{escape(q["title"])}</a></li>' for q in top_posts(c, 3))
+        cols.append(f'<div><h3><a href="/blog/{c}/">{escape(CATS[c]["name"])}</a></h3><ul class="hrows">{rows}</ul>'
+                    f'<p class="more-link"><a href="/blog/{c}/">All {len(in_cat(c))} →</a></p></div>')
+    html = re.sub(r"<!-- myposts:start -->.*?<!-- myposts:end -->", lambda m: "<!-- myposts:start -->" + (NL + "      ").join(cols) + "<!-- myposts:end -->", html, flags=re.S)
+write(top, html)
 
 # ---- sitemap -------------------------------------------------------------------
 sm = ROOT / "sitemap.xml"
