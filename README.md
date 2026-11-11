@@ -1,146 +1,41 @@
 # Bubblegum Game
 
-ブラウザで遊べる自作ゲームのポータルサイト。
-作成したゲームを一覧で公開し、各ゲームへ誘導します。
+https://bubblegumgameboy.com/ の静的サイト（GitHub Pages、main に push すると公開）。
 
-- 公開ページ: `index.html`（静的サイト / GitHub Pages 配信）
-- 独自ドメイン: https://bubblegumgameboy.com （取得・接続済み / HTTPS有効）
-- ゲーム配信ドメイン: https://play.bubblegumgameboy.com （`bubblegumgameboy.github.io` リポジトリにカスタムドメイン設定）
-- メインブログ: https://babblegum.hatenablog.com/ （AdSense承認済み・別運用、原則触らない）
+## サイトの形（2026-11-11 時点）
 
-> 2026-06 リニューアル: Claude Design のモックをもとに UI を刷新。サイト名を
-> 「Bubblegum Game Boy」→「**Bubblegum Game**」に変更。新着情報・サイト内記事・
-> ゲームの iframe 埋め込み・裏サイト（丑三つ掲示板）を追加。
+- `/`（英語トップ）：ブログが主役。ゲームごとの記事カード → モンスタータイピングの帯 → 自作ゲーム
+- `/blog/`：英語ブログ。カテゴリごとの棚。記事は `blog/posts/`、一覧は `blog/posts.json`
+- `/games/`：ゲーム一覧と各ゲームのページ（英語）
+- `/ja/`：日本語側。モンスタータイピングが主役。`/ja/games/`、図鑑 `/ja/monster-typing/codex/`、設定資料 `/ja/monster-typing/world/`
+- 日本語の記事は、はてなブログ（https://babblegum.hatenablog.com/）にあり、このサイトには置かない
+- モンスタータイピングは、英語・日本語とも、はてなの記事の中で遊ぶ（セーブを1か所にまとめるため）
 
-## ディレクトリ構成
+メニューは全ページ共通。英語は Home / Games / Blog / About ＋ 日本語、日本語は ホーム / ゲーム / 図鑑 / ブログ / 運営者 ＋ English。
 
-```
-index.html                     トップページ（ヒーロー / いちおし / 新着 / ゲーム一覧 / about / プライバシー / お問い合わせフォーム）
-about.html                     運営者プロフィール（E-E-A-T / AdSense 向けの運営者情報ページ）
-games/
-  clicker.html                 クリック連打ゲーム「レイドボスラッシュ」（iframe 埋め込み）
-  popcorn-typing.html          パチパチタイピング（iframe 埋め込み）
-  soldier-typing.html          ソルジャータイピング（iframe 埋め込み）
-  soldier-typing-2.html        ソルジャータイピング２（iframe 埋め込み）
-  piano-typing.html            ピアノタイピング（iframe 埋め込み）
-blog/
-  index.html                   記事一覧
-  _template.html               記事テンプレート（コピー元・公開しない）
-  posts/
-    2026-06-01-site-renewal.html   サンプル記事
-ura/
-  index.html                   裏サイト：オカルト超常現象板 ＠ 丑三つ掲示板
-  sasanaki.html                実況スレ体験「ささなき駅」（きさらぎ駅オマージュ・全文自作）
-images/                        スクリーンショット等
-sitemap.xml / CNAME
-```
+見た目は2系統：遊ぶページは黒×金（`site.css`）、読むページは紙（`blog/blog.css`）。
 
-各ページとも素の静的 HTML（フレームワーク・ビルド不要）。GitHub Pages にそのまま載る。
+## 作るもの・直すもの
 
-## 収録ゲーム
+| やること | 方法 |
+|---|---|
+| 英語記事を足す | `blog/posts/` に記事を置き、`blog/posts.json` に1件足して `python tools/build_blog.py` |
+| トップに出す記事を変える | `blog/posts.json` の `"pick": 1,2,3` を付け替えて `python tools/build_blog.py` |
+| 図鑑を作り直す | `node tools/monster_codex/build.mjs`（数値はゲーム側から `read-game.mjs` で読む） |
+| 日本語ページの枠を直す | `python tools/build_ja.py`（ゲームページの本文は、ページにあるものを残す） |
 
-| ゲーム | ジャンル | 対応 | サイト内ページ | 配信元(iframe) |
-|---|---|---|---|---|
-| クリック連打ゲーム「レイドボスラッシュ」 | 放置（いちおし） | PC・スマホ | `games/clicker.html` | https://play.bubblegumgameboy.com/spacebar-clicker/ |
-| パチパチタイピング | タイピング | PCのみ | `games/popcorn-typing.html` | https://play.bubblegumgameboy.com/popcorn-typing/ |
-| ソルジャータイピング | タイピング | PCのみ | `games/soldier-typing.html` | https://play.bubblegumgameboy.com/Bubble-Wars/ |
-| ソルジャータイピング２ | タイピング／隠しボス・周回 | PCのみ | `games/soldier-typing-2.html` | https://soldier-typing-2.pages.dev/ |
-| ピアノタイピング | 音ゲー／タイピング | PC推奨（スマホはタップ可） | `games/piano-typing.html` | https://play.bubblegumgameboy.com/BeatTyping/ |
-| クトゥルフタイピング | タイピング／デイリーボス | PCのみ | `games/cthulhu-typing.html` | https://play.bubblegumgameboy.com/Typingsoldier2/ |
-| クリーチャーフィッシング | 釣り／図鑑／オンライン（Unity WebGL） | PC・スマホ | `games/creature-fishing.html` | https://bubblegum-fishing-realtime.spacebar-clicker.workers.dev/ |
-| クリーチャー育成キット | 放置育成／手紙交換（Unity WebGL） | PC・スマホ | `games/creature-raising-kit.html` | https://play.bubblegumgameboy.com/Creature-raisingkit/ |
-| 5億年観測記録 | クリッカー／思考実験（**日本語のみ**） | PC推奨 | `games/five-hundred-million-years.html` | https://5okunen-game.pages.dev/ |
-| Dig Planet（みんなで掘る、巨大な謎） | 共同発掘クリッカー／オンライン（three.js、**日本語UIのみ**） | PC・スマホ | `games/dig-planet.html` | https://bubblegum-dig.spacebar-clicker.workers.dev/ |
+`tools/build_blog.py` が書くのは、`blog/index.html`、カテゴリページ、各記事末尾の関連記事、
+`index.html` の `blog:start/end` と `myposts:start/end` の間、`sitemap.xml` の不足分、
+一覧用の小さい画像（`images/guides/thumbs/`、Pillow が必要）。
 
-> **Dig Planet の埋め込みについて**: 配信元が `play.bubblegumgameboy.com` ではなく Cloudflare Workers
-> （`bubblegum-dig.spacebar-clicker.workers.dev`）。あちら側の `web/public/_headers` の
-> `frame-ancestors` に `https://bubblegumgameboy.com` を追加してデプロイしないと iframe が真っ白になる
-> （2026-08-20 に追加済み）。サムネイルは `images/dig-planet.png`。
+手で書いているページ：`index.html` の枠、`ja/index.html`、`games/*.html`、`games/index.html`、
+`ja/games/index.html`、`about.html` などの案内ページ、`404.html`。
 
-> **ソルジャータイピング２ の埋め込みについて**: 配信元が `play.bubblegumgameboy.com` ではなく Cloudflare Pages
-（`soldier-typing-2.pages.dev`）。ゲーム本体のソースは `C:\Users\Kazuya\BuublegumGame\タイピングソルジャー２`。
-> ランキングは Firestore の `scores2` コレクションで１と分離済み。サムネイルは `images/soldier-typing-2.png`
-> （PV素材 `promo/clip02-wave5.mp4` から切り出し）。iframe は高さ 700px（ゲーム本体の最大描画高は 604px）。
+## 触らないもの
 
-サムネイル画像は `images/` に配置：
-`spacebar-clicker.png`（クリック連打ゲーム「レイドボスラッシュ」） / `popcorn-typing.png` / `soldier-typing.png` / `piano-typing.png`。
+- `site.css` の `/* ads */` 以降、`imobile-ads.js`、`live-stats.js`
+- `_ja-archive/`（2026-07 時点の日本語版の控え。公開されない）
 
-ゲーム本体は別リポジトリ（`bubblegumgameboy/popcorn-typing` / `spacebar-clicker` / `Bubble-Wars` / `BeatTyping`）。
-`bubblegumgameboy.github.io` にカスタムドメインを設定しているため、配下の全プロジェクトが
-`play.bubblegumgameboy.com/<repo>/` で配信され、それを各ゲームページが `<iframe>` で埋め込む。
-（目的：滞在時間・GA・将来の AdSense をポータルに集約）
+公開されないもの（`_config.yml` の exclude）：`test`、`README.md`、`_ja-archive`、`blog/_template.html`、`ura`、`tools`、`blog/posts.json`。
 
-## 記事の追加方法（サイト内ブログ）
-
-3ステップ。HTML を少し触るだけで、ビルド作業は不要です。
-
-1. **記事ファイルを作る**
-   `blog/_template.html` を `blog/posts/` にコピーし、`日付-スラッグ.html` にリネーム
-   （例 `blog/posts/2026-07-01-popcorn-update.html`）。
-   ファイル冒頭コメントの【ここを書き換える】箇所（title / description / og / canonical /
-   日付・タグ・タイトル・本文）をすべて埋める。本文は `<article class="prose">` の中に
-   `<h2> <p> <ul>` などで書くだけ。
-2. **一覧に載せる**
-   `blog/index.html` の「▼▼▼ 記事一覧 …」ブロック内の `<a>…</a>` カードを1つコピーし、
-   先頭に貼って日付・タグ・タイトル・リンク先・要約を書き換える。
-3. **（任意）トップの新着情報に出す**
-   `index.html` の「▼▼▼ 新着情報 …」ブロック内の `<a>…</a>` を1つコピーして先頭に貼る。
-
-仕上げに `sitemap.xml` へ新記事の `<url>` を1件追加すると、検索エンジンに拾われやすくなります。
-
-タグは「新ゲーム」(`#2a9aa3`) /「更新」(`#e08a1e`) /「お知らせ」(`#7a93ad`) を推奨。
-
-## デザイン
-
-[Claude Design](https://claude.ai/design) で作成したモックを、素の静的 HTML/CSS として実装。
-配色・フォントはメインブログ（バブルガムのゲームブログ）と統一。
-
-- フォント: `M PLUS Rounded 1c` + `DotGothic16`（Google Fonts）。裏サイトのみ MS Pゴシック系。
-- 配色: bg `#e4f2f8` / teal `#2a9aa3`・`#3bb4bd` / navy `#2c4a6e`・`#14283f` / red `#ef4d52` / yellow `#ffc233`
-- 8bitテイスト（ドット系・ピクセルハート）
-- 外部リンクは全て `target="_blank" rel="noopener"`
-- 絵文字はバッジに使わない
-- デザインのプロトタイプは Claude Design ランタイム（`<x-dc>` / `support.js`）前提だったため、
-  `style-hover` → CSS `:hover`、`<sc-for>`/`<sc-if>` → 静的 HTML に変換して実装。
-
-## 計測・SEO（設定済み）
-
-- Google Analytics 4: `G-17WNKDX3ZB`（全ページに設置）
-- OGP / Twitter Card メタタグ・JSON-LD 構造化データ設定済み
-- Google Search Console 登録済み（所有権確認済み）
-- `sitemap.xml` 送信済み（全ページ収録）
-
-## TODO / メモ
-
-- OGP 画像 `images/ogp.png`（横長の専用バナー）は未作成。暫定で各スクショを `og:image` に使用中。
-- 広告：忍者AD（admax / `adm.shinobi.jp`）の枠は **全ページから撤去済み**（AdSense 審査のため他社広告ネットワークを排除）。
-- **AdSense（2026-08-11 現在）**：承認済みアカウントは `pub-2203567155161909` の**1つだけ**。各ページに以下の2つを設置済み（全49ファイル）。
-  - サイト所有確認：`<meta name="google-adsense-account" content="ca-pub-2203567155161909">`
-  - 広告配信：`<script async src="...adsbygoogle.js?client=ca-pub-2203567155161909">`
-  - `ads.txt`：`google.com, pub-2203567155161909, DIRECT, f08c47fec0942fa0`
-  - ※ 過去に日本口座で作った2つ目のアカウント `pub-5616851712582759` のコードが全ページに残っていたが、2026-08-11 に置換済み。**AdSenseは1人1アカウント。新規アカウントは作らず「サイトを追加」する。追加時はwww無しのトップレベルドメインを入力する。**
-
-### 記事の書き方
-
-執筆ルールは `C:\Users\Kazuya\Documents\blog\CLAUDE.md`（はてな／読書ブログ向けだが思想は共通）。要点は「SEOをやりすぎない」「冒頭に結論ボックスとメタ説明を置かない」「一次情報を入れる」。英語記事も同じ思想で、加えて次の2点を守る。
-
-- **記事にAIの活用を書かない。** 言及した瞬間にエンゲージメントが落ちる。制作の一次情報は「作者が自分のゲームに慣れすぎて初見の判断ができなかった」のように、気づきの側で書く。
-- **冒頭で開発者本人であることを明示する。** 攻略記事は誰でも書けるが、内部数値を開示できるのは作者だけ。これが唯一の差別化。
-- **検証者の口調で書かない。** 「checked against the source on …」「Correction: an earlier version …」「cannot be established」、関数名の列挙などは、作者ではなく第三者が監査した文章に見える（2026-10-02 に全記事から除去）。数値の出典は「I made this game. Every number here comes from the game itself」のように作者の言葉で書く。記事を書き直したら、`blog/index.html` の要約と meta description も本文と一致させる。
-- 裏サイト「ささなき駅」は実画像（`station.png` / `tunnel.png`）未設置でも SVG にフォールバックして動作。
-- 将来: タイピング系ゲームの多言語対応 / ポータルへの AdSense 申請。
-
-## 公開手順（メモ）
-
-1. このリポジトリで GitHub Pages を有効化（Source: `main` / root）
-2. 独自ドメイン `bubblegumgameboy.com` は接続済み（DNS: Aレコード4つ + www CNAME）
-3. ゲーム配信は `bubblegumgameboy.github.io` リポジトリ側で `play.bubblegumgameboy.com` を設定
-
-## 2026-09-10: 英語の読者向け導線
-
-- play-guide.html: 10本の比較、初回操作、4語の練習。typing-warmup.js と連動。
-- 全ゲーム紹介は game-page.js / game-page.css を共用。data-game-src のゲームは Play を押すまで読み込まない。全画面を閉じても再読込しない。
-- 問い合わせは contact.html の Google フォームで受付を確認。no-cors の fetch 成功を送信成功と扱わない。
-- _config.yml はテストと原稿テンプレートを公開対象から除外。管理画面は維持。
-- 新しい記事も privacy-controls.js を使用。本文を更新したら FAQ の構造化データも同期する。
-- 確認: node --test test/*.test.cjs
+テスト：`node test/reader-flow.test.cjs` など（`test/*.cjs`）。

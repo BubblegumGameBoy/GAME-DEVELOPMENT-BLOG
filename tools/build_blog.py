@@ -51,6 +51,29 @@ def write(path, text):
         print("wrote", path.relative_to(ROOT))
 
 
+def small(img):
+    """A 640px copy of a guide picture for lists and cards (made once, with Pillow). Lists were loading
+    the full 1200px pictures at 160px: seventeen of them on one category page."""
+    if not img.startswith("/images/guides/"):
+        return img
+    src = ROOT / img[1:]
+    out = ROOT / "images/guides/thumbs" / src.parent.name / (src.stem + ".webp")
+    if not out.exists():
+        try:
+            from PIL import Image
+            im = Image.open(src)
+            im.seek(0)
+            im = im.convert("RGB")
+            im.thumbnail((640, 640))
+            out.parent.mkdir(parents=True, exist_ok=True)
+            im.save(out, "WEBP", quality=74)
+            print("thumb", out.relative_to(ROOT))
+        except Exception as e:  # no Pillow, or an odd file: use the full picture
+            print("no thumb for", img, e)
+            return img
+    return "/" + str(out.relative_to(ROOT)).replace("\\", "/")
+
+
 def in_cat(c):
     return [p for p in POSTS if p["cat"] == c]
 
@@ -74,7 +97,7 @@ def entry(p):
     orig = ""
     summary = f'\n      <p class="s">{escape(p["summary"])}</p>' if p.get("summary") else ""
     return f'''  <li class="entry">
-    <a class="thumb" href="{p["url"]}" tabindex="-1" aria-hidden="true"><img src="{escape(p.get("image", "/images/site-home.png"))}" alt="" width="160" height="90" loading="lazy"></a>
+    <a class="thumb" href="{p["url"]}" tabindex="-1" aria-hidden="true"><img src="{escape(small(p.get("image", "/images/site-home.png")))}" alt="" width="160" height="90" loading="lazy"></a>
     <div>
       <p class="m">{chip}{sub} · <time datetime="{p["date"]}">{nice_date(p["date"])}</time>{orig}</p>
       <h2 class="t"><a href="{p["url"]}">{escape(p["title"])}</a></h2>{summary}
@@ -130,9 +153,8 @@ def page(title, desc, canonical, body, og_image=None):
 <footer class="foot"><div class="in">
   <nav aria-label="Footer menu">
     <a href="/">Home</a>
+    <a href="/games/">Games</a>
     <a href="/blog/">Blog</a>
-    <a href="/games/monster-typing.html">Monster Typing</a>
-    <a href="/games/">All games</a>
     <a href="/about.html">About</a>
     <a href="/privacy.html">Privacy policy</a>
     <a href="/contact.html">Contact</a>
@@ -227,7 +249,7 @@ if "<!-- blog:start -->" in html:
         cards = []
         for q in top_posts(c, 3):
             lazy = "" if first else ' loading="lazy"'
-            cards.append(f'      <a class="hc" href="{q["url"]}"><img src="{escape(q.get("image", "/images/site-home.png"))}" alt="" '
+            cards.append(f'      <a class="hc" href="{q["url"]}"><img src="{escape(small(q.get("image", "/images/site-home.png")))}" alt="" '
                          f'width="400" height="225"{lazy} decoding="async"><span>{TYPE_LABEL.get(q["type"], "Post")}</span>'
                          f'<b>{escape(q["title"])}</b></a>')
         first = False

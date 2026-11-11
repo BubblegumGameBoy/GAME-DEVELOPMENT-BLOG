@@ -180,7 +180,7 @@ info_page("play-guide.html", "はじめての方へ", "操作方法と対応端�
 ''', "play-guide.html")
 
 info_page("updates.html", "更新履歴", "Bubblegum Gameの新作と主な更新をまとめています。", '''
-<ul><li>2026年10月17日：モンスタータイピングの公式ページを公開しました。</li><li>2026年10月13日：「はじめての方へ」の日本語版を公開しました。</li><li>2026年9月2日：Soldier Typing 2を公開しました。</li><li>2026年8月20日：Dig Planetを公開しました。</li><li>2026年8月11日：Creature Fishing、Creature Raising Kit、500 Million Yearsを追加しました。</li><li>2026年7月4日：Cthulhu Typingを公開しました。</li><li>2026年6月26日：Piano Typingを公開しました。</li><li>2026年6月21日：Mythos Slayerを公開しました。</li><li>2026年6月1日：サイトのデザインを更新しました。</li></ul>
+<ul><li>2026年11月10日：<a href="/ja/games/">ゲーム一覧</a>のページを公開し、各ゲームの遊び方と攻略のヒントを書き足しました。</li><li>2026年10月17日：モンスタータイピングの公式ページを公開しました。</li><li>2026年10月13日：「はじめての方へ」の日本語版を公開しました。</li><li>2026年9月2日：Soldier Typing 2を公開しました。</li><li>2026年8月20日：Dig Planetを公開しました。</li><li>2026年8月11日：Creature Fishing、Creature Raising Kit、500 Million Yearsを追加しました。</li><li>2026年7月4日：Cthulhu Typingを公開しました。</li><li>2026年6月26日：Piano Typingを公開しました。</li><li>2026年6月21日：Mythos Slayerを公開しました。</li><li>2026年6月1日：サイトのデザインを更新しました。</li></ul>
 <p>制作の詳しい話は<a href="https://babblegum.hatenablog.com/">はてなブログ</a>に書いています。</p>
 ''', "updates.html")
 
